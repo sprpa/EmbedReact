@@ -14,8 +14,8 @@ const MenuItem = (props) => {
   };
 
   return (
-    <li className={expand ? 'active' : ''}>
-      <Link exact to={to} className={`menu-item`} onClick={handleClick}>
+    <li className={expand ? 'active' : ''} onClick={handleClick}>
+      <Link exact to={to} className={`menu-item ${expand ? 'active' : ''}`} >
         <div className="d-flex justify-content-between">
           <div>
             <div className="menu-icon">
@@ -23,15 +23,12 @@ const MenuItem = (props) => {
             </div>
             <span>{name}</span>
           </div>
-          {/* Display caret based on expand state */}
-          {subMenus && subMenus.length > 0 && (
-            <i className={`bi bi-caret-${expand ? 'down' : 'down'} mt-2 me-3`} />
-          )}
+          <i className={`bi bi-caret-${expand ? 'up' : 'down'} mt-2 me-3`} />
         </div>
       </Link>
       {/* Render submenus if expand is true */}
-      { subMenus && subMenus.length > 0 && (
-        <ul className={`sub-menu`}>
+      {subMenus && subMenus.length > 0 && (
+        <ul className={`sub-menu ${expand ? 'active' : ''}`}>
           {subMenus.map((menu, index) => (
             <li key={index}>
               <NavLink to={menu.to}>{menu.name}</NavLink>
@@ -40,6 +37,7 @@ const MenuItem = (props) => {
         </ul>
       )}
     </li>
+
   );
 };
 

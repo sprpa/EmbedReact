@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import MenuItem from "./MenuItem";
+import MenuItem from './MenuItem'; // Adjust the import path if needed
+
+// Your component code where you use the MenuItem component
+
 import '../index.css'
 import activeLogo from "../assets/logo/EIS_Main.png";
 import inactiveLogo from "../assets/logo/Subtract.png";
@@ -9,17 +12,10 @@ import Example from "./OffCanvas";
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Comp3 from "./Compnent3";
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
+import { useParams } from "react-router-dom";
 export const menuItems = [
-  {
-    name: "Content",
-    exact: true,
-    to: "/content",
-    iconClassName: "bi bi-speedometer2",
-    subMenus: [
-      { name: "Courses", to: "/content/courses" },
-      { name: "Videos", to: "/content/videos" },
-    ],
-  },
   {
     name: "Content",
     exact: true,
@@ -40,67 +36,17 @@ export const menuItems = [
       { name: "Videos", to: "/content-2/videos" },
     ],
   },
-  {
-    name: "Content",
-    exact: true,
-    to: "/content",
-    iconClassName: "bi bi-speedometer2",
-    subMenus: [
-      { name: "Courses", to: "/content/courses" },
-      { name: "Videos", to: "/content/videos" },
-    ],
-  },
-  {
-    name: "Content",
-    exact: true,
-    to: "/content",
-    iconClassName: "bi bi-speedometer2",
-    subMenus: [
-      { name: "Courses", to: "/content/courses" },
-      { name: "Videos", to: "/content/videos" },
-    ],
-  },
-  {
-    name: "Content",
-    exact: true,
-    to: "/content",
-    iconClassName: "bi bi-speedometer2",
-    subMenus: [
-      { name: "Courses", to: "/content/courses" },
-      { name: "Videos", to: "/content/videos" },
-    ],
-  },
-  {
-    name: "Content",
-    exact: true,
-    to: "/content",
-    iconClassName: "bi bi-speedometer2",
-    subMenus: [
-      { name: "Courses", to: "/content/courses" },
-      { name: "Videos", to: "/content/videos" },
-    ],
-  },
-  {
-    name: "Content",
-    exact: true,
-    to: "/content",
-    iconClassName: "bi bi-speedometer2",
-    subMenus: [
-      { name: "Courses", to: "/content/courses" },
-      { name: "Videos", to: "/content/videos" },
-    ],
-  },
-
+  
 ];
 
-
 const SideMenu = (props) => {
+  const { content, courses } = useParams();
   const [show, setShow] = useState(false);
-
+  const [inactive, setInactive] = useState(false);
+  
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [inactive, setInactive] = useState(false);
   const logoSrc = inactive ? inactiveLogo : activeLogo;
 
   useEffect(() => {
@@ -134,44 +80,44 @@ const SideMenu = (props) => {
 
   return (
     <div className={`d-flex side-menu-wrapper ${inactive ? "inactive" : ""}`}>
-      <div className={`side-menu ${inactive ? "inactive" : ""} d-none d-lg-block`}>
-        <div className="top-section">
-          <div className="logo w-100">
-            {inactive ? (
-              <img src={inactiveLogo} alt="webscript" />
-            ) : (
-              <img className="w-100" src={activeLogo} alt="webscript" />
-            )}
-          </div>
-          <div className="divider"></div>
-          <div className="main-menu">
-            <ul>
-              {menuItems.map((menuItem, index) => (
-                <MenuItem
-                  key={index}
-                  name={menuItem.name}
-                  exact={menuItem.exact}
-                  to={menuItem.to}
-                  subMenus={menuItem.subMenus || []}
-                  iconClassName={menuItem.iconClassName}
-                  onClick={(e) => {
-                    if (inactive) {
-                      setInactive(false);
-                    }
-                  }}
-                />
-              ))}
-            </ul>
-          </div>
+   <div className={`side-menu ${inactive ? "inactive" : ""} d-none d-lg-block`}>
+      <div className="top-section">
+        <div className="logo w-100">
+          {inactive ? (
+            <img src={inactiveLogo} alt="webscript" />
+          ) : (
+            <img className="w-100" src={activeLogo} alt="webscript" />
+          )}
+        </div>
+        <div className="divider"></div>
+        <div className="main-menu">
+          <ul>
+            {menuItems.map((menuItem, index) => (
+              <MenuItem
+                key={index}
+                name={menuItem.name}
+                exact={menuItem.exact}
+                to={menuItem.to}
+                subMenus={menuItem.subMenus || []}
+                iconClassName={menuItem.iconClassName}
+                onClick={(e) => {
+                  if (inactive) {
+                    setInactive(false);
+                  }
+                }}
+              />
+            ))}
+          </ul>
         </div>
       </div>
+    </div>
       <div className="w-100">
         <div className="container-fluid p-0">
           <nav
             className="navbar navbar-expand-lg navbar-light sticky-top"
-            style={{ backgroundColor: "green" }}
+            style={{ backgroundColor: "green",height:"70px" }}
           >
-            <div className="toggle ps-5 d-none d-lg-block">
+            <div className="toggle ps-3 d-none d-lg-block">
               <div
                 onClick={() => setInactive(!inactive)}
                 className="toggle-menu-btn"
@@ -183,21 +129,21 @@ const SideMenu = (props) => {
                 )}
               </div>
             </div>
-            <div className="container-fluid m-0 ms-2">
-              <div className="toggle d-lg-none me-auto"onClick={handleShow}>
-              <a class="btn border-0 bg-transparent navbar-brand" href="#offcanvas"><i class=" fa-solid fa-bars "></i></a>
+            <div className="container-fluid m-0 ">
+              <div className="toggle d-lg-none me-auto" onClick={handleShow}>
+                <a className="btn border-0 bg-transparent navbar-brand" href="#offcanvas">
+                  <i className="fa-solid fa-bars text-white "></i>
+                </a>
               </div>
-              <ul className="navbar-nav mx-5 me-auto navList d-none d-lg-flex">
+              <ul className="navbar-nav   navList d-none d-lg-flex">
                 <li className="nav-item dropdown">
                   <button
-                    className="btn btn-light bg-white  dropdown-toggle"
+                    className="btn btn-light bg-white dropdown-toggle"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
                     <i className="fa-solid fa-gear me-2 text-success"></i>
-                    <span className="text-success fw-bold">
-                      Production Line 2
-                    </span>
+                    <span className="text-success fw-bold">Production Line 2</span>
                   </button>
                   <ul className="dropdown-menu">
                     <li>
@@ -218,10 +164,7 @@ const SideMenu = (props) => {
                   </ul>
                 </li>
                 <li className="nav-item py-1 text-white fw-semibold">
-                  <a
-                    href="#"
-                    className="active text-white text-decoration-none"
-                  >
+                  <a href="#" className="active text-white text-decoration-none">
                     Manage Operations
                   </a>
                 </li>
@@ -235,13 +178,11 @@ const SideMenu = (props) => {
                 <ul className="navbar-nav d-none d-lg-flex">
                   <li className="nav-item dropdown me-2">
                     <button
-                      className="btn btn-light bg-white  dropdown-toggle"
+                      className="btn btn-light bg-white dropdown-toggle"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      <span className="text-black-50 fw-normal me-3">
-                        - Default all companies -
-                      </span>
+                      <span className="text-black-50 fw-normal me-3">- Default all companies -</span>
                     </button>
                     <ul className="dropdown-menu">
                       <li>
@@ -273,10 +214,7 @@ const SideMenu = (props) => {
                     <div className="d-flex gap-2">
                       <div>
                         <h6 className="m-0 text-center fw-bold">Kalyana P</h6>
-                        <p
-                          className="m-0 display-6"
-                          style={{ fontSize: "0.8rem" }}
-                        >
+                        <p className="m-0 display-6" style={{ fontSize: "0.8rem" }}>
                           login as admin
                         </p>
                       </div>
@@ -286,42 +224,23 @@ const SideMenu = (props) => {
                 </ul>
               </div>
             </div>
-            <Offcanvas show={show} onHide={handleClose}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-        <Example />  
-        </Offcanvas.Body>
-      </Offcanvas>
-          </nav>
 
+            <Offcanvas show={show} onHide={handleClose}>
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+              </Offcanvas.Header>
+              <Offcanvas.Body>
+                <Example />
+              </Offcanvas.Body>
+            </Offcanvas>
+          </nav>
         </div>
 
         <div className="container-fluid">
           <div className="row">
             <div className="col-9">
               <div className={`container py-3 ${inactive ? "inactive" : ""}`}>
-                <Routes>
-                  {menuItems.map((menu, index) => (
-                    <Route
-                      key={menu.name}
-                      path={menu.to}
-                      element={<h1>{menu.name}</h1>}
-                    />
-                  ))}
-                  {menuItems.map((menu, index) =>
-                    menu.subMenus && menu.subMenus.length > 0
-                      ? menu.subMenus.map((subMenu, i) => (
-                          <Route
-                            key={subMenu.name}
-                            path={subMenu.to}
-                            element={<h1>{subMenu.name}</h1>}
-                          />
-                        ))
-                      : null
-                  )}
-                </Routes>
+             
               </div>
             </div>
             <div className="col-3 d-none d-lg-block">

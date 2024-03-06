@@ -117,9 +117,9 @@ body{
 }
 
 .side-menu .main-menu .menu-item.active{
-  background: #333;
+
   border-radius: 5px;
-  color: #fff;
+  color: #000000;
 }
 
 
@@ -181,7 +181,7 @@ body{
   font-size: 15px;
   font-weight: 600;
   text-decoration: none;
-  color: #333;
+  color: #020202;
   box-sizing: border-box;
   padding: 5px 5px  5px 15px;
 }
@@ -189,11 +189,11 @@ body{
 
 .side-menu .main-menu .sub-menu a.active{
   /* change in background, not recorded in video */
-  background: #222;
+  background: #ffffff;
   display: block;
   
   border-radius: 5px;
-  color: #fff;
+  color: #000000;
 
 }
 

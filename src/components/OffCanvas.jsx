@@ -1,73 +1,76 @@
 import Accordion from 'react-bootstrap/Accordion';
 
 function AllCollapseExample() {
+  // Define an array containing the data for each accordion item, including sub-items
+  const accordionItems = [
+    {
+      header: 'Production',
+      subItems: [
+        {
+          title: 'Subitem 1 for Production',
+          description: 'Description for Subitem 1',
+          details: 'Additional details for Subitem 1',
+        },
+        {
+          title: 'Subitem 2 for Production',
+          description: 'Description for Subitem 2',
+          details: 'Additional details for Subitem 2',
+        },
+        {
+          title: 'Subitem 3 for Production',
+          description: 'Description for Subitem 3',
+          details: 'Additional details for Subitem 3',
+        },
+      ],
+    },
+    {
+      header: 'Operation',
+      subItems: [
+        {
+          title: 'Subitem 1 for Operation',
+          description: 'Description for Subitem 1',
+          details: 'Additional details for Subitem 1',
+        },
+        {
+          title: 'Subitem 2 for Operation',
+          description: 'Description for Subitem 2',
+          details: 'Additional details for Subitem 2',
+        },
+        {
+          title: 'Subitem 3 for Operation',
+          description: 'Description for Subitem 3',
+          details: 'Additional details for Subitem 3',
+        },
+      ],
+    },
+    // Add more items here...
+  ];
+
   return (
     <Accordion className='d-flex flex-column gap-3'>
-      <Accordion.Item className='border-0' eventKey="0">
-        <Accordion.Header>Production</Accordion.Header>
-        <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </Accordion.Body>
-      </Accordion.Item>
-
-      <Accordion.Item className='border-0' eventKey="1">
-        <Accordion.Header>Operation</Accordion.Header>
-        <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </Accordion.Body>
-      </Accordion.Item>
-
-      <Accordion.Item className='border-0' eventKey="2">
-        <Accordion.Header>Quality</Accordion.Header>
-        <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </Accordion.Body>
-      </Accordion.Item>
-
-      <Accordion.Item className='border-0' eventKey="3">
-        <Accordion.Header>Testing</Accordion.Header>
-        <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </Accordion.Body>
-      </Accordion.Item>
-
-      <Accordion.Item className='border-0' eventKey="4">
-        <Accordion.Header>Inventory</Accordion.Header>
-        <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </Accordion.Body>
-      </Accordion.Item>
-
+      {/* Map over the accordionItems array and render Accordion.Item for each item */}
+      {accordionItems.map((item, index) => (
+        <Accordion.Item key={index} className='border-0' eventKey={index.toString()}>
+          <Accordion.Header>{item.header}</Accordion.Header>
+          <Accordion.Body className='p-0'>
+            {item.body}
+            {/* Render sub-item accordions if subItems array exists */}
+            {item.subItems && (
+              <Accordion className='mt-3 ms-5 '>
+                {item.subItems.map((subItem, subIndex) => (
+                  <Accordion.Item key={subIndex} eventKey={`${index}-${subIndex}`}>
+                    <Accordion.Header>{subItem.title}</Accordion.Header>
+                    <Accordion.Body  className='p-0 p-2 '>
+                      <p>Description: {subItem.description}</p>
+                      <p>Details: {subItem.details}</p>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                ))}
+              </Accordion>
+            )}
+          </Accordion.Body>
+        </Accordion.Item>
+      ))}
     </Accordion>
   );
 }
