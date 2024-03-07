@@ -6,6 +6,7 @@ import { useState } from "react";
 import Header from "./components/Header";
 
 
+
 function App() {
   const [inactive, setInactive] = useState(false);
 
@@ -19,7 +20,6 @@ function App() {
           }}
         />
       </Router>
-
     </div>
   );
 }

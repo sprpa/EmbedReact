@@ -15,7 +15,7 @@ const MenuItem = (props) => {
 
   return (
     <li className={expand ? 'active' : ''} onClick={handleClick}>
-      <Link exact to={to} className={`menu-item ${expand ? 'active' : ''}`} >
+      <Link exact to={to} className={`menu-item ${expand ? 'active' : ''}`}>
         <div className="d-flex justify-content-between">
           <div>
             <div className="menu-icon">

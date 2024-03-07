@@ -56,9 +56,9 @@ function AllCollapseExample() {
             {item.body}
             {/* Render sub-item accordions if subItems array exists */}
             {item.subItems && (
-              <Accordion className='mt-3 ms-5 '>
+              <Accordion className='mt-3 ms-3 leftBorder ps-3'>
                 {item.subItems.map((subItem, subIndex) => (
-                  <Accordion.Item key={subIndex} eventKey={`${index}-${subIndex}`}>
+                  <Accordion.Item className='mb-3 border-0' key={subIndex} eventKey={`${index}-${subIndex}`}>
                     <Accordion.Header>{subItem.title}</Accordion.Header>
                     <Accordion.Body  className='p-0 p-2 '>
                       <p>Description: {subItem.description}</p>

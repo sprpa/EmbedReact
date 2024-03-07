@@ -45,16 +45,15 @@ body{
 
 .side-menu{
   position: sticky;
-  background: #ffffff;
+  background: #1C1C1C1A;
   width: 300px;
-  height: 100vh;
   box-sizing: border-box;
-  padding: 13px 23px;
+  padding: 8px 15px;
   transition: width .2s ease-in;
 }
 
 .side-menu.inactive{
-  width: 90px;
+  width: 80px;
 }
 
 .side-menu .top-section{
@@ -66,7 +65,7 @@ body{
   display: inline-block;
 }
 .side-menu .top-section .logo img{
-  height: 50px;
+  height: 60px;
   max-width: 100%;
   max-height: 100%;
 }
@@ -285,4 +284,67 @@ body{
 
 .toggle-menu-btn {
   transition: all 0.9s ease-in-out;
+}
+.leftBorder{
+  border-left: 1px solid #666;
+}
+.accordion-button:not(.collapsed) {
+  color: rgb(255, 255, 255) !important;
+  background-color: #54ccff !important;
+  box-shadow: none !important;
+  --bs-accordion-btn-icon: url(/src/assets/showhidewhite.svg) !important;
+}
+.accordion-button{
+  padding: 8px 0 8px 15.4px !important;
+}
+.accordion-tem:hover{
+  background-color: black ;
+  color: #ffffff ;
+}
+
+.accordion {
+  --bs-accordion-color: var(--bs-body-color);
+  --bs-accordion-bg:  transparent !important;
+  --bs-accordion-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
+  --bs-accordion-border-color: var(--bs-border-color);
+  --bs-accordion-border-width: var(--bs-border-width);
+  --bs-accordion-border-radius: 0% !important ;
+  --bs-accordion-inner-border-radius: 0% !important ;
+  --bs-accordion-btn-padding-x: 1rem;
+  --bs-accordion-btn-padding-y: 1rem;
+  --bs-accordion-btn-color: var(--bs-body-color);
+  --bs-accordion-btn-bg: var(--bs-accordion-bg);
+  --bs-accordion-btn-icon: url(/src/assets/showhide.svg) !important;
+  --bs-accordion-btn-icon-width: 1.25rem;
+  --bs-accordion-btn-icon-transform: rotate(0deg) !important;
+  --bs-accordion-btn-icon-transition: transform 0.2s ease-in-out;
+  --bs-accordion-btn-active-icon: url(/src/assets/showhidewhite.svg) !important ;
+  --bs-accordion-btn-focus-box-shadow: transparent !important;
+  --bs-accordion-body-padding-x: 1.25rem;
+  --bs-accordion-body-padding-y: 1rem;
+  --bs-accordion-active-color: var(--bs-primary-text-emphasis);
+  --bs-accordion-active-bg: var(--bs-primary-bg-subtle);
+}
+.accordion-header {
+  margin-bottom: 0 !important;
+}
+
+
+
+.accordion-item:hover .accordion-button {
+  margin-bottom: 0 !important;
+  background-color: #686565 !important;
+  color: white !important;
+  --bs-accordion-btn-icon: url(/src/assets/showhidewhite.svg) !important;
+}
+
+/* Show accordion body on hover */
+
+.sub-head{
+  padding: 10px 10px !important;
+}
+.sub-head:hover{
+  background-color: #686565 !important;
+  padding: 10px 10px !important;
+  color: white;
 }

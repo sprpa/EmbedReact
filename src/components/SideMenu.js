@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import MenuItem from './MenuItem'; // Adjust the import path if needed
+
 
 // Your component code where you use the MenuItem component
-
+import Accordion from 'react-bootstrap/Accordion';
 import '../index.css'
 import activeLogo from "../assets/logo/EIS_Main.png";
 import inactiveLogo from "../assets/logo/Subtract.png";
@@ -10,30 +10,229 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Example from "./OffCanvas";
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import '../components/sidebar.css'
 import Comp3 from "./Compnent3";
-import Accordion from 'react-bootstrap/Accordion';
+
 import Card from 'react-bootstrap/Card';
 import { useParams } from "react-router-dom";
-export const menuItems = [
+
+
+const accordionItems = [
   {
-    name: "Content",
-    exact: true,
-    to: "/content",
-    iconClassName: "bi bi-speedometer2",
-    subMenus: [
-      { name: "Courses", to: "/content/courses" },
-      { name: "Videos", to: "/content/videos" },
+    header: 'Production',
+    icon: 'fa-solid fa-dashboard',
+    subItems: [
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
     ],
   },
   {
-    name: "Content 2",
-    exact: true,
-    to: "/content-2",
-    iconClassName: "bi bi-speedometer2",
-    subMenus: [
-      { name: "Courses", to: "/content-2/courses" },
-      { name: "Videos", to: "/content-2/videos" },
+    header: 'Operation',
+    icon: 'fa-solid fa-dashboard',
+    subItems: [
+      {
+        title: 'Operation 1',
+      },
+      {
+        title: 'Operation 2',
+      },
+      {
+        title: 'Operation 3',
+      },
+    ],
+  },
+  {
+    header: 'Quality',
+    icon: 'fa-solid fa-dashboard',
+    subItems: [
+      {
+        title: 'Operation 1',
+      },
+      {
+        title: 'Operation 2',
+      },
+      {
+        title: 'Operation 3',
+      },
+    ],
+  },
+  {
+    header: 'Testing',
+    icon: 'fa-solid fa-dashboard',
+    subItems: [
+      {
+        title: 'Operation 1',
+      },
+      {
+        title: 'Operation 2',
+      },
+      {
+        title: 'Operation 3',
+      },
+    ],
+  },
+  {
+    header: 'Inventory',
+    icon: 'fa-solid fa-dashboard',
+    subItems: [
+      {
+        title: 'Operation 1',
+      },
+      {
+        title: 'Operation 2',
+      },
+      {
+        title: 'Operation 3',
+      },
+    ],
+  },
+  {
+    header: 'Packing',
+    icon: 'fa-solid fa-dashboard',
+    subItems: [
+      {
+        title: 'Operation 1',
+      },
+      {
+        title: 'Operation 2',
+      },
+      {
+        title: 'Operation 3',
+      },
+    ],
+  },
+  // Add more items here...
+];
+
+const accordionConfig=[
+  {
+    header: 'Manage Operations',
+    icon: 'fa-solid fa-dashboard',
+    subItems: [
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+    ],
+  },
+  {
+    header: 'User Management',
+    icon: 'fa-solid fa-dashboard',
+    subItems: [
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+    ],
+  },
+  {
+    header: 'API Configuration',
+    icon: 'fa-solid fa-dashboard',
+    subItems: [
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+    ],
+  },
+  {
+    header: 'Masters',
+    icon: 'fa-solid fa-dashboard',
+    subItems: [
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+    ],
+  },
+  {
+    header: 'ORG Settings',
+    icon: 'fa-solid fa-dashboard',
+    subItems: [
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+    ],
+  },
+]
+
+const reports =[
+  {
+    header: 'Production Reports',
+    icon: 'fa-solid fa-dashboard',
+    subItems: [
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+    ],
+  },
+  {
+    header: 'Traceability Reports',
+    icon: 'fa-solid fa-dashboard',
+    subItems: [
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+    ],
+  },
+  {
+    header: 'Management Reports',
+    icon: 'fa-solid fa-dashboard',
+    subItems: [
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
     ],
   },
   
@@ -80,7 +279,7 @@ const SideMenu = (props) => {
 
   return (
     <div className={`d-flex side-menu-wrapper ${inactive ? "inactive" : ""}`}>
-   <div className={`side-menu ${inactive ? "inactive" : ""} d-none d-lg-block`}>
+   <div className={`side-menu ${inactive ? "inactive" : ""} d-none d-lg-block shadow`}>
       <div className="top-section">
         <div className="logo w-100">
           {inactive ? (
@@ -91,23 +290,112 @@ const SideMenu = (props) => {
         </div>
         <div className="divider"></div>
         <div className="main-menu">
-          <ul>
-            {menuItems.map((menuItem, index) => (
-              <MenuItem
-                key={index}
-                name={menuItem.name}
-                exact={menuItem.exact}
-                to={menuItem.to}
-                subMenus={menuItem.subMenus || []}
-                iconClassName={menuItem.iconClassName}
-                onClick={(e) => {
-                  if (inactive) {
-                    setInactive(false);
-                  }
-                }}
-              />
-            ))}
-          </ul>
+
+          <div className="my-2">
+            <h6 className="dash-head">Dashboards</h6>
+            <div className="d-flex gap-2 p-1">
+            <ion-icon name="speedometer-outline"></ion-icon>
+            <h6 className="dashboard m-0">Dashboard</h6>
+            </div>
+          </div>
+          <div>
+            <h6 className="menu-head m-0">Menu</h6>
+            <Accordion className='d-flex flex-column '>
+              {/* Map over the accordionItems array and render Accordion.Item for each item */}
+              {accordionItems.map((item, index) => (
+                <Accordion.Item key={index} className='border-0 bg-transprent' eventKey={index.toString()}>
+                  <Accordion.Header className="p-0">
+                    <div className="d-flex gap-3 p-0">
+                      <i className={`${item.icon} mt-1`} />
+                      <h6 className="menu-list m-0 mt-1">{item.header}</h6>
+                    </div>
+                  </Accordion.Header>
+                  <Accordion.Body className='p-0'>
+                    {item.body}
+                    {/* Render sub-items as regular content */}
+                    {item.subItems && (
+                      <div className='mt-1 ms-3 leftBorder ps-3'>
+                        {item.subItems.map((subItem, subIndex) => (
+                          <div className='mb-1 border-0' key={subIndex}>
+                            <div className="sub-head">
+                              <h6 className="p-0 m-0">{subItem.title}</h6>
+                            </div>
+                            
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </Accordion.Body>
+                </Accordion.Item>
+              ))}
+            </Accordion>
+          </div>
+
+          <div>
+            <h6 className="menu-head m-0 mt-2">Configuration</h6>
+            <Accordion className='d-flex flex-column '>
+              {/* Map over the accordionItems array and render Accordion.Item for each item */}
+              {accordionConfig.map((item, index) => (
+                <Accordion.Item key={index} className='border-0 bg-transprent' eventKey={index.toString()}>
+                  <Accordion.Header className="p-0">
+                    <div className="d-flex gap-3 p-0">
+                      <i className={`${item.icon} mt-1`} />
+                      <h6 className="menu-list m-0 mt-1">{item.header}</h6>
+                    </div>
+                  </Accordion.Header>
+                  <Accordion.Body className='p-0'>
+                    {item.body}
+                    {/* Render sub-items as regular content */}
+                    {item.subItems && (
+                      <div className='mt-1 ms-3 leftBorder ps-3'>
+                        {item.subItems.map((subItem, subIndex) => (
+                          <div className='mb-1 border-0' key={subIndex}>
+                            <div className="sub-head">
+                              <h6 className="p-0 m-0">{subItem.title}</h6>
+                            </div>
+                            
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </Accordion.Body>
+                </Accordion.Item>
+              ))}
+            </Accordion>
+          </div>
+          <div>
+            <h6 className="menu-head m-0 mt-2">Reports</h6>
+            <Accordion className='d-flex flex-column '>
+              {/* Map over the accordionItems array and render Accordion.Item for each item */}
+              {reports.map((item, index) => (
+                <Accordion.Item key={index} className='border-0 bg-transprent' eventKey={index.toString()}>
+                  <Accordion.Header className="p-0">
+                    <div className="d-flex gap-3 p-0">
+                      <i className={`${item.icon} mt-1`} />
+                      <h6 className="menu-list m-0 mt-1">{item.header}</h6>
+                    </div>
+                  </Accordion.Header>
+                  <Accordion.Body className='p-0'>
+                    {item.body}
+                    {/* Render sub-items as regular content */}
+                    {item.subItems && (
+                      <div className='mt-1 ms-3 leftBorder ps-3'>
+                        {item.subItems.map((subItem, subIndex) => (
+                          <div className='mb-1 border-0' key={subIndex}>
+                            <div className="sub-head">
+                              <h6 className="p-0 m-0">{subItem.title}</h6>
+                            </div>
+                            
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </Accordion.Body>
+                </Accordion.Item>
+              ))}
+            </Accordion>
+          </div>
+            
         </div>
       </div>
     </div>
@@ -123,9 +411,9 @@ const SideMenu = (props) => {
                 className="toggle-menu-btn"
               >
                 {inactive ? (
-                  <i class="bi bi-chevron-right"></i>
+                  <i className="bi bi-chevron-right"></i>
                 ) : (
-                  <i class="bi bi-chevron-left"></i>
+                  <i className="bi bi-chevron-left"></i>
                 )}
               </div>
             </div>
@@ -227,7 +515,7 @@ const SideMenu = (props) => {
 
             <Offcanvas show={show} onHide={handleClose}>
               <Offcanvas.Header closeButton>
-                <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+                <Offcanvas.Title><img className="w-100" src={activeLogo} alt="webscript" /></Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Example />
