@@ -35,7 +35,7 @@ const accordionItems = [
   },
   {
     header: 'Operation',
-    icon: 'fa-solid fa-dashboard',
+    icon: 'fa-solid fa-tv',
     subItems: [
       {
         title: 'Operation 1',
@@ -65,7 +65,7 @@ const accordionItems = [
   },
   {
     header: 'Testing',
-    icon: 'fa-solid fa-dashboard',
+    icon: 'fa-solid fa-microscope',
     subItems: [
       {
         title: 'Operation 1',
@@ -95,7 +95,7 @@ const accordionItems = [
   },
   {
     header: 'Packing',
-    icon: 'fa-solid fa-dashboard',
+    icon: 'fa-solid fa-boxes-packing',
     subItems: [
       {
         title: 'Operation 1',
@@ -239,10 +239,9 @@ const reports =[
 ];
 
 const SideMenu = (props) => {
-  const { content, courses } = useParams();
   const [show, setShow] = useState(false);
   const [inactive, setInactive] = useState(false);
-  
+  const [name, setName] = useState('');
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -279,131 +278,131 @@ const SideMenu = (props) => {
 
   return (
     <div className={`d-flex side-menu-wrapper ${inactive ? "inactive" : ""}`}>
-   <div className={`side-menu ${inactive ? "inactive" : ""} d-none d-lg-block shadow`}>
-      <div className="top-section">
-        <div className="logo w-100">
-          {inactive ? (
-            <img src={inactiveLogo} alt="webscript" />
-          ) : (
-            <img className="w-100" src={activeLogo} alt="webscript" />
-          )}
-        </div>
-        <div className="divider"></div>
-        <div className="main-menu">
+      <div className={`side-menu ${inactive ? "inactive" : ""} d-none d-lg-block shadow`}>
+        <div className="top-section">
+          <div className="logo w-100">
+            {inactive ? (
+              <img src={inactiveLogo} alt="webscript" />
+            ) : (
+              <img className="w-100" src={activeLogo} alt="webscript" />
+            )}
+          </div>
+          <div className="divider"></div>
+          <div className="main-menu">
 
-          <div className="my-2">
-            <h6 className="dash-head">Dashboards</h6>
-            <div className="d-flex gap-2 p-1">
-            <ion-icon name="speedometer-outline"></ion-icon>
-            <h6 className="dashboard m-0">Dashboard</h6>
+            <div className="my-2">
+              <h6 className="dash-head">Dashboards</h6>
+              <div className="d-flex gap-2 p-1">
+                <ion-icon name="speedometer-outline"></ion-icon>
+                <h6 className="dashboard m-0">Dashboard</h6>
+              </div>
             </div>
-          </div>
-          <div>
-            <h6 className="menu-head m-0">Menu</h6>
-            <Accordion className='d-flex flex-column '>
-              {/* Map over the accordionItems array and render Accordion.Item for each item */}
-              {accordionItems.map((item, index) => (
-                <Accordion.Item key={index} className='border-0 bg-transprent' eventKey={index.toString()}>
-                  <Accordion.Header className="p-0">
-                    <div className="d-flex gap-3 p-0">
-                      <i className={`${item.icon} mt-1`} />
-                      <h6 className="menu-list m-0 mt-1">{item.header}</h6>
-                    </div>
-                  </Accordion.Header>
-                  <Accordion.Body className='p-0'>
-                    {item.body}
-                    {/* Render sub-items as regular content */}
-                    {item.subItems && (
-                      <div className='mt-1 ms-3 leftBorder ps-3'>
-                        {item.subItems.map((subItem, subIndex) => (
-                          <div className='mb-1 border-0' key={subIndex}>
-                            <div className="sub-head">
-                              <h6 className="p-0 m-0">{subItem.title}</h6>
-                            </div>
-                            
-                          </div>
-                        ))}
+            <div>
+              <h6 className="menu-head m-0">Menu</h6>
+              <Accordion className='d-flex flex-column '>
+                {/* Map over the accordionItems array and render Accordion.Item for each item */}
+                {accordionItems.map((item, index) => (
+                  <Accordion.Item key={index} className='border-0 bg-transprent' eventKey={index.toString()}>
+                    <Accordion.Header className="p-0">
+                      <div className="d-flex gap-3 p-0">
+                        <i className={`${item.icon} mt-1`} />
+                        <h6 className="menu-list m-0 mt-1">{item.header}</h6>
                       </div>
-                    )}
-                  </Accordion.Body>
-                </Accordion.Item>
-              ))}
-            </Accordion>
-          </div>
+                    </Accordion.Header>
+                    <Accordion.Body className='p-0'>
+                      {item.body}
+                      {/* Render sub-items as regular content */}
+                      {item.subItems && (
+                        <div className='mt-1 ms-3 leftBorder ps-3'>
+                          {item.subItems.map((subItem, subIndex) => (
+                            <div className='mb-1 border-0' key={subIndex}>
+                              <div className="sub-head">
+                                <h6 className="p-0 m-0">{subItem.title}</h6>
+                              </div>
 
-          <div>
-            <h6 className="menu-head m-0 mt-2">Configuration</h6>
-            <Accordion className='d-flex flex-column '>
-              {/* Map over the accordionItems array and render Accordion.Item for each item */}
-              {accordionConfig.map((item, index) => (
-                <Accordion.Item key={index} className='border-0 bg-transprent' eventKey={index.toString()}>
-                  <Accordion.Header className="p-0">
-                    <div className="d-flex gap-3 p-0">
-                      <i className={`${item.icon} mt-1`} />
-                      <h6 className="menu-list m-0 mt-1">{item.header}</h6>
-                    </div>
-                  </Accordion.Header>
-                  <Accordion.Body className='p-0'>
-                    {item.body}
-                    {/* Render sub-items as regular content */}
-                    {item.subItems && (
-                      <div className='mt-1 ms-3 leftBorder ps-3'>
-                        {item.subItems.map((subItem, subIndex) => (
-                          <div className='mb-1 border-0' key={subIndex}>
-                            <div className="sub-head">
-                              <h6 className="p-0 m-0">{subItem.title}</h6>
                             </div>
-                            
-                          </div>
-                        ))}
+                          ))}
+                        </div>
+                      )}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                ))}
+              </Accordion>
+            </div>
+
+            <div>
+              <h6 className="menu-head m-0 mt-2">Configuration</h6>
+              <Accordion className='d-flex flex-column '>
+                {/* Map over the accordionItems array and render Accordion.Item for each item */}
+                {accordionConfig.map((item, index) => (
+                  <Accordion.Item key={index} className='border-0 bg-transprent' eventKey={index.toString()}>
+                    <Accordion.Header className="p-0">
+                      <div className="d-flex gap-3 p-0">
+                        <i className={`${item.icon} mt-1`} />
+                        <h6 className="menu-list m-0 mt-1">{item.header}</h6>
                       </div>
-                    )}
-                  </Accordion.Body>
-                </Accordion.Item>
-              ))}
-            </Accordion>
-          </div>
-          <div>
-            <h6 className="menu-head m-0 mt-2">Reports</h6>
-            <Accordion className='d-flex flex-column '>
-              {/* Map over the accordionItems array and render Accordion.Item for each item */}
-              {reports.map((item, index) => (
-                <Accordion.Item key={index} className='border-0 bg-transprent' eventKey={index.toString()}>
-                  <Accordion.Header className="p-0">
-                    <div className="d-flex gap-3 p-0">
-                      <i className={`${item.icon} mt-1`} />
-                      <h6 className="menu-list m-0 mt-1">{item.header}</h6>
-                    </div>
-                  </Accordion.Header>
-                  <Accordion.Body className='p-0'>
-                    {item.body}
-                    {/* Render sub-items as regular content */}
-                    {item.subItems && (
-                      <div className='mt-1 ms-3 leftBorder ps-3'>
-                        {item.subItems.map((subItem, subIndex) => (
-                          <div className='mb-1 border-0' key={subIndex}>
-                            <div className="sub-head">
-                              <h6 className="p-0 m-0">{subItem.title}</h6>
+                    </Accordion.Header>
+                    <Accordion.Body className='p-0'>
+                      {item.body}
+                      {/* Render sub-items as regular content */}
+                      {item.subItems && (
+                        <div className='mt-1 ms-3 leftBorder ps-3'>
+                          {item.subItems.map((subItem, subIndex) => (
+                            <div className='mb-1 border-0' key={subIndex}>
+                              <div className="sub-head">
+                                <h6 className="p-0 m-0">{subItem.title}</h6>
+                              </div>
+
                             </div>
-                            
-                          </div>
-                        ))}
+                          ))}
+                        </div>
+                      )}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                ))}
+              </Accordion>
+            </div>
+            <div>
+              <h6 className="menu-head m-0 mt-2">Reports</h6>
+              <Accordion className='d-flex flex-column '>
+                {/* Map over the accordionItems array and render Accordion.Item for each item */}
+                {reports.map((item, index) => (
+                  <Accordion.Item key={index} className='border-0 bg-transprent' eventKey={index.toString()}>
+                    <Accordion.Header className="p-0">
+                      <div className="d-flex gap-3 p-0">
+                        <i className={`${item.icon} mt-1`} />
+                        <h6 className="menu-list m-0 mt-1">{item.header}</h6>
                       </div>
-                    )}
-                  </Accordion.Body>
-                </Accordion.Item>
-              ))}
-            </Accordion>
+                    </Accordion.Header>
+                    <Accordion.Body className='p-0'>
+                      {item.body}
+                      {/* Render sub-items as regular content */}
+                      {item.subItems && (
+                        <div className='mt-1 ms-3 leftBorder ps-3'>
+                          {item.subItems.map((subItem, subIndex) => (
+                            <div className='mb-1 border-0' key={subIndex}>
+                              <div className="sub-head">
+                                <h6 className="p-0 m-0">{subItem.title}</h6>
+                              </div>
+
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                ))}
+              </Accordion>
+            </div>
+
           </div>
-            
         </div>
       </div>
-    </div>
       <div className="w-100">
         <div className="container-fluid p-0">
           <nav
             className="navbar navbar-expand-lg navbar-light sticky-top"
-            style={{ backgroundColor: "green",height:"70px" }}
+            style={{ backgroundColor: "green", height: "70px" }}
           >
             <div className="toggle ps-3 d-none d-lg-block">
               <div
@@ -526,14 +525,31 @@ const SideMenu = (props) => {
 
         <div className="container-fluid">
           <div className="row">
-            <div className="col-9">
+            <div className="col-12">
               <div className={`container py-3 ${inactive ? "inactive" : ""}`}>
-             
+                <div className="d-flex justify-content-between ">
+                  
+                    <div className="p-2">
+                      <h6 className="process">List of  Process Flow</h6>
+                    </div>
+                    <div className="form-group has-search w-75">
+                      <span className="fa fa-search form-control-feedback"></span>
+                      <input type="text" class="form-control" placeholder="Search" />
+                    </div>
+                  
+                  
+                  <div>
+                    <button className="btn btn-primary">SUBMIT</button>
+                  </div>
+                  <button className="btn btn-primary"><i className="fa-solid fa-gear"></i></button>
+                  
+                </div>
+                
               </div>
             </div>
-            <div className="col-3 d-none d-lg-block">
+            {/* <div className="col-4 d-none d-lg-block">
               <Comp3 />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

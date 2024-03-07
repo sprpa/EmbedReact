@@ -47,6 +47,7 @@ body{
   position: sticky;
   background: #1C1C1C1A;
   width: 300px;
+  height: 100%;
   box-sizing: border-box;
   padding: 8px 15px;
   transition: width .2s ease-in;
