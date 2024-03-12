@@ -1,10 +1,41 @@
 import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Modal heading
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h4>Centered Modal</h4>
+        <p>
+          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+          consectetur ac, vestibulum at eros.
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button className='border-o' onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
 
 const CustomTable = ({ data, onDelete, onUpdateData }) => {
   const [editableIndex, setEditableIndex] = useState(-1);
   const [editedData, setEditedData] = useState({});
   const [searchString, setSearchString] = useState('');
   const [filteredData, setFilteredData] = useState(data);
+  const [modalShow, setModalShow] = React.useState(false);
 
   // Inside CustomTable component
 const handleDelete = (index) => {
@@ -125,7 +156,15 @@ const handleEdit = (index, field, value) => {
                   </td>
                   <td >
                     <div className='d-flex justify-content-between'>
-                      <button className="btn border-0 "><i className="fa-regular fa-eye"></i></button>
+
+                      <button className="btn border-0 " onClick={() => setModalShow(true)}>
+                        <i className="fa-regular fa-eye"></i>
+                      </button>
+                      <MyVerticallyCenteredModal
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                      />
+
                       {editableIndex === index ? (
                         <button className="btn border-0" onClick={() => handleSave(index)}><i className="fa-regular fa-floppy-disk"></i></button>
                       ) : (
