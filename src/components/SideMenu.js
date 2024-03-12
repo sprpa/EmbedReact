@@ -239,71 +239,6 @@ const reports =[
   
 ];
 
-const tableData = [
-  {
-    sno: 1,
-    processName: 'Process 1',
-    itemCode: 'ABC123',
-    productionNo: 'PROD001',
-    productionStatus: 'Completed'
-  },
-  {
-    sno: 2,
-    processName: 'Process 2',
-    itemCode: 'XYZ456',
-    productionNo: 'PROD002',
-    productionStatus: 'Pending'
-  },
-  {
-    sno: 3,
-    processName: 'Process 3',
-    itemCode: 'DEF789',
-    productionNo: 'PROD003',
-    productionStatus: 'InProgress'
-  },
-  {
-    sno: 4,
-    processName: 'Process 4',
-    itemCode: 'GHI101',
-    productionNo: 'PROD004',
-    productionStatus: 'Completed'
-  },
-  {
-    sno: 5,
-    processName: 'Process 5',
-    itemCode: 'JKL121',
-    productionNo: 'PROD005',
-    productionStatus: 'Pending'
-  },
-  {
-    sno: 6,
-    processName: 'Process 5',
-    itemCode: 'JKL121',
-    productionNo: 'PROD005',
-    productionStatus: 'Pending'
-  },
-  {
-    sno: 7,
-    processName: 'Process 5',
-    itemCode: 'JKL121',
-    productionNo: 'PROD005',
-    productionStatus: 'Pending'
-  },
-  {
-    sno: 8,
-    processName: 'Process 5',
-    itemCode: 'JKL121',
-    productionNo: 'PROD005',
-    productionStatus: 'Pending'
-  },
-  {
-    sno: 9,
-    processName: 'Process 5',
-    itemCode: 'JKL121',
-    productionNo: 'PROD005',
-    productionStatus: 'Pending'
-  },
-];
 
 const SideMenu = (props) => {
   const [show, setShow] = useState(false);
@@ -311,11 +246,27 @@ const SideMenu = (props) => {
   const [name, setName] = useState('');
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleDelete = (index) => {
-    // Create a new array without the deleted item
-    const newData = [...tableData];
-    newData.splice(index, 1);
-  };
+ 
+const [tableData, setTableData] = useState([
+  { processName: 'Process 1', itemCode: 'A123', productionNo: '123', productionStatus: 'In Progress' },
+  { processName: 'Process 2', itemCode: 'B456', productionNo: '456', productionStatus: 'Completed' },
+  { processName: 'Process 3', itemCode: 'C789', productionNo: '789', productionStatus: 'Pending' },
+  { processName: 'Process 4', itemCode: 'C790', productionNo: '789', productionStatus: 'Completed' },
+  { processName: 'Process 5', itemCode: 'C791', productionNo: '789', productionStatus: 'Pending' },
+  { processName: 'Process 6', itemCode: 'C792', productionNo: '789', productionStatus: 'Completed' },
+  { processName: 'Process 7', itemCode: 'C793', productionNo: '789', productionStatus: 'In Progress' },
+  { processName: 'Process 8', itemCode: 'C794', productionNo: '789', productionStatus: 'In Progress' }
+]);
+
+const updateTableData = (newData) => {
+  setTableData(newData);
+};
+
+const handleDelete = (index) => {
+  const newData = [...tableData];
+  newData.splice(index, 1);
+  setTableData(newData);
+};
 
   const logoSrc = inactive ? inactiveLogo : activeLogo;
 
@@ -598,11 +549,11 @@ const SideMenu = (props) => {
         <div className="container-fluid">
           <div className="row">
             <div className="col-12">
-              <div className={`container py-3 ${inactive ? "inactive" : ""}`}>
-                <div className="d-flex justify-content-between ">
+              <div className={`container-fluid p-0 py-3 ${inactive ? "inactive" : ""}`}>
+                {/* <div className="d-flex justify-content-between ">
                   
                     <div className="p-2">
-                      <h6 className="process">List of  Process Flow</h6>
+                      <h6 className="process m-0">List of  Process Flow</h6>
                     </div>
                     <div className="form-group has-search w-75">
                       <span className="fa fa-search form-control-feedback"></span>
@@ -614,10 +565,10 @@ const SideMenu = (props) => {
                     <button className="btn btn-primary">SUBMIT</button>
                   </div>
                   <button className="btn btn-primary"><i className="fa-solid fa-gear"></i></button>
-                </div>
+                </div> */}
                 
               </div>
-              <CustomTable data={tableData} onDelete={handleDelete}/>
+              <CustomTable data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />
             </div>
 
           </div>

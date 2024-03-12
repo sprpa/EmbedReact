@@ -298,10 +298,6 @@ body{
 .accordion-button{
   padding: 8px 0 8px 15.4px !important;
 }
-.accordion-tem:hover{
-  background-color: black ;
-  color: #ffffff ;
-}
 
 .accordion {
   --bs-accordion-color: var(--bs-body-color);
@@ -332,12 +328,6 @@ body{
 
 
 
-.accordion-item:hover .accordion-button {
-  margin-bottom: 0 !important;
-  background-color: #686565 !important;
-  color: white !important;
-  --bs-accordion-btn-icon: url(/src/assets/showhidewhite.svg) !important;
-}
 
 /* Show accordion body on hover */
 
@@ -348,4 +338,5 @@ body{
   background-color: #686565 !important;
   padding: 10px 10px !important;
   color: white;
+  cursor: pointer;
 }
