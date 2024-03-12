@@ -15,6 +15,7 @@ import Comp3 from "./Compnent3";
 
 import Card from 'react-bootstrap/Card';
 import { useParams } from "react-router-dom";
+import CustomTable from "./CustomTable";
 
 
 const accordionItems = [
@@ -238,12 +239,83 @@ const reports =[
   
 ];
 
+const tableData = [
+  {
+    sno: 1,
+    processName: 'Process 1',
+    itemCode: 'ABC123',
+    productionNo: 'PROD001',
+    productionStatus: 'Completed'
+  },
+  {
+    sno: 2,
+    processName: 'Process 2',
+    itemCode: 'XYZ456',
+    productionNo: 'PROD002',
+    productionStatus: 'Pending'
+  },
+  {
+    sno: 3,
+    processName: 'Process 3',
+    itemCode: 'DEF789',
+    productionNo: 'PROD003',
+    productionStatus: 'InProgress'
+  },
+  {
+    sno: 4,
+    processName: 'Process 4',
+    itemCode: 'GHI101',
+    productionNo: 'PROD004',
+    productionStatus: 'Completed'
+  },
+  {
+    sno: 5,
+    processName: 'Process 5',
+    itemCode: 'JKL121',
+    productionNo: 'PROD005',
+    productionStatus: 'Pending'
+  },
+  {
+    sno: 6,
+    processName: 'Process 5',
+    itemCode: 'JKL121',
+    productionNo: 'PROD005',
+    productionStatus: 'Pending'
+  },
+  {
+    sno: 7,
+    processName: 'Process 5',
+    itemCode: 'JKL121',
+    productionNo: 'PROD005',
+    productionStatus: 'Pending'
+  },
+  {
+    sno: 8,
+    processName: 'Process 5',
+    itemCode: 'JKL121',
+    productionNo: 'PROD005',
+    productionStatus: 'Pending'
+  },
+  {
+    sno: 9,
+    processName: 'Process 5',
+    itemCode: 'JKL121',
+    productionNo: 'PROD005',
+    productionStatus: 'Pending'
+  },
+];
+
 const SideMenu = (props) => {
   const [show, setShow] = useState(false);
   const [inactive, setInactive] = useState(false);
   const [name, setName] = useState('');
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleDelete = (index) => {
+    // Create a new array without the deleted item
+    const newData = [...tableData];
+    newData.splice(index, 1);
+  };
 
   const logoSrc = inactive ? inactiveLogo : activeLogo;
 
@@ -300,7 +372,7 @@ const SideMenu = (props) => {
             <div>
               <h6 className="menu-head m-0">Menu</h6>
               <Accordion className='d-flex flex-column '>
-                {/* Map over the accordionItems array and render Accordion.Item for each item */}
+
                 {accordionItems.map((item, index) => (
                   <Accordion.Item key={index} className='border-0 bg-transprent' eventKey={index.toString()}>
                     <Accordion.Header className="p-0">
@@ -311,7 +383,7 @@ const SideMenu = (props) => {
                     </Accordion.Header>
                     <Accordion.Body className='p-0'>
                       {item.body}
-                      {/* Render sub-items as regular content */}
+
                       {item.subItems && (
                         <div className='mt-1 ms-3 leftBorder ps-3'>
                           {item.subItems.map((subItem, subIndex) => (
@@ -333,7 +405,7 @@ const SideMenu = (props) => {
             <div>
               <h6 className="menu-head m-0 mt-2">Configuration</h6>
               <Accordion className='d-flex flex-column '>
-                {/* Map over the accordionItems array and render Accordion.Item for each item */}
+
                 {accordionConfig.map((item, index) => (
                   <Accordion.Item key={index} className='border-0 bg-transprent' eventKey={index.toString()}>
                     <Accordion.Header className="p-0">
@@ -344,7 +416,7 @@ const SideMenu = (props) => {
                     </Accordion.Header>
                     <Accordion.Body className='p-0'>
                       {item.body}
-                      {/* Render sub-items as regular content */}
+
                       {item.subItems && (
                         <div className='mt-1 ms-3 leftBorder ps-3'>
                           {item.subItems.map((subItem, subIndex) => (
@@ -365,7 +437,7 @@ const SideMenu = (props) => {
             <div>
               <h6 className="menu-head m-0 mt-2">Reports</h6>
               <Accordion className='d-flex flex-column '>
-                {/* Map over the accordionItems array and render Accordion.Item for each item */}
+
                 {reports.map((item, index) => (
                   <Accordion.Item key={index} className='border-0 bg-transprent' eventKey={index.toString()}>
                     <Accordion.Header className="p-0">
@@ -376,7 +448,7 @@ const SideMenu = (props) => {
                     </Accordion.Header>
                     <Accordion.Body className='p-0'>
                       {item.body}
-                      {/* Render sub-items as regular content */}
+
                       {item.subItems && (
                         <div className='mt-1 ms-3 leftBorder ps-3'>
                           {item.subItems.map((subItem, subIndex) => (
@@ -542,17 +614,17 @@ const SideMenu = (props) => {
                     <button className="btn btn-primary">SUBMIT</button>
                   </div>
                   <button className="btn btn-primary"><i className="fa-solid fa-gear"></i></button>
-                  
                 </div>
                 
               </div>
+              <CustomTable data={tableData} onDelete={handleDelete}/>
             </div>
-            {/* <div className="col-4 d-none d-lg-block">
-              <Comp3 />
-            </div> */}
+
           </div>
         </div>
+       
       </div>
+      
     </div>
   );
 };

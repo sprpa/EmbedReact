@@ -3,7 +3,6 @@ import SideMenu, { menuItems } from "./components/SideMenu";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Updated import
 import { useState } from "react";
-import Header from "./components/Header";
 
 
 
