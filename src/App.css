@@ -343,7 +343,7 @@ body{
 
 .modal-backdrop {
   --bs-backdrop-zindex: 1050;
-  --bs-backdrop-bg: #00000038 !important;
+  --bs-backdrop-bg: #00000015 !important;
   --bs-backdrop-opacity: 0.5;
   position: fixed;
   top: 0;
@@ -355,7 +355,7 @@ body{
 }
 
 .btn-close {
-  --bs-btn-close-color: #ed2c2c;
+  --bs-btn-close-color: #ebebeb !important;
   --bs-btn-close-bg: url(data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%23000%27%3e%3cpath d=%27M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z%27/%3e%3c/svg%3e);
   --bs-btn-close-opacity: 0.5;
   --bs-btn-close-hover-opacity: 0.75;
@@ -367,7 +367,7 @@ body{
   width: 1em;
   height: 1em;
   padding: 0.25em 0.25em;
-  color: var(--bs-btn-close-color);
+  color: white !important;
   background: transparent var(--bs-btn-close-bg) center / 1em auto no-repeat;
   border: 0 !important;
   border-radius: 0.375rem;
@@ -385,25 +385,3 @@ body{
   border-bottom-right-radius: var(--bs-modal-inner-border-radius);
   border-bottom-left-radius: var(--bs-modal-inner-border-radius);
 }
-.modal-content {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  color: var(--bs-modal-color);
-  pointer-events: auto;
-  background-color: var(--bs-modal-bg);
-  background-clip: padding-box;
-  border: 0 !important;
-  border-radius: 0 !important;
-  outline: 0;
-}
-.viewProcess{
-font-size: 14px !important;
-font-weight: 600 !important;
-line-height: 20px;
-letter-spacing: 0em;
-text-align: left !important;
-
-}
-
