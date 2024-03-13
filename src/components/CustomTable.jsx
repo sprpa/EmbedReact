@@ -42,11 +42,16 @@ const handleDelete = (index) => {
 };
 
 const handleSave = (index) => {
+  // Make a copy of the filtered data
   const newData = [...filteredData];
+  // Update the corresponding item with the edited data
   newData[index] = { ...newData[index], ...editedData };
+  // Reset the editable index and edited data
   setEditableIndex(-1);
   setEditedData({});
+  // Update the filtered data state with the new data
   setFilteredData(newData);
+  // Also, update the original data state in the parent component
   onUpdateData(newData);
 };
 
@@ -192,33 +197,132 @@ function MyVerticallyCenteredModal({ show, onHide, processName, productionNo,ite
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton className='border-0 bg-success'>
-        <Modal.Title id="contained-modal-title-vcenter" className='text-white'>
+      <Modal.Header closeButton className='border-0 bg-success rounded-0'>
+        <Modal.Title id="contained-modal-title-vcenter" className='text-white viewProcess'>
           View Process
         </Modal.Title>
       </Modal.Header>
      
       <Modal.Body>
         <div className='d-flex justify-content-center gap-5'>
-          <p><strong>Process Name:</strong> {processName}</p>
-        <p><strong>Production No:</strong> {productionNo}</p>
-        <p><strong>Item Code </strong> {itemCode}</p>
+          <p className='m-0'><strong>Process Name:</strong> <span className='text-secondary'>{processName}</span> </p>
+        <p className='m-0'><strong>Production No:</strong> <span className='text-secondary'>{productionNo}</span></p>
+        <p className='m-0'><strong>Item Code : </strong> <span className='text-secondary'>{itemCode}</span></p>
         </div>
+        <hr />
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(1, 1fr)", gap: "20px" }}>
+          <div>
+            <table className="table table-hover" style={{ width: "100%", borderCollapse: "collapse" }}>
+              <thead>
+                <tr>
+                  <th style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }} className='table-secondary'>S. No</th>
+                  {rows1to10.map((row, index) => (
+                    <th key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }} className='table-secondary'>{row.sno}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center', backgroundColor:'#214B8A' , color:'white' }}>Process Name</th>
+                  {rows1to10.map((row, index) => (
+                    <td key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center', backgroundColor:'#214B8A',color:'white' }}>{row.processName}</td>
+                  ))}
+                </tr>
+                <tr>
+                  <th style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }}>Status</th>
+                  {rows1to10.map((row, index) => (
+
+                    <td key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }}>
+                      
+                        {row.status === "C" ? (
+                        <div className='h-100 d-flex flex-column justify-content-center'>
+                          <i className="fa-solid fa-arrow-right text-success "></i>
+                        </div>
+                        ) : row.status === "On Go" ? (
+                          <div className='h-100 d-flex flex-column justify-content-center'>
+                          <i className="fa-solid fa-check "></i>
+                        </div>
+                          
+                        ) : row.status === "F" ? (
+                          <div className='h-100 d-flex flex-column justify-content-center'>
+                          <i className="fa-solid fa-arrow-right text-danger"></i>
+                        </div>
+                          
+                        ) : (
+                          row.status
+                        )}
+                     
+                    </td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <table className="table table-hover" style={{ width: "100%", borderCollapse: "collapse" }}>
+              <thead>
+                <tr>
+                  <th style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }} className='table-secondary'>S. No</th>
+                  {rows11to19.map((row, index) => (
+                    <th key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }} className='table-secondary'>{row.sno}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center', backgroundColor:'#214B8A',color:'white'}}>Process Name</th>
+                  {rows11to19.map((row, index) => (
+                    <td key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center', backgroundColor:'#214B8A',color:'white' }}>{row.processName}</td>
+                  ))}
+                </tr>
+                <tr>
+                  <th style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }}>Status</th>
+                  {rows11to19.map((row, index) => (
+                    <td key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }}>
+                      
+                    {row.status === "C" ? (
+                    <div className='h-100 d-flex flex-column justify-content-center'>
+                      <i className="fa-solid fa-arrow-right text-success "></i>
+                    </div>
+                    ) : row.status === "On Go" ? (
+                      <div className='h-100 d-flex flex-column justify-content-center'>
+                      <i className="fa-solid fa-check "></i>
+                    </div>
+                      
+                    ) : row.status === "F" ? (
+                      <div className='h-100 d-flex flex-column justify-content-center'>
+                      <i className="fa-solid fa-arrow-right text-danger"></i>
+                    </div>
+                      
+                    ) : (
+                      row.status
+                    )}
+                 
+                </td>
+                 ))}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
         
       </Modal.Body>
-      <Modal.Footer className='border-0 w-100'>
+       
+      <Modal.Footer className='border-0 w-100 pb-4'>
         <div className='d-flex gap-5 justify-content-center'>
           <div className='d-flex gap-3 align-items-center'>
-            <i className="fa-solid fa-arrow-right "style={{color:' rgb(10, 209, 10)',}}></i>
-            <h6 className='m-0 fw-bold'style={{color:' rgb(10, 209, 10)'}}>Completed Process 1</h6>
+            <i className="fa-solid fa-arrow-right text-success "></i>
+            <h6 className='m-0 text-success'>Completed Process 1</h6>
           </div>
           <div className='d-flex gap-3 align-items-center'>
             <i class="fa-solid fa-check"></i>
-            <h6 className='m-0 fw-bold'>Ongoing Process</h6>
+            <h6 className='m-0'>Ongoing Process</h6>
           </div>
           <div className='d-flex gap-3 align-items-center'>
-            <i className="fa-solid fa-arrow-right text-danger"></i>
-            <h6 className='m-0 text-danger fw-bold'>Failed Process</h6>
+            <i className="fa-solid fa-arrow-right text-danger "></i>
+            <h6 className='m-0 text-danger '>Failed Process</h6>
           </div>
         </div>
       </Modal.Footer>
