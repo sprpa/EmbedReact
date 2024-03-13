@@ -4,15 +4,15 @@ import React, { useState } from 'react';
 
 function MyVerticallyCenteredModal(props) {
   return (
-    <Modal
+    <Modal className='border-0'
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
+        <Modal.Title >
+          
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

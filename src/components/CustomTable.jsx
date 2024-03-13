@@ -1,34 +1,7 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function MyVerticallyCenteredModal(props) {
-  return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <h4>Centered Modal</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button className='border-o' onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
-    </Modal>
-  );
-}
+
 
 const CustomTable = ({ data, onDelete, onUpdateData }) => {
   const [editableIndex, setEditableIndex] = useState(-1);
@@ -36,7 +9,7 @@ const CustomTable = ({ data, onDelete, onUpdateData }) => {
   const [searchString, setSearchString] = useState('');
   const [filteredData, setFilteredData] = useState(data);
   const [modalShow, setModalShow] = React.useState(false);
-
+  const [modalData, setModalData] = useState({ processName: '', productionNo: '',itemCode:''});
   // Inside CustomTable component
 const handleDelete = (index) => {
   const newData = [...filteredData];
@@ -89,6 +62,10 @@ const handleEdit = (index, field, value) => {
       )
     );
     setFilteredData(filtered);   
+  };
+  const handleShowModal = (processName, productionNo,itemCode) => {
+    setModalData({ processName, productionNo,itemCode });
+    setModalShow(true);
   };
   
 
@@ -157,12 +134,15 @@ const handleEdit = (index, field, value) => {
                   <td >
                     <div className='d-flex justify-content-between'>
 
-                      <button className="btn border-0 " onClick={() => setModalShow(true)}>
+                      <button className="btn border-0 " onClick={() => handleShowModal(item.processName, item.productionNo,item.itemCode)}>
                         <i className="fa-regular fa-eye"></i>
                       </button>
                       <MyVerticallyCenteredModal
                         show={modalShow}
                         onHide={() => setModalShow(false)}
+                        processName={modalData.processName}
+                        productionNo={modalData.productionNo}
+                        itemCode={modalData.itemCode}
                       />
 
                       {editableIndex === index ? (
@@ -183,5 +163,45 @@ const handleEdit = (index, field, value) => {
     </div>
   );
 };
-
+function MyVerticallyCenteredModal({ show, onHide, processName, productionNo,itemCode }) {
+  return (
+    <Modal
+      show={show}
+      onHide={onHide}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton className='border-0 bg-success'>
+        <Modal.Title id="contained-modal-title-vcenter" className='text-white'>
+          View Process
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <div className='d-flex justify-content-center gap-5'>
+          <p><strong>Process Name:</strong> {processName}</p>
+        <p><strong>Production No:</strong> {productionNo}</p>
+        <p><strong>Item Code </strong> {itemCode}</p>
+        </div>
+        
+      </Modal.Body>
+      <Modal.Footer className='border-0 w-100'>
+        <div className='d-flex gap-5 justify-content-center'>
+          <div className='d-flex gap-3 align-items-center'>
+            <i className="fa-solid fa-arrow-right text-success "></i>
+            <h6 className='m-0 text-success'>Completed Process 1</h6>
+          </div>
+          <div className='d-flex gap-3 align-items-center'>
+            <i class="fa-solid fa-check"></i>
+            <h6 className='m-0'>Ongoing Process</h6>
+          </div>
+          <div className='d-flex gap-3 align-items-center'>
+            <i className="fa-solid fa-arrow-right text-danger "></i>
+            <h6 className='m-0 text-danger '>Failed Process</h6>
+          </div>
+        </div>
+      </Modal.Footer>
+    </Modal>
+  );
+}
 export default CustomTable;
