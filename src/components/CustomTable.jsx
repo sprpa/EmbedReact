@@ -100,7 +100,7 @@ const handleEdit = (index, field, value) => {
 
           <div className='d-flex justify-content-between mb-4'>
 
-            <div className="d-flex w-75 ">
+            <div className="d-flex  " style={{width:"100%"}} >
               <div className="p-2">
                 <h6 className="process m-0">List of Process Flow</h6>
               </div>
@@ -113,7 +113,7 @@ const handleEdit = (index, field, value) => {
               </div>
               <button className="btn btn-primary mx-3"><i className="fa-solid fa-gear"></i></button>
             </div>
-            <div className='d-flex gap-3'>
+            <div className='d-flex gap-3 justify-content-end' style={{width:"30%"}}>
               <button className='btn btn-success d-flex align-items-center'><i className="fa-solid fa-plus me-1"></i> <span>Create Flow</span> </button>
               <button className='btn btn-secondary'>Inactivate</button>
             </div>
