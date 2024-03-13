@@ -18,16 +18,11 @@ const handleDelete = (index) => {
 };
 
 const handleSave = (index) => {
-  // Make a copy of the filtered data
   const newData = [...filteredData];
-  // Update the corresponding item with the edited data
   newData[index] = { ...newData[index], ...editedData };
-  // Reset the editable index and edited data
   setEditableIndex(-1);
   setEditedData({});
-  // Update the filtered data state with the new data
   setFilteredData(newData);
-  // Also, update the original data state in the parent component
   onUpdateData(newData);
 };
 
@@ -172,32 +167,33 @@ function MyVerticallyCenteredModal({ show, onHide, processName, productionNo,ite
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton className='border-0 bg-success'>
-        <Modal.Title id="contained-modal-title-vcenter" className='text-white'>
+      <Modal.Header closeButton className='border-0 rounded-0' style={{backgroundColor:' #00923F'}} >
+        <Modal.Title id="contained-modal-title-vcenter" className='text-white fs-6 fw-semibold'>
           View Process
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <div className='d-flex justify-content-center gap-5'>
-          <p><strong>Process Name:</strong> {processName}</p>
-        <p><strong>Production No:</strong> {productionNo}</p>
-        <p><strong>Item Code </strong> {itemCode}</p>
+          <p className='mb-0'><strong>Process Name: </strong> <span className='text-black-50 fw-semibold'> {processName}</span></p>
+        <p className='mb-0'><strong>Production No: </strong> <span className='text-black-50 fw-semibold'> {productionNo}</span></p>
+        <p className='mb-0'><strong>Item Code: </strong> <span className='text-black-50 fw-semibold'> {itemCode}</span></p>
         </div>
+        <hr />
         
       </Modal.Body>
-      <Modal.Footer className='border-0 w-100'>
+      <Modal.Footer className='border-0 w-100 pb-5'>
         <div className='d-flex gap-5 justify-content-center'>
           <div className='d-flex gap-3 align-items-center'>
-            <i className="fa-solid fa-arrow-right text-success "></i>
-            <h6 className='m-0 text-success'>Completed Process 1</h6>
+            <i className="fa-solid fa-arrow-right "style={{color:' rgb(10, 209, 10)',}}></i>
+            <h6 className='m-0 fw-bold'style={{color:' rgb(10, 209, 10)'}}>Completed Process 1</h6>
           </div>
           <div className='d-flex gap-3 align-items-center'>
             <i class="fa-solid fa-check"></i>
-            <h6 className='m-0'>Ongoing Process</h6>
+            <h6 className='m-0 fw-bold'>Ongoing Process</h6>
           </div>
           <div className='d-flex gap-3 align-items-center'>
-            <i className="fa-solid fa-arrow-right text-danger "></i>
-            <h6 className='m-0 text-danger '>Failed Process</h6>
+            <i className="fa-solid fa-arrow-right text-danger"></i>
+            <h6 className='m-0 text-danger fw-bold'>Failed Process</h6>
           </div>
         </div>
       </Modal.Footer>
