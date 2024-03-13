@@ -385,3 +385,25 @@ body{
   border-bottom-right-radius: var(--bs-modal-inner-border-radius);
   border-bottom-left-radius: var(--bs-modal-inner-border-radius);
 }
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: var(--bs-modal-color);
+  pointer-events: auto;
+  background-color: var(--bs-modal-bg);
+  background-clip: padding-box;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0;
+}
+.viewProcess{
+font-size: 14px !important;
+font-weight: 600 !important;
+line-height: 20px;
+letter-spacing: 0em;
+text-align: left !important;
+
+}
+
