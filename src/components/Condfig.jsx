@@ -11,9 +11,9 @@ const Config = ({ items }) => {
   return (
     <Menu className='bg-trasparent border-0' onClick={onClick} style={{ backgroundColor: 'transparent'  }} mode="vertical" triggerSubMenuAction="click">
       {items.map((item, index) => (
-        <SubMenu key={index} title={item.header} icon={<i className={item.icon}></i>}>
+        <SubMenu  key={index} title={item.header} icon={<i className={item.icon}></i>}>
           {item.subItems.map((subItem, subIndex) => (
-            <Menu.Item key={`${index}-${subIndex}`}>{subItem.title}</Menu.Item>
+            <Menu.Item className='shadow border-1 border-success' style={{borderBottom:'2px solid green',borderRadius:'0'}} key={`${index}-${subIndex}`}>{subItem.title}</Menu.Item>
           ))}
         </SubMenu>
       ))}
