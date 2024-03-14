@@ -47,7 +47,6 @@ body{
   position: sticky;
   background: #1C1C1C1A;
   width: 300px;
-  height: 100%;
   box-sizing: border-box;
   padding: 8px 15px;
   transition: width .2s ease-in;
@@ -291,7 +290,7 @@ body{
 }
 .accordion-button:not(.collapsed) {
   color: rgb(255, 255, 255) !important;
-  background-color: #54ccff !important;
+  background-color: #34b103 !important;
   box-shadow: none !important;
   --bs-accordion-btn-icon: url(/src/assets/showhidewhite.svg) !important;
 }
@@ -343,8 +342,8 @@ body{
 
 .modal-backdrop {
   --bs-backdrop-zindex: 1050;
-  --bs-backdrop-bg: #00000038 !important;
-  --bs-backdrop-opacity: 0.5;
+  --bs-backdrop-bg: #00000021 !important;
+  --bs-backdrop-opacity: 0.5 !important;
   position: fixed;
   top: 0;
   left: 0;
@@ -407,3 +406,10 @@ text-align: left !important;
 
 }
 
+hr {
+  margin: 1rem 0;
+  color: #a3a3a3 !important;
+  border: 0;
+  border-top: var(--bs-border-width) solid;
+  opacity: 0.25;
+}

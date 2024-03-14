@@ -246,16 +246,21 @@ const SideMenu = (props) => {
   const [name, setName] = useState('');
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
  
 const [tableData, setTableData] = useState([
-  { processName: 'Process 1', itemCode: 'A123', productionNo: '123', productionStatus: 'In Progress' },
-  { processName: 'Process 2', itemCode: 'B456', productionNo: '456', productionStatus: 'Completed' },
-  { processName: 'Process 3', itemCode: 'C789', productionNo: '789', productionStatus: 'Pending' },
-  { processName: 'Process 4', itemCode: 'C790', productionNo: '789', productionStatus: 'Completed' },
-  { processName: 'Process 5', itemCode: 'C791', productionNo: '789', productionStatus: 'Pending' },
-  { processName: 'Process 6', itemCode: 'C792', productionNo: '789', productionStatus: 'Completed' },
-  { processName: 'Process 7', itemCode: 'C793', productionNo: '789', productionStatus: 'In Progress' },
-  { processName: 'Process 8', itemCode: 'C794', productionNo: '789', productionStatus: 'In Progress' }
+  { processName: 'Test505', itemCode: 'A123', productionNo: '123', productionStatus: 'In Progress' },
+  { processName: 'Test501', itemCode: 'B456', productionNo: '456', productionStatus: 'Completed' },
+  { processName: 'Test506', itemCode: 'C789', productionNo: '789', productionStatus: 'Pending' },
+  { processName: '830-00507', itemCode: 'C790', productionNo: '789', productionStatus: 'Completed' },
+  { processName: 'BRD7805', itemCode: 'C791', productionNo: '789', productionStatus: 'Pending' },
+  { processName: 'BRD7806', itemCode: 'C792', productionNo: '789', productionStatus: 'Completed' },
+  { processName: 'WMS_EVK_Board', itemCode: 'C793', productionNo: '789', productionStatus: 'In Progress' },
+  { processName: 'EVK_S1917_QMS_SVP', itemCode: 'C794', productionNo: '789', productionStatus: 'In Progress' },
+  { processName: 'Test1001', itemCode: 'C795', productionNo: '790', productionStatus: 'In Progress' },
+  { processName: '830-00507', itemCode: 'C794', productionNo: '789', productionStatus: 'In Progress' },
+  { processName: 'RS9116-DB00-A7-DC', itemCode: 'C794', productionNo: '789', productionStatus: 'In Progress' },
+
 ]);
 
 const updateTableData = (newData) => {

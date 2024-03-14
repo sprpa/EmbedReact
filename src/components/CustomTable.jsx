@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 const data = {
   "S. No": ["1", "2", "3", "4", "5", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"],
   "Process Name": ["SPI", "Pick and Place", "AOI", "AOI", "Reflow", "X-Ray", "X-Ray", "Laser Marking", "De-Pannelling", "SMT GR", "SMT GR", "PVI", "Testing", "Testing", "OBA", "Packing", "Packing", "Packing"],
-  "Status": ["C", "F", "C", "On Go", "C"]
+  "Status": ["C", "F", "C", "On Go", "C","F"]
 };
 const { "S. No": snoList, "Process Name": processNames, "Status": statuses } = data;
 
@@ -34,24 +35,27 @@ const CustomTable = ({ data, onDelete, onUpdateData }) => {
   const [filteredData, setFilteredData] = useState(data);
   const [modalShow, setModalShow] = React.useState(false);
   const [modalData, setModalData] = useState({ processName: '', productionNo: '',itemCode:''});
-  // Inside CustomTable component
-const handleDelete = (index) => {
-  const newData = [...filteredData];
-  newData.splice(index, 1);
-  setFilteredData(newData);
-};
+  const [deletingIndex, setDeletingIndex] = useState(-1);
+  const [deleteConfirmationShow, setDeleteConfirmationShow] = useState({});
+
+  const handleDelete = (index) => {
+    setDeletingIndex(index);
+    setDeleteConfirmationShow({ ...deleteConfirmationShow, [index]: true });
+  };
+
+  const handleDeleteConfirmed = () => {
+    const newData = [...filteredData];
+    newData.splice(deletingIndex, 1);
+    setFilteredData(newData);
+    setDeleteConfirmationShow({ ...deleteConfirmationShow, [deletingIndex]: false });
+  };
 
 const handleSave = (index) => {
-  // Make a copy of the filtered data
   const newData = [...filteredData];
-  // Update the corresponding item with the edited data
   newData[index] = { ...newData[index], ...editedData };
-  // Reset the editable index and edited data
   setEditableIndex(-1);
   setEditedData({});
-  // Update the filtered data state with the new data
   setFilteredData(newData);
-  // Also, update the original data state in the parent component
   onUpdateData(newData);
 };
 
@@ -176,6 +180,18 @@ const handleEdit = (index, field, value) => {
                       )}
                       <button className="btn border-0 "><i className="fa-solid fa-file-arrow-up"></i></button>
                       <button className="btn border-0" onClick={() => handleDelete(index)}><i className="fa-solid fa-trash"></i></button>
+                      
+                      <Modal show={deleteConfirmationShow[index]} onHide={() => setDeleteConfirmationShow({ ...deleteConfirmationShow, [index]: false })} centered>
+                        <Modal.Header closeButton>
+                          <Modal.Title>Delete Confirmation</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
+                        <Modal.Footer>
+                          <Button variant="secondary" onClick={() => setDeleteConfirmationShow({ ...deleteConfirmationShow, [index]: false })}>Cancel</Button>
+                          <Button variant="danger" onClick={() => handleDeleteConfirmed()}>Delete</Button>
+                        </Modal.Footer>
+                      </Modal>
+
                     </div>
                   </td>
                 </tr>
@@ -187,6 +203,7 @@ const handleEdit = (index, field, value) => {
     </div>
   );
 };
+
 function MyVerticallyCenteredModal({ show, onHide, processName, productionNo,itemCode }) {
 
   return (
@@ -195,10 +212,10 @@ function MyVerticallyCenteredModal({ show, onHide, processName, productionNo,ite
       onHide={onHide}
       size="xl"
       aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton className='border-0 bg-success rounded-0'>
-        <Modal.Title id="contained-modal-title-vcenter" className='text-white viewProcess'>
+      centered>
+
+      <Modal.Header closeButton className='border-0 rounded-0' style={{backgroundColor:'#34b103'}}>
+        <Modal.Title id="contained-modal-title-vcenter" className='text-white viewProcess px-5'>
           View Process
         </Modal.Title>
       </Modal.Header>
@@ -210,7 +227,7 @@ function MyVerticallyCenteredModal({ show, onHide, processName, productionNo,ite
         <p className='m-0'><strong>Item Code : </strong> <span className='text-secondary'>{itemCode}</span></p>
         </div>
         <hr />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(1, 1fr)", gap: "20px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(1, 1fr)", gap: "15px" }}>
           <div>
             <table className="table table-hover" style={{ width: "100%", borderCollapse: "collapse" }}>
               <thead>
@@ -225,27 +242,31 @@ function MyVerticallyCenteredModal({ show, onHide, processName, productionNo,ite
                 <tr>
                   <th style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center', backgroundColor:'#214B8A' , color:'white' }}>Process Name</th>
                   {rows1to10.map((row, index) => (
-                    <td key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center', backgroundColor:'#214B8A',color:'white' }}>{row.processName}</td>
+                    <td key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center', backgroundColor:'#214B8A',color:'white' }}>
+                      <div className='d-flex flex-column justify-content-center h-100'>
+                    {row.processName}
+                    </div>
+                    </td>
                   ))}
                 </tr>
                 <tr>
                   <th style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }}>Status</th>
                   {rows1to10.map((row, index) => (
 
-                    <td key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }}>
+                    <td className='p-0' key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }}>
                       
                         {row.status === "C" ? (
-                        <div className='h-100 d-flex flex-column justify-content-center'>
-                          <i className="fa-solid fa-arrow-right text-success "></i>
+                        <div className='h-100 d-flex flex-column justify-content-center bg-success-subtle'>
+                          <i className="fa-solid fa-arrow-right text-success fs-4"></i>
                         </div>
                         ) : row.status === "On Go" ? (
-                          <div className='h-100 d-flex flex-column justify-content-center'>
-                          <i className="fa-solid fa-check "></i>
+                          <div className='h-100 d-flex flex-column justify-content-center  bg-secondary-subtle'>
+                          <i className="fa-solid fa-check fs-4"></i>
                         </div>
                           
                         ) : row.status === "F" ? (
-                          <div className='h-100 d-flex flex-column justify-content-center'>
-                          <i className="fa-solid fa-arrow-right text-danger"></i>
+                          <div className='h-100 d-flex flex-column justify-content-center  bg-danger-subtle'>
+                          <i className="fa-solid fa-arrow-right text-danger fs-4"></i>
                         </div>
                           
                         ) : (
@@ -273,33 +294,37 @@ function MyVerticallyCenteredModal({ show, onHide, processName, productionNo,ite
                 <tr>
                   <th style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center', backgroundColor:'#214B8A',color:'white'}}>Process Name</th>
                   {rows11to19.map((row, index) => (
-                    <td key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center', backgroundColor:'#214B8A',color:'white' }}>{row.processName}</td>
+                    <td key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center', backgroundColor:'#214B8A',color:'white' }}>
+                    <div className='d-flex flex-column justify-content-center h-100'>
+                    {row.processName}
+                    </div> 
+                    </td>
                   ))}
                 </tr>
                 <tr>
                   <th style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }}>Status</th>
                   {rows11to19.map((row, index) => (
-                    <td key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }}>
+                    <td className='p-0' key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }}>
                       
-                    {row.status === "C" ? (
-                    <div className='h-100 d-flex flex-column justify-content-center'>
-                      <i className="fa-solid fa-arrow-right text-success "></i>
-                    </div>
-                    ) : row.status === "On Go" ? (
-                      <div className='h-100 d-flex flex-column justify-content-center'>
-                      <i className="fa-solid fa-check "></i>
-                    </div>
-                      
-                    ) : row.status === "F" ? (
-                      <div className='h-100 d-flex flex-column justify-content-center'>
-                      <i className="fa-solid fa-arrow-right text-danger"></i>
-                    </div>
-                      
-                    ) : (
-                      row.status
-                    )}
-                 
-                </td>
+                        {row.status === "C" ? (
+                        <div className='h-100 d-flex flex-column justify-content-center bg-success-subtle'>
+                          <i className="fa-solid fa-arrow-right text-success fs-4"></i>
+                        </div>
+                        ) : row.status === "On Go" ? (
+                          <div className='h-100 d-flex flex-column justify-content-center  bg-secondary-subtle'>
+                          <i className="fa-solid fa-check fs-4"></i>
+                        </div>
+                          
+                        ) : row.status === "F" ? (
+                          <div className='h-100 d-flex flex-column justify-content-center  bg-danger-subtle'>
+                          <i className="fa-solid fa-arrow-right text-danger fs-4"></i>
+                        </div>
+                          
+                        ) : (
+                          row.status
+                        )}
+                     
+                    </td>
                  ))}
                 </tr>
               </tbody>
@@ -314,7 +339,7 @@ function MyVerticallyCenteredModal({ show, onHide, processName, productionNo,ite
         <div className='d-flex gap-5 justify-content-center'>
           <div className='d-flex gap-3 align-items-center'>
             <i className="fa-solid fa-arrow-right text-success "></i>
-            <h6 className='m-0 text-success'>Completed Process 1</h6>
+            <h6 className='m-0 text-success'>Completed Process</h6>
           </div>
           <div className='d-flex gap-3 align-items-center'>
             <i class="fa-solid fa-check"></i>
