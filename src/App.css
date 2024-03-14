@@ -303,7 +303,12 @@ body{
   margin-bottom: 0 !important;
 }
 
-
+.ant-menu-title-content{
+ margin-left: 20px !important;
+}
+.ant-menu-submenu-arrow {
+  padding-left: 70px !important;
+}
 
 
 /* Show accordion body on hover */

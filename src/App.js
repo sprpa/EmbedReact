@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Up
 import { useState } from "react";
 
 
-
 function App() {
   const [inactive, setInactive] = useState(false);
 
@@ -19,6 +18,8 @@ function App() {
           }}
         />
       </Router>
+      
+     
     </div>
   );
 }

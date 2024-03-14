@@ -214,7 +214,7 @@ function MyVerticallyCenteredModal({ show, onHide, processName, productionNo,ite
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton className='border-0 bg-success rounded-0'>
+      <Modal.Header closeButton className='border-0 rounded-0' style={{backgroundColor:'#00923F'}}>
         <Modal.Title id="contained-modal-title-vcenter" className='text-white viewProcess'>
           View Process
         </Modal.Title>
@@ -227,12 +227,12 @@ function MyVerticallyCenteredModal({ show, onHide, processName, productionNo,ite
         <p className='m-0'><strong>Item Code : </strong> <span className='text-secondary'>{itemCode}</span></p>
         </div>
         <hr />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(1, 1fr)", gap: "20px" }}>
+        <div className='pt-2' style={{ display: "grid", gridTemplateColumns: "repeat(1, 1fr)", gap: "20px" }}>
           <div>
             <table className="table table-hover" style={{ width: "100%", borderCollapse: "collapse" }}>
               <thead>
                 <tr>
-                  <th style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }} className='table-secondary'>S. No</th>
+                  <th style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }} className='table-secondary '>S. No</th>
                   {rows1to10.map((row, index) => (
                     <th key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }} className='table-secondary'>{row.sno}</th>
                   ))}
@@ -240,9 +240,14 @@ function MyVerticallyCenteredModal({ show, onHide, processName, productionNo,ite
               </thead>
               <tbody>
                 <tr>
-                  <th style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center', backgroundColor:'#214B8A' , color:'white' }}>Process Name</th>
+                  <th className='' style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center', backgroundColor:'#214B8A' , color:'white' }}>Process Name</th>
                   {rows1to10.map((row, index) => (
-                    <td key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center', backgroundColor:'#214B8A',color:'white' }}>{row.processName}</td>
+                    <td className='' key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center', backgroundColor:'#214B8A',color:'white' }}>
+                      
+                      <div className='d-flex flex-column justify-content-center h-100'>
+                        {row.processName}
+                        </div>
+                      </td>
                   ))}
                 </tr>
                 <tr>
@@ -256,13 +261,13 @@ function MyVerticallyCenteredModal({ show, onHide, processName, productionNo,ite
                           <i className="fa-solid fa-arrow-right text-success fs-4"></i>
                         </div>
                         ) : row.status === "On Go" ? (
-                          <div className='h-100 d-flex flex-column justify-content-center'>
-                          <i className="fa-solid fa-check "></i>
+                          <div className='h-100 d-flex flex-column justify-content-center bg-secondary-subtle'>
+                          <i className="fa-solid fa-check fs-4"></i>
                         </div>
                           
                         ) : row.status === "F" ? (
-                          <div className='h-100 d-flex flex-column justify-content-center'>
-                          <i className="fa-solid fa-arrow-right text-danger"></i>
+                          <div className='h-100 d-flex flex-column justify-content-center bg-danger-subtle'>
+                          <i className="fa-solid fa-arrow-right text-danger fs-4"></i>
                         </div>
                           
                         ) : (
@@ -290,33 +295,37 @@ function MyVerticallyCenteredModal({ show, onHide, processName, productionNo,ite
                 <tr>
                   <th style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center', backgroundColor:'#214B8A',color:'white'}}>Process Name</th>
                   {rows11to19.map((row, index) => (
-                    <td key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center', backgroundColor:'#214B8A',color:'white' }}>{row.processName}</td>
+                    <td key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center', backgroundColor:'#214B8A',color:'white' }}>
+                      <div className='d-flex flex-column justify-content-center h-100'>
+                        {row.processName}
+                        </div>
+                    </td>
                   ))}
                 </tr>
                 <tr>
                   <th className='bg-success-subtle' style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }}>Status</th>
                   {rows11to19.map((row, index) => (
-                    <td key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }}>
-                      
-                    {row.status === "C" ? (
-                    <div className='h-100 d-flex flex-column justify-content-center'>
-                      <i className="fa-solid fa-arrow-right text-success "></i>
-                    </div>
-                    ) : row.status === "On Go" ? (
-                      <div className='h-100 d-flex flex-column justify-content-center'>
-                      <i className="fa-solid fa-check "></i>
-                    </div>
-                      
-                    ) : row.status === "F" ? (
-                      <div className='h-100 d-flex flex-column justify-content-center'>
-                      <i className="fa-solid fa-arrow-right text-danger"></i>
-                    </div>
-                      
-                    ) : (
-                      row.status
-                    )}
-                 
-                </td>
+                    <td className='p-0' key={index} style={{ width: "100px", height: "50px", border: "1px solid #b9b9b9cb", textAlign: 'center' }}>
+
+                      {row.status === "C" ? (
+                        <div className='h-100 d-flex flex-column justify-content-center bg-success-subtle'>
+                          <i className="fa-solid fa-arrow-right text-success fs-4"></i>
+                        </div>
+                      ) : row.status === "On Go" ? (
+                        <div className='h-100 d-flex flex-column justify-content-center bg-secondary-subtle'>
+                          <i className="fa-solid fa-check fs-4"></i>
+                        </div>
+
+                      ) : row.status === "F" ? (
+                        <div className='h-100 d-flex flex-column justify-content-center bg-danger-subtle'>
+                          <i className="fa-solid fa-arrow-right text-danger fs-4"></i>
+                        </div>
+
+                      ) : (
+                        row.status
+                      )}
+
+                    </td>
                  ))}
                 </tr>
               </tbody>
@@ -331,7 +340,7 @@ function MyVerticallyCenteredModal({ show, onHide, processName, productionNo,ite
         <div className='d-flex gap-5 justify-content-center'>
           <div className='d-flex gap-3 align-items-center'>
             <i className="fa-solid fa-arrow-right text-success "></i>
-            <h6 className='m-0 text-success'>Completed Process 1</h6>
+            <h6 className='m-0 text-success'>Completed Process</h6>
           </div>
           <div className='d-flex gap-2 align-items-center'>
             <i class="fa-solid fa-check fw-bold"></i>

@@ -10,13 +10,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Example from "./OffCanvas";
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import '../components/sidebar.css'
-import Comp3 from "./Compnent3";
-
-import Card from 'react-bootstrap/Card';
-import { useParams } from "react-router-dom";
+import '../components/sidebar.css';
 import CustomTable from "./CustomTable";
-
+import Config from "./Condfig";
 
 const accordionItems = [
   {
@@ -117,6 +113,87 @@ const accordionConfig=[
     header: 'Manage Operations',
     icon: 'fa-solid fa-dashboard',
     subItems: [
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
       {
         title: 'Production',
       },
@@ -243,7 +320,6 @@ const reports =[
 const SideMenu = (props) => {
   const [show, setShow] = useState(false);
   const [inactive, setInactive] = useState(false);
-  const [name, setName] = useState('');
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -327,72 +403,16 @@ const handleDelete = (index) => {
             </div>
             <div>
               <h6 className="menu-head m-0">Menu</h6>
-              <Accordion className='d-flex flex-column '>
-
-                {accordionItems.map((item, index) => (
-                  <Accordion.Item key={index} className='border-0 bg-transprent' eventKey={index.toString()}>
-                    <Accordion.Header className="p-0">
-                      <div className="d-flex gap-3 p-0">
-                        <i className={`${item.icon} mt-1`} />
-                        <h6 className="menu-list m-0 mt-1">{item.header}</h6>
-                      </div>
-                    </Accordion.Header>
-                    <Accordion.Body className='p-0'>
-                      {item.body}
-
-                      {item.subItems && (
-                        <div className='mt-1 ms-3 leftBorder ps-3'>
-                          {item.subItems.map((subItem, subIndex) => (
-                            <div className='mb-1 border-0' key={subIndex}>
-                              <div className="sub-head">
-                                <h6 className="p-0 m-0">{subItem.title}</h6>
-                              </div>
-
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </Accordion.Body>
-                  </Accordion.Item>
-                ))}
-              </Accordion>
+              <Config  items={accordionItems}/>
             </div>
 
             <div>
               <h6 className="menu-head m-0 mt-2">Configuration</h6>
-              <Accordion className='d-flex flex-column '>
-
-                {accordionConfig.map((item, index) => (
-                  <Accordion.Item key={index} className='border-0 bg-transprent' eventKey={index.toString()}>
-                    <Accordion.Header className="p-0">
-                      <div className="d-flex gap-3 p-0">
-                        <i className={`${item.icon} mt-1`} />
-                        <h6 className="menu-list m-0 mt-1">{item.header}</h6>
-                      </div>
-                    </Accordion.Header>
-                    <Accordion.Body className='p-0'>
-                      {item.body}
-
-                      {item.subItems && (
-                        <div className='mt-1 ms-3 leftBorder ps-3'>
-                          {item.subItems.map((subItem, subIndex) => (
-                            <div className='mb-1 border-0' key={subIndex}>
-                              <div className="sub-head">
-                                <h6 className="p-0 m-0">{subItem.title}</h6>
-                              </div>
-
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </Accordion.Body>
-                  </Accordion.Item>
-                ))}
-              </Accordion>
+             <Config  items={accordionConfig}/>
             </div>
             <div>
               <h6 className="menu-head m-0 mt-2">Reports</h6>
-              <Accordion className='d-flex flex-column '>
+              {/* <Accordion className='d-flex flex-column '>
 
                 {reports.map((item, index) => (
                   <Accordion.Item key={index} className='border-0 bg-transprent' eventKey={index.toString()}>
@@ -420,7 +440,8 @@ const handleDelete = (index) => {
                     </Accordion.Body>
                   </Accordion.Item>
                 ))}
-              </Accordion>
+              </Accordion> */}
+              <Config  items={reports}/>
             </div>
 
           </div>
