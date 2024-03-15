@@ -160,8 +160,7 @@ const accordionConfig=[
       },
       {
         title: 'Production',
-      },
-      {
+      },{
         title: 'Production',
       },
       {
@@ -185,24 +184,7 @@ const accordionConfig=[
       {
         title: 'Production',
       },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
+
     ],
   },
   {
