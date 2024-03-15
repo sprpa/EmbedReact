@@ -120,7 +120,6 @@ body{
 .side-menu .main-menu{
   margin: 5px 0;
   position: relative;
-  overflow-y: scroll;
   overflow-x: hidden;
 }
 /* not required any more */

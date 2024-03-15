@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { Link } from 'react-router-dom';
 
 // Your component code where you use the MenuItem component
 import Accordion from 'react-bootstrap/Accordion';
@@ -13,6 +13,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import '../components/sidebar.css';
 import CustomTable from "./CustomTable";
 import Config from "./Condfig";
+import Dashboard from "./Dashboard";
 
 const accordionItems = [
   {
@@ -378,10 +379,10 @@ const handleDelete = (index) => {
 
             <div className="my-2">
               <h6 className="dash-head">Dashboards</h6>
-              <div className="d-flex gap-2 p-1">
+              <Link to="/dashboard" className="d-flex gap-2 p-1" style={{ textDecoration: 'none' }}>
                 <ion-icon name="speedometer-outline"></ion-icon>
                 <h6 className="dashboard m-0">Dashboard</h6>
-              </div>
+              </Link>
             </div>
             <div>
               <h6 className="menu-head m-0">Menu</h6>
@@ -558,25 +559,11 @@ const handleDelete = (index) => {
           <div className="row">
             <div className="col-12">
               <div className={`container-fluid p-0 py-3 ${inactive ? "inactive" : ""}`}>
-                {/* <div className="d-flex justify-content-between ">
-                  
-                    <div className="p-2">
-                      <h6 className="process m-0">List of  Process Flow</h6>
-                    </div>
-                    <div className="form-group has-search w-75">
-                      <span className="fa fa-search form-control-feedback"></span>
-                      <input type="text" class="form-control" placeholder="Search" />
-                    </div>
-                  
-                  
-                  <div>
-                    <button className="btn btn-primary">SUBMIT</button>
-                  </div>
-                  <button className="btn btn-primary"><i className="fa-solid fa-gear"></i></button>
-                </div> */}
-                
+              
               </div>
-              <CustomTable data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />
+              {/* <CustomTable data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} /> */}
+
+              <Dashboard />
             </div>
 
           </div>
