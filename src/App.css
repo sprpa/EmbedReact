@@ -2,6 +2,10 @@
   margin: 0;
   padding: 0;
 }
+*::selection{
+  background-color: #06b81e !important;
+  color: #ffffff !important;
+}
 ul{
   padding: 0;
   margin: 0;
@@ -410,4 +414,7 @@ hr {
   border: .5px solid rgba(1, 163, 1, 0.479)  !important;
   box-shadow: 4px 3px 3px 1px #c7e4c7ee !important;
   max-height: 30vh !important;
+}
+.chartjs-render-monitor .chartjs-bar {
+  border-radius: 10px; /* Adjust the border radius as needed */
 }

@@ -35,3 +35,8 @@ text-align: left;
     letter-spacing: 0em;
     text-align: left;
 }
+/* styles.css */
+.bar-chart-container .chartjs-render-monitor .chartjs-bar {
+    border-radius: 40px !important; /* Adjust the border radius as needed */
+  }
+  
