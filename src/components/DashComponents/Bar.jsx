@@ -10,7 +10,7 @@ const BarChart = () => {
     labels: ['Production', 'X-Ray', 'Testing', 'Network', 'Others'],
     datasets: [
       {
-        label: 'My First Dataset',
+        label: 'Stage wise',
         data: [300, 50, 100, 40, 120],
         backgroundColor: [
           'rgba(255, 99, 132, 0.6)',
@@ -27,6 +27,12 @@ const BarChart = () => {
           'rgba(153, 102, 255, 1)',
         ],
         borderWidth: 1,
+        borderRadius: {
+            topLeft: 10,
+            topRight: 10,
+            bottomRight: 0,
+            bottomLeft:10
+        }
       },
     ],
   };
@@ -54,8 +60,9 @@ const BarChart = () => {
   };
 
   return (
-    <div className='bar-chart-container' style={{width: '100%' }}>
-      <Bar data={data} options={options} />
+    <div className='card border-0 p-3' style={{ position: 'relative', width: '100%',backgroundColor:'#F7F9FB' }}>
+        <h6 className=''>Stage Wise Details</h6>
+      <Bar className='mt-3' data={data} options={options} />
     </div>
   );
 };

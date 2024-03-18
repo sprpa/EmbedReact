@@ -77,7 +77,7 @@ function Comp3() {
                               <div>
                                   <h5 className='m-0 p-0 name-head'>NPI & Process Engineering</h5>
                                   <p className='m-0 text-primary fw-bold'>Mr. Arun Kumar Kotia</p>
-                                  <p className='text-secondary'>Just Now</p>
+                                  <p className='text-secondary m-0'><small>Just Now</small></p>
                               </div>
 
 
@@ -91,7 +91,7 @@ function Comp3() {
                               <div>
                                   <h5 className='m-0 p-0 name-head '>NPI & Process Engineering</h5>
                                   <p className='m-0 text-primary fw-bold'>Mr. Arun Kumar Kotia</p>
-                                  <p className='text-secondary'>Just Now</p>
+                                  <p className='text-secondary m-0'><small>Just Now</small></p>
                               </div>
 
 
@@ -105,7 +105,7 @@ function Comp3() {
                               <div>
                                   <h5 className='m-0 p-0 name-head '>NPI & Process Engineering</h5>
                                   <p className='m-0 text-primary fw-bold'>Mr. Arun Kumar Kotia</p>
-                                  <p className='text-secondary'>Just Now</p>
+                                  <p className='text-secondary m-0'><small>Just Now</small></p>
                               </div>
 
 
@@ -119,7 +119,7 @@ function Comp3() {
                               <div>
                                   <h5 className='m-0 p-0 name-head'>NPI & Process Engineering</h5>
                                   <p className='m-0 text-primary fw-bold'>Mr. Arun Kumar Kotia</p>
-                                  <p className='text-secondary'>Just Now</p>
+                                  <p className='text-secondary m-0'><small>Just Now</small></p>
                               </div>
 
 

@@ -64,8 +64,9 @@ const LineChart = () => {
   };
   
 
-  return(<div style={{ height: '200px', width: '100%' }}>
-  <Line data={data} options={options} />
+  return(<div className='card border-0 p-3' style={{ height: '200px', width: '100%',backgroundColor:' #F7FBF7' }}>
+
+  <Line style={{}} data={data} options={options} />
 </div>);
 };
 

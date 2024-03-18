@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, Routes } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 // Your component code where you use the MenuItem component
 import Accordion from 'react-bootstrap/Accordion';
@@ -559,11 +560,15 @@ const handleDelete = (index) => {
           <div className="row">
             <div className="col-12">
               <div className={`container-fluid p-0 py-3 ${inactive ? "inactive" : ""}`}>
-              
+                <Routes>
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/table"  element={<CustomTable data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />
+} />
+                </Routes>
               </div>
-              {/* <CustomTable data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} /> */}
 
-              <Dashboard />
+
+              
             </div>
 
           </div>

@@ -62,10 +62,10 @@ function TopComponent() {
 
                       <div className='col-12'>
                           <div className="row" >
-                              <div className='col-md-6' >
+                              <div className='col-md-6 mb-3' >
                                   <BarChart />
                               </div>
-                              <div className='col-md-6' >
+                              <div className='col-md-6 mb-3' >
                                   <DoughnutChart />
                               </div>
                           </div>

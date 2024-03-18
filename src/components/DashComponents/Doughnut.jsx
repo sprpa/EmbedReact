@@ -1,17 +1,17 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
-
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 Chart.register(ArcElement, Tooltip, Legend);
 
 const DoughnutChart = () => {
   // Sample data for the chart
   const data = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+    labels: ['United States','Canada','Mexico','Others'],
     datasets: [
       {
-        label: 'My First Dataset',
-        data: [300, 50, 100, 40, 120],
+        label: 'On Going Projects',
+        data: [38.6,22.5,30.8,8.01],
         backgroundColor: [
           'rgba(255, 99, 132, 0.6)',
           'rgba(54, 162, 235, 0.6)',
@@ -38,20 +38,21 @@ const DoughnutChart = () => {
         display: false,
       },
     },
-    // layout: {
-    //     padding: {
-    //       top: 10,
-    //       bottom: 10,
-    //       left: 10,
-    //       right: 10
-    //     }
-    //   }
+    spacing:5,
+    borderWidth:50,
+    borderRadius:10,
+    hoverBorderWidth:0,
+   
   };
 
   return (
-    <div style={{ height:'95%',width:'55%'}}>
-      <Doughnut data={data} options={options} />
+    <div className='card border-0 p-3' style={{backgroundColor:'#F7F9FB',height: '100%', width: '100%'}}>
+         <h6 className=''>On Going Project Country Wise</h6>
+        <div >
+      <Doughnut className='mt-2 w-50 h-100' data={data} options={options} plugins={[ChartDataLabels]}   />
     </div>
+    </div>
+    
   );
 };
 
