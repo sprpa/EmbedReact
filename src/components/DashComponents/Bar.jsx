@@ -11,7 +11,7 @@ const BarChart = () => {
     datasets: [
       {
         label: 'Stage wise',
-        data: [300, 50, 100, 40, 120],
+        data: [140, 50, 100, 40, 120],
         backgroundColor: [
           'rgba(255, 99, 132, 0.6)',
           'rgba(54, 162, 235, 0.6)',
@@ -26,13 +26,10 @@ const BarChart = () => {
           'rgba(75, 192, 192, 1)',
           'rgba(153, 102, 255, 1)',
         ],
-        borderWidth: 1,
-        borderRadius: {
-            topLeft: 10,
-            topRight: 10,
-            bottomRight: 0,
-            bottomLeft:10
-        }
+        borderWidth: 2,
+      borderRadius: 10,
+      borderSkipped: false,
+
       },
     ],
   };
@@ -44,6 +41,7 @@ const BarChart = () => {
     },
     scales: {
       x: {
+         // Hide the x-axis line
         stacked: true, // Stack bars on the x-axis
             grid: {
                 display: false

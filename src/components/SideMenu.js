@@ -303,7 +303,7 @@ const reports =[
 
 const SideMenu = (props) => {
   const [show, setShow] = useState(false);
-  const [inactive, setInactive] = useState(false);
+  const [inactive, setInactive] = useState(true);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 

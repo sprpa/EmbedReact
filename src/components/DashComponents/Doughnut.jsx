@@ -38,21 +38,44 @@ const DoughnutChart = () => {
         display: false,
       },
     },
-    spacing:5,
-    borderWidth:50,
-    borderRadius:10,
-    hoverBorderWidth:0,
-   
+    spacing: 5,
+    borderWidth: 50,
+    borderRadius: 10,
+    hoverBorderWidth: 0,
   };
 
   return (
-    <div className='card border-0 p-3' style={{backgroundColor:'#F7F9FB',height: '100%', width: '100%'}}>
-         <h6 className=''>On Going Project Country Wise</h6>
-        <div >
-      <Doughnut className='mt-2 w-50 h-100' data={data} options={options} plugins={[ChartDataLabels]}   />
+    <div className='card border-0 p-3' style={{backgroundColor:'#F7F9FB', height: '100%', width: '100%'}}>
+      <h6 className=''>On Going Project Country Wise</h6>
+      <div className='row '>
+        <div className='col-6 mt-2'>
+        <Doughnut className=' w-100 h-100' data={data} options={options} plugins={[ChartDataLabels]} />
+      </div>
+      <div className='col-6 mt-2 '>
+        <div className='d-flex flex-column justify-content-center h-100 gap-2 '>
+            <div className='d-flex gap-3'>
+                <h6>United States </h6>
+                <h6>33.6%</h6>
+            </div>
+            <div className='d-flex gap-3'>
+                <h6>Canada </h6>
+                <h6>22.5%</h6>
+            </div>
+            <div className='d-flex gap-3'>
+                <h6>Mexico </h6>
+                <h6>3086%</h6>
+            </div>
+            <div className='d-flex gap-3'>
+                <h6>Others </h6>
+                <h6>8.1%</h6>
+            </div>
+
+            
+        </div>
+      </div>
+      </div>
+      
     </div>
-    </div>
-    
   );
 };
 
