@@ -63,7 +63,7 @@ const DoughnutChart = () => {
             </div>
             <div className='d-flex justify-content-between gap-3'>
                 <h6>Mexico </h6>
-                <h6>30.86%</h6>
+                <h6>30.8%</h6>
             </div>
             <div className='d-flex justify-content-between gap-3'>
                 <h6>Others </h6>

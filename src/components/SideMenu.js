@@ -15,6 +15,7 @@ import '../components/sidebar.css';
 import CustomTable from "./CustomTable";
 import Config from "./Condfig";
 import Dashboard from "./Dashboard";
+import Batch from "./Manage Operations/Batch";
 
 const accordionItems = [
   {
@@ -116,77 +117,13 @@ const accordionConfig=[
     icon: 'fa-solid fa-dashboard',
     subItems: [
       {
-        title: 'Production',
+        title: 'Batch',
+       
       },
       {
-        title: 'Production',
+        title: 'Process Flow',
+        
       },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },{
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-
     ],
   },
   {
@@ -561,9 +498,12 @@ const handleDelete = (index) => {
             <div className="col-12">
               <div className={`container-fluid p-0 py-3 ${inactive ? "inactive" : ""}`}>
                 <Routes>
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/table"  element={<CustomTable data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />
-} />
+                  <Route path="/dashboard" element={<div className="border-1 border-secondary">
+                    <Dashboard />
+                    </div>} />
+                    
+                    <Route path="/manageoperations/batch"  element={<Batch />} />
+                  <Route path="/manageoperations/processflow"  element={<CustomTable data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />} />
                 </Routes>
               </div>
 
