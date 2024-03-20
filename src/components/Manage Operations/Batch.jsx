@@ -23,8 +23,17 @@ function Batch() {
   };
   useEffect(() => {
     fetchData();
+    fetchTable();
   }, []); // Fetch data when component mounts
 
+  const fetchTable = async () =>{
+    try {
+      const response = await axios.get('http://localhost:8000/table/production1');
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
   const fetchData = async () => {
     try {
       const response = await axios.get('http://localhost:8000/batch');
@@ -86,7 +95,7 @@ function Batch() {
                 <h6>Product Details</h6>
                 <div className='row'>
                   <div className='col-6'>
-                    <table className='table table-hover'>
+                    <table className='table '>
                       <tbody className='border-1'>
                         <tr className='border-1'>
                           <td className='border-1'>Production No</td>
@@ -110,20 +119,13 @@ function Batch() {
                         </tr>
                         <tr>
                           <td className='border-1'>Product Order Status</td>
-                          <td className='border-1'></td>
-                        </tr>
-                        <tr>
                           <td className='border-1'>Batch Name</td>
-                          <td className='border-1'></td>
-                        </tr>
-                        <tr>
-                          <td className='border-1'>Planned Quantity</td>
-                          <td className='border-1'></td>
                         </tr>
                         <tr>
                           <td className='border-1'>Department</td>
-                          <td className='border-1'>XXXX</td>
+                          <td className='border-1'>XXXXX</td>
                         </tr>
+                        
                       </tbody>
                     </table>
                   </div>
@@ -131,47 +133,38 @@ function Batch() {
                     <table className='table table-hover'>
                       <tbody className='border-1'>
                         <tr className='border-1'>
-                          <td className='border-1'>Production No</td>
-                          <td className='border-1'>2202223000001</td>
+                          <td className='border-1'>Location</td>
+                          <td className='border-1'>Singapore</td>
                         </tr>
                         <tr className='border-1'>
-                          <td className='border-1'>Dock No</td>
-                          <td className='border-1'>DOC25614</td>
+                          <td className='border-1'>Product Item / Category</td>
+                          <td className='border-1'>XXXXXXXX</td>
                         </tr>
                         <tr className='border-1'>
-                          <td className='border-1'>Product No</td>
-                          <td className='border-1'>11165487</td>
+                          <td className='border-1'>Product Description</td>
+                          <td className='border-1'>xxxxxxxxxxx</td>
                         </tr>
                         <tr className='border-1'>
-                          <td className='border-1'>Customer Name</td>
-                          <td className='border-1'>Silicon Labs</td>
-                        </tr>
-                        <tr>
-                          <td className='border-1'>Product Order Date</td>
+                          <td className='border-1'>Start Date</td>
                           <td className='border-1'>00/00/0000</td>
                         </tr>
                         <tr>
-                          <td className='border-1'>Product Order Status</td>
-                          <td className='border-1'></td>
-                        </tr>
-                        <tr>
-                          <td className='border-1'>Batch Name</td>
-                          <td className='border-1'></td>
+                          <td className='border-1'>User</td>
+                          <td className='border-1'>xxxxxxxxxxx</td>
                         </tr>
                         <tr>
                           <td className='border-1'>Planned Quantity</td>
-                          <td className='border-1'></td>
+                          <td className='border-1'>30,000</td>
                         </tr>
                         <tr>
-                          <td className='border-1'>Department</td>
-                          <td className='border-1'>XXXX</td>
+                          <td className='border-1'>Remaining Quantity</td>
+                          <td className='border-1'>20,000</td>
                         </tr>
+                        
                       </tbody>
                     </table>
                   </div>
                 </div>
-
-
               </div>
             </div>
           </div>

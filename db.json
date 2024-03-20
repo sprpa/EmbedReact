@@ -2,7 +2,7 @@
   "batch": [
     {
       "s.no": 1,
-      "productionNo": "PROD001",
+      "productionNo": "2202223000001",
       "batchNo": "BATCH001",
       "batchStatus": "In Progress",
       "batchQuantity": 100,
@@ -13,7 +13,7 @@
     },
     {
       "s.no": 2,
-      "productionNo": "PROD002",
+      "productionNo": "2202223000002",
       "batchNo": "BATCH002",
       "batchStatus": "In Progress",
       "batchQuantity": 200,
@@ -24,7 +24,7 @@
     },
     {
       "s.no": 3,
-      "productionNo": "PROD003",
+      "productionNo": "2202223000003",
       "batchNo": "BATCH003",
       "batchStatus": "In Progress",
       "batchQuantity": 150,
@@ -35,7 +35,7 @@
     },
     {
       "s.no": 4,
-      "productionNo": "PROD004",
+      "productionNo": "2202223000004",
       "batchNo": "BATCH004",
       "batchStatus": "In Progress",
       "batchQuantity": 100,
@@ -46,7 +46,7 @@
     },
     {
       "s.no": 5,
-      "productionNo": "PROD005",
+      "productionNo": "2202223000005",
       "batchNo": "BATCH005",
       "batchStatus": "In Progress",
       "batchQuantity": 200,
@@ -57,7 +57,7 @@
     },
     {
       "s.no": 6,
-      "productionNo": "PROD006",
+      "productionNo": "2202223000006",
       "batchNo": "BATCH006",
       "batchStatus": "In Progress",
       "batchQuantity": 130,
@@ -67,13 +67,72 @@
       "action": "Complete"
     }
   ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
+
+  "table": [
+  
+      {
+        "id": "1",
+        "data": [
+          { "label": "Production No", "value": "2202223000001" },
+          { "label": "Dock No", "value": "DOC25614" },
+          { "label": "Product No", "value": "11165487" },
+          { "label": "Customer Name", "value": "Silicon Labs" },
+          { "label": "Product Order Date", "value": "00/00/0000" },
+          { "label": "Product Order Status", "value": "Batch Name" },
+          { "label": "Department", "value": "XXXXX" },
+          { "label": "Location", "value": "Singapore" },
+          { "label": "Product Item / Category", "value": "XXXXXXXX" },
+          { "label": "Product Description", "value": "xxxxxxxxxxx" },
+          { "label": "Start Date", "value": "00/00/0000" },
+          { "label": "User", "value": "xxxxxxxxxxx" },
+          { "label": "Planned Quantity", "value": "30,000" },
+          { "label": "Remaining Quantity", "value": "20,000" }
+        ]
+      },
+       {
+        "id": "2",
+        "data": [
+          { "label": "Production No", "value": "2202223000002" },
+          { "label": "Dock No", "value": "DOC25615" },
+          { "label": "Product No", "value": "11165488" },
+          { "label": "Customer Name", "value": "Acme Corporation" },
+          { "label": "Product Order Date", "value": "00/00/0000" },
+          { "label": "Product Order Status", "value": "" },
+          { "label": "Batch Name", "value": "" },
+          { "label": "Planned Quantity", "value": "" },
+          { "label": "Department", "value": "YYYYY" },
+          { "label": "Location", "value": "New York" },
+          { "label": "Product Item / Category", "value": "YYYYYYYY" },
+          { "label": "Product Description", "value": "yyyyyyyyyy" },
+          { "label": "Start Date", "value": "00/00/0000" },
+          { "label": "User", "value": "yyyyyyyyyy" },
+          { "label": "Planned Quantity", "value": "40,000" },
+          { "label": "Remaining Quantity", "value": "30,000" }
+        ]
+      },
+       {
+        "id": "3",
+        "data": [
+          { "label": "Production No", "value": "2202223000003" },
+          { "label": "Dock No", "value": "DOC25616" },
+          { "label": "Product No", "value": "11165489" },
+          { "label": "Customer Name", "value": "Tech Solutions Inc." },
+          { "label": "Product Order Date", "value": "00/00/0000" },
+          { "label": "Product Order Status", "value": "" },
+          { "label": "Batch Name", "value": "" },
+          { "label": "Planned Quantity", "value": "" },
+          { "label": "Department", "value": "ZZZZZ" },
+          { "label": "Location", "value": "Los Angeles" },
+          { "label": "Product Item / Category", "value": "ZZZZZZZZZZ" },
+          { "label": "Product Description", "value": "zzzzzzzzzz" },
+          { "label": "Start Date", "value": "00/00/0000" },
+          { "label": "User", "value": "zzzzzzzzzz" },
+          { "label": "Planned Quantity", "value": "50,000" },
+          { "label": "Remaining Quantity", "value": "40,000" }
+        ]
+      }
   ],
+
   "profile": {
     "name": "typicode"
   }

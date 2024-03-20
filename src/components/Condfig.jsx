@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 const { SubMenu } = Menu;
 const Config = ({ items }) => {
     const onClick = (e) => {
-      console.log('click', e);
     };
   
 
