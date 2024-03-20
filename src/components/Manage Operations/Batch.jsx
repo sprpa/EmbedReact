@@ -15,7 +15,7 @@ function Batch() {
   const [modalData, setModalData] = useState({});
   const [modalTitle, setModalTitle] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
+  const [searchString, setSearchString] = useState('');
   const handleCloseModal = () => setShowModal(false);
 
   const handleOpenModal = (data, title) => {
@@ -66,10 +66,11 @@ function Batch() {
       console.error('Error fetching data:', error);
     }
   };
-  const fetchData1 = async () => {
+ ;
+  const fetchData1 = async (index =2) => {
     setIsLoading(true);
     try {
-      const response = await axios.get(`http://localhost:8000/table/1`);
+      const response = await axios.get(`http://localhost:8000/table/${index}`);
       setModalData(response.data);
       setModalTitle('Production 1 Details');
     } catch (error) {
@@ -77,6 +78,17 @@ function Batch() {
     } finally {
       setIsLoading(false);
     }
+  };
+  const handleSearchChange = (e) => {
+    setSearchString(e.target.value);
+  };
+  const handleSubmit = () => {
+    const filtered = data.filter(item =>
+      Object.values(item).some(val =>
+        val.toString().toLowerCase().includes(searchString.toLowerCase())
+      )
+    );
+    setFilteredData(filtered);   
   };
 
   const MyVerticallyCenteredModal= ({ show, handleClose, title, data }) => {
@@ -246,10 +258,10 @@ function Batch() {
           </div>
           <div className="form-group has-search  " style={{ width: "60%" }} >
             <span className="fa fa-search form-control-feedback"></span>
-            <input type="text" className="form-control " placeholder="Search" />
+            <input type="text" className="form-control " placeholder="Search"  onChange={handleSearchChange} />
           </div>
           <div>
-            <button className="btn btn-primary ms-3">SUBMIT</button>
+            <button className="btn btn-primary ms-3" onClick={handleSubmit}>SUBMIT</button>
             <button className="btn btn-primary mx-3"><i className="fa-solid fa-gear"></i></button>
             <button className='btn bg-success border-0 text-white' onClick={() => handleOpenModal(modalData, modalTitle)} disabled={isLoading || !Object.keys(modalData).length}> <i class="fa-solid fa-plus me-3"></i> Create Batch</button>
           </div>
@@ -297,7 +309,7 @@ function Batch() {
             </tbody>
           </table>
 
-          <YourComponent />
+          
         </div>
       </div>
 
