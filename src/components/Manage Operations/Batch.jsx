@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import YourComponent from './BatchTest';
 
 function Batch() {
   
@@ -9,6 +10,22 @@ function Batch() {
   const [filteredData, setFilteredData] = useState([]);
   const [modalShow, setModalShow] = React.useState(false);
   const [productionNumbers, setProductionNumbers] = useState([]);
+  const [tableData1, setTableData1] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [modalData, setModalData] = useState({});
+  const [modalTitle, setModalTitle] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleCloseModal = () => setShowModal(false);
+
+  const handleOpenModal = (data, title) => {
+    setModalData(data);
+    setModalTitle(title);
+    setShowModal(true);
+  };
+
+
+  
   const getStatusColor = (status) => {
     switch (status) {
       case 'Completed':
@@ -23,13 +40,15 @@ function Batch() {
   };
   useEffect(() => {
     fetchData();
-    fetchTable();
+    fetchData1();
   }, []); // Fetch data when component mounts
 
   const fetchTable = async () =>{
     try {
-      const response = await axios.get('http://localhost:8000/table/production1');
-      console.log(response.data);
+      const response1 = await axios.get('http://localhost:8000/table/prodtuction1');
+      console.log(response1.data);
+      setTableData1(response1.data);
+
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -47,14 +66,28 @@ function Batch() {
       console.error('Error fetching data:', error);
     }
   };
+  const fetchData1 = async () => {
+    setIsLoading(true);
+    try {
+      const response = await axios.get(`http://localhost:8000/table/1`);
+      setModalData(response.data);
+      setModalTitle('Production 1 Details');
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-  function MyVerticallyCenteredModal(props) {
+  const MyVerticallyCenteredModal= ({ show, handleClose, title, data }) => {
+    const halfDataLength = Math.ceil(Object.keys(data).length / 2);
+  const firstHalfData = Object.entries(data).slice(1, halfDataLength);
+  const secondHalfData = Object.entries(data).slice(halfDataLength);
+
     return (
       <Modal
-        {...props}
-        size="xl"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
+    
+      show={show} onHide={handleClose} size="xl" aria-labelledby="contained-modal-title-vcenter" centered
       >
         <Modal.Header closeButton className='rounded-0 border-0' style={{backgroundColor:'#00923F'}} >
           <Modal.Title id="contained-modal-title-vcenter" className='text-white viewProcess'>
@@ -93,7 +126,7 @@ function Batch() {
               </div>
               <div className='col-8'>
                 <h6>Product Details</h6>
-                <div className='row'>
+                {/* <div className='row'>
                   <div className='col-6'>
                     <table className='table '>
                       <tbody className='border-1'>
@@ -164,7 +197,30 @@ function Batch() {
                       </tbody>
                     </table>
                   </div>
+                </div> */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                  <table className='table'>
+                    <tbody className='border'>
+                      {firstHalfData.map(([label, value], index) => (
+                        <tr key={index}>
+                          <td className='border'>{label}</td>
+                          <td className='border'>{value}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <table className='table'>
+                    <tbody className='border'>
+                      {secondHalfData.map(([label, value], index) => (
+                        <tr key={index}>
+                          <td className='border'>{label}</td>
+                          <td className='border'>{value}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
+                
               </div>
             </div>
           </div>
@@ -172,7 +228,7 @@ function Batch() {
         <Modal.Footer className='border-0'>
           <div className='d-flex gap-4'>
             <button className='btn btn-success border-0 px-5 py-2'>Submit</button>
-            <button className='btn btn-light border-0 px-5 py-2' onClick={props.onHide}>Close</button>
+            <button className='btn btn-light border-0 px-5 py-2' onClick={handleClose}>Close</button>
           </div>
         </Modal.Footer>
       </Modal>
@@ -195,7 +251,7 @@ function Batch() {
           <div>
             <button className="btn btn-primary ms-3">SUBMIT</button>
             <button className="btn btn-primary mx-3"><i className="fa-solid fa-gear"></i></button>
-            <button className='btn bg-success border-0 text-white' onClick={() => setModalShow(true)}> <i class="fa-solid fa-plus me-3"></i> Create Batch</button>
+            <button className='btn bg-success border-0 text-white' onClick={() => handleOpenModal(modalData, modalTitle)} disabled={isLoading || !Object.keys(modalData).length}> <i class="fa-solid fa-plus me-3"></i> Create Batch</button>
           </div>
         </div>
 
@@ -232,16 +288,16 @@ function Batch() {
                   <td className={`${getStatusColor(item.actualStatus)} fw-bold text-center  my-1`}>{item.actualStatus}</td>
                   <td>
                     <button className='btn border-0 text-center w-100'  ><i class="fa-regular fa-pen-to-square"></i> </button>
-                    <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
+
+                    <MyVerticallyCenteredModal show={showModal} handleClose={handleCloseModal} title={modalTitle} data={modalData} />
                   </td>
                 </tr>
               ))}
 
             </tbody>
           </table>
+
+          <YourComponent />
         </div>
       </div>
 

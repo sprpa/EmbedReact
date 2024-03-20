@@ -68,68 +68,91 @@
     }
   ],
 
-  "table": [
-  
+  "table":[
       {
         "id": "1",
-        "data": [
-          { "label": "Production No", "value": "2202223000001" },
-          { "label": "Dock No", "value": "DOC25614" },
-          { "label": "Product No", "value": "11165487" },
-          { "label": "Customer Name", "value": "Silicon Labs" },
-          { "label": "Product Order Date", "value": "00/00/0000" },
-          { "label": "Product Order Status", "value": "Batch Name" },
-          { "label": "Department", "value": "XXXXX" },
-          { "label": "Location", "value": "Singapore" },
-          { "label": "Product Item / Category", "value": "XXXXXXXX" },
-          { "label": "Product Description", "value": "xxxxxxxxxxx" },
-          { "label": "Start Date", "value": "00/00/0000" },
-          { "label": "User", "value": "xxxxxxxxxxx" },
-          { "label": "Planned Quantity", "value": "30,000" },
-          { "label": "Remaining Quantity", "value": "20,000" }
-        ]
+        "Production No": "2202223000001",
+        "Dock No": "DOC25614",
+        "Product No": "11165487",
+        "Customer Name": "Silicon Labs",
+        "Product Order Date": "00/00/0000",
+        "Product Status Batch": "Batch Name",
+        "Department": "XXXXX",
+        "Location": "Singapore",
+        "Category": "XXXXXXXX",
+        "Product Description": "XXXXX",
+        "Start Date": "00/00/0000",
+        "Use": "Your Use Value",
+        "Planned Quantity": "30,000",
+        "Remaining Quantity": "20,000"
       },
-       {
+      {
         "id": "2",
-        "data": [
-          { "label": "Production No", "value": "2202223000002" },
-          { "label": "Dock No", "value": "DOC25615" },
-          { "label": "Product No", "value": "11165488" },
-          { "label": "Customer Name", "value": "Acme Corporation" },
-          { "label": "Product Order Date", "value": "00/00/0000" },
-          { "label": "Product Order Status", "value": "" },
-          { "label": "Batch Name", "value": "" },
-          { "label": "Planned Quantity", "value": "" },
-          { "label": "Department", "value": "YYYYY" },
-          { "label": "Location", "value": "New York" },
-          { "label": "Product Item / Category", "value": "YYYYYYYY" },
-          { "label": "Product Description", "value": "yyyyyyyyyy" },
-          { "label": "Start Date", "value": "00/00/0000" },
-          { "label": "User", "value": "yyyyyyyyyy" },
-          { "label": "Planned Quantity", "value": "40,000" },
-          { "label": "Remaining Quantity", "value": "30,000" }
-        ]
+        "Production No": "2202223000002",
+        "Dock No": "DOC25615",
+        "Product No": "11165488",
+        "Customer Name": "Acme Corporation",
+        "Product Order Date": "00/00/0000",
+        "Product Status Batch": "Your Product Status Batch Value",
+        "Department": "YYYYY",
+        "Location": "New York",
+        "Category": "Your Category Value",
+        "Product Description": "Your Product Description",
+        "Start Date": "00/00/0000",
+        "Use": "Your Use Value",
+        "Planned Quantity": "40,000",
+        "Remaining Quantity": "30,000"
       },
-       {
+      {
         "id": "3",
-        "data": [
-          { "label": "Production No", "value": "2202223000003" },
-          { "label": "Dock No", "value": "DOC25616" },
-          { "label": "Product No", "value": "11165489" },
-          { "label": "Customer Name", "value": "Tech Solutions Inc." },
-          { "label": "Product Order Date", "value": "00/00/0000" },
-          { "label": "Product Order Status", "value": "" },
-          { "label": "Batch Name", "value": "" },
-          { "label": "Planned Quantity", "value": "" },
-          { "label": "Department", "value": "ZZZZZ" },
-          { "label": "Location", "value": "Los Angeles" },
-          { "label": "Product Item / Category", "value": "ZZZZZZZZZZ" },
-          { "label": "Product Description", "value": "zzzzzzzzzz" },
-          { "label": "Start Date", "value": "00/00/0000" },
-          { "label": "User", "value": "zzzzzzzzzz" },
-          { "label": "Planned Quantity", "value": "50,000" },
-          { "label": "Remaining Quantity", "value": "40,000" }
-        ]
+        "Production No": "2202223000003",
+        "Dock No": "DOC25616",
+        "Product No": "11165489",
+        "Customer Name": "Tech Solutions Inc.",
+        "Product Order Date": "00/00/0000",
+        "Product Status Batch": "Your Product Status Batch Value",
+        "Department": "ZZZZZ",
+        "Location": "Los Angeles",
+        "Category": "Your Category Value",
+        "Product Description": "Your Product Description",
+        "Start Date": "00/00/0000",
+        "Use": "Your Use Value",
+        "Planned Quantity": "50,000",
+        "Remaining Quantity": "40,000"
+      },
+      {
+        "id": "4",
+        "Production No": "2202223000004",
+        "Dock No": "DOC25617",
+        "Product No": "11165490",
+        "Customer Name": "XYZ Corp",
+        "Product Order Date": "00/00/0000",
+        "Product Status Batch": "Your Product Status Batch Value",
+        "Department": "ABCDE",
+        "Location": "Chicago",
+        "Category": "Your Category Value",
+        "Product Description": "Your Product Description",
+        "Start Date": "00/00/0000",
+        "Use": "Your Use Value",
+        "Planned Quantity": "60,000",
+        "Remaining Quantity": "50,000"
+      },
+      {
+        "id": "5",
+        "Production No": "2202223000005",
+        "Dock No": "DOC25618",
+        "Product No": "11165491",
+        "Customer Name": "ABC Enterprises",
+        "Product Order Date": "00/00/0000",
+        "Product Status Batch": "Your Product Status Batch Value",
+        "Department": "FGHIJ",
+        "Location": "London",
+        "Category": "Your Category Value",
+        "Product Description": "Your Product Description",
+        "Start Date": "00/00/0000",
+        "Use": "Your Use Value",
+        "Planned Quantity": "70,000",
+        "Remaining Quantity": "60,000"
       }
   ],
 
