@@ -13,7 +13,7 @@ const data = [
   {
     title: 'In Progress',
     number: '3,671',
-    percent: '-11.02',
+    percent: '+11.02',
   },
   {
     title: 'Failure',
@@ -28,6 +28,7 @@ const data = [
 ];
 
 function TopComponent() {
+  console.log("Hello")
   return (
     <div className='container-fluid '>
         

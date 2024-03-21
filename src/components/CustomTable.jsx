@@ -29,7 +29,7 @@ const { "S. No": snoList, "Process Name": processNames, "Status": statuses } = d
   }
 
 const CustomTable = ({ data, onDelete, onUpdateData }) => {
-  const [editableIndex, setEditableIndex] = useState(-1);
+  const [editableIndex, setEditableIndex] = useState("");
   const [editedData, setEditedData] = useState({});
   const [searchString, setSearchString] = useState('');
   const [filteredData, setFilteredData] = useState(data);
@@ -96,7 +96,7 @@ const handleEdit = (index, field, value) => {
     setModalShow(true);
   };
   
-
+console.log("Hello")
   return (
     <div className="row">
       <div className="col">

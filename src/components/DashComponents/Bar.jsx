@@ -5,7 +5,6 @@ import '../DashComponents/dash.css';
 Chart.register(BarElement, Tooltip, Legend);
 
 const BarChart = () => {
-  // Sample data for the chart
   const data = {
     labels: ['Production', 'X-Ray', 'Testing', 'Network', 'Others'],
     datasets: [
@@ -33,15 +32,13 @@ const BarChart = () => {
       },
     ],
   };
-
-  // Options for the chart
   const options = {
     plugins: {
       legend: false,
     },
     scales: {
       x: {
-         // Hide the x-axis line
+        
         stacked: true, // Stack bars on the x-axis
             grid: {
                 display: false

@@ -496,7 +496,7 @@ const handleDelete = (index) => {
         <div className="container-fluid">
           <div className="row">
             <div className="col-12">
-              <div className={`container-fluid p-0 py-3 ${inactive ? "inactive" : ""}`}>
+              <div className={`container-fluid p-0 py-3`}>
                 <Routes>
                   <Route path="/dashboard" element={<div className="border-1 border-secondary">
                     <Dashboard />

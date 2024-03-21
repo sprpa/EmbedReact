@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import YourComponent from './BatchTest';
-
 function Batch() {
   
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [modalShow, setModalShow] = React.useState(false);
   const [productionNumbers, setProductionNumbers] = useState([]);
-  const [tableData1, setTableData1] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState({});
   const [modalTitle, setModalTitle] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [searchString, setSearchString] = useState('');
+  const [index, setIndex] = useState('2202223000001');
   const handleCloseModal = () => setShowModal(false);
+
+
+  const testData = [];
+
 
   const handleOpenModal = (data, title) => {
     setModalData(data);
@@ -38,47 +39,33 @@ function Batch() {
         return 'text-secondary';
     }
   };
-  useEffect(() => {
-    fetchData();
-    fetchData1();
-  }, []); // Fetch data when component mounts
+  // useEffect(() => {
+  
+  //   // fetchData(index);
+  // }, [index]); // Fetch data when component mounts
 
-  const fetchTable = async () =>{
-    try {
-      const response1 = await axios.get('http://localhost:8000/table/prodtuction1');
-      console.log(response1.data);
-      setTableData1(response1.data);
-
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  }
-  const fetchData = async () => {
+  
+  const fetchData = async (selectedIndex) => {
+    console.log("fetchData");
     try {
       const response = await axios.get('http://localhost:8000/batch');
       setData(response.data);
       setFilteredData(response.data);
       // Extracting production numbers from the response
       const productionNumbers = response.data.map(item => item.productionNo);
+      const response1 = await axios.get(`http://localhost:8000/table?Production%20No=${selectedIndex}`);
+      console.log("selectedIndex",selectedIndex);
+      console.log(response1.data);
+      testData.push(response1.data[0]);
+      setModalData(testData[0]);
+      setModalTitle('Production 1 Details');
       // Assuming your production numbers are unique
       setProductionNumbers(productionNumbers);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
- ;
-  const fetchData1 = async (index =2) => {
-    setIsLoading(true);
-    try {
-      const response = await axios.get(`http://localhost:8000/table/${index}`);
-      setModalData(response.data);
-      setModalTitle('Production 1 Details');
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+ 
   const handleSearchChange = (e) => {
     setSearchString(e.target.value);
   };
@@ -90,12 +77,22 @@ function Batch() {
     );
     setFilteredData(filtered);   
   };
+  const handleSelectChange = (event) => {
+    event.preventDefault();
+
+    const selectedIndex = event.target.value;
+    console.log("selectedIndex",event.target.value);
+
+    setIndex(selectedIndex);
+    testData.pop(0);
+
+  };
 
   const MyVerticallyCenteredModal= ({ show, handleClose, title, data }) => {
     const halfDataLength = Math.ceil(Object.keys(data).length / 2);
-  const firstHalfData = Object.entries(data).slice(1, halfDataLength);
-  const secondHalfData = Object.entries(data).slice(halfDataLength);
-
+    const firstHalfData = Object.entries(data).slice(1, halfDataLength);
+    const secondHalfData = Object.entries(data).slice(halfDataLength);
+    
     return (
       <Modal
     
@@ -114,11 +111,12 @@ function Batch() {
                 <div className='d-flex flex-column gap-3'>
                   <div>
                     <h6>Production No</h6>
-                    <select className='w-100 form-control'>
-                      {productionNumbers.map(number => (
-                        <option key={number} value={number}>{number}</option>
-                      ))}
-                    </select>
+                    <select className='w-100 form-control' value={index} onChange={handleSelectChange}>
+        {productionNumbers.map((number, index) => (
+          <option key={index} value={number}>{number}</option>
+        ))}
+      </select>
+
                   </div>
                   <div>
                     <h6>Batch Name</h6>
@@ -232,7 +230,6 @@ function Batch() {
                     </tbody>
                   </table>
                 </div>
-                
               </div>
             </div>
           </div>
@@ -247,7 +244,7 @@ function Batch() {
     );
   }
 
-
+  console.log("hello")
   return (
     
     <div>
@@ -263,7 +260,7 @@ function Batch() {
           <div>
             <button className="btn btn-primary ms-3" onClick={handleSubmit}>SUBMIT</button>
             <button className="btn btn-primary mx-3"><i className="fa-solid fa-gear"></i></button>
-            <button className='btn bg-success border-0 text-white' onClick={() => handleOpenModal(modalData, modalTitle)} disabled={isLoading || !Object.keys(modalData).length}> <i class="fa-solid fa-plus me-3"></i> Create Batch</button>
+            <button className='btn bg-success border-0 text-white' onClick={() => handleOpenModal(modalData, modalTitle)} disabled={isLoading || !Object.keys(modalData).length}> <i className="fa-solid fa-plus me-3"></i> Create Batch</button>
           </div>
         </div>
 
@@ -299,7 +296,7 @@ function Batch() {
                   <td className='text-center  my-1'>{item.aqlCompletedQuantity}</td>
                   <td className={`${getStatusColor(item.actualStatus)} fw-bold text-center  my-1`}>{item.actualStatus}</td>
                   <td>
-                    <button className='btn border-0 text-center w-100'  ><i class="fa-regular fa-pen-to-square"></i> </button>
+                    <button className='btn border-0 text-center w-100'  ><i className="fa-regular fa-pen-to-square"></i> </button>
 
                     <MyVerticallyCenteredModal show={showModal} handleClose={handleCloseModal} title={modalTitle} data={modalData} />
                   </td>
@@ -308,12 +305,8 @@ function Batch() {
 
             </tbody>
           </table>
-
-          
         </div>
       </div>
-
-
     </div>
   )
 }

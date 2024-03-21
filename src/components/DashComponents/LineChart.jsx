@@ -26,12 +26,12 @@ const LineChart = () => {
         borderWidth: 1,
         fill: false,
         tension: 0.5,
-        borderDash: [5, 5], // Set the border dash style (5px on, 5px off)
+        borderDash: [5, 5],
       }
     ],
   };
 
-  // Options for the chart
+  
   const options = {
     plugins: {
       legend: false,
@@ -42,25 +42,25 @@ const LineChart = () => {
           display: false,
         },
         ticks: {
-          display: true, // Ensure ticks are displayed on the x-axis
+          display: true, 
         },
         axis: {
-          display: false, // Hide the x-axis line
+          display: false, 
         },
       },
       y: {
         grid: {
-          display: false, // Disable gridlines for the y-axis
+          display: false, 
         },
         ticks: {
-          display: true, // Ensure ticks are displayed on the y-axis
+          display: true, 
         },
         axis: {
-          display: false, // Hide the y-axis line
+          display: false, 
         },
       },
     },
-    maintainAspectRatio: false, // Allow the chart to be responsive
+    maintainAspectRatio: false, 
   };
   
 
