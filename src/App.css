@@ -419,3 +419,45 @@ hr {
 .chartjs-render-monitor .chartjs-bar {
   border-radius: 10px; /* Adjust the border radius as needed */
 }
+
+.welcome {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 20px;
+  text-align: left;
+}
+.name{
+  font-family: "Inter", sans-serif;
+font-size: 18px;
+font-weight: 800;
+line-height: 20px;
+text-align: left;
+color:#00923F;
+}
+
+.login-decs{
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  color:#4E4E4E;
+}
+.login label{
+  font-family: "Inter", sans-serif;
+font-size: 12px;
+font-weight: 700;
+line-height: 14.52px;
+text-align: left;
+}
+.login label span{
+  font-family: "Inter", sans-serif;
+font-size: 12px;
+font-weight: 700;
+line-height: 14.52px;
+text-align: left;
+}
+.border-top{
+  border-top: 1px solid black !important;
+}

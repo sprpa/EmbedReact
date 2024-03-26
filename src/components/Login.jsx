@@ -13,7 +13,7 @@ function LoginComponent ()  {
   return (
     <div className="container-fluid">
       <div className="row">
-        <div className="col-sm-12 col-md-6 col-lg-6 d-none d-lg-block" style={{ backgroundColor: '#214B8A', position: 'relative', height: '100vh' }}>
+        <div className=" d-none d-lg-block col-lg-6 " style={{ backgroundColor: '#214B8A', position: 'relative', height: '100vh' }}>
           <img src={require('../assets/image 1.svg').default} className="img-fluid" alt="" style={{ position: 'absolute', bottom: 0, right: 0 }} />
 
           <div className="m-5">
@@ -72,14 +72,25 @@ function LoginComponent ()  {
           <img src={require('../assets/_201376792 (1).svg').default} alt="" className="img-fluid" style={{ position: 'absolute', bottom: '10%', left: 0, top: '20%' }} />
         </div>
 
-        <div className="col-sm-12 col-md-6 col-lg-6 position-relative" style={{ backgroundColor: '#ffffff', height: '100vh' }}>
+        <div className="col-sm-12 col-md-12 col-lg-6 position-relative" style={{ backgroundColor: '#ffffff', height: '100vh' }}>
+
+          <div className='container pt-3 pb-5'>
+            <div className='d-flex justify-content-between'>
+              <img src={require('../assets/EIS-Logo.svg').default} alt="" />
+            <i className='fa-solid fa-bars fs-3 mt-3'></i>
+            </div>
+          
+          </div>
 
 
-          <div className="d-flex justify-content-center align-items-center ">
-            <div className="d-flex flex-column justify-content-center " style={{width:'50%'}}>
+          <div className="d-flex justify-content-center align-items-center login " style={{paddingTop:'80px'}}>
+            <div className="d-flex flex-column justify-content-center col-12 col-lg-7" >
+              <h6 className='welcome'>Welcome to</h6>
+              <h6 className='name'>Embedded IT Solutions (India) Private Limited</h6>
+              <p className='login-decs p-0 m-0'>Please enter login with your username and password</p>
               <div className="mb-3">
                 <label htmlFor="formGroupExampleInput" className="form-label">User Name <span className="text-danger">*</span></label>
-                <input type="text" className="form-control" id="formGroupExampleInput" placeholder="Example input placeholder" />
+                <input type="text" className="form-control" id="formGroupExampleInput" placeholder="Please enter your user name" />
               </div>
               <div className="mb-3">
                 <label htmlFor="formGroupExampleInput1" className="form-label">Password <span className="text-danger">*</span></label>
@@ -103,7 +114,7 @@ function LoginComponent ()  {
               <div className="mb-3">
                 <label htmlFor="formGroupExampleInput2" className="form-label">Please Select Lines <span className="text-danger">*</span></label>
                 <select id="formGroupExampleInput2" className="form-select">
-                  <option selected>Choose...</option>
+                  <option selected>Please Select Lines</option>
                   <option>...</option>
                 </select>
               </div>
@@ -121,9 +132,33 @@ function LoginComponent ()  {
               <button className='btn btn-success w-100 my-3'>  Login</button>
             </div>
           </div>
-          <div className=' end-0'> 
-            <h6>hi</h6>
+          <div className="m-0" style={{ position: 'absolute', bottom: '0', right: '0', left: '0' }}>
+            <div className="container border-top" >
+              <div className="d-flex justify-content-between py-2 px-2">
+                <h6 className="m-0" style={{
+                  fontFamily: 'Inter',
+                  fontSize: '14px',
+                  fontWeight: '700',
+                  lineHeight: '20px',
+                  textAlign: 'left',
+                  color: '#1C1C1C66'
+                }}>
+                  <span style={{ fontWeight: '400' }}>Powered by</span> SP Software (P) Limited.
+                </h6>
+                <h6 className="m-0" style={{
+                  fontFamily: 'Inter',
+                  fontSize: '14px',
+                  fontWeight: '400',
+                  lineHeight: '20px',
+                  textAlign: 'center',
+                  color: '#1C1C1C66'
+                }}>
+                  Corporate Policy
+                </h6>
+              </div>
+            </div>
           </div>
+
          
         </div>
       </div>
