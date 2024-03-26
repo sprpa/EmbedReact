@@ -271,36 +271,7 @@ const handleDelete = (index) => {
 };
 
   const logoSrc = inactive ? inactiveLogo : activeLogo;
-
-  useEffect(() => {
-    if (inactive) {
-      removeActiveClassFromSubMenu();
-    }
-
-    props.onCollapse(inactive);
-  }, [inactive]);
-
-  const removeActiveClassFromSubMenu = () => {
-    document.querySelectorAll(".sub-menu").forEach((el) => {
-      el.classList.remove("active");
-    });
-  };
-
-  useEffect(() => {
-    let menuItems = document.querySelectorAll(".menu-item");
-    menuItems.forEach((el) => {
-      el.addEventListener("click", (e) => {
-        const next = el.nextElementSibling;
-        removeActiveClassFromSubMenu();
-        menuItems.forEach((el) => el.classList.remove("active"));
-        el.classList.toggle("active");
-        if (next !== null) {
-          next.classList.toggle("active");
-        }
-      });
-    });
-  }, []);
-
+console.log("side menu")
   return (
     <div className={`d-flex side-menu-wrapper ${inactive ? "inactive" : ""}`}>
       <div className={`side-menu ${inactive ? "inactive" : ""} d-none d-lg-block shadow`}>

@@ -12,7 +12,7 @@ function Comp3() {
                           <div className='d-flex gap-3'  >
                               <div>
                                   <div className='bg-secondary p-2 text-white ' style={{ borderRadius: '30%' }}>
-                                      <i class="fa-solid fa-computer fs-5 "></i>
+                                      <i className="fa-solid fa-computer fs-5 "></i>
                                   </div>
                               </div>
                               <div>
@@ -25,7 +25,7 @@ function Comp3() {
                           <div className='d-flex gap-3'  >
                               <div>
                                   <div className='bg-secondary p-2 text-white ' style={{ borderRadius: '30%' }}>
-                                      <i class="fa-solid fa-computer fs-5 "></i>
+                                      <i className="fa-solid fa-computer fs-5 "></i>
                                   </div>
                               </div>
                               <div>
@@ -38,7 +38,7 @@ function Comp3() {
                           <div className='d-flex gap-3'  >
                               <div>
                                   <div className='bg-secondary p-2 text-white ' style={{ borderRadius: '30%' }}>
-                                      <i class="fa-solid fa-computer fs-5 "></i>
+                                      <i className="fa-solid fa-computer fs-5 "></i>
                                   </div>
                               </div>
                               <div>
@@ -51,7 +51,7 @@ function Comp3() {
                           <div className='d-flex gap-3'  >
                               <div>
                                   <div className='bg-secondary p-2 text-white ' style={{ borderRadius: '30%' }}>
-                                      <i class="fa-solid fa-computer fs-5 "></i>
+                                      <i className="fa-solid fa-computer fs-5 "></i>
                                   </div>
                               </div>
                               <div>
@@ -71,7 +71,7 @@ function Comp3() {
                           <div className='d-flex gap-3'  >
                               <div>
                                   <div className='bg-secondary text-white ' style={{ borderRadius: '50%', padding: '8px 10px' }}>
-                                      <i class="fa-solid fa-user fs-5 m-0 p-0"></i>
+                                      <i className="fa-solid fa-user fs-5 m-0 p-0"></i>
                                   </div>
                               </div>
                               <div>
@@ -85,7 +85,7 @@ function Comp3() {
                           <div className='d-flex gap-3'  >
                               <div>
                                   <div className='bg-secondary text-white ' style={{ borderRadius: '50%', padding: '8px 10px' }}>
-                                      <i class="fa-solid fa-user fs-5 m-0 p-0"></i>
+                                      <i className="fa-solid fa-user fs-5 m-0 p-0"></i>
                                   </div>
                               </div>
                               <div>
@@ -99,7 +99,7 @@ function Comp3() {
                           <div className='d-flex gap-3'  >
                               <div>
                                   <div className='bg-secondary text-white ' style={{ borderRadius: '50%', padding: '8px 10px' }}>
-                                      <i class="fa-solid fa-user fs-5 m-0 p-0"></i>
+                                      <i className="fa-solid fa-user fs-5 m-0 p-0"></i>
                                   </div>
                               </div>
                               <div>
@@ -113,7 +113,7 @@ function Comp3() {
                           <div className='d-flex gap-3'  >
                               <div>
                                   <div className='bg-secondary text-white ' style={{ borderRadius: '50%', padding: '8px 10px' }}>
-                                      <i class="fa-solid fa-user fs-5 m-0 p-0"></i>
+                                      <i className="fa-solid fa-user fs-5 m-0 p-0"></i>
                                   </div>
                               </div>
                               <div>
