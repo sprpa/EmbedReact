@@ -76,13 +76,15 @@ function LoginComponent ()  {
 
           <div className='container pt-3 pb-5'>
             <div className='d-flex justify-content-between'>
-              <img src={require('../assets/EIS-Logo.svg').default} alt="" />
+              <img className='img-fluid' src={require('../assets/EIS-Logo.svg').default} alt="" />
             <i className='fa-solid fa-bars fs-3 mt-3'></i>
             </div>
           
           </div>
 
+          <div className='container'>
 
+          
           <div className="d-flex justify-content-center align-items-center login " style={{paddingTop:'80px'}}>
             <div className="d-flex flex-column justify-content-center col-12 col-lg-7" >
               <h6 className='welcome'>Welcome to</h6>
@@ -131,6 +133,7 @@ function LoginComponent ()  {
               </div>
               <button className='btn btn-success w-100 my-3'>  Login</button>
             </div>
+          </div>
           </div>
           <div className="m-0" style={{ position: 'absolute', bottom: '0', right: '0', left: '0' }}>
             <div className="container border-top" >
