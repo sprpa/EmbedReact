@@ -327,16 +327,18 @@ function MyVerticallyCenteredModal({ show, onHide, processName, productionNo,ite
 
                     </td>
                  ))}
+
                 </tr>
+
               </tbody>
             </table>
-          </div>
+           </div>        
         </div>
-
         
       </Modal.Body>
-       
+
       <Modal.Footer className='border-0 w-100 pb-4'>
+        
         <div className='d-flex gap-5 justify-content-center'>
           <div className='d-flex gap-3 align-items-center'>
             <i className="fa-solid fa-arrow-right text-success "></i>
@@ -351,8 +353,12 @@ function MyVerticallyCenteredModal({ show, onHide, processName, productionNo,ite
             <h6 className='m-0 text-danger fw-bold '>Failed Process</h6>
           </div>
         </div>
+
       </Modal.Footer>
+   
     </Modal>
   );
+
 }
+
 export default CustomTable;

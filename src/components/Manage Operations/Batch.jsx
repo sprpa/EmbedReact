@@ -39,10 +39,10 @@ function Batch() {
         return 'text-secondary';
     }
   };
-  // useEffect(() => {
+  useEffect(() => {
   
-  //   // fetchData(index);
-  // }, [index]); // Fetch data when component mounts
+    fetchData(index);
+  }, [index]); // Fetch data when component mounts
 
   
   const fetchData = async (selectedIndex) => {

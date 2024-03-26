@@ -3,6 +3,7 @@ import SideMenu, { menuItems } from "./components/SideMenu";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Updated import
 import { useState } from "react";
+import LoginComponent from "./components/Login";
 
 
 function App() {
@@ -10,14 +11,16 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
+      {/* <Router>
         <SideMenu
           onCollapse={(inactive) => {
             console.log(inactive);
             setInactive(inactive);
           }}
         />
-      </Router>
+      </Router> */}
+
+      <LoginComponent />
       
      
     </div>
