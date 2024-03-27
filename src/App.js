@@ -4,6 +4,7 @@ import SideMenu, { menuItems } from "./components/SideMenu";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Updated import
 import { useState } from "react";
 import LoginComponent from "./components/Login";
+import FlipLoginForm from "./components/Manage Operations/LoginTest";
 
 
 function App() {
@@ -19,8 +20,13 @@ function App() {
           }}
         />
       </Router> */}
+      <Router>
+        <LoginComponent />
+      </Router>
 
-      <LoginComponent />
+      {/* <Router>
+        <FlipLoginForm />
+      </Router> */}
       
      
     </div>

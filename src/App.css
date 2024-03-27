@@ -457,6 +457,7 @@ font-size: 12px;
 font-weight: 700;
 line-height: 14.52px;
 text-align: left;
+color: red;
 }
 .border-top{
   border-top: 1px solid black !important;
