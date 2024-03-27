@@ -54,7 +54,12 @@ input{
   margin-bottom: 20px;
 }
 .flipbutton{
-    color:#4096ee;
+    color:#e9e9e9;
     text-decoration:none;
-    text-align:left !important;
+}
+
+@media (min-width:786px) and (max-width:1024px) {
+  .flip-container{
+    zoom: 70% !important;
+  }
 }

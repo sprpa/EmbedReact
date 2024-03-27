@@ -80,7 +80,7 @@ function LoginComponent ()  {
 
         <div className="col-sm-12 col-md-12 col-lg-6 position-relative" style={{ backgroundColor: '#ffffff', height: '100vh' }}>
 
-          <div className='container pt-3 pb-5'>
+          <div className='container pt-3 '>
             <div className='d-flex justify-content-between'>
               <img className='img-fluid' src={require('../assets/EIS-Logo.svg').default} alt="" />
             <i className='fa-solid fa-bars fs-3 mt-3' ></i>
@@ -101,7 +101,7 @@ function LoginComponent ()  {
                             <div className='' id='login-container'>
                                 <p className='login-decs p-0 m-0'>Please enter login with your username and password</p>
 
-                                <form className='pb-5'>
+                                <form className=''>
                                     <div className="mb-3">
                                         <label htmlFor="formGroupExampleInput" className="form-label">User Name <span className="text-danger">*</span></label>
                                         <input type="text" className="form-control" id="formGroupExampleInput" placeholder="Please enter your user name" />
@@ -145,14 +145,15 @@ function LoginComponent ()  {
                                     </div>
                                     <button type='submit' className='btn btn-success w-100 my-3'>  Login</button>
                                 </form>
+                        <center>
+                          <button className="flipbutton btn btn-success border-0 text-center w-50" id="loginButton" href="#" onClick={handleFlip}>
+                            Register..
+                          </button>
+                        </center>
                             </div>
 
                         </div>
                     </div>
-
-                    <a className="flipbutton pt-5" id="loginButton" href="#" onClick={handleFlip}>
-                        Create my account →
-                    </a>
                 </div>
 
                 <div className="back">
@@ -164,7 +165,7 @@ function LoginComponent ()  {
 
                             <div className='' id='signup-container'>
                                 <p className='login-decs p-0 m-0'>Please Register With Us If You Are New Here.</p>
-                                <form className='pb-5'>
+                                <form className=''>
                                     <div className="mb-2">
                                         <label for="username" className="form-label">Username <span>*</span></label>
                                         <input type="text" className="form-control" id="username" placeholder="Please Enter Your Username" />
@@ -196,16 +197,18 @@ function LoginComponent ()  {
                                     <button type='submit' className='btn btn-success w-100 mt-3'>Register</button>
 
                                 </form>
-
+                            <center>
+                              <button className="flipbutton btn btn-success border-0 text-center w-50  mt-4" id="registerButton" href="#" onClick={handleFlip}>
+                                Login
+                              </button>
+                            </center>
 
                             </div>
 
                         </div>
                     </div>
 
-                    <a className="flipbutton pt-5" id="registerButton" href="#" onClick={handleFlip}>
-                        Login to my account →
-                    </a>
+                    
                 </div>
             </div>
         </div>
