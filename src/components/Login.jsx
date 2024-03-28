@@ -34,7 +34,7 @@ function LoginComponent() {
 
   console.log(data)
       // Make POST request to Flask backend
-      const response = await axios.post('http://127.0.0.1:5000/register', data, {
+      const response = await axios.post('http://192.168.5.34:8089/register', data, {
         headers: {
             'Content-Type': 'application/json'
         }
