@@ -128,9 +128,7 @@ body{
   overflow-x: hidden;
 }
 /* not required any more */
-.side-menu.inactive .main-menu{
- 
-}
+
 
 .side-menu .main-menu .menu-item .menu-icon{
   display: inline-block;

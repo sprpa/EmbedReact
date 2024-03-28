@@ -1,16 +1,11 @@
 
-        .flip-container {
-	perspective: 2000;
-}
+   
 .flipper {
-  
- 
   position: relative;
     background: #ffffff;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
-	
 	transition: 1.5s;
 	transform-style: preserve-3d;
 }
