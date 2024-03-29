@@ -169,9 +169,9 @@ const navigate =useNavigate();
               <div className="flip-container">
                 <div className={`flipper ${isFlipped ? 'flip' : ''}`} id="flipper">
                   <div className="front mt-5">
-                    <h1 className="title mt-4">Login</h1>
-                    <div className="d-flex justify-content-center align-items-center login">
-                      <div className="d-flex flex-column justify-content-center col-12 col-lg-8  " >
+                    
+                    <div className="d-flex justify-content-center align-items-center login mt-5 pt-5">
+                      <div className="d-flex flex-column justify-content-center col-12 col-lg-9  " >
                         <h6 className='welcome'>Welcome to</h6>
                         <h6 className='name'>Embedded IT Solutions (India) Private Limited</h6>
 
@@ -180,16 +180,16 @@ const navigate =useNavigate();
 
                           <form className=''  onSubmit={handleSubmitLogin} >
                             <ToastContainer />
-                            <div className="mb-3">
+                            <div className="">
                               <label htmlFor="formGroupExampleInput" className="form-label">User Name <span className="text-danger">*</span></label>
-                              <input type="text" className="form-control" id="formGroupExampleInput" value={userloginInput} onChange={(e) => setuserloginInput(e.target.value)} placeholder="Please enter your user name" required />
+                              <input type="text" className="form-control mb-0" id="formGroupExampleInput" value={userloginInput} onChange={(e) => setuserloginInput(e.target.value)} placeholder="Please enter your user name" required />
                             </div>
-                            <div className="mb-3">
+                            <div className="">
                               <label htmlFor="formGroupExampleInput1" className="form-label">Password <span className="text-danger">*</span></label>
                               <div className="input-group h-100">
                                 <input
                                   type='password'
-                                  className="form-control"
+                                  className="form-control mb-0"
                                   id="formGroupExampleInput1" value={passwordloginInput} onChange={(e) => setpasswordloginInput(e.target.value)}
                                   placeholder="Enter your password" required
                                 />
@@ -207,10 +207,10 @@ const navigate =useNavigate();
                               </select>
                             </div> */}
 
-                            <div className='d-flex justify-content-between'>
+                            <div className='d-flex justify-content-between mt-2'>
                               <div className="form-check">
-                                <input className="form-check-input" type="checkbox" id="gridCheck1" />
-                                <label className="form-check-label" for="gridCheck1">
+                                <input className="form-check-input mb-0" type="checkbox" id="gridCheck1" />
+                                <label className="form-check-label " for="gridCheck1">
                                   <small>Remember Me</small>
                                 </label>
                               </div>
@@ -228,7 +228,7 @@ const navigate =useNavigate();
                   <div className="back">
                     <h1 className="title">Register</h1>
                     <div className="d-flex justify-content-center align-items-center login  ">
-                      <div className="d-flex flex-column justify-content-center col-12 col-lg-8 " >
+                      <div className="d-flex flex-column justify-content-center col-12 col-lg-9 " >
                         <h6 className='welcome'>Welcome to</h6>
                         <h6 className='name'>Embedded IT Solutions (India) Private Limited</h6>
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, Routes } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-
 // Your component code where you use the MenuItem component
 import Accordion from 'react-bootstrap/Accordion';
 import '../index.css'
@@ -278,7 +278,8 @@ const SideMenu = (props) => {
   const [inactive, setInactive] = useState(true);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const navigate =useNavigate();
+  const [scrollDisabled, setScrollDisabled] = useState(false); 
  
 const [tableData, setTableData] = useState([
   { processName: 'Test505', itemCode: 'A123', productionNo: '123', productionStatus: 'In Progress' },
@@ -305,11 +306,29 @@ const handleDelete = (index) => {
   setTableData(newData);
 };
 
+const Logout=()=>{
+  navigate("/");
+  window.location.reload();
+}
+
   const logoSrc = inactive ? inactiveLogo : activeLogo;
+
+  useEffect(() => {
+    if (scrollDisabled) {
+      document.body.style.overflowY = 'hidden'; // Disable scrolling
+    } else {
+      document.body.style.overflowY = 'auto'; // Enable scrolling
+    }
+
+    return () => {
+      document.body.style.overflowY = 'auto'; // Make sure scrolling is enabled when component unmounts
+    };
+  }, [scrollDisabled]);
+
 console.log("side menu")
   return (
     <div className={`d-flex side-menu-wrapper ${inactive ? "inactive" : ""}`}>
-      <div className={`side-menu ${inactive ? "inactive" : ""} d-none d-lg-block shadow`}>
+      <div className={`side-menu ${inactive ? "inactive" : ""} d-none d-lg-block shadow`} style={{height:'100%'}} >
         <div className="top-section">
           <div className="logo w-100">
             {inactive ? (
@@ -374,7 +393,7 @@ console.log("side menu")
           </div>
         </div>
       </div>
-      <div className="w-100">
+      <div className="w-100 ">
         <div className="container-fluid p-0">
           <nav
             className="navbar navbar-expand-lg navbar-light sticky-top"
@@ -481,7 +500,7 @@ console.log("side menu")
                           login as admin
                         </p>
                       </div>
-                      <i className="fa-solid fa-user-circle fs-1"></i>
+                      <i className="fa-solid fa-user-circle fs-1" onClick={Logout} ></i>
                     </div>
                   </li>
                 </ul>

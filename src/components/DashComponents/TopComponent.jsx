@@ -57,16 +57,16 @@ function TopComponent() {
             ))}
 
        
-            <div className='col-12 py-5 '  >
+            <div className='col-12 py-4 '  >
                     <LineChart />
             </div>
 
                       <div className='col-12'>
                           <div className="row" >
-                              <div className='col-md-6 mb-3' >
+                              <div className='col-md-6 ' >
                                   <BarChart />
                               </div>
-                              <div className='col-md-6 mb-3' >
+                              <div className='col-md-6 ' >
                                   <DoughnutChart />
                               </div>
                           </div>

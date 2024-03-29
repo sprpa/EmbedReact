@@ -9,7 +9,7 @@ const Config = ({ items }) => {
   
 
   return (
-    <Menu className='bg-trasparent border-0' onClick={onClick} style={{ backgroundColor: 'transparent' }} mode="vertical" triggerSubMenuAction="click">
+    <Menu className='bg-trasparent border-0' onClick={onClick} style={{ backgroundColor: 'transparent' }} mode="inline" triggerSubMenuAction="click">
     {items.map((item, index) => (
       <SubMenu key={index} title={item.header} icon={<i className={item.icon}></i>}>
         {item.subItems.map((subItem, subIndex) => (

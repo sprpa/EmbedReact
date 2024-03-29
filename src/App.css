@@ -250,7 +250,7 @@ body{
 
 .main-menu {
   transition: all 0.9s ease-in-out;
-  height:100% ;
+  /* height:  100vh !important; */
 }
 
 .container {
@@ -459,4 +459,13 @@ color: red;
 }
 .border-top{
   border-top: 1px solid black !important;
+}
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-menu .ant-menu-submenu, :where(.css-dev-only-do-not-override-1ae8k9u).ant-menu .ant-menu-submenu-inline {
+  
+}
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-menu-light.ant-menu-inline .ant-menu-sub.ant-menu-inline, :where(.css-dev-only-do-not-override-1ae8k9u).ant-menu-light>.ant-menu.ant-menu-inline .ant-menu-sub.ant-menu-inline {
+  background: rgba(0, 0, 0, 0.02);
+  max-height: 30vh !important;
+  overflow-y: scroll !important;
+  overflow-x: hidden;
 }
