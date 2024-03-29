@@ -31,6 +31,41 @@ const accordionItems = [
       {
         title: 'Production',
       },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
+      {
+        title: 'Production',
+      },
     ],
   },
   {
@@ -108,7 +143,7 @@ const accordionItems = [
       },
     ],
   },
-  // Add more items here...
+ 
 ];
 
 const accordionConfig=[

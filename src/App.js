@@ -8,10 +8,10 @@ import FlipLoginForm from "./components/Manage Operations/LoginTest";
 
 
 function App() {
-  const [inactive, setInactive] = useState(false);
 
   return (
     <div className="App">
+
       {/* <Router>
         <SideMenu
           onCollapse={(inactive) => {
@@ -22,11 +22,15 @@ function App() {
       </Router> */}
       <Router>
         <LoginComponent />
+        {/* <SideMenu
+          onCollapse={(inactive) => {
+            console.log(inactive);
+            setInactive(inactive);
+          }}
+        /> */}
       </Router>
 
-      {/* <Router>
-        <FlipLoginForm />
-      </Router> */}
+     
       
      
     </div>

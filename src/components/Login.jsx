@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './Manage Operations/login.css'
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Dashboard from './Dashboard';
+import SideMenu from './SideMenu';
 function LoginComponent() {
+  const [inactive, setInactive] = useState(false);
 
 
   const [isFlipped, setIsFlipped] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const navigate =useNavigate();
+
 
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
@@ -19,10 +27,10 @@ function LoginComponent() {
   const [passwordInput, setpasswordInput] = useState('');
   const [emailInput, setemailInput] = useState('');
   const [linesInput, setlinesInput] = useState('');
- 
+  const [userloginInput,setuserloginInput]=useState('');
+  const [passwordloginInput,setpasswordloginInput]=useState('');
   const handleSubmit = async (e) => {
-    e.preventDefault();
-  
+
     try {
       // Construct form data
       const data = {
@@ -50,11 +58,42 @@ function LoginComponent() {
     }
   };
 
+  const handleSubmitLogin = async (e) => {
+    e.preventDefault();
+    try {
+      // Make a GET request to the authentication endpoint
+      const response = await axios.get(`http://192.168.5.34:8089/authenticate?username=${userloginInput}&password=${passwordloginInput}`);
+      if (response.data.success === true) {
+        // Display success message
+        toast.success("Login Successful...");
+        setIsLoggedIn(true);
+        navigate("/dashboard");
+        // Clear input fields
+        setuserloginInput('');
+        setpasswordloginInput('');
+        
+      } else {
+        // Display error message
+        toast.error("Login Failed. Invalid username or password.");
+      }
+      // Clear input fields
+      setuserloginInput('');
+      setpasswordloginInput('');
+    } catch (error) {
+      // Display error message
+      toast.error(`Error submitting form: ${error.message}`);
+      setuserloginInput('');
+      setpasswordloginInput('');
+    }
+  }
+  
+
 
 
 
   return (
-    <div className="container-fluid">
+<Fragment>
+  {!isLoggedIn ? <div className="container-fluid">
       <div className="row">
         <div className=" d-none d-lg-block col-lg-6 " style={{ backgroundColor: '#214B8A', position: 'relative', height: '100vh' }}>
           <img src={require('../assets/image 1.svg').default} className="img-fluid" alt="" style={{ position: 'absolute', bottom: 0, right: 0 }} />
@@ -129,41 +168,36 @@ function LoginComponent() {
             <div className=' container'>
               <div className="flip-container">
                 <div className={`flipper ${isFlipped ? 'flip' : ''}`} id="flipper">
-                  <div className="front">
-                    <h1 className="title">Login</h1>
-                    <div className="d-flex justify-content-center align-items-center login  ">
-                      <div className="d-flex flex-column justify-content-center col-12 col-lg-7 " >
+                  <div className="front mt-5">
+                    <h1 className="title mt-4">Login</h1>
+                    <div className="d-flex justify-content-center align-items-center login">
+                      <div className="d-flex flex-column justify-content-center col-12 col-lg-8  " >
                         <h6 className='welcome'>Welcome to</h6>
                         <h6 className='name'>Embedded IT Solutions (India) Private Limited</h6>
 
                         <div className='' id='login-container'>
                           <p className='login-decs p-0 m-0'>Please enter login with your username and password</p>
 
-                          <form className='' >
+                          <form className=''  onSubmit={handleSubmitLogin} >
+                            <ToastContainer />
                             <div className="mb-3">
                               <label htmlFor="formGroupExampleInput" className="form-label">User Name <span className="text-danger">*</span></label>
-                              <input type="text" className="form-control" id="formGroupExampleInput" placeholder="Please enter your user name" required />
+                              <input type="text" className="form-control" id="formGroupExampleInput" value={userloginInput} onChange={(e) => setuserloginInput(e.target.value)} placeholder="Please enter your user name" required />
                             </div>
                             <div className="mb-3">
                               <label htmlFor="formGroupExampleInput1" className="form-label">Password <span className="text-danger">*</span></label>
                               <div className="input-group h-100">
                                 <input
-                                  type={showPassword ? 'text' : 'password'}
+                                  type='password'
                                   className="form-control"
-                                  id="formGroupExampleInput1"
+                                  id="formGroupExampleInput1" value={passwordloginInput} onChange={(e) => setpasswordloginInput(e.target.value)}
                                   placeholder="Enter your password" required
                                 />
-                                <button
-                                  className="btn btn-outline-black border-0 py-2 bg-secondary-subtle h-100"
-                                  type="button "
-                                  onClick={togglePasswordVisibility}
-                                >
-                                  <i className={showPassword ? 'bi bi-eye-slash' : 'bi bi-eye'}></i>
-                                </button>
+                                
                               </div>
                             </div>
 
-                            <div className="mb-2">
+                            {/* <div className="mb-2">
                               <label htmlFor="formGroupExampleInput2" className="form-label">Please Select Lines <span className="text-danger">*</span></label>
                               <select id="formGroupExampleInput2" className="form-select" placeholder="Select Options" required>
                                 <option>Production</option>
@@ -171,7 +205,7 @@ function LoginComponent() {
                                 <option>Manage Operation</option>
                                 <option>Batch</option>
                               </select>
-                            </div>
+                            </div> */}
 
                             <div className='d-flex justify-content-between'>
                               <div className="form-check">
@@ -181,15 +215,10 @@ function LoginComponent() {
                                 </label>
                               </div>
 
-                              <Link to="/forgotpassword"><small style={{ color: '#214B8A', fontWeight: 'bold' }}>Forgot Password</small></Link>
+                              <Link to="/"><small style={{ color: '#214B8A', fontWeight: 'bold' }} onClick={handleFlip}>Forgot Password</small></Link>
                             </div>
-                            <button type='submit' className='btn btn-success w-100 my-3'> Login</button>
+                            <button className='btn btn-success w-100 my-3'> Login</button>
                           </form>
-                          <center>
-                            <button className="flipbutton btn btn-success border-0 text-center w-50" id="loginButton" href="#" onClick={handleFlip}>
-                              Register..
-                            </button>
-                          </center>
                         </div>
 
                       </div>
@@ -199,7 +228,7 @@ function LoginComponent() {
                   <div className="back">
                     <h1 className="title">Register</h1>
                     <div className="d-flex justify-content-center align-items-center login  ">
-                      <div className="d-flex flex-column justify-content-center col-12 col-lg-7 " >
+                      <div className="d-flex flex-column justify-content-center col-12 col-lg-8 " >
                         <h6 className='welcome'>Welcome to</h6>
                         <h6 className='name'>Embedded IT Solutions (India) Private Limited</h6>
 
@@ -289,7 +318,15 @@ function LoginComponent() {
           </div>
         </div>
       </div>
-    </div>
+    </div> :<SideMenu
+          onCollapse={(inactive) => {
+            console.log(inactive);
+            setInactive(inactive);
+          }}/> }
+
+</Fragment>
+    
+    
   );
 }
 

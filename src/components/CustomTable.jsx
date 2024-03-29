@@ -111,7 +111,7 @@ console.log("Hello")
               </div>
               <div className="form-group has-search  " style={{width:"60%"}} >
                 <span className="fa fa-search form-control-feedback"></span>
-                <input type="text" className="form-control " placeholder="Search" onChange={handleSearchChange} />
+                <input type="text" className="form-control m-0 " placeholder="Search" onChange={handleSearchChange} />
               </div>
               <div>
                 <button className="btn btn-primary ms-3" onClick={handleSubmit}>SUBMIT</button>
