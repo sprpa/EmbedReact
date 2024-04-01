@@ -17,262 +17,264 @@ import Config from "./Condfig";
 import Dashboard from "./Dashboard";
 import Batch from "./Manage Operations/Batch";
 import Dropdown from 'react-bootstrap/Dropdown';
+import { Menu } from 'antd';
+import Side from "./Side";
+const { SubMenu } = Menu;
 
-
-const accordionItems = [
-  {
-    header: 'Production',
-    icon: 'fa-solid fa-dashboard',
-    subItems: [
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-    ],
-  },
-  {
-    header: 'Operation',
-    icon: 'fa-solid fa-tv',
-    subItems: [
-      {
-        title: 'Operation 1',
-      },
-      {
-        title: 'Operation 2',
-      },
-      {
-        title: 'Operation 3',
-      },
-    ],
-  },
-  {
-    header: 'Quality',
-    icon: 'fa-solid fa-dashboard',
-    subItems: [
-      {
-        title: 'Operation 1',
-      },
-      {
-        title: 'Operation 2',
-      },
-      {
-        title: 'Operation 3',
-      },
-    ],
-  },
-  {
-    header: 'Testing',
-    icon: 'fa-solid fa-microscope',
-    subItems: [
-      {
-        title: 'Operation 1',
-      },
-      {
-        title: 'Operation 2',
-      },
-      {
-        title: 'Operation 3',
-      },
-    ],
-  },
-  {
-    header: 'Inventory',
-    icon: 'fa-solid fa-dashboard',
-    subItems: [
-      {
-        title: 'Operation 1',
-      },
-      {
-        title: 'Operation 2',
-      },
-      {
-        title: 'Operation 3',
-      },
-    ],
-  },
-  {
-    header: 'Packing',
-    icon: 'fa-solid fa-boxes-packing',
-    subItems: [
-      {
-        title: 'Operation 1',
-      },
-      {
-        title: 'Operation 2',
-      },
-      {
-        title: 'Operation 3',
-      },
-    ],
-  },
+// const accordionItems = [
+//   {
+//     header: 'Production',
+//     icon: 'fa-solid fa-dashboard',
+//     subItems: [
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },      {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//     ],
+//   },
+//   {
+//     header: 'Operation',
+//     icon: 'fa-solid fa-tv',
+//     subItems: [
+//       {
+//         title: 'Operation 1',
+//       },
+//       {
+//         title: 'Operation 2',
+//       },
+//       {
+//         title: 'Operation 3',
+//       },
+//     ],
+//   },
+//   {
+//     header: 'Quality',
+//     icon: 'fa-solid fa-dashboard',
+//     subItems: [
+//       {
+//         title: 'Operation 1',
+//       },
+//       {
+//         title: 'Operation 2',
+//       },
+//       {
+//         title: 'Operation 3',
+//       },
+//     ],
+//   },
+//   {
+//     header: 'Testing',
+//     icon: 'fa-solid fa-microscope',
+//     subItems: [
+//       {
+//         title: 'Operation 1',
+//       },
+//       {
+//         title: 'Operation 2',
+//       },
+//       {
+//         title: 'Operation 3',
+//       },
+//     ],
+//   },
+//   {
+//     header: 'Inventory',
+//     icon: 'fa-solid fa-dashboard',
+//     subItems: [
+//       {
+//         title: 'Operation 1',
+//       },
+//       {
+//         title: 'Operation 2',
+//       },
+//       {
+//         title: 'Operation 3',
+//       },
+//     ],
+//   },
+//   {
+//     header: 'Packing',
+//     icon: 'fa-solid fa-boxes-packing',
+//     subItems: [
+//       {
+//         title: 'Operation 1',
+//       },
+//       {
+//         title: 'Operation 2',
+//       },
+//       {
+//         title: 'Operation 3',
+//       },
+//     ],
+//   },
  
-];
+// ];
 
-const accordionConfig=[
-  {
-    header: 'Manage Operations',
-    icon: 'fa-solid fa-dashboard',
-    subItems: [
-      {
-        title: 'Batch',
+// const accordionConfig=[
+//   {
+//     header: 'Manage Operations',
+//     icon: 'fa-solid fa-dashboard',
+//     subItems: [
+//       {
+//         title: 'Batch',
        
-      },
-      {
-        title: 'Process Flow',
+//       },
+//       {
+//         title: 'Process Flow',
         
-      },
-    ],
-  },
-  {
-    header: 'User Management',
-    icon: 'fa-solid fa-dashboard',
-    subItems: [
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-    ],
-  },
-  {
-    header: 'API Configuration',
-    icon: 'fa-solid fa-dashboard',
-    subItems: [
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-    ],
-  },
-  {
-    header: 'Masters',
-    icon: 'fa-solid fa-dashboard',
-    subItems: [
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-    ],
-  },
-  {
-    header: 'ORG Settings',
-    icon: 'fa-solid fa-dashboard',
-    subItems: [
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-    ],
-  },
-]
+//       },
+//     ],
+//   },
+//   {
+//     header: 'User Management',
+//     icon: 'fa-solid fa-dashboard',
+//     subItems: [
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//     ],
+//   },
+//   {
+//     header: 'API Configuration',
+//     icon: 'fa-solid fa-dashboard',
+//     subItems: [
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//     ],
+//   },
+//   {
+//     header: 'Masters',
+//     icon: 'fa-solid fa-dashboard',
+//     subItems: [
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//     ],
+//   },
+//   {
+//     header: 'ORG Settings',
+//     icon: 'fa-solid fa-dashboard',
+//     subItems: [
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//     ],
+//   },
+// ]
 
-const reports =[
-  {
-    header: 'Production Reports',
-    icon: 'fa-solid fa-dashboard',
-    subItems: [
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-    ],
-  },
-  {
-    header: 'Traceability Reports',
-    icon: 'fa-solid fa-dashboard',
-    subItems: [
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-    ],
-  },
-  {
-    header: 'Management Reports',
-    icon: 'fa-solid fa-dashboard',
-    subItems: [
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-      {
-        title: 'Production',
-      },
-    ],
-  },
+// const reports =[
+//   {
+//     header: 'Production Reports',
+//     icon: 'fa-solid fa-dashboard',
+//     subItems: [
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//     ],
+//   },
+//   {
+//     header: 'Traceability Reports',
+//     icon: 'fa-solid fa-dashboard',
+//     subItems: [
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//     ],
+//   },
+//   {
+//     header: 'Management Reports',
+//     icon: 'fa-solid fa-dashboard',
+//     subItems: [
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//       {
+//         title: 'Production',
+//       },
+//     ],
+//   },
   
-];
+// ];
 
 
 const SideMenu = (props) => {
@@ -281,6 +283,7 @@ const SideMenu = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const navigate =useNavigate();
+
  
 const [tableData, setTableData] = useState([
   { processName: 'Test505', itemCode: 'A123', productionNo: '123', productionStatus: 'In Progress' },
@@ -311,66 +314,49 @@ const Logout=()=>{
 console.log("side menu")
   return (
     <div className={`d-flex side-menu-wrapper ${inactive ? "inactive" : ""} h-100` }>
-      <div className={`side-menu ${inactive ? "inactive" : ""} d-none d-lg-block shadow`}>
+      <div className={`side-menu ${inactive ? "inactive" : ""} d-none d-lg-block `}>
         <div className="top-section">
-          <div className="logo w-100">
-            {inactive ? (
-              <img src={inactiveLogo} alt="webscript" />
-            ) : (
-              <img className="w-100" src={activeLogo} alt="webscript" />
-            )}
+          <div style={{ padding: "8px 8px 0px 8px" }}>
+            <div className="logo w-100">
+              {inactive ? (
+                <img src={inactiveLogo} alt="webscript" />
+              ) : (
+                <img className="w-100" src={activeLogo} alt="webscript" />
+              )}
+            </div>
+            <div className="divider"></div>
           </div>
-          <div className="divider"></div>
           <div className="main-menu">
 
             <div className="my-1">
-              <h6 className="dash-head">Dashboards</h6>
-              <Link to="/dashboard" className="d-flex gap-2 px-1" style={{ textDecoration: 'none' }}>
-                <ion-icon name="speedometer-outline"></ion-icon>
-                <h6 className="dashboard m-0">Dashboard</h6>
+              <h6 className="dash-head m-0">Dashboards</h6>
+              <Link to="/dashboard" className="d-flex gap-2 p-1 " style={{ textDecoration: 'none' }}>
+                <ion-icon className="speedometer-outline w-25"></ion-icon>
+                <span className="dashboard m-0 w-75">Dashboard</span>
               </Link>
             </div>
-            <div>
+            {/* <div>
               <h6 className="menu-head m-0">Menu</h6>
-              <Config  items={accordionItems}/>
+              <Config  items={menuData}/>
             </div>
 
             <div>
               <h6 className="menu-head m-0 mt-2">Configuration</h6>
-             <Config  items={accordionConfig}/>
+             <Config  items={configData}/>
             </div>
             <div>
               <h6 className="menu-head m-0 mt-2">Reports</h6>
-              {/* <Accordion className='d-flex flex-column '>
-
-                {reports.map((item, index) => (
-                  <Accordion.Item key={index} className='border-0 bg-transprent' eventKey={index.toString()}>
-                    <Accordion.Header className="p-0">
-                      <div className="d-flex gap-3 p-0">
-                        <i className={`${item.icon} mt-1`} />
-                        <h6 className="menu-list m-0 mt-1">{item.header}</h6>
-                      </div>
-                    </Accordion.Header>
-                    <Accordion.Body className='p-0'>
-                      {item.body}
-
-                      {item.subItems && (
-                        <div className='mt-1 ms-3 leftBorder ps-3'>
-                          {item.subItems.map((subItem, subIndex) => (
-                            <div className='mb-1 border-0' key={subIndex}>
-                              <div className="sub-head">
-                                <h6 className="p-0 m-0">{subItem.title}</h6>
-                              </div>
-
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </Accordion.Body>
-                  </Accordion.Item>
+              <Menu className='bg-trasparent border-0' mode="inline" triggerSubMenuAction="click">
+                {menuData.map((item, index) => (
+                  <Menu.Item key={index} style={{ fontSize: '.8rem', paddingLeft: '0px' }}>
+                    <Link to={item.menu_header.toLowerCase().replace(/\s/g, '')}>{item.menu_header}</Link>
+                  </Menu.Item>
                 ))}
-              </Accordion> */}
-              <Config  items={reports}/>
+              </Menu>
+
+            </div> */}
+            <div>
+              <Side />
             </div>
 
           </div>
@@ -479,7 +465,7 @@ console.log("side menu")
                     <div className="d-flex gap-2">
                       <div>
                         <h6 className="m-0 text-center fw-bold">Kalyana P</h6>
-                        <p className="m-0 display-6" style={{ fontSize: "0.8rem" }}>
+                        <p className="m-0 display-6  " style={{ fontSize: "0.8rem" }}>
                           login as admin
                         </p>
                       </div>
@@ -489,8 +475,8 @@ console.log("side menu")
                           <i className="fa-solid fa-user-circle fs-1"></i>
                         </Dropdown.Toggle>
 
-                        <Dropdown.Menu>
-                          <Dropdown.Item onClick={Logout}>Logout</Dropdown.Item>
+                        <Dropdown.Menu className="mt-3">
+                          <Dropdown.Item  onClick={Logout}>Logout</Dropdown.Item>
 
                         </Dropdown.Menu>
                       </Dropdown>

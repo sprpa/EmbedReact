@@ -11,7 +11,7 @@ function LoginComponent() {
 
 
   const [isFlipped, setIsFlipped] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 const navigate =useNavigate();
 
 

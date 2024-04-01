@@ -45,16 +45,17 @@ body{
 
 .side-menu{
   position:relative;
-  background: #1C1C1C1A;
+  background: #ffffff1a;
   width: 300px;
   height: 100vh ;
   box-sizing: border-box;
-  padding: 8px 8px;
+  /* padding: 8px 8px; */
   transition: width .2s ease-in;
+  
 }
 
 .side-menu.inactive{
-  width: 80px;
+  width: 75px;
 }
 
 .side-menu .top-section{
@@ -66,7 +67,7 @@ body{
   display: inline-block;
 }
 .side-menu .top-section .logo img{
-  height: 60px;
+  height: 55px;
   max-width: 100%;
   max-height: 100%;
 }
@@ -124,21 +125,22 @@ body{
 
 
 .side-menu .main-menu{
-  margin: 5px 0;
   position: relative;
   overflow-x: hidden;
+  border: 1px solid #1c1c1c10;
+  padding: 0px 8px; 
 }
 /* not required any more */
-.side-menu.inactive .main-menu{
+/* .side-menu.inactive .main-menu{
  
-}
+} */
 
 .side-menu .main-menu .menu-item .menu-icon{
   display: inline-block;
   width: 40px;
   height: 40px;
   font-size: 20px;
-  line-height: 40px;
+  line-height: 30px;
   text-align: center;
 }
 
@@ -225,6 +227,8 @@ body{
   height: 1px;
   border-radius: 1px;
   background: #333;
+  margin: 0;
+  padding: 0;
 }
 
 .customContainer{
@@ -252,8 +256,8 @@ body{
 }
 
 .main-menu {
-  transition: all 0.9s ease-in-out;
-  height: 89vh ;
+  height: calc(100vh - 70px);
+  transition: all 0.6s ease-in-out;
   overflow-y: scroll;
 }
 
@@ -472,6 +476,10 @@ color: red;
 }
 .ant-menu-title-content{
   font-size: 12px !important;
+}
+.ant-menu-title-content:hover{
+  padding-left: 8px !important;
+  transition: .5s ease-in-out;
 }
 .ant-menu-item-icon{
 
