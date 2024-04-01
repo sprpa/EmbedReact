@@ -16,6 +16,8 @@ import CustomTable from "./CustomTable";
 import Config from "./Condfig";
 import Dashboard from "./Dashboard";
 import Batch from "./Manage Operations/Batch";
+import Dropdown from 'react-bootstrap/Dropdown';
+
 
 const accordionItems = [
   {
@@ -279,7 +281,6 @@ const SideMenu = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const navigate =useNavigate();
-  const [scrollDisabled, setScrollDisabled] = useState(false); 
  
 const [tableData, setTableData] = useState([
   { processName: 'Test505', itemCode: 'A123', productionNo: '123', productionStatus: 'In Progress' },
@@ -288,12 +289,7 @@ const [tableData, setTableData] = useState([
   { processName: '830-00507', itemCode: 'C790', productionNo: '789', productionStatus: 'Completed' },
   { processName: 'BRD7805', itemCode: 'C791', productionNo: '789', productionStatus: 'Pending' },
   { processName: 'BRD7806', itemCode: 'C792', productionNo: '789', productionStatus: 'Completed' },
-  { processName: 'WMS_EVK_Board', itemCode: 'C793', productionNo: '789', productionStatus: 'In Progress' },
-  { processName: 'EVK_S1917_QMS_SVP', itemCode: 'C794', productionNo: '789', productionStatus: 'In Progress' },
-  { processName: 'Test1001', itemCode: 'C795', productionNo: '790', productionStatus: 'In Progress' },
-  { processName: '830-00507', itemCode: 'C794', productionNo: '789', productionStatus: 'In Progress' },
-  { processName: 'RS9116-DB00-A7-DC', itemCode: 'C794', productionNo: '789', productionStatus: 'In Progress' },
-
+  { processName: 'WMS_EVK_Board', itemCode: 'C793', productionNo: '789', productionStatus: 'In Progress' }
 ]);
 
 const updateTableData = (newData) => {
@@ -312,23 +308,10 @@ const Logout=()=>{
 }
 
   const logoSrc = inactive ? inactiveLogo : activeLogo;
-
-  useEffect(() => {
-    if (scrollDisabled) {
-      document.body.style.overflowY = 'hidden'; // Disable scrolling
-    } else {
-      document.body.style.overflowY = 'auto'; // Enable scrolling
-    }
-
-    return () => {
-      document.body.style.overflowY = 'auto'; // Make sure scrolling is enabled when component unmounts
-    };
-  }, [scrollDisabled]);
-
 console.log("side menu")
   return (
     <div className={`d-flex side-menu-wrapper ${inactive ? "inactive" : ""}`}>
-      <div className={`side-menu ${inactive ? "inactive" : ""} d-none d-lg-block shadow`} style={{height:'100%'}} >
+      <div className={`side-menu ${inactive ? "inactive" : ""} d-none d-lg-block shadow`}>
         <div className="top-section">
           <div className="logo w-100">
             {inactive ? (
@@ -340,9 +323,9 @@ console.log("side menu")
           <div className="divider"></div>
           <div className="main-menu">
 
-            <div className="my-2">
+            <div className="my-1">
               <h6 className="dash-head">Dashboards</h6>
-              <Link to="/dashboard" className="d-flex gap-2 p-1" style={{ textDecoration: 'none' }}>
+              <Link to="/dashboard" className="d-flex gap-2 px-1" style={{ textDecoration: 'none' }}>
                 <ion-icon name="speedometer-outline"></ion-icon>
                 <h6 className="dashboard m-0">Dashboard</h6>
               </Link>
@@ -393,7 +376,7 @@ console.log("side menu")
           </div>
         </div>
       </div>
-      <div className="w-100 ">
+      <div className="w-100 h-100">
         <div className="container-fluid p-0">
           <nav
             className="navbar navbar-expand-lg navbar-light sticky-top"
@@ -446,7 +429,7 @@ console.log("side menu")
                   </ul>
                 </li>
                 <li className="nav-item py-1 text-white fw-semibold">
-                  <a href="#" className="active text-white text-decoration-none">
+                  <a href="#" className="active text-white text-decoration-none m-0 p-0">
                     Manage Operations
                   </a>
                 </li>
@@ -500,7 +483,17 @@ console.log("side menu")
                           login as admin
                         </p>
                       </div>
-                      <i className="fa-solid fa-user-circle fs-1" onClick={Logout} ></i>
+                     
+                      <Dropdown>
+                        <Dropdown.Toggle className="p-0 m-0 bg-transparent border-0" variant="success" id="dropdown-basic">
+                          <i className="fa-solid fa-user-circle fs-1"></i>
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                          <Dropdown.Item onClick={Logout}>Logout</Dropdown.Item>
+
+                        </Dropdown.Menu>
+                      </Dropdown>
                     </div>
                   </li>
                 </ul>

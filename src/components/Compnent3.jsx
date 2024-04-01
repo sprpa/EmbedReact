@@ -6,8 +6,8 @@ function Comp3() {
     <div className='container-fluid py-3'>
         <div className='row'>
             <div className='col-12'>
-                <div className=' pb-2'>
-                    <h6 className='fw-bold fs-4'>Quick Links</h6>
+                <div className=' '>
+                    <h6 className='fw-bold fs-6 '>Quick Links</h6>
                     <div className='d-flex flex-column gap-3 py-2'> 
                           <div className='d-flex gap-3'  >
                               <div>
@@ -66,8 +66,8 @@ function Comp3() {
                    
                 </div>
                 <div className=''>
-                    <h5 className='fs-4 fw-bold'>Active Users</h5>
-                    <div className='d-flex flex-column gap-3 py-2'>
+                    <h5 className='fs-6 fw-bold mt-4'>Active Users</h5>
+                    <div className='d-flex flex-column gap-3 '>
                           <div className='d-flex gap-3'  >
                               <div>
                                   <div className='bg-secondary text-white ' style={{ borderRadius: '50%', padding: '8px 10px' }}>

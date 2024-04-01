@@ -24,7 +24,7 @@ body{
 
 /* Hide the default scrollbar */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 2px;
 }
 
 /* Track */
@@ -47,8 +47,9 @@ body{
   position:relative;
   background: #1C1C1C1A;
   width: 300px;
+  height: 100vh ;
   box-sizing: border-box;
-  padding: 8px 15px;
+  padding: 8px 8px;
   transition: width .2s ease-in;
 }
 
@@ -128,7 +129,9 @@ body{
   overflow-x: hidden;
 }
 /* not required any more */
-
+.side-menu.inactive .main-menu{
+ 
+}
 
 .side-menu .main-menu .menu-item .menu-icon{
   display: inline-block;
@@ -250,7 +253,8 @@ body{
 
 .main-menu {
   transition: all 0.9s ease-in-out;
-  /* height:  100vh !important; */
+  height: 89vh ;
+  overflow-y: scroll;
 }
 
 .container {
@@ -460,12 +464,25 @@ color: red;
 .border-top{
   border-top: 1px solid black !important;
 }
-:where(.css-dev-only-do-not-override-1ae8k9u).ant-menu .ant-menu-submenu, :where(.css-dev-only-do-not-override-1ae8k9u).ant-menu .ant-menu-submenu-inline {
-  
-}
+
 :where(.css-dev-only-do-not-override-1ae8k9u).ant-menu-light.ant-menu-inline .ant-menu-sub.ant-menu-inline, :where(.css-dev-only-do-not-override-1ae8k9u).ant-menu-light>.ant-menu.ant-menu-inline .ant-menu-sub.ant-menu-inline {
-  background: rgba(0, 0, 0, 0.02);
   max-height: 30vh !important;
-  overflow-y: scroll !important;
-  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.ant-menu-title-content{
+  font-size: 12px !important;
+}
+.ant-menu-item-icon{
+
+  font-size: medium !important;
+}
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-menu-inline .ant-menu-item, :where(.css-dev-only-do-not-override-1ae8k9u).ant-menu-vertical .ant-menu-item, :where(.css-dev-only-do-not-override-1ae8k9u).ant-menu-inline .ant-menu-submenu-title, :where(.css-dev-only-do-not-override-1ae8k9u).ant-menu-vertical .ant-menu-submenu-title {
+  /* height: 40px; */
+  /* line-height: 40px; */
+  padding-inline: 10px !important;
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+  margin-inline: 0px !important;
+  margin-block: 0px !important;
+  width: calc(100% - 8px);
 }
