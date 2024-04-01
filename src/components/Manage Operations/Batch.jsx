@@ -266,7 +266,7 @@ function Batch() {
 
         <div className='my-5'>
           <table className="table table-bordered table-hover">
-            <thead className="table-secondary">
+            <thead className="table-secondary batch-table">
               <tr>
                 <th scope="col" className='text-center '>Sno</th>
                 <th scope="col" className='text-center col-2'>Production No</th>

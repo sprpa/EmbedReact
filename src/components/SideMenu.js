@@ -310,7 +310,7 @@ const Logout=()=>{
   const logoSrc = inactive ? inactiveLogo : activeLogo;
 console.log("side menu")
   return (
-    <div className={`d-flex side-menu-wrapper ${inactive ? "inactive" : ""}`}>
+    <div className={`d-flex side-menu-wrapper ${inactive ? "inactive" : ""} h-100` }>
       <div className={`side-menu ${inactive ? "inactive" : ""} d-none d-lg-block shadow`}>
         <div className="top-section">
           <div className="logo w-100">

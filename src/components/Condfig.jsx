@@ -13,7 +13,7 @@ const Config = ({ items }) => {
     {items.map((item, index) => (
       <SubMenu key={index} title={item.header} icon={<i className={item.icon}></i>}>
         {item.subItems.map((subItem, subIndex) => (
-          <Menu.Item style={{fontSize: '.8rem', borderRadius: '0' }} key={`${index}-${subIndex}`}>
+          <Menu.Item className='menu-item' style={{fontSize: '.8rem',paddingLeft:'0px'}} key={`${index}-${subIndex}`}>
             <Link to={`${item.header.toLowerCase().replace(/\s/g, '')}/${subItem.title.toLowerCase().replace(/\s/g, '')}`}>{subItem.title}</Link>
           </Menu.Item>
         ))}

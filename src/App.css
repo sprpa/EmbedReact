@@ -24,7 +24,7 @@ body{
 
 /* Hide the default scrollbar */
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 0px;
 }
 
 /* Track */
@@ -145,7 +145,7 @@ body{
 .side-menu .main-menu .menu-item span{
   position: absolute;
   display: inline-block;
-  line-height: 40px;
+  line-height: 30px;
   opacity: 1;
   transition: opacity .2s ease-in;
 }
@@ -258,7 +258,7 @@ body{
 }
 
 .container {
-  transition: all 0.9s ease-in-out;
+  transition: all 0.9s ease-in-out !important;
 }
 
 .toggle-menu-btn {
@@ -468,21 +468,26 @@ color: red;
 :where(.css-dev-only-do-not-override-1ae8k9u).ant-menu-light.ant-menu-inline .ant-menu-sub.ant-menu-inline, :where(.css-dev-only-do-not-override-1ae8k9u).ant-menu-light>.ant-menu.ant-menu-inline .ant-menu-sub.ant-menu-inline {
   max-height: 30vh !important;
   overflow-y: scroll;
+  background: transparent !important;
 }
 .ant-menu-title-content{
   font-size: 12px !important;
 }
 .ant-menu-item-icon{
 
-  font-size: medium !important;
+  font-size: 15px !important;
 }
 :where(.css-dev-only-do-not-override-1ae8k9u).ant-menu-inline .ant-menu-item, :where(.css-dev-only-do-not-override-1ae8k9u).ant-menu-vertical .ant-menu-item, :where(.css-dev-only-do-not-override-1ae8k9u).ant-menu-inline .ant-menu-submenu-title, :where(.css-dev-only-do-not-override-1ae8k9u).ant-menu-vertical .ant-menu-submenu-title {
-  /* height: 40px; */
-  /* line-height: 40px; */
+  height: 33px !important;
+  line-height: 20px;
   padding-inline: 10px !important;
   /* overflow: hidden; */
   /* text-overflow: ellipsis; */
-  margin-inline: 0px !important;
-  margin-block: 0px !important;
+  margin-inline: 4px !important;
+  margin-block: 4px !important;
   width: calc(100% - 8px);
+}
+
+.batch-table th{
+  font-size: 12px !important;
 }
