@@ -29,10 +29,7 @@ function App() {
           }}
         /> */}
       </Router>
-
-     
-      
-     
+         
     </div>
   );
 }
