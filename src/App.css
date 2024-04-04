@@ -23,21 +23,26 @@ body{
   font-family: 'Open Sans', sans-serif;
 }
 
+/* Hide the default scrollbar */
 ::-webkit-scrollbar {
   width: 0px;
 }
 
+/* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
+/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #888;
 }
 
+/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
 
 .side-menu{
   position:relative;
@@ -62,10 +67,17 @@ body{
   display: inline-block;
 }
 .side-menu .top-section .logo img{
-  height: 54px;
+  height: 50px;
   max-width: 100%;
   max-height: 100%;
 }
+
+/* .side-menu .top-section .toggle-menu-btn{
+  
+}
+
+.side-menu.inactive .top-section .toggle-menu-btn{
+} */
 
 .side-menu .search-controller{
   color: #fff;
@@ -111,19 +123,17 @@ body{
   color: #000000;
 }
 
+
 .side-menu .main-menu{
   position: relative;
   overflow-x: hidden;
   border: 1px solid #1c1c1c10;
   padding: 0px 8px; 
 }
-<<<<<<< Updated upstream
 /* not required any more */
 /* .side-menu.inactive .main-menu{
  
 } */
-=======
->>>>>>> Stashed changes
 
 .side-menu .main-menu .menu-item .menu-icon{
   display: inline-block;
@@ -160,6 +170,8 @@ body{
   transition: max-height .6s ease-in;
 }
 
+
+
 .side-menu .main-menu .sub-menu.active{
   max-height: 200px;
 }
@@ -175,7 +187,9 @@ body{
   padding: 5px 5px  5px 15px;
 }
 
+
 .side-menu .main-menu .sub-menu a.active{
+  /* change in background, not recorded in video */
   background: #ffffff;
   display: block;
   border-radius: 5px;
@@ -198,9 +212,11 @@ body{
   overflow: hidden;
 }
 
+
 .side-menu-footer .user-info h5{
   font-size: 15px;
 }
+
 
 .side-menu-footer .user-info p{
   font-size: 14px;
@@ -298,6 +314,9 @@ body{
 .ant-menu-submenu-arrow {
   padding-left: 70px !important;
 }
+
+
+/* Show accordion body on hover */
 
 .sub-head{
   padding: 10px 10px !important;

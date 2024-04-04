@@ -11,17 +11,8 @@ function LoginComponent() {
 
 
   const [isFlipped, setIsFlipped] = useState(false);
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-=======
   const [isLoggedIn, setIsLoggedIn] = useState(false);
->>>>>>> Stashed changes
 const navigate =useNavigate();
-=======
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const navigate =useNavigate();
->>>>>>> Stashed changes
 
 
   const handleFlip = () => {
@@ -39,10 +30,9 @@ const navigate =useNavigate();
   const [userloginInput,setuserloginInput]=useState('');
   const [passwordloginInput,setpasswordloginInput]=useState('');
   const handleSubmit = async (e) => {
-    e.preventDefault();
 
     try {
-     
+      // Construct form data
       const data = {
         username: userInput,
         password: passwordInput,
@@ -51,13 +41,13 @@ const navigate =useNavigate();
     };
 
   console.log(data)
-      
-      const response = await axios.post('http://192.168.12.105:8089/register', data, {
+      // Make POST request to Flask backend
+      const response = await axios.post('http://192.168.5.34:8089/register', data, {
         headers: {
             'Content-Type': 'application/json'
         }
     });
-    console.log(response.data); 
+    console.log(response.data); // Log the response from Flask
       setuserInput('');
       setpasswordInput('');
       setemailInput('');
@@ -71,26 +61,26 @@ const navigate =useNavigate();
   const handleSubmitLogin = async (e) => {
     e.preventDefault();
     try {
-
-      const response = await axios.get(`http://192.168.12.105:8089/authenticate?username=${userloginInput}&password=${passwordloginInput}`);
+      // Make a GET request to the authentication endpoint
+      const response = await axios.get(`http://192.168.5.34:8089/authenticate?username=${userloginInput}&password=${passwordloginInput}`);
       if (response.data.success === true) {
-
+        // Display success message
         toast.success("Login Successful...");
         setIsLoggedIn(true);
         navigate("/dashboard");
-
+        // Clear input fields
         setuserloginInput('');
         setpasswordloginInput('');
         
       } else {
-
+        // Display error message
         toast.error("Login Failed. Invalid username or password.");
       }
-
+      // Clear input fields
       setuserloginInput('');
       setpasswordloginInput('');
     } catch (error) {
-
+      // Display error message
       toast.error(`Error submitting form: ${error.message}`);
       setuserloginInput('');
       setpasswordloginInput('');
