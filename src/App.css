@@ -2,6 +2,7 @@
 *{
   margin: 0;
   padding: 0;
+  font-size: 12px !important;
 }
 *::selection{
   background-color: #06b81e !important;
@@ -41,7 +42,7 @@ body{
 .side-menu{
   position:relative;
   background: #ffffff1a;
-  width: 300px;
+  width: 290px;
   height: 100vh ;
   box-sizing: border-box;
   /* padding: 8px 8px; */
@@ -50,7 +51,7 @@ body{
 }
 
 .side-menu.inactive{
-  width: 75px;
+  width: 80px;
 }
 
 .side-menu .top-section{
@@ -58,11 +59,10 @@ body{
 }
 
 .side-menu .top-section .logo{
-  overflow: hidden;
   display: inline-block;
 }
 .side-menu .top-section .logo img{
-  height: 55px;
+  height: 54px;
   max-width: 100%;
   max-height: 100%;
 }
@@ -240,7 +240,7 @@ body{
 }
 
 .main-menu {
-  height: calc(100vh - 70px);
+  height: calc(100vh - 50px);
   transition: all 0.6s ease-in-out;
   overflow-y: scroll;
 }
@@ -454,14 +454,13 @@ color: red;
   max-height: 30vh !important;
   overflow-y: scroll;
   background: transparent !important;
+  
 }
 .ant-menu-title-content{
   font-size: 12px !important;
+  margin-left: 15px !important;
 }
-.ant-menu-title-content:hover{
-  padding-left: 8px !important;
-  transition: .5s ease-in-out;
-}
+
 .ant-menu-item-icon{
 
   font-size: 15px !important;
@@ -474,7 +473,7 @@ color: red;
   /* text-overflow: ellipsis; */
   margin-inline: 4px !important;
   margin-block: 4px !important;
-  width: calc(100% - 8px);
+  width: calc(100% - 10px);
 }
 
 .batch-table th{

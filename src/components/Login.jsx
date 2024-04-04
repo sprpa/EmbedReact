@@ -12,7 +12,11 @@ function LoginComponent() {
 
   const [isFlipped, setIsFlipped] = useState(false);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+=======
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+>>>>>>> Stashed changes
 const navigate =useNavigate();
 =======
   const [isLoggedIn, setIsLoggedIn] = useState(false);

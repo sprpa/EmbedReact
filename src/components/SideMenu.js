@@ -22,6 +22,7 @@ import Batch from "./Manage Operations/Batch";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { Menu } from 'antd';
 import Side from "./Side";
+import dashicon from '../assets/menuicons/dashboard.svg'
 const { SubMenu } = Menu;
 
 <<<<<<< Updated upstream
@@ -598,23 +599,23 @@ const Logout=()=>{
       <div className={`side-menu ${inactive ? "inactive" : ""} d-none d-lg-block shadow`}>
 >>>>>>> Stashed changes
         <div className="top-section">
-          <div style={{ padding: "8px 8px 0px 8px" }}>
-            <div className="logo w-100">
+          <div style={{ padding: "0px 0px 0px 0px" }} className="w-100 h-100">
+            <div className="logo w-100 h-100">
               {inactive ? (
                 <img src={inactiveLogo} alt="webscript" />
               ) : (
-                <img className="w-100" src={activeLogo} alt="webscript" />
+                <img className="w-100 " src={activeLogo} alt="webscript" />
               )}
             </div>
-            <div className="divider"></div>
+          
           </div>
-          <div className="main-menu">
+          <div className="main-menu  py-2">
 
-            <div className="my-1">
+            <div className="">
               <h6 className="dash-head m-0">Dashboards</h6>
               <Link to="/dashboard" className="d-flex gap-2 p-1 " style={{ textDecoration: 'none' }}>
-                <ion-icon className="speedometer-outline w-25"></ion-icon>
-                <span className="dashboard m-0 w-75">Dashboard</span>
+                <img src={dashicon}></img>
+                <h6 className="dashboard m-0 w-75 text-black fw-medium">Dashboard</h6>
               </Link>
             </div>
             {/* <div>
@@ -688,7 +689,7 @@ const Logout=()=>{
 
           <nav
             className="navbar navbar-expand-lg navbar-light sticky-top"
-            style={{ backgroundColor: "green", height: "70px" }}
+            style={{ backgroundColor: "green", height: "55px" }}
           >
             <div className="toggle ps-3 d-none d-lg-block">
               <div
@@ -749,7 +750,7 @@ const Logout=()=>{
               </ul>
               <div className="d-flex justify-content-between">
                 <ul className="navbar-nav d-none d-lg-flex">
-                  <li className="nav-item dropdown me-2">
+                  <li className="nav-item dropdown me-2 d-none">
                     <button
                       className="btn btn-light bg-white dropdown-toggle"
                       data-bs-toggle="dropdown"
