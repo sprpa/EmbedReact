@@ -317,10 +317,12 @@ console.log("side menu")
     <div className={`d-flex side-menu-wrapper ${inactive ? "inactive" : ""} h-100` }>
       <div className={`side-menu ${inactive ? "inactive" : ""} d-none d-lg-block `}>
         <div className="top-section">
-          <div style={{ padding: "0px 0px 0px 0px" }} className="w-100 h-100">
-            <div className="logo w-100 h-100">
+          <div style={{ padding: "0px" }} className="d-flex justify-content-center">
+            <div className="logo w-100">
               {inactive ? (
-                <img src={inactiveLogo} alt="webscript" />
+                <div className="  d-flex justify-content-center">                
+                  <img className="shortlogo w-100" src={inactiveLogo} alt="webscript" />
+                </div>
               ) : (
                 <img className="w-100 " src={activeLogo} alt="webscript" />
               )}
@@ -375,7 +377,7 @@ console.log("side menu")
                 className="toggle-menu-btn"
               >
                 {inactive ? (
-                  <i className="bi bi-chevron-right"></i>
+                  <i className="bi bi-chevron-right "></i>
                 ) : (
                   <i className="bi bi-chevron-left"></i>
                 )}
@@ -454,10 +456,10 @@ console.log("side menu")
                       </li>
                     </ul>
                   </li>
-                  <li className="nav-item text-white fs-3 mx-2">
+                  <li className="nav-item text-white fs-3 mx-2 d-none">
                     <ion-icon name="sunny-outline"></ion-icon>
                   </li>
-                  <li className="nav-item text-white fs-4 mx-2 mt-1">
+                  <li className="nav-item text-white fs-4 mx-2 mt-1 d-none">
                     <ion-icon name="notifications-outline"></ion-icon>
                   </li>
                 </ul>
@@ -466,7 +468,7 @@ console.log("side menu")
                     <div className="d-flex gap-2">
                       <div>
                         <h6 className="m-0 text-center fw-bold">Kalyana P</h6>
-                        <p className="m-0 display-6  " style={{ fontSize: "0.8rem" }}>
+                        <p className="m-0 display-6  " style={{ fontSize: "10px" }}>
                           login as admin
                         </p>
                       </div>

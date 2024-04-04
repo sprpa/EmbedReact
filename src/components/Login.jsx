@@ -11,7 +11,7 @@ function LoginComponent() {
 
 
   const [isFlipped, setIsFlipped] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 const navigate =useNavigate();
 
 
@@ -180,11 +180,11 @@ const navigate =useNavigate();
 
                           <form className=''  onSubmit={handleSubmitLogin} >
                             <ToastContainer />
-                            <div className="">
+                            <div className="mb-1">
                               <label htmlFor="formGroupExampleInput" className="form-label">User Name <span className="text-danger">*</span></label>
                               <input type="text" className="form-control mb-0" id="formGroupExampleInput" value={userloginInput} onChange={(e) => setuserloginInput(e.target.value)} placeholder="Please enter your user name" required />
                             </div>
-                            <div className="">
+                            <div className="mb-1">
                               <label htmlFor="formGroupExampleInput1" className="form-label">Password <span className="text-danger">*</span></label>
                               <div className="input-group h-100">
                                 <input
@@ -210,8 +210,8 @@ const navigate =useNavigate();
                             <div className='d-flex justify-content-between mt-2'>
                               <div className="form-check">
                                 <input className="form-check-input mb-0" type="checkbox" id="gridCheck1" />
-                                <label className="form-check-label " for="gridCheck1">
-                                  <small>Remember Me</small>
+                                <label className="form-check-label pt-2 ms-2" for="gridCheck1">
+                                  <small className=''>Remember Me</small>
                                 </label>
                               </div>
 
