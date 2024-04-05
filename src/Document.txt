@@ -1,0 +1,5 @@
+Mes Project is developing by using Rect as a frontend and backend as a python flask 
+application and these two are interlinked by the APIs for using the 
+CRUD(Create,Read,Update and Delete ) operations.
+
+

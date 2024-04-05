@@ -278,7 +278,7 @@ const { SubMenu } = Menu;
 // ];
 
 
-const SideMenu = (props) => {
+const SideMenu = () => {
   const [show, setShow] = useState(false);
   const [inactive, setInactive] = useState(true);
   const handleClose = () => setShow(false);

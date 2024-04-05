@@ -11,7 +11,7 @@ function LoginComponent() {
 
 
   const [isFlipped, setIsFlipped] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 const navigate =useNavigate();
 
 
@@ -171,7 +171,7 @@ const navigate =useNavigate();
                   <div className="front mt-5">
                     
                     <div className="d-flex justify-content-center align-items-center login mt-5 pt-5">
-                      <div className="d-flex flex-column justify-content-center col-12 col-lg-9  " >
+                      <div className="d-flex flex-column justify-content-center col-12 col-lg-8  " >
                         <h6 className='welcome'>Welcome to</h6>
                         <h6 className='name'>Embedded IT Solutions (India) Private Limited</h6>
 
@@ -226,44 +226,43 @@ const navigate =useNavigate();
                   </div>
 
                   <div className="back">
-                    <h1 className="title">Register</h1>
-                    <div className="d-flex justify-content-center align-items-center login  ">
-                      <div className="d-flex flex-column justify-content-center col-12 col-lg-9 " >
-                        <h6 className='welcome'>Welcome to</h6>
+                    <div className="d-flex justify-content-center align-items-center login pt-5 ">
+                      <div className="d-flex flex-column justify-content-center col-12 col-lg-8 pt-5 " >
+                        <h6 className='welcome pt-5'>Welcome to</h6>
                         <h6 className='name'>Embedded IT Solutions (India) Private Limited</h6>
 
                         <div className='' id='signup-container'>
                           <p className='login-decs p-0 m-0'>Please Register With Us If You Are New Here.</p>
                           <form className='' onSubmit={handleSubmit}>
-                            <div className="mb-2">
+                            <div className="mb-1">
                               <label for="username" className="form-label">Username <span>*</span></label>
-                              <input type="text" name='register_username' className="form-control" id="username"  value={userInput} onChange={(e) => setuserInput(e.target.value)}  placeholder="Please Enter Your Username"  required />
+                              <input type="text" name='register_username' className="form-control m-0" id="username"  value={userInput} onChange={(e) => setuserInput(e.target.value)}  placeholder= "Please Enter Your Username"  required />
                             </div>
-                            <div className="mb-2">
+                            {/* <div className="mb-1">
                               <label for="password" className="form-label">Password <span>*</span></label>
-                              <input type="text" name='register_password' className="form-control" id="password" value={passwordInput} onChange={(e) => setpasswordInput(e.target.value)}  placeholder="Please Enter Your Password"  required />
-                            </div>
-                            <div className="mb-2">
+                              <input type="text" name='register_password' className="form-control m-0" id="password" value={passwordInput} onChange={(e) => setpasswordInput(e.target.value)}  placeholder="Please Enter Your Password"  required />
+                            </div> */}
+                            <div className="mb-1">
                               <label for="emailinput" className="form-label">Email <span>*</span></label>
-                              <input type="text" name='register_email' className="form-control" id="emailinput" value={emailInput} onChange={(e) => setemailInput(e.target.value)} placeholder="Please Enter Your Email"  required />
+                              <input type="text" name='register_email' className="form-control m-0" id="emailinput" value={emailInput} onChange={(e) => setemailInput(e.target.value)} placeholder="Please Enter Your Email"  required />
                             </div>
-                            <div className="mb-2">
+                            {/* <div className="mb-1">
                               <label htmlFor="formGroupExampleInput2" className="form-label">Please Select Lines <span className="text-danger">*</span></label>
-                              <select name="register_lines" className='form-control' id="register_lines" value={linesInput} onChange={(e) => setlinesInput(e.target.value)}  required>
+                              <select name="register_lines" className='form-control m-0' id="register_lines" value={linesInput} onChange={(e) => setlinesInput(e.target.value)}  required>
                                 <option value="Production">Production</option>
                                 <option value="Operation">Operation</option>
                                 <option value="Manage Operation">Manage Operation</option>
                                 <option value="Batch">Batch</option>
                               </select>
-                            </div>
-                            <div className="form-check">
+                            </div> */}
+                            <div className="form-check my-2">
                               <input className="form-check-input" type="checkbox" id="gridCheck1" />
-                              <label className="form-check-label" for="gridCheck1">
+                              <label className="form-check-label mt-2 ms-2" for="gridCheck1">
                                 Remember Me
                               </label>
                             </div>
 
-                            <button type='submit' className='btn btn-success w-100 mt-3'>Register</button>
+                            <button type='submit' className='btn btn-success w-100 '>Send <i class="fa-solid fa-paper-plane ms-1"></i> </button>
 
                           </form>
                           <center>

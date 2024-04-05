@@ -49,7 +49,7 @@ function TopComponent() {
       });
 
       setCounters(updatedCounters);
-    }, 5); // Update every 10 milliseconds
+    }, 10); // Update every 10 milliseconds
 
     return () => clearInterval(interval);
   }, [counters, data]);

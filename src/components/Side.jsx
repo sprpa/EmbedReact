@@ -29,6 +29,7 @@ const Side = () => {
     const [masterSubItems, setMasterSubItems] = useState([]);
     const [apiSubItems, setapiSubItems] = useState([]);
     const [usermanualSubItems, setUserManualSubItems] = useState([]);
+    const [OrganizationSubItems,setOrganizationSubItems] = useState([])
     const [OperationSubItems, setOperationSubItems] = useState([]);
     const [ProductionSubItems, setProductionSubItems] = useState([]);
     const [InventorySubItems, setInventorySubItems] = useState([]);
@@ -53,7 +54,6 @@ const Side = () => {
                 if (response.status !== 200) {
                     throw new Error('Failed to fetch menu data');
                 }
-                console.log(response.data);
                 setMenuItems(response.data.menu_items);
                 
             } catch (error) {
@@ -65,7 +65,7 @@ const Side = () => {
                     throw new Error('Failed to fetch menu data');
                 }
                 setConfigItems(response.data.menu_items);
-                console.log(response.data.menu_items);
+               
             } catch (error) {
                 console.error('Error fetching menu data:', error);
             }
@@ -87,7 +87,7 @@ const Side = () => {
                     throw new Error('Failed to fetch sub-menu data');
                 }
                 setManageOperationsSubItems(response.data.sub_categories);
-                console.log(response.data.sub_categories);
+                
             } catch (error) {
                 console.error('Error fetching sub-menu data:', error);
             }
@@ -97,7 +97,7 @@ const Side = () => {
                     throw new Error('Failed to fetch sub-menu data');
                 }
                 setMasterSubItems(response.data.sub_categories);
-                console.log(response.data.sub_categories);
+               
             } catch (error) {
                 console.error('Error fetching sub-menu data:', error);
             }
@@ -107,7 +107,7 @@ const Side = () => {
                     throw new Error('Failed to fetch sub-menu data');
                 }
                 setapiSubItems(response.data.sub_categories);
-                console.log(response.data.sub_categories);
+             
             } catch (error) {
                 console.error('Error fetching sub-menu data:', error);
             }
@@ -117,7 +117,17 @@ const Side = () => {
                     throw new Error('Failed to fetch sub-menu data');
                 }
                 setUserManualSubItems(response.data.sub_categories);
-                console.log(response.data.sub_categories);
+              
+            } catch (error) {
+                console.error('Error fetching sub-menu data:', error);
+            }
+            try {
+                const response = await axios.get("http://192.168.5.12:8089/sub_menu?MenuHeader=Organization%20settings");
+                if (response.status !== 200) {
+                    throw new Error('Failed to fetch sub-menu data');
+                }
+                setOrganizationSubItems(response.data.sub_categories);
+                
             } catch (error) {
                 console.error('Error fetching sub-menu data:', error);
             }
@@ -127,17 +137,7 @@ const Side = () => {
                     throw new Error('Failed to fetch sub-menu data');
                 }
                 setOperationSubItems(response.data.sub_categories);
-                console.log(response.data.sub_categories);
-            } catch (error) {
-                console.error('Error fetching sub-menu data:', error);
-            }
-            try {
-                const response = await axios.get("http://192.168.5.12:8089/sub_menu?MenuHeader=Operation");
-                if (response.status !== 200) {
-                    throw new Error('Failed to fetch sub-menu data');
-                }
-                setOperationSubItems(response.data.sub_categories);
-                console.log(response.data.sub_categories);
+               
             } catch (error) {
                 console.error('Error fetching sub-menu data:', error);
             }
@@ -147,7 +147,7 @@ const Side = () => {
                     throw new Error('Failed to fetch sub-menu data');
                 }
                 setProductionSubItems(response.data.sub_categories);
-                console.log(response.data.sub_categories);
+               
             } catch (error) {
                 console.error('Error fetching sub-menu data:', error);
             }
@@ -157,7 +157,7 @@ const Side = () => {
                     throw new Error('Failed to fetch sub-menu data');
                 }
                 setInventorySubItems(response.data.sub_categories);
-                console.log(response.data.sub_categories);
+               
             } catch (error) {
                 console.error('Error fetching sub-menu data:', error);
             }
@@ -167,7 +167,7 @@ const Side = () => {
                     throw new Error('Failed to fetch sub-menu data');
                 }
                 setPackingSubItems(response.data.sub_categories);
-                console.log(response.data.sub_categories);
+               
             } catch (error) {
                 console.error('Error fetching sub-menu data:', error);
             }
@@ -177,7 +177,7 @@ const Side = () => {
                     throw new Error('Failed to fetch sub-menu data');
                 }
                 setTestingSubItems(response.data.sub_categories);
-                console.log(response.data.sub_categories);
+               
             } catch (error) {
                 console.error('Error fetching sub-menu data:', error);
             }
@@ -187,7 +187,7 @@ const Side = () => {
                     throw new Error('Failed to fetch sub-menu data');
                 }
                 setQualitySubItems(response.data.sub_categories);
-                console.log(response.data.sub_categories);
+               
             } catch (error) {
                 console.error('Error fetching sub-menu data:', error);
             }
@@ -197,7 +197,7 @@ const Side = () => {
                     throw new Error('Failed to fetch sub-menu data');
                 }
                 setProductionReportSubItems(response.data.sub_categories);
-                console.log(response.data.sub_categories);
+               
             } catch (error) {
                 console.error('Error fetching sub-menu data:', error);
             }
@@ -207,7 +207,7 @@ const Side = () => {
                     throw new Error('Failed to fetch sub-menu data');
                 }
                 setTraceReportSubItems(response.data.sub_categories);
-                console.log(response.data.sub_categories);
+               
             } catch (error) {
                 console.error('Error fetching sub-menu data:', error);
             } try {
@@ -216,7 +216,7 @@ const Side = () => {
                     throw new Error('Failed to fetch sub-menu data');
                 }
                 setManagementReportSubItems(response.data.sub_categories);
-                console.log(response.data.sub_categories);
+               
             } catch (error) {
                 console.error('Error fetching sub-menu data:', error);
             }
@@ -226,9 +226,6 @@ const Side = () => {
         fetchMenuData();
         fetchSubItems();
     }, []);
-
-
-    console.log("fgsdfhgsjfgvmjkgb",menuItems)
     return (
         <div className="h-100">
             <h6 className=" menu-head">Menu</h6>
@@ -382,8 +379,20 @@ const Side = () => {
                                 ))}
                             </Menu.SubMenu>
                         )}
+                         {item.Menu_Header === 'Organization settings' && (
+                            <Menu.SubMenu title={item.Menu_Header}
+                                icon={
+                                    <img src={master} alt="" />
+                                }>
+                                {OrganizationSubItems.map((subItem, subIndex) => (
+                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px' }} icon={<img src={subicon} alt="" />}>
+                                        <Link to={subItem.Sub_url}>{subItem.Sub_Header}</Link>
+                                    </Menu.Item>
+                                ))}
+                            </Menu.SubMenu>
+                        )}
 
-                        {item.Menu_Header !== 'Manage Operations' && item.Menu_Header !== 'Masters' && item.Menu_Header !== 'API Sync' && item.Menu_Header !== 'User Management' && (
+                        {item.Menu_Header !== 'Manage Operations' && item.Menu_Header !== 'Masters' && item.Menu_Header !== 'API Sync' && item.Menu_Header !== 'User Management' && item.Menu_Header !== 'Organization settings' && (
                             <Menu.Item style={{ fontSize: '.8rem', paddingLeft: '0px' }}>
                                 <Link to={item.link}>{item.Menu_Header}</Link>
                             </Menu.Item>
