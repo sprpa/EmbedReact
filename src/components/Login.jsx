@@ -42,7 +42,7 @@ const navigate =useNavigate();
 
   console.log(data)
       // Make POST request to Flask backend
-      const response = await axios.post('http://192.168.5.34:8089/register', data, {
+      const response = await axios.post('https://eis-website-backend.onrender.com/register', data, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -61,31 +61,26 @@ const navigate =useNavigate();
   const handleSubmitLogin = async (e) => {
     e.preventDefault();
     try {
-      // Make a GET request to the authentication endpoint
-      const response = await axios.get(`http://192.168.5.34:8089/authenticate?username=${userloginInput}&password=${passwordloginInput}`);
-      if (response.data.success === true) {
-        // Display success message
-        toast.success("Login Successful...");
-        setIsLoggedIn(true);
-        navigate("/dashboard");
-        // Clear input fields
-        setuserloginInput('');
-        setpasswordloginInput('');
-        
-      } else {
-        // Display error message
-        toast.error("Login Failed. Invalid username or password.");
-      }
-      // Clear input fields
-      setuserloginInput('');
-      setpasswordloginInput('');
+        // Make a GET request to the authentication endpoint
+        const response = await axios.get(`https://eis-website-backend.onrender.com/authenticate?username=${userloginInput}&password=${passwordloginInput}`);
+        if (response.data.success === true) {
+            // Display success message
+            toast.success("Login Successful...");
+            setIsLoggedIn(true);
+            navigate("/dashboard");
+        } else {
+            // Display error message
+            toast.error("Login Failed. Invalid username or password.");
+        }
     } catch (error) {
-      // Display error message
-      toast.error(`Error submitting form: ${error.message}`);
-      setuserloginInput('');
-      setpasswordloginInput('');
+        // Display error message
+        toast.error(`Error submitting form: ${error.message}`);
+    } finally {
+        // Clear input fields
+       
     }
-  }
+}
+
   
 
 
@@ -178,47 +173,35 @@ const navigate =useNavigate();
                         <div className='' id='login-container'>
                           <p className='login-decs p-0 m-0'>Please enter login with your username and password</p>
 
-                          <form className=''  onSubmit={handleSubmitLogin} >
-                            <ToastContainer />
-                            <div className="mb-1">
-                              <label htmlFor="formGroupExampleInput" className="form-label">User Name <span className="text-danger">*</span></label>
-                              <input type="text" className="form-control mb-0" id="formGroupExampleInput" value={userloginInput} onChange={(e) => setuserloginInput(e.target.value)} placeholder="Please enter your user name" required />
-                            </div>
-                            <div className="mb-1">
-                              <label htmlFor="formGroupExampleInput1" className="form-label">Password <span className="text-danger">*</span></label>
-                              <div className="input-group h-100">
-                                <input
-                                  type='password'
-                                  className="form-control mb-0"
-                                  id="formGroupExampleInput1" value={passwordloginInput} onChange={(e) => setpasswordloginInput(e.target.value)}
-                                  placeholder="Enter your password" required
-                                />
-                                
+                            <form className='' onSubmit={handleSubmitLogin}>
+                              <ToastContainer /> {/* Render ToastContainer outside the form */}
+                              <div className="mb-1">
+                                <label htmlFor="formGroupExampleInput" className="form-label">User Name <span className="text-danger">*</span></label>
+                                <input type="text" className="form-control mb-0" id="formGroupExampleInput" value={userloginInput} onChange={(e) => setuserloginInput(e.target.value)} placeholder="Please enter your user name" required />
                               </div>
-                            </div>
-
-                            {/* <div className="mb-2">
-                              <label htmlFor="formGroupExampleInput2" className="form-label">Please Select Lines <span className="text-danger">*</span></label>
-                              <select id="formGroupExampleInput2" className="form-select" placeholder="Select Options" required>
-                                <option>Production</option>
-                                <option>Operation</option>
-                                <option>Manage Operation</option>
-                                <option>Batch</option>
-                              </select>
-                            </div> */}
-
-                            <div className='d-flex justify-content-between mt-2'>
-                              <div className="form-check">
-                                <input className="form-check-input mb-0" type="checkbox" id="gridCheck1" />
-                                <label className="form-check-label pt-2 ms-2" for="gridCheck1">
-                                  <small className=''>Remember Me</small>
-                                </label>
+                              <div className="mb-1">
+                                <label htmlFor="formGroupExampleInput1" className="form-label">Password <span className="text-danger">*</span></label>
+                                <div className="input-group h-100">
+                                  <input
+                                    type='password'
+                                    className="form-control mb-0"
+                                    id="formGroupExampleInput1" value={passwordloginInput} onChange={(e) => setpasswordloginInput(e.target.value)}
+                                    placeholder="Enter your password" required
+                                  />
+                                </div>
                               </div>
+                              <div className='d-flex justify-content-between mt-2'>
+                                <div className="form-check">
+                                  <input className="form-check-input mb-0" type="checkbox" id="gridCheck1" />
+                                  <label className="form-check-label pt-2 ms-2" htmlFor="gridCheck1">
+                                    <small className=''>Remember Me</small>
+                                  </label>
+                                </div>
+                                <Link to="/"><small style={{ color: '#214B8A', fontWeight: 'bold' }} onClick={handleFlip}>Forgot Password</small></Link>
+                              </div>
+                              <button className='btn btn-success w-100 my-3'> Login</button>
+                            </form>
 
-                              <Link to="/"><small style={{ color: '#214B8A', fontWeight: 'bold' }} onClick={handleFlip}>Forgot Password</small></Link>
-                            </div>
-                            <button className='btn btn-success w-100 my-3'> Login</button>
-                          </form>
                         </div>
 
                       </div>
@@ -238,15 +221,15 @@ const navigate =useNavigate();
                               <label for="username" className="form-label">Username <span>*</span></label>
                               <input type="text" name='register_username' className="form-control m-0" id="username"  value={userInput} onChange={(e) => setuserInput(e.target.value)}  placeholder= "Please Enter Your Username"  required />
                             </div>
-                            {/* <div className="mb-1">
+                            <div className="mb-1">
                               <label for="password" className="form-label">Password <span>*</span></label>
                               <input type="text" name='register_password' className="form-control m-0" id="password" value={passwordInput} onChange={(e) => setpasswordInput(e.target.value)}  placeholder="Please Enter Your Password"  required />
-                            </div> */}
+                            </div>
                             <div className="mb-1">
                               <label for="emailinput" className="form-label">Email <span>*</span></label>
                               <input type="text" name='register_email' className="form-control m-0" id="emailinput" value={emailInput} onChange={(e) => setemailInput(e.target.value)} placeholder="Please Enter Your Email"  required />
                             </div>
-                            {/* <div className="mb-1">
+                            <div className="mb-1">
                               <label htmlFor="formGroupExampleInput2" className="form-label">Please Select Lines <span className="text-danger">*</span></label>
                               <select name="register_lines" className='form-control m-0' id="register_lines" value={linesInput} onChange={(e) => setlinesInput(e.target.value)}  required>
                                 <option value="Production">Production</option>
@@ -254,7 +237,7 @@ const navigate =useNavigate();
                                 <option value="Manage Operation">Manage Operation</option>
                                 <option value="Batch">Batch</option>
                               </select>
-                            </div> */}
+                            </div>
                             <div className="form-check my-2">
                               <input className="form-check-input" type="checkbox" id="gridCheck1" />
                               <label className="form-check-label mt-2 ms-2" for="gridCheck1">
