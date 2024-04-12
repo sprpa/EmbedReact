@@ -3,3 +3,26 @@ application and these two are interlinked by the APIs for using the
 CRUD(Create,Read,Update and Delete ) operations.
 
 
+JWT 
+
+Jwt is json web token  which is used to authenticate users in an application. It allows secure 
+communication between the user's
+The JWT (JSON Web Token) library was used to handle user authentication in this project.
+It provides an easy way of securely transmitting information.
+
+
+We autherize the  user with JWT which stands for JSON Web Tokens. 
+It's an open standard that allows you to securely transmit data between parties as decryptet code
+
+Now The jwt tokens are implementing in the bakend  part i.e., Python Flask Application.
+
+For that we install the package in python : pip install pyjwt
+
+
+in the first thing  when the user signup or login it will generate a token .
+and then every request made from the client side should carry this token in the header.
+
+This implementation helps us to identify who is making the request so that we can provide access accordingly.
+
+
+

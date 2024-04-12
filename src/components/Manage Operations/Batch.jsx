@@ -5,7 +5,6 @@ function Batch() {
   
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [modalShow, setModalShow] = React.useState(false);
   const [productionNumbers, setProductionNumbers] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState({});
@@ -85,7 +84,6 @@ function Batch() {
 
     setIndex(selectedIndex);
     testData.pop(0);
-
   };
 
   const MyVerticallyCenteredModal= ({ show, handleClose, title, data }) => {
@@ -111,24 +109,23 @@ function Batch() {
                 <div className='d-flex flex-column gap-3'>
                   <div>
                     <h6>Production No</h6>
-                    <select className='w-100 form-control' value={index} onChange={handleSelectChange}>
-        {productionNumbers.map((number, index) => (
-          <option key={index} value={number}>{number}</option>
-        ))}
-      </select>
-
+                      <select className='w-100 form-control m-0'style={{height:"30px"}} value={index} onChange={handleSelectChange}>
+                        {productionNumbers.map((number, index) => (
+                          <option key={index} value={number}>{number}</option>
+                        ))}
+                      </select>
                   </div>
                   <div>
                     <h6>Batch Name</h6>
-                    <input type="text" className='form-control' placeholder='Enter Batch Name' />
+                    <input type="text" className='form-control m-0' style={{height:"30px"}} placeholder='Enter Batch Name' />
                   </div>
                   <div>
                     <h6>LOT Number Board Quantity</h6>
-                    <input type="text" className='form-control' placeholder='Enter Board Quantity' />
+                    <input type="text" className='form-control m-0' style={{height:"30px"}} placeholder='Enter Board Quantity' />
                   </div>
                   <div>
                     <h6>Panel Quantity</h6>
-                    <input type="text" className='form-control' placeholder='Enter Panel Quantity' />
+                    <input type="text" className='form-control m-0' style={{height:"30px"}} placeholder='Enter Panel Quantity' />
                   </div>
 
                 </div>
@@ -251,11 +248,11 @@ function Batch() {
       <div className='container-fluid'>
         <div className="d-flex justify-content-between  " style={{ width: "100%" }} >
           <div className="p-2">
-            <h6 className="process m-0">List of Batch</h6>
+            <h6 className="process m-0 ">List of Process Flow</h6>
           </div>
           <div className="form-group has-search  " style={{ width: "60%" }} >
-            <span className="fa fa-search form-control-feedback"></span>
-            <input type="text" className="form-control " placeholder="Search"  onChange={handleSearchChange} />
+            <span className="fa fa-search form-control-feedback mt-1"></span>
+            <input type="text" className="form-control m-0 " placeholder="Search" onChange={handleSearchChange} />
           </div>
           <div>
             <button className="btn btn-primary ms-3" onClick={handleSubmit}>SUBMIT</button>

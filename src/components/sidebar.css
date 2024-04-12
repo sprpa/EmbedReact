@@ -37,6 +37,7 @@ color: #1C1C1C66;
 
 .has-search .form-control {
     padding-left: 2.375rem;
+    height: 100%;
 }
 
 .has-search .form-control-feedback {
@@ -44,7 +45,7 @@ color: #1C1C1C66;
     z-index: 2;
     display: block;
     width: 2.375rem;
-    height: 2.375rem;
+    height: 100%;
     line-height: 2.375rem;
     text-align: center;
     pointer-events: none;
@@ -53,7 +54,7 @@ color: #1C1C1C66;
 
 .process{
 font-family: Inter;
-font-size: 14px;
+font-size: 12px;
 font-weight: 600;
 line-height: 20px;
 letter-spacing: 0em;

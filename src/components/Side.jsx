@@ -50,7 +50,7 @@ const Side = () => {
     useEffect(() => {
         const fetchMenuData = async () => {
             try {
-                const response = await axios.get("http://192.168.5.12:8089/main_menu?menutype=menu");
+                const response = await axios.get("https://eis-website-backend.onrender.com/main_menu?menutype=Menu");
                 if (response.status !== 200) {
                     throw new Error('Failed to fetch menu data');
                 }
@@ -60,7 +60,7 @@ const Side = () => {
                 console.error('Error fetching menu data:', error);
             }
             try {
-                const response = await axios.get("http://192.168.5.12:8089/main_menu?menutype=configuration");
+                const response = await axios.get("https://eis-website-backend.onrender.com/main_menu?menutype=Configuration");
                 if (response.status !== 200) {
                     throw new Error('Failed to fetch menu data');
                 }
@@ -70,7 +70,7 @@ const Side = () => {
                 console.error('Error fetching menu data:', error);
             }
             try {
-                const response = await axios.get("http://192.168.5.12:8089/main_menu?menutype=Reports");
+                const response = await axios.get("https://eis-website-backend.onrender.com/main_menu?menutype=Reports");
                 if (response.status !== 200) {
                     throw new Error('Failed to fetch menu data');
                 }
@@ -82,7 +82,7 @@ const Side = () => {
         };
         const fetchSubItems = async () => {
             try {
-                const response = await axios.get("http://192.168.5.12:8089/sub_menu?MenuHeader=Manage%20Operations");
+                const response = await axios.get("https://eis-website-backend.onrender.com/sub_menu?menuheader=Manage%20Operations");
                 if (response.status !== 200) {
                     throw new Error('Failed to fetch sub-menu data');
                 }
@@ -92,7 +92,7 @@ const Side = () => {
                 console.error('Error fetching sub-menu data:', error);
             }
             try {
-                const response = await axios.get("http://192.168.5.12:8089/sub_menu?MenuHeader=Masters");
+                const response = await axios.get("https://eis-website-backend.onrender.com/sub_menu?menuheader=Masters");
                 if (response.status !== 200) {
                     throw new Error('Failed to fetch sub-menu data');
                 }
@@ -102,7 +102,7 @@ const Side = () => {
                 console.error('Error fetching sub-menu data:', error);
             }
             try {
-                const response = await axios.get("http://192.168.5.12:8089/sub_menu?MenuHeader=API%20Sync");
+                const response = await axios.get("https://eis-website-backend.onrender.com/sub_menu?menuheader=API%20Sync");
                 if (response.status !== 200) {
                     throw new Error('Failed to fetch sub-menu data');
                 }
@@ -112,7 +112,7 @@ const Side = () => {
                 console.error('Error fetching sub-menu data:', error);
             }
             try {
-                const response = await axios.get("http://192.168.5.12:8089/sub_menu?MenuHeader=User%20Management");
+                const response = await axios.get("https://eis-website-backend.onrender.com/sub_menu?menuheader=User%20Management");
                 if (response.status !== 200) {
                     throw new Error('Failed to fetch sub-menu data');
                 }
@@ -122,7 +122,7 @@ const Side = () => {
                 console.error('Error fetching sub-menu data:', error);
             }
             try {
-                const response = await axios.get("http://192.168.5.12:8089/sub_menu?MenuHeader=Organization%20settings");
+                const response = await axios.get("https://eis-website-backend.onrender.com/sub_menu?menuheader=Organization%20settings");
                 if (response.status !== 200) {
                     throw new Error('Failed to fetch sub-menu data');
                 }
@@ -132,7 +132,7 @@ const Side = () => {
                 console.error('Error fetching sub-menu data:', error);
             }
             try {
-                const response = await axios.get("http://192.168.5.12:8089/sub_menu?MenuHeader=Operation");
+                const response = await axios.get("https://eis-website-backend.onrender.com/sub_menu?menuheader=Operation");
                 if (response.status !== 200) {
                     throw new Error('Failed to fetch sub-menu data');
                 }
@@ -142,7 +142,7 @@ const Side = () => {
                 console.error('Error fetching sub-menu data:', error);
             }
             try {
-                const response = await axios.get("http://192.168.5.12:8089/sub_menu?MenuHeader=Production");
+                const response = await axios.get("https://eis-website-backend.onrender.com/sub_menu?menuheader=Production");
                 if (response.status !== 200) {
                     throw new Error('Failed to fetch sub-menu data');
                 }
@@ -152,7 +152,7 @@ const Side = () => {
                 console.error('Error fetching sub-menu data:', error);
             }
             try {
-                const response = await axios.get("http://192.168.5.12:8089/sub_menu?MenuHeader=Inventory");
+                const response = await axios.get("https://eis-website-backend.onrender.com/sub_menu?menuheader=Inventory");
                 if (response.status !== 200) {
                     throw new Error('Failed to fetch sub-menu data');
                 }
@@ -162,7 +162,7 @@ const Side = () => {
                 console.error('Error fetching sub-menu data:', error);
             }
             try {
-                const response = await axios.get("http://192.168.5.12:8089/sub_menu?MenuHeader=Packing");
+                const response = await axios.get("https://eis-website-backend.onrender.com/sub_menu?menuheader=Packing");
                 if (response.status !== 200) {
                     throw new Error('Failed to fetch sub-menu data');
                 }
@@ -172,7 +172,7 @@ const Side = () => {
                 console.error('Error fetching sub-menu data:', error);
             }
             try {
-                const response = await axios.get("http://192.168.5.12:8089/sub_menu?MenuHeader=Testing");
+                const response = await axios.get("https://eis-website-backend.onrender.com/sub_menu?menuheader=Testing");
                 if (response.status !== 200) {
                     throw new Error('Failed to fetch sub-menu data');
                 }
@@ -182,7 +182,7 @@ const Side = () => {
                 console.error('Error fetching sub-menu data:', error);
             }
             try {
-                const response = await axios.get("http://192.168.5.12:8089/sub_menu?MenuHeader=Quality");
+                const response = await axios.get("https://eis-website-backend.onrender.com/sub_menu?menuheader=Quality");
                 if (response.status !== 200) {
                     throw new Error('Failed to fetch sub-menu data');
                 }
@@ -192,7 +192,7 @@ const Side = () => {
                 console.error('Error fetching sub-menu data:', error);
             }
             try {
-                const response = await axios.get("http://192.168.5.12:8089/sub_menu?MenuHeader=Production%20Report");
+                const response = await axios.get("https://eis-website-backend.onrender.com/sub_menu?menuheader=Production%20Report");
                 if (response.status !== 200) {
                     throw new Error('Failed to fetch sub-menu data');
                 }
@@ -202,7 +202,7 @@ const Side = () => {
                 console.error('Error fetching sub-menu data:', error);
             }
             try {
-                const response = await axios.get("http://192.168.5.12:8089/sub_menu?MenuHeader=Traceability%20Report");
+                const response = await axios.get("https://eis-website-backend.onrender.com/sub_menu?menuheader=Traceability%20Report");
                 if (response.status !== 200) {
                     throw new Error('Failed to fetch sub-menu data');
                 }
@@ -211,7 +211,7 @@ const Side = () => {
             } catch (error) {
                 console.error('Error fetching sub-menu data:', error);
             } try {
-                const response = await axios.get("http://192.168.5.12:8089/sub_menu?MenuHeader=Management%20Report");
+                const response = await axios.get("https://eis-website-backend.onrender.com/sub_menu?menuheader=Management%20Report");
                 if (response.status !== 200) {
                     throw new Error('Failed to fetch sub-menu data');
                 }
@@ -227,14 +227,15 @@ const Side = () => {
         fetchSubItems();
     }, []);
     return (
-        <div className="h-100">
+        
+        <div className="">
             <h6 className=" menu-head">Menu</h6>
             <Menu className='bg-transparent border-0' mode="inline" triggerSubMenuAction="click" >
                 {menuItems.map((item, index) => (
                     <React.Fragment key={index}>
-                        {item.menu_items === 'Operation' && (
+                         {item.Menu_Header === 'Operation' && (
                             <Menu.SubMenu
-                                title={item.menu_items}
+                                title={item.Menu_Header}
                                 icon={<img src={operations} alt="" />}
                                 onTitleClick={() => handleSubMenuClick(item.key)}
                                 open={openKey === item.key}
@@ -246,7 +247,6 @@ const Side = () => {
                                 ))}
                             </Menu.SubMenu>
                         )}
-
                         {item.Menu_Header === 'Production' && (
                             <Menu.SubMenu
                                 title={item.Menu_Header}

@@ -11,7 +11,7 @@ function LoginComponent() {
 
 
   const [isFlipped, setIsFlipped] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 const navigate =useNavigate();
 
 
@@ -93,11 +93,11 @@ const navigate =useNavigate();
         <div className=" d-none d-lg-block col-lg-6 " style={{ backgroundColor: '#214B8A', position: 'relative', height: '100vh' }}>
           <img src={require('../assets/image 1.svg').default} className="img-fluid" alt="" style={{ position: 'absolute', bottom: 0, right: 0 }} />
 
-          <div className="m-5">
+          <div className="m-4 ">
             <img src={require('../assets/spsoft 1.svg').default} alt="" />
           </div>
 
-          <div className="d-flex justify-content-center" style={{ padding: '3rem 0' }}>
+          <div className="d-flex justify-content-center" style={{ padding: '8.5rem 0 0 0' }}>
             <div className="position-relative" style={{ zIndex: 1 }}>
               <img src={require('../assets/Logo (1).svg').default} className="img-fluid" alt="" />
               <img src={require('../assets/Ellipse 6.svg').default} style={{ position: 'absolute', top: 0, left: '45%' }} alt="" />
@@ -108,8 +108,8 @@ const navigate =useNavigate();
           </div>
 
           <div className="d-flex justify-content-center w-100">
-            <div className="d-flex flex-column gap-2 justify-content-center align-items-center" style={{ zIndex: 1 }}>
-              <p className="w-50 text-center"
+            <div className="d-flex flex-column gap-2 justify-content-center align-items-center pt-4" style={{ zIndex: 1 }}>
+              <p className="w-75 text-center pt-5"
                 style={{
                   fontFamily: 'Inter',
                   fontSize: '21.78px',
@@ -121,7 +121,7 @@ const navigate =useNavigate();
                 }}
               >Smart way and effective execution of the manufacturing operations</p>
 
-              <p className=" text-center"
+              <p className=" text-center pt-4"
                 style={{
                   fontFamily: 'Inter, sans-serif',
                   fontSize: '14.52px',
@@ -129,10 +129,10 @@ const navigate =useNavigate();
                   lineHeight: '19.36px',
                   textAlign: 'center',
                   color: 'rgba(230, 230, 230, 0.692)',
-                  width: '43%'
+                  width: '52%'
                 }}
               >Our MES system that connects, monitors and controls complex manufacturing and data flows on the factory floor.</p>
-              <p className="text-center"
+              <p className="text-center pt-2"
                 style={{
                   fontFamily: 'Inter, sans-serif',
                   fontSize: '14.52px',
@@ -150,125 +150,126 @@ const navigate =useNavigate();
         </div>
 
 
-        <div className="col-sm-12 col-md-12 col-lg-6" style={{ backgroundColor: '#ffffff', height: '100vh' }}>
-          <div className='d-flex flex-column h-100'>
-            <div className='container pt-3 '>
+        <div className="col-sm-12 col-md-12 col-lg-6 position-relative"  style={{ backgroundColor: '#ffffff', height: '100vh' }}>
+          <div className='d-flex flex-column '>
+            <div className='container p-5 pt-4 '>
               <div className='d-flex justify-content-between'>
                 <img className='img-fluid' src={require('../assets/EIS-Logo.svg').default} alt="" />
-                <i className='fa-solid fa-bars fs-3 mt-3' ></i>
-              </div>
-
-            </div>
-
-            <div className=' container'>
-              <div className="flip-container">
-                <div className={`flipper ${isFlipped ? 'flip' : ''}`} id="flipper">
-                  <div className="front mt-5">
-                    
-                    <div className="d-flex justify-content-center align-items-center login mt-5 pt-5">
-                      <div className="d-flex flex-column justify-content-center col-12 col-lg-8  " >
-                        <h6 className='welcome'>Welcome to</h6>
-                        <h6 className='name'>Embedded IT Solutions (India) Private Limited</h6>
-
-                        <div className='' id='login-container'>
-                          <p className='login-decs p-0 m-0'>Please enter login with your username and password</p>
-
-                            <form className='' onSubmit={handleSubmitLogin}>
-                              <ToastContainer /> {/* Render ToastContainer outside the form */}
-                              <div className="mb-1">
-                                <label htmlFor="formGroupExampleInput" className="form-label">User Name <span className="text-danger">*</span></label>
-                                <input type="text" className="form-control mb-0" id="formGroupExampleInput" value={userloginInput} onChange={(e) => setuserloginInput(e.target.value)} placeholder="Please enter your user name" required />
-                              </div>
-                              <div className="mb-1">
-                                <label htmlFor="formGroupExampleInput1" className="form-label">Password <span className="text-danger">*</span></label>
-                                <div className="input-group h-100">
-                                  <input
-                                    type='password'
-                                    className="form-control mb-0"
-                                    id="formGroupExampleInput1" value={passwordloginInput} onChange={(e) => setpasswordloginInput(e.target.value)}
-                                    placeholder="Enter your password" required
-                                  />
-                                </div>
-                              </div>
-                              <div className='d-flex justify-content-between mt-2'>
-                                <div className="form-check">
-                                  <input className="form-check-input mb-0" type="checkbox" id="gridCheck1" />
-                                  <label className="form-check-label pt-2 ms-2" htmlFor="gridCheck1">
-                                    <small className=''>Remember Me</small>
-                                  </label>
-                                </div>
-                                <Link to="/"><small style={{ color: '#214B8A', fontWeight: 'bold' }} onClick={handleFlip}>Forgot Password</small></Link>
-                              </div>
-                              <button className='btn btn-success w-100 my-3'> Login</button>
-                            </form>
-
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="back">
-                    <div className="d-flex justify-content-center align-items-center login pt-5 ">
-                      <div className="d-flex flex-column justify-content-center col-12 col-lg-8 pt-5 " >
-                        <h6 className='welcome pt-5'>Welcome to</h6>
-                        <h6 className='name'>Embedded IT Solutions (India) Private Limited</h6>
-
-                        <div className='' id='signup-container'>
-                          <p className='login-decs p-0 m-0'>Please Register With Us If You Are New Here.</p>
-                          <form className='' onSubmit={handleSubmit}>
-                            <div className="mb-1">
-                              <label for="username" className="form-label">Username <span>*</span></label>
-                              <input type="text" name='register_username' className="form-control m-0" id="username"  value={userInput} onChange={(e) => setuserInput(e.target.value)}  placeholder= "Please Enter Your Username"  required />
-                            </div>
-                            <div className="mb-1">
-                              <label for="password" className="form-label">Password <span>*</span></label>
-                              <input type="text" name='register_password' className="form-control m-0" id="password" value={passwordInput} onChange={(e) => setpasswordInput(e.target.value)}  placeholder="Please Enter Your Password"  required />
-                            </div>
-                            <div className="mb-1">
-                              <label for="emailinput" className="form-label">Email <span>*</span></label>
-                              <input type="text" name='register_email' className="form-control m-0" id="emailinput" value={emailInput} onChange={(e) => setemailInput(e.target.value)} placeholder="Please Enter Your Email"  required />
-                            </div>
-                            <div className="mb-1">
-                              <label htmlFor="formGroupExampleInput2" className="form-label">Please Select Lines <span className="text-danger">*</span></label>
-                              <select name="register_lines" className='form-control m-0' id="register_lines" value={linesInput} onChange={(e) => setlinesInput(e.target.value)}  required>
-                                <option value="Production">Production</option>
-                                <option value="Operation">Operation</option>
-                                <option value="Manage Operation">Manage Operation</option>
-                                <option value="Batch">Batch</option>
-                              </select>
-                            </div>
-                            <div className="form-check my-2">
-                              <input className="form-check-input" type="checkbox" id="gridCheck1" />
-                              <label className="form-check-label mt-2 ms-2" for="gridCheck1">
-                                Remember Me
-                              </label>
-                            </div>
-
-                            <button type='submit' className='btn btn-success w-100 '>Send <i class="fa-solid fa-paper-plane ms-1"></i> </button>
-
-                          </form>
-                          <center>
-                            <button className="flipbutton btn btn-success border-0 text-center w-50  mt-4" id="registerButton" href="#" onClick={handleFlip}>
-                              Login
-                            </button>
-                          </center>
-
-                        </div>
-
-                      </div>
-                    </div>
-
-
-                  </div>
+                <div className='d-flex flex-column justify-content-center'>
+                    <i className='fa-solid fa-bars fs-3 ' ></i>
                 </div>
               </div>
 
             </div>
+              <div className='d-flex flex-column justify-content-center '>
+                <div className=' container'>
+                  <div className="flip-container">
+                    <div className={`flipper ${isFlipped ? 'flip' : ''}`} id="flipper">
+                      <div className="front ">
+
+                        <div className="d-flex justify-content-center align-items-center login mt-5 ">
+                          <div className="d-flex flex-column justify-content-center col-12 col-lg-8  " >
+                            <h6 className='welcome'>Welcome to</h6>
+                            <h6 className='name'>Embedded IT Solutions (India) Private Limited</h6>
+
+                            <div className='' id='login-container'>
+                              <p className='login-decs p-0 m-0'>Please enter login with your username and password</p>
+
+                              <form className='' onSubmit={handleSubmitLogin}>
+                                <ToastContainer /> {/* Render ToastContainer outside the form */}
+                                <div className="mb-1">
+                                  <label htmlFor="formGroupExampleInput" className="form-label">User Name <span className="text-danger">*</span></label>
+                                  <input type="text" className="form-control mb-0" id="formGroupExampleInput" value={userloginInput} onChange={(e) => setuserloginInput(e.target.value)} placeholder="Please enter your user name" required />
+                                </div>
+                                <div className="mb-1">
+                                  <label htmlFor="formGroupExampleInput1" className="form-label">Password <span className="text-danger">*</span></label>
+                                  <div className="input-group h-100">
+                                    <input
+                                      type='password'
+                                      className="form-control mb-0"
+                                      id="formGroupExampleInput1" value={passwordloginInput} onChange={(e) => setpasswordloginInput(e.target.value)}
+                                      placeholder="Enter your password" required
+                                    />
+                                  </div>
+                                </div>
+                                <div className='d-flex justify-content-between mt-2'>
+                                  <div className="form-check">
+                                    <input className="form-check-input mb-0" type="checkbox" id="gridCheck1" />
+                                    <label className="form-check-label pt-2 ms-2" htmlFor="gridCheck1">
+                                      <small className=''>Remember Me</small>
+                                    </label>
+                                  </div>
+                                  <Link to="/"><small style={{ color: '#214B8A', fontWeight: 'bold' }} onClick={handleFlip}>Forgot Password</small></Link>
+                                </div>
+                                <button className='btn btn-success w-100 my-3'> Login</button>
+                              </form>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="back">
+                        <div className="d-flex justify-content-center align-items-center login  ">
+                          <div className="d-flex flex-column justify-content-center col-12 col-lg-8  " >
+                            <h6 className='welcome pt-5'>Welcome to</h6>
+                            <h6 className='name'>Embedded IT Solutions (India) Private Limited</h6>
+
+                            <div className='' id='signup-container'>
+                              <p className='login-decs p-0 m-0'>Please Register With Us If You Are New Here.</p>
+                              <form className='' onSubmit={handleSubmit}>
+                                <div className="mb-1">
+                                  <label for="username" className="form-label">Username <span>*</span></label>
+                                  <input type="text" name='register_username' className="form-control m-0" id="username" value={userInput} onChange={(e) => setuserInput(e.target.value)} placeholder="Please Enter Your Username" required />
+                                </div>
+                                <div className="mb-1">
+                                  <label for="password" className="form-label">Password <span>*</span></label>
+                                  <input type="text" name='register_password' className="form-control m-0" id="password" value={passwordInput} onChange={(e) => setpasswordInput(e.target.value)} placeholder="Please Enter Your Password" required />
+                                </div>
+                                <div className="mb-1">
+                                  <label for="emailinput" className="form-label">Email <span>*</span></label>
+                                  <input type="text" name='register_email' className="form-control m-0" id="emailinput" value={emailInput} onChange={(e) => setemailInput(e.target.value)} placeholder="Please Enter Your Email" required />
+                                </div>
+                                <div className="mb-1">
+                                  <label htmlFor="formGroupExampleInput2" className="form-label">Please Select Lines <span className="text-danger">*</span></label>
+                                  <select name="register_lines" className='form-control m-0' id="register_lines" value={linesInput} onChange={(e) => setlinesInput(e.target.value)} required>
+                                    <option value="Production">Production</option>
+                                    <option value="Operation">Operation</option>
+                                    <option value="Manage Operation">Manage Operation</option>
+                                    <option value="Batch">Batch</option>
+                                  </select>
+                                </div>
+                                <div className="form-check my-2">
+                                  <input className="form-check-input" type="checkbox" id="gridCheck1" />
+                                  <label className="form-check-label mt-2 ms-2" for="gridCheck1">
+                                    Remember Me
+                                  </label>
+                                </div>
+
+                                <button type='submit' className='btn btn-success w-100 '>Send <i class="fa-solid fa-paper-plane ms-1"></i> </button>
+
+                              </form>
+                              <center>
+                                <button className="flipbutton btn btn-success border-0 text-center w-50  mt-4" id="registerButton" href="#" onClick={handleFlip}>
+                                  Login
+                                </button>
+                              </center>
+
+                            </div>
+
+                          </div>
+                        </div>
 
 
+                      </div>
+                    </div>
+                  </div>
 
-            <div className='d-flex flex-column justify-content-end h-100'>
+                </div>
+              </div>
+
+            <div className='position-absolute bottom-0' style={{left:'0',right:'0'}}>
               <div className="m-0 border-top">
                 <div className="container" >
                   <div className="d-flex justify-content-between py-2 px-2">

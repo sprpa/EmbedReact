@@ -13,13 +13,11 @@
 .front, .back {
   /*background-color: rgba(0,0,0,.3);*/
   position: absolute;
-    padding:10px 30px;
+  padding:65px 30px;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-	
-	backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .front{

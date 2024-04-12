@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, Routes } from 'react-router-dom';
 import {useNavigate } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-// Your component code where you use the MenuItem component
-import Accordion from 'react-bootstrap/Accordion';
 import '../index.css'
 import activeLogo from "../assets/logo/EIS_Main.png";
 import inactiveLogo from "../assets/logo/Subtract.png";
@@ -13,14 +11,11 @@ import Example from "./OffCanvas";
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import '../components/sidebar.css';
 import CustomTable from "./CustomTable";
-import Config from "./Condfig";
 import Dashboard from "./Dashboard";
 import Batch from "./Manage Operations/Batch";
 import Dropdown from 'react-bootstrap/Dropdown';
-import { Menu } from 'antd';
 import Side from "./Side";
 import dashicon from '../assets/menuicons/dashboard.svg'
-const { SubMenu } = Menu;
 
 // const accordionItems = [
 //   {
@@ -509,9 +504,9 @@ console.log("side menu")
                     <Dashboard />
                     </div>} />
                     
-                    <Route path="/manageoperations/batch"  element={<Batch />} />
-                  <Route path="/manageoperations/processflow"  element={<CustomTable data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />} />
-                </Routes>
+                      <Route path="/Batch/BatchView"  element={<Batch />} />
+                      <Route path="/Routing/RoutingView"  element={<CustomTable data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />} />
+                    </Routes>
               </div>
 
 

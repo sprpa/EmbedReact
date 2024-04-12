@@ -40,19 +40,33 @@ function TopComponent() {
         const item = data[index];
         const targetNumber = parseInt(item.number.replace(/,/g, '')); // Remove commas before parsing
         const increment = Math.ceil(targetNumber / 200); // Adjust speed here
-
+  
         if (counter < targetNumber) {
           return counter + increment;
         } else {
           return targetNumber;
         }
       });
-
+  
       setCounters(updatedCounters);
-    }, 10); // Update every 10 milliseconds
-
+    }, 20); // Update every 20 milliseconds
+  
+    // Check if all counters have reached their target numbers
+    const allCountersReachedTarget = counters.every((counter, index) => {
+      const item = data[index];
+      const targetNumber = parseInt(item.number.replace(/,/g, ''));
+      return counter === targetNumber;
+    });
+  
+    // Clear the interval if all counters have reached their target numbers
+    if (allCountersReachedTarget) {
+      clearInterval(interval);
+    }
+  
+    // Clear the interval when the component unmounts
     return () => clearInterval(interval);
-  }, [counters, data]);
+  }, [counters]); // Re-run effect when counters change
+  
 
 
   return (

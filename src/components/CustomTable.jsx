@@ -107,10 +107,10 @@ console.log("Hello")
 
             <div className="d-flex  " style={{width:"100%"}} >
               <div className="p-2">
-                <h6 className="process m-0">List of Process Flow</h6>
+                <h6 className="process m-0 ">List of Process Flow</h6>
               </div>
               <div className="form-group has-search  " style={{width:"60%"}} >
-                <span className="fa fa-search form-control-feedback"></span>
+                <span className="fa fa-search form-control-feedback mt-1"></span>
                 <input type="text" className="form-control m-0 " placeholder="Search" onChange={handleSearchChange} />
               </div>
               <div>
