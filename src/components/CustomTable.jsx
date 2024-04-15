@@ -98,106 +98,108 @@ const handleEdit = (index, field, value) => {
   
 console.log("Hello")
   return (
-    <div className="row">
-      <div className="col">
-        <div className="table-responsive">
-        
+    <div className='container-fluid'>
+      <div className="row">
+        <div className="col-12">
+          <div className="table-responsive">
+          
 
-          <div className='d-flex justify-content-between mb-4'>
+            <div className='d-flex justify-content-between mb-4'>
 
-            <div className="d-flex  " style={{width:"100%"}} >
-              <div className="p-2">
-                <h6 className="process m-0 ">List of Process Flow</h6>
+              <div className="d-flex  " style={{width:"100%"}} >
+                <div className="p-2">
+                  <h6 className="process m-0 ">List of Process Flow</h6>
+                </div>
+                <div className="form-group has-search  " style={{width:"60%"}} >
+                  <span className="fa fa-search form-control-feedback mt-1"></span>
+                  <input type="text" className="form-control m-0 " placeholder="Search" onChange={handleSearchChange} />
+                </div>
+                <div>
+                  <button className="btn btn-primary ms-3" onClick={handleSubmit}>SUBMIT</button>
+                </div>
+                <button className="btn btn-primary mx-3"><i className="fa-solid fa-gear"></i></button>
               </div>
-              <div className="form-group has-search  " style={{width:"60%"}} >
-                <span className="fa fa-search form-control-feedback mt-1"></span>
-                <input type="text" className="form-control m-0 " placeholder="Search" onChange={handleSearchChange} />
+              <div className='d-flex gap-3 justify-content-end' style={{width:"30%"}}>
+                <button className='btn btn-success d-flex align-items-center'><i className="fa-solid fa-plus me-1"></i> <span>Create Flow</span> </button>
+                <button className='btn btn-secondary'>Inactivate</button>
               </div>
-              <div>
-                <button className="btn btn-primary ms-3" onClick={handleSubmit}>SUBMIT</button>
-              </div>
-              <button className="btn btn-primary mx-3"><i className="fa-solid fa-gear"></i></button>
             </div>
-            <div className='d-flex gap-3 justify-content-end' style={{width:"30%"}}>
-              <button className='btn btn-success d-flex align-items-center'><i className="fa-solid fa-plus me-1"></i> <span>Create Flow</span> </button>
-              <button className='btn btn-secondary'>Inactivate</button>
-            </div>
-          </div>
 
-          <table className="table table-bordered table-hover">
-            <thead className="table-secondary batch-table">
-              <tr>
-                <th scope="col" className='text-center col-1'>Sno</th>
-                <th scope="col" className='text-center col-2'>Process Name</th>
-                <th scope="col" className='text-center col-2'>Item Code</th>
-                <th scope="col" className='text-center col-2'>Production No</th>
-                <th scope="col" className='text-center col-2'>Production Status</th>
-                <th scope="col" className='text-center col-2'>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredData.map((item, index) => (
-                <tr key={index}>
-                  <td className='text-center'>{index + 1}</td>
-                  <td className='text-center'>
-                    {editableIndex === index ?
-                      <input type="text" style={{ height: '100%', width: '100%' }} value={editedData.processName || item.processName } onChange={(e) => setEditedData({ ...editedData, processName: e.target.value })} />
-                      : item.processName}
-                  </td>
-                  <td className='text-center'>
-                    {editableIndex === index ?
-                      <input type="text" style={{ height: '100%', width: '100%' }} value={editedData.itemCode || item.itemCode} onChange={(e) => setEditedData({ ...editedData, itemCode: e.target.value })} />
-                      : item.itemCode}
-                  </td>
-                  <td className='text-center'>
-                    {editableIndex === index ?
-                      <input type="text" style={{ height: '100%', width: '100%' }} value={editedData.productionNo || item.productionNo} onChange={(e) => setEditedData({ ...editedData, productionNo: e.target.value })} />
-                      : item.productionNo}
-                  </td>
-                  <td className={`${getStatusColor(item.productionStatus)} fw-bold text-center`}>
-                    {editableIndex === index ?
-                      <input type="text" style={{ height: '100%', width: '100%' }} value={editedData.productionStatus || item.productionStatus} onChange={(e) => setEditedData({ ...editedData, productionStatus: e.target.value })} />
-                      : item.productionStatus}
-                  </td>
-                  <td >
-                    <div className='d-flex justify-content-between'>
-
-                      <button className="btn border-0 " onClick={() => handleShowModal(item.processName, item.productionNo,item.itemCode)}>
-                        <i className="fa-regular fa-eye"></i>
-                      </button>
-                      <MyVerticallyCenteredModal
-                        show={modalShow}
-                        onHide={() => setModalShow(false)}
-                        processName={modalData.processName}
-                        productionNo={modalData.productionNo}
-                        itemCode={modalData.itemCode}
-                      />
-
-                      {editableIndex === index ? (
-                        <button className="btn border-0" onClick={() => handleSave(index)}><i className="fa-regular fa-floppy-disk"></i></button>
-                      ) : (
-                        <button className="btn border-0" onClick={() => handleEdit(index, 'processName', item.processName)}><i className="fa-regular fa-pen-to-square"></i></button>
-                      )}
-                      <button className="btn border-0 "><i className="fa-solid fa-file-arrow-up"></i></button>
-                      <button className="btn border-0" onClick={() => handleDelete(index)}><i className="fa-solid fa-trash"></i></button>
-                      
-                      <Modal show={deleteConfirmationShow[index]} onHide={() => setDeleteConfirmationShow({ ...deleteConfirmationShow, [index]: false })} centered>
-                        <Modal.Header closeButton>
-                          <Modal.Title>Delete Confirmation</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
-                        <Modal.Footer>
-                          <Button variant="secondary" onClick={() => setDeleteConfirmationShow({ ...deleteConfirmationShow, [index]: false })}>Cancel</Button>
-                          <Button variant="danger" onClick={() => handleDeleteConfirmed()}>Delete</Button>
-                        </Modal.Footer>
-                      </Modal>
-
-                    </div>
-                  </td>
+            <table className="table table-bordered table-hover">
+              <thead className="table-secondary batch-table">
+                <tr>
+                  <th scope="col" className='text-center col-1'>Sno</th>
+                  <th scope="col" className='text-center col-2'>Process Name</th>
+                  <th scope="col" className='text-center col-2'>Item Code</th>
+                  <th scope="col" className='text-center col-2'>Production No</th>
+                  <th scope="col" className='text-center col-2'>Production Status</th>
+                  <th scope="col" className='text-center col-2'>Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {filteredData.map((item, index) => (
+                  <tr key={index}>
+                    <td className='text-center'>{index + 1}</td>
+                    <td className='text-center'>
+                      {editableIndex === index ?
+                        <input type="text" className='m-0' style={{ height: '30px', width: '100%' }} value={editedData.processName || item.processName } onChange={(e) => setEditedData({ ...editedData, processName: e.target.value })} />
+                        : item.processName}
+                    </td>
+                    <td className='text-center'>
+                      {editableIndex === index ?
+                        <input type="text" className='m-0' style={{ height: '30px', width: '100%' }} value={editedData.itemCode || item.itemCode} onChange={(e) => setEditedData({ ...editedData, itemCode: e.target.value })} />
+                        : item.itemCode}
+                    </td>
+                    <td className='text-center'>
+                      {editableIndex === index ?
+                        <input type="text" className='m-0' style={{ height: '30px', width: '100%' }} value={editedData.productionNo || item.productionNo} onChange={(e) => setEditedData({ ...editedData, productionNo: e.target.value })} />
+                        : item.productionNo}
+                    </td>
+                    <td className={`${getStatusColor(item.productionStatus)} fw-bold text-center`}>
+                      {editableIndex === index ?
+                        <input type="text" className='m-0' style={{ height: '30px', width: '100%' }} value={editedData.productionStatus || item.productionStatus} onChange={(e) => setEditedData({ ...editedData, productionStatus: e.target.value })} />
+                        : item.productionStatus}
+                    </td>
+                    <td >
+                      <div className='d-flex justify-content-between'>
+
+                        <button className="btn border-0 " onClick={() => handleShowModal(item.processName, item.productionNo,item.itemCode)}>
+                          <i className="fa-regular fa-eye"></i>
+                        </button>
+                        <MyVerticallyCenteredModal
+                          show={modalShow}
+                          onHide={() => setModalShow(false)}
+                          processName={modalData.processName}
+                          productionNo={modalData.productionNo}
+                          itemCode={modalData.itemCode}
+                        />
+
+                        {editableIndex === index ? (
+                          <button className="btn border-0" onClick={() => handleSave(index)}><i className="fa-regular fa-floppy-disk"></i></button>
+                        ) : (
+                          <button className="btn border-0" onClick={() => handleEdit(index, 'processName', item.processName)}><i className="fa-regular fa-pen-to-square"></i></button>
+                        )}
+                        <button className="btn border-0 "><i className="fa-solid fa-file-arrow-up"></i></button>
+                        <button className="btn border-0" onClick={() => handleDelete(index)}><i className="fa-solid fa-trash"></i></button>
+                        
+                        <Modal show={deleteConfirmationShow[index]} onHide={() => setDeleteConfirmationShow({ ...deleteConfirmationShow, [index]: false })} centered>
+                          <Modal.Header closeButton className='border-0 rounded-0' style={{backgroundColor:'#00923F'}}>
+                            <Modal.Title className='text-white viewProcess'>Delete Confirmation</Modal.Title>
+                          </Modal.Header>
+                          <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
+                          <Modal.Footer>
+                            <Button variant="secondary" onClick={() => setDeleteConfirmationShow({ ...deleteConfirmationShow, [index]: false })}>Cancel</Button>
+                            <Button variant="danger" onClick={() => handleDeleteConfirmed()}>Delete</Button>
+                          </Modal.Footer>
+                        </Modal>
+
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

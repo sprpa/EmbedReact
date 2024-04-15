@@ -267,9 +267,9 @@ function Batch() {
               <tr>
                 <th scope="col" className='text-center '>Sno</th>
                 <th scope="col" className='text-center col-2'>Production No</th>
-                <th scope="col" className='text-center col-2'>Batch No</th>
+                <th scope="col" className='text-center col-1'>Batch No</th>
                 <th scope="col" className='text-center col-2'>Batch Status</th>
-                <th scope="col" className='text-center col-1'>Batch Quantity</th>
+                <th scope="col" className='text-center col-2'>Batch Quantity</th>
                 <th scope="col" className='text-center col-1'>AQL Quantity</th>
                 <th scope="col" className='text-center col-2'>AQL Completed Quantity</th>
                 <th scope="col" className='text-center col-1'>Actual Status</th>
