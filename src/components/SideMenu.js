@@ -505,12 +505,12 @@ console.log("side menu")
                     <Dashboard />
                   </div>} />
 
-                  <Route path="/Batch/BatchView" element={<div style={{ height: '100vh' }} className="border-1 border-secondary">
+                  <Route path="/Batch/BatchView" element={<div className="border-1 border-secondary">
                     <Batch />
                   </div>} />
-                  <Route path="/Routing/RoutingView" element={<div className="border-1 border-secondary">
+                  <Route path="/Routing/RoutingView" element={
                     <CustomTable data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />
-                  </div>
+                
                   } />
 
                   <Route path="/Schedule/ScheduleView" element={<ProductionLoading data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />} />

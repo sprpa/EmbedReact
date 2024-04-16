@@ -241,27 +241,34 @@ function Batch() {
     );
   }
 
-  console.log("hello")
   return (
     
     <div>
       <div className='container-fluid'>
-        {/* <div className="d-flex justify-content-between  " style={{ width: "100%" }} >
-          <div className="p-2">
-            <h6 className="process m-0 ">List of Process Flow</h6>
-          </div>
-          <div className="form-group has-search  " style={{ width: "60%" }} >
-            <span className="fa fa-search form-control-feedback mt-1"></span>
-            <input type="text" className="form-control m-0 " placeholder="Search" onChange={handleSearchChange} />
-          </div>
-          <div>
-            <button className="btn btn-primary ms-3" onClick={handleSubmit}>SUBMIT</button>
-            <button className="btn btn-primary mx-3"><i className="fa-solid fa-gear"></i></button>
-            <button className='btn bg-success border-0 text-white' onClick={() => handleOpenModal(modalData, modalTitle)} disabled={isLoading || !Object.keys(modalData).length}> <i className="fa-solid fa-plus me-3"></i> Create Batch</button>
-          </div>
-        </div> */}
+        <div className='d-flex justify-content-between'>
 
-        {/* <div className='my-5'>
+          <div className="d-flex" style={{ width: "100%" }} >
+            <div className="p-2">
+              <h6 className="process m-0 m ">List of Batch</h6>
+            </div>
+            <div className="form-group has-search  " style={{ width: "60%" }} >
+              <span className="fa fa-search form-control-feedback mt-1"></span>
+              <input type="text" className="form-control m-0 " style={{ height: '100%' }} placeholder="Search" onChange={handleSearchChange} />
+            </div>
+            <div>
+              <button className="btn btn-primary ms-3" onClick={handleSubmit}>SUBMIT</button>
+              <button className="btn btn-primary mx-3"><i className="fa-solid fa-gear"></i></button>
+            </div>
+
+          </div>
+          <div className='d-flex gap-3 justify-content-end' style={{ width: "30%" }}>
+          <button className='btn bg-success border-0 text-white' onClick={() => handleOpenModal(modalData, modalTitle)} disabled={isLoading || !Object.keys(modalData).length}> <i className="fa-solid fa-plus me-3"></i> Create Batch</button>
+
+            
+          </div>
+        </div>
+
+        <div className='my-5'>
           <table className="table table-bordered table-hover">
             <thead className="table-secondary batch-table">
               <tr>
@@ -302,7 +309,7 @@ function Batch() {
 
             </tbody>
           </table>
-        </div> */}
+        </div>
       </div>
     </div>
   )

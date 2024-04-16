@@ -1,13 +1,12 @@
 import React,{useState} from 'react'
 
 const data = [
-    { processName: 'Test505', itemCode: 'A123', productionNo: '123', productionStatus: 'In Progress' },
-    { processName: 'Test501', itemCode: 'B456', productionNo: '456', productionStatus: 'Completed' },
-    { processName: 'Test506', itemCode: 'C789', productionNo: '789', productionStatus: 'Pending' },
-    { processName: '830-00507', itemCode: 'C790', productionNo: '789', productionStatus: 'Completed' },
-    { processName: 'BRD7805', itemCode: 'C791', productionNo: '789', productionStatus: 'Pending' },
-    { processName: 'BRD7806', itemCode: 'C792', productionNo: '789', productionStatus: 'Completed' },
-    { processName: 'WMS_EVK_Board', itemCode: 'C793', productionNo: '789', productionStatus: 'In Progress' }
+    {productionNo: '202425000108',fg_code:'830-00507',orderName:'202425000108-3',assignedDate:'21-02-2024',batchQuantity:'100', actualStatus: 'In Progress' },
+    {productionNo: '202425000109',fg_code:'830-00507',orderName:'202425000108-3',assignedDate:'21-02-2024',batchQuantity:'120', actualStatus: 'In Progress' },
+    {productionNo: '202425000110',fg_code:'830-00507',orderName:'202425000108-3',assignedDate:'21-02-2024',batchQuantity:'80', actualStatus: 'In Progress' },
+    {productionNo: '202425000111',fg_code:'830-00507',orderName:'202425000108-3',assignedDate:'21-02-2024',batchQuantity:'100', actualStatus: 'In Progress' },
+
+  
 ]
 function ProductionLoading() {
 
@@ -35,17 +34,29 @@ function ProductionLoading() {
         );
         setFilteredData(filtered);   
       };
+      const getStatusColor = (status) => {
+        switch (status) {
+          case 'Completed':
+            return 'text-success';
+          case 'In Progress':
+            return 'text-primary';
+          case 'Pending':
+            return 'text-danger';
+          default:
+            return 'text-secondary';
+        }
+      };
   return (
       <div>
-          <div className='d-flex justify-content-between mb-4'>
+          <div className='d-flex justify-content-between'>
 
               <div className="d-flex" style={{ width: "100%" }} >
                   <div className="p-2">
-                      <h6 className="process m-0 ">List of Process Flow</h6>
+                      <h6 className="process m-0 ">List of Production</h6>
                   </div>
                   <div className="form-group has-search  " style={{ width: "60%" }} >
                       <span className="fa fa-search form-control-feedback mt-1"></span>
-                      <input type="text" className="form-control m-0 " style={{height:'90%'}} placeholder="Search" onChange={handleSearchChange} />
+                      <input type="text" className="form-control m-0 " style={{height:'100%'}} placeholder="Search" onChange={handleSearchChange} />
                   </div>
                   <div>
                       <button className="btn btn-primary ms-3" onClick={handleSubmit}>SUBMIT</button>
@@ -59,6 +70,46 @@ function ProductionLoading() {
                   <button className='btn btn-secondary'>Inactivate</button>
               </div>
           </div>
+
+          <div className='my-5'>
+          <table className="table table-bordered table-hover">
+            <thead className="table-secondary batch-table">
+              <tr>
+                <th scope="col" className='text-center '>Sno</th>
+                <th scope="col" className='text-center col-2'>Production No</th>
+                <th scope="col" className='text-center col-1'>FG Code</th>
+                <th scope="col" className='text-center col-2'>Order Name</th>
+                <th scope="col" className='text-center col-2'>Asigned Date</th>
+                <th scope="col" className='text-center col-2'>Batch Quantity</th>
+                <th scope="col" className='text-center col-1'>Actual Status</th>
+                <th scope="col" className='text-center col-1'>Action</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              {filteredData.map((item, index) => (
+                <tr key={index}>
+                  <td className=''>
+                    <div className='h-100 text-center  my-1  '>{index + 1}
+                    </div></td>
+                  <td className=''>
+                    <div className='h-100 text-center my-1 '>{item.productionNo}
+                    </div></td>
+                  <td className='text-center  my-1'>{item.fg_code}</td>
+                  <td className={`  text-center text-uppercase fw-small  my-1`}>{item.orderName}</td>
+                  <td className={` text-center  my-1`}>{item.assignedDate}</td>
+                  <td className='text-center  my-1'>{item.batchQuantity}</td>
+                  <td className={`${getStatusColor(item.actualStatus)} fw-bold text-center  my-1`}>{item.actualStatus}</td>
+                  <td>
+                    <button className='btn border-0 text-center w-100'  ><i className="fa-regular fa-pen-to-square"></i> </button>
+                  </td>
+                </tr>
+              ))}
+
+            </tbody>
+          </table>
+        </div>
+
       </div>
   )
 }
