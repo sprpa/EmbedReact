@@ -246,7 +246,7 @@ function Batch() {
     
     <div>
       <div className='container-fluid'>
-        <div className="d-flex justify-content-between  " style={{ width: "100%" }} >
+        {/* <div className="d-flex justify-content-between  " style={{ width: "100%" }} >
           <div className="p-2">
             <h6 className="process m-0 ">List of Process Flow</h6>
           </div>
@@ -259,9 +259,9 @@ function Batch() {
             <button className="btn btn-primary mx-3"><i className="fa-solid fa-gear"></i></button>
             <button className='btn bg-success border-0 text-white' onClick={() => handleOpenModal(modalData, modalTitle)} disabled={isLoading || !Object.keys(modalData).length}> <i className="fa-solid fa-plus me-3"></i> Create Batch</button>
           </div>
-        </div>
+        </div> */}
 
-        <div className='my-5'>
+        {/* <div className='my-5'>
           <table className="table table-bordered table-hover">
             <thead className="table-secondary batch-table">
               <tr>
@@ -302,7 +302,7 @@ function Batch() {
 
             </tbody>
           </table>
-        </div>
+        </div> */}
       </div>
     </div>
   )

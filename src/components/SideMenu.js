@@ -16,6 +16,7 @@ import Batch from "./Manage Operations/Batch";
 import Dropdown from 'react-bootstrap/Dropdown';
 import Side from "./Side";
 import dashicon from '../assets/menuicons/dashboard.svg'
+import ProductionLoading from "./Manage Operations/ProductionLoading";
 
 // const accordionItems = [
 //   {
@@ -511,6 +512,8 @@ console.log("side menu")
                     <CustomTable data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />
                   </div>
                   } />
+
+                  <Route path="/Schedule/ScheduleView" element={<ProductionLoading data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />} />
                 </Routes>
               </div>
 

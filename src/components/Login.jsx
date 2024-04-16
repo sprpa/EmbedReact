@@ -57,16 +57,37 @@ const navigate =useNavigate();
       console.error('Error submitting form:', error);
     }
   };
+  const storeTokenWithExpiration = (token) => {
+    // Set the token in local storage
+    localStorage.setItem('token', token);
 
+    // Set a timeout to remove the token after one minute
+    setTimeout(() => {
+        localStorage.removeItem('token');
+    }, 60000); // 60000 milliseconds = 1 minute
+};
   const handleSubmitLogin = async (e) => {
     e.preventDefault();
     try {
         // Make a GET request to the authentication endpoint
-        const response = await axios.get(`https://eis-website-backend.onrender.com/authenticate?username=${userloginInput}&password=${passwordloginInput}`);
+        const response = await axios.get(`http://127.0.0.1:5000/authenticate?username=${userloginInput}&password=${passwordloginInput}`);
         if (response.data.success === true) {
             // Display success message
             toast.success("Login Successful...");
             setIsLoggedIn(true);
+            console.log(response.data)
+    
+            // Retrieve token from response
+            const token = response.data.token;
+
+            // Store the token in local storage
+            storeTokenWithExpiration(token);
+    
+            // Decode the token to access its payload (if needed)
+         
+            // Log the decoded token to the console
+    
+            // Navigate to the dashboard or perform any other actions
             navigate("/dashboard");
         } else {
             // Display error message
