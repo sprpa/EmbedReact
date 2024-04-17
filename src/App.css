@@ -508,3 +508,9 @@ color: red;
 .batch-table th{
   font-size: 12px !important;
 }
+
+.fa-eye:hover{
+  color: #00923F;
+  font-size: 13px;
+  font-weight: bold;
+}

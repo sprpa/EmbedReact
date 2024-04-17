@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, Routes } from 'react-router-dom';
-import {useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import '../index.css'
 import activeLogo from "../assets/logo/EIS_Main.png";
@@ -18,6 +18,8 @@ import Side from "./Side";
 import dashicon from '../assets/menuicons/dashboard.svg'
 import ProductionLoading from "./Manage Operations/ProductionLoading";
 import BOM from "./Manage Operations/BOM";
+import AssignPrpcessFlow from "./Manage Operations/AssignProcessFlow";
+
 
 // const accordionItems = [
 //   {
@@ -145,7 +147,7 @@ import BOM from "./Manage Operations/BOM";
 //       },
 //     ],
 //   },
- 
+
 // ];
 
 // const accordionConfig=[
@@ -155,11 +157,11 @@ import BOM from "./Manage Operations/BOM";
 //     subItems: [
 //       {
 //         title: 'Batch',
-       
+
 //       },
 //       {
 //         title: 'Process Flow',
-        
+
 //       },
 //     ],
 //   },
@@ -271,7 +273,7 @@ import BOM from "./Manage Operations/BOM";
 //       },
 //     ],
 //   },
-  
+
 // ];
 
 
@@ -280,51 +282,51 @@ const SideMenu = () => {
   const [inactive, setInactive] = useState(true);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const navigate =useNavigate();
+  const navigate = useNavigate();
 
- 
-const [tableData, setTableData] = useState([
-  { processName: 'Test505', itemCode: 'A123', productionNo: '123', productionStatus: 'In Progress' },
-  { processName: 'Test501', itemCode: 'B456', productionNo: '456', productionStatus: 'Completed' },
-  { processName: 'Test506', itemCode: 'C789', productionNo: '789', productionStatus: 'Pending' },
-  { processName: '830-00507', itemCode: 'C790', productionNo: '789', productionStatus: 'Completed' },
-  { processName: 'BRD7805', itemCode: 'C791', productionNo: '789', productionStatus: 'Pending' },
-  { processName: 'BRD7806', itemCode: 'C792', productionNo: '789', productionStatus: 'Completed' },
-  { processName: 'WMS_EVK_Board', itemCode: 'C793', productionNo: '789', productionStatus: 'In Progress' }
-]);
 
-const updateTableData = (newData) => {
-  setTableData(newData);
-};
+  const [tableData, setTableData] = useState([
+    { processName: 'Test505', itemCode: 'A123', productionNo: '123', productionStatus: 'In Progress' },
+    { processName: 'Test501', itemCode: 'B456', productionNo: '456', productionStatus: 'Completed' },
+    { processName: 'Test506', itemCode: 'C789', productionNo: '789', productionStatus: 'Pending' },
+    { processName: '830-00507', itemCode: 'C790', productionNo: '789', productionStatus: 'Completed' },
+    { processName: 'BRD7805', itemCode: 'C791', productionNo: '789', productionStatus: 'Pending' },
+    { processName: 'BRD7806', itemCode: 'C792', productionNo: '789', productionStatus: 'Completed' },
+    { processName: 'WMS_EVK_Board', itemCode: 'C793', productionNo: '789', productionStatus: 'In Progress' }
+  ]);
 
-const handleDelete = (index) => {
-  const newData = [...tableData];
-  newData.splice(index, 1);
-  setTableData(newData);
-};
+  const updateTableData = (newData) => {
+    setTableData(newData);
+  };
 
-const Logout=()=>{
-  navigate("/");
-  window.location.reload();
-}
+  const handleDelete = (index) => {
+    const newData = [...tableData];
+    newData.splice(index, 1);
+    setTableData(newData);
+  };
+
+  const Logout = () => {
+    navigate("/");
+    window.location.reload();
+  }
 
   const logoSrc = inactive ? inactiveLogo : activeLogo;
-console.log("side menu")
+  console.log("side menu")
   return (
-    <div className={`d-flex side-menu-wrapper ${inactive ? "inactive" : ""} h-100` }>
+    <div className={`d-flex side-menu-wrapper ${inactive ? "inactive" : ""} h-100`}>
       <div className={`side-menu ${inactive ? "inactive" : ""} d-none d-lg-block `}>
         <div className="top-section">
           <div style={{ padding: "0px" }} className="d-flex justify-content-center">
             <div className="logo w-100">
               {inactive ? (
-                <div className="  d-flex justify-content-center">                
+                <div className="  d-flex justify-content-center">
                   <img className="shortlogo w-100" src={inactiveLogo} alt="webscript" />
                 </div>
               ) : (
                 <img className="w-100 " src={activeLogo} alt="webscript" />
               )}
             </div>
-          
+
           </div>
           <div className="main-menu  py-2">
 
@@ -469,14 +471,14 @@ console.log("side menu")
                           login as admin
                         </p>
                       </div>
-                     
+
                       <Dropdown>
                         <Dropdown.Toggle className="p-0 m-0 bg-transparent border-0" variant="success" id="dropdown-basic">
                           <i className="fa-solid fa-user-circle fs-1"></i>
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu className="mt-3">
-                          <Dropdown.Item  onClick={Logout}>Logout</Dropdown.Item>
+                          <Dropdown.Item onClick={Logout}>Logout</Dropdown.Item>
 
                         </Dropdown.Menu>
                       </Dropdown>
@@ -504,23 +506,26 @@ console.log("side menu")
                 <Routes>
                   <Route path="/dashboard" element={<div className="border-1 border-secondary"><Dashboard /></div>} />
 
+
                   <Route path="/Batch/BatchView" element={<div className="border-1 border-secondary"> <Batch /></div>} />
                   <Route path="/Routing/RoutingView" element={<CustomTable data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />} />
                   <Route path="/BomView/BomView" element={<BOM data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />} />
+
+                  <Route path="/Routing/RoutingConfigView" element={<AssignPrpcessFlow data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />} />
 
                   <Route path="/Schedule/ScheduleView" element={<ProductionLoading data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />} />
                 </Routes>
               </div>
 
 
-              
+
             </div>
 
           </div>
         </div>
-       
+
       </div>
-      
+
     </div>
   );
 };

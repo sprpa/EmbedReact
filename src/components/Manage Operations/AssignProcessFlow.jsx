@@ -28,7 +28,7 @@ const { "S. No": snoList, "Process Name": processNames, "Status": statuses } = d
     }
   }
 
-const CustomTable = ({ data, onDelete, onUpdateData }) => {
+const AssignPrpcessFlow = ({ data, onDelete, onUpdateData }) => {
   const [editableIndex, setEditableIndex] = useState("");
   const [editedData, setEditedData] = useState({});
   const [searchString, setSearchString] = useState('');
@@ -39,7 +39,6 @@ const CustomTable = ({ data, onDelete, onUpdateData }) => {
   const [deleteConfirmationShow, setDeleteConfirmationShow] = useState({});
   const [show, setShow] = useState(false);
   const [modalCreateShow, setModalCreateShow] = React.useState(false);
-  const [modalActiveShow, setModalActiveShow] = React.useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -116,14 +115,13 @@ console.log("Hello")
                   <h6 className="process m-0 ">List of Process Flow</h6>
                 </div>
                 <div className="form-group has-search  " style={{ width: "60%" }} >
-                  <span className="fa fa-search form-control-feedback mt-1"></span>
-                  <input type="text" className="form-control m-0 " style={{ height: '100%' }} placeholder="Search" onChange={handleSearchChange} />
-                </div>
+              <span className="fa fa-search form-control-feedback mt-1"></span>
+              <input type="text" className="form-control m-0 " style={{ height: '100%' }} placeholder="Search" onChange={handleSearchChange} />
+            </div>
                 <div>
                   <button className="btn btn-primary ms-3" onClick={handleSubmit}>SUBMIT</button>
-                  <button className="btn btn-primary mx-3"><i className="fa-solid fa-gear"></i></button>
                 </div>
-                
+                <button className="btn btn-primary mx-3"><i className="fa-solid fa-gear"></i></button>
               </div>
               <div className='d-flex gap-3 justify-content-end' style={{width:"30%"}}>
                 <button className='btn btn-success d-flex align-items-center'onClick={() => setModalCreateShow(true)}><i className="fa-solid fa-plus me-1"></i> <span>Create Flow</span> </button>
@@ -131,15 +129,9 @@ console.log("Hello")
                   show={modalCreateShow}
                   onHide={() => setModalCreateShow(false)}
                 />
-                <button className='btn btn-secondary' onClick={() => setModalActiveShow(true)}>Inactivate</button>
-                <MyVerticallyCenteredModalInactive
-                  show={modalActiveShow}
-                  onHide={() => setModalActiveShow(false)}
-                />
+                <button className='btn btn-secondary'>Inactivate</button>
               </div>
             </div>
-
-            <hr/>
 
             <table className="table table-bordered table-hover">
               <thead className="table-secondary batch-table">
@@ -488,52 +480,4 @@ function MyVerticallyCenteredModalcreate(props) {
   );
 }
 
-function MyVerticallyCenteredModalInactive(props) {
-  return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton className='border-0 rounded-0' style={{backgroundColor:'#00923F'}}>
-        <Modal.Title id="contained-modal-title-vcenter" className='text-white viewProcess'>
-          Process Inactive
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <div className='container'>
-          
-          <table className='table'>
-            <thead>
-              <tr>
-                <th className='col-1' style={{border: "1px solid #b9b9b9cb", textAlign: 'center'}}>S.No</th>
-                <th  className='col-4' style={{border: "1px solid #b9b9b9cb", textAlign: 'center'}}>Process Name</th>
-                <th  className='col-4' style={{border: "1px solid #b9b9b9cb", textAlign: 'center'}}>Item Code</th>
-                <th  className='col-3' style={{border: "1px solid #b9b9b9cb", textAlign: 'center'}}>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <td className='py-2' style={{border: "1px solid #b9b9b9cb", textAlign: 'center'}}>.</td>
-              <td style={{border: "1px solid #b9b9b9cb", textAlign: 'center'}}></td>
-              <td style={{border: "1px solid #b9b9b9cb", textAlign: 'center'}}></td>
-              <td style={{border: "1px solid #b9b9b9cb", textAlign: 'center'}}></td>
-            </tbody>
-            <tbody>
-              <td  className='py-2 'colspan="4" style={{border: "1px solid #b9b9b9cb", textAlign: 'center',fontSize:'10px',color:'grey'}}> No Data Display</td>
-
-            </tbody>
-          </table>
-          <div className='d-flex justify-content-center py-3'>
-            <div className='d-flex gap-3'>
-              <button className='btn btn-success px-5 py-1'>OK</button>
-              <button className='btn  px-4 py-1' style={{border:'1px solid black'}} onClick={props.onHide}>Cancel </button>
-            </div>
-          </div>
-        </div>
-        
-      </Modal.Body>
-    </Modal>
-  );
-}
-export default CustomTable;
+export default AssignPrpcessFlow;
