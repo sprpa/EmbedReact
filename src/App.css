@@ -340,7 +340,7 @@ body{
 
 .modal-backdrop {
   --bs-backdrop-zindex: 1050;
-  --bs-backdrop-bg: #00000021 !important;
+  --bs-backdrop-bg: #00000048 !important;
   --bs-backdrop-opacity: 0.5 !important;
   position: fixed;
   top: 0;

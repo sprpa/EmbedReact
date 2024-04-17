@@ -37,6 +37,10 @@ const CustomTable = ({ data, onDelete, onUpdateData }) => {
   const [modalData, setModalData] = useState({ processName: '', productionNo: '',itemCode:''});
   const [deletingIndex, setDeletingIndex] = useState(-1);
   const [deleteConfirmationShow, setDeleteConfirmationShow] = useState({});
+  const [show, setShow] = useState(false);
+  const [modalCreateShow, setModalCreateShow] = React.useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleDelete = (index) => {
     setDeletingIndex(index);
@@ -120,7 +124,11 @@ console.log("Hello")
                 <button className="btn btn-primary mx-3"><i className="fa-solid fa-gear"></i></button>
               </div>
               <div className='d-flex gap-3 justify-content-end' style={{width:"30%"}}>
-                <button className='btn btn-success d-flex align-items-center'><i className="fa-solid fa-plus me-1"></i> <span>Create Flow</span> </button>
+                <button className='btn btn-success d-flex align-items-center'onClick={() => setModalCreateShow(true)}><i className="fa-solid fa-plus me-1"></i> <span>Create Flow</span> </button>
+                <MyVerticallyCenteredModalcreate
+                  show={modalCreateShow}
+                  onHide={() => setModalCreateShow(false)}
+                />
                 <button className='btn btn-secondary'>Inactivate</button>
               </div>
             </div>
@@ -192,6 +200,9 @@ console.log("Hello")
                             <Button variant="danger" onClick={() => handleDeleteConfirmed()}>Delete</Button>
                           </Modal.Footer>
                         </Modal>
+
+
+                        
 
                       </div>
                     </td>
@@ -347,7 +358,7 @@ function MyVerticallyCenteredModal({ show, onHide, processName, productionNo,ite
             <h6 className='m-0 text-success'>Completed Process</h6>
           </div>
           <div className='d-flex gap-2 align-items-center'>
-            <i class="fa-solid fa-check fw-bold"></i>
+            <i className="fa-solid fa-check fw-bold"></i>
             <h6 className='m-0 fw-bold'>Ongoing Process </h6>
           </div>
           <div className='d-flex gap-2 align-items-center'>
@@ -361,6 +372,112 @@ function MyVerticallyCenteredModal({ show, onHide, processName, productionNo,ite
     </Modal>
   );
 
+}
+
+
+function MyVerticallyCenteredModalcreate(props) {
+  return (
+    <Modal
+      {...props}
+      size="xl"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton className='border-0 rounded-0' style={{backgroundColor:'#00923F'}}>
+        <Modal.Title id="contained-modal-title-vcenter" className='text-white viewProcess'>
+          Create Flow
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <div className='container'>
+          <div className='d-flex justify-content-evenly gap-3'>
+            <div className="w-100">
+              <label for="validationCustom1" className="form-label fw-bold">Item Code</label>
+              <select className="form-select form-control h-75" id="validationCustom1" placeholder="Choose Item Code.." required>
+                <option selected disabled value="">Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+            <div className="w-100">
+              <label for="validationCustom2" className="form-label fw-bold">Process Name</label>
+              <input className="form-control m-0 h-75"  placeholder="Enter Process Name" required />
+                
+            </div>
+            <div className="w-100 ">
+              <label for="validationCustom3" className="form-label fw-bold">Model Type</label>
+              <select className="form-select h-75" id="validationCustom3" placeholder="Select Model Type" required>
+                <option selected disabled value="">Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+
+          </div>
+          <div className='row py-4'>
+            <div className="col-4">
+                <label for="validationCustom7" className="form-label fw-bold">Process Current Opration</label>
+                <select className="form-select form-control h-75" id="validationCustom7" placeholder="Choose Process Current Opration" required>
+                  <option selected disabled value="">Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>
+              <div className="col-2">
+                <label for="validationCustom4" className="form-label fw-bold">No of Units in Batch</label>
+                <select className="form-select form-control h-75" id="validationCustom4" placeholder="Choose UIB" required>
+                  <option selected disabled value="">Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>
+              <div className="col-2">
+                <label for="validationCustom5" className="form-label fw-bold">No. of PPID</label>
+                <select className="form-select form-control h-75" id="validationCustom5" placeholder="Select PPID" required>
+                  <option selected disabled value="">Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>
+              <div className="col-4">
+                <label for="validationCustom6" className="form-label fw-bold">Process Status</label>
+                <select className="form-select form-control h-75" id="validationCustom6" placeholder="Select Process Status " required>
+                  <option   value="">Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>
+          </div>
+          <div className='d-flex  justify-content-center py-2 ' >
+            <button type="submit" className="btn btn-primary border-0" style={{backgroundColor:'#214B8A'}}>+ Add New Row</button>
+          </div>
+          <hr />
+
+          <table className='table'>
+            <thead>
+              <tr>
+                <th style={{border: "1px solid #b9b9b9cb", textAlign: 'center'}}>AQL</th>
+                <th style={{border: "1px solid #b9b9b9cb", textAlign: 'center'}}>Process Current Operations</th>
+                <th style={{border: "1px solid #b9b9b9cb", textAlign: 'center'}}>No. of Units in Batch</th>
+                <th style={{border: "1px solid #b9b9b9cb", textAlign: 'center'}}>No. of PPID</th>
+                <th style={{border: "1px solid #b9b9b9cb", textAlign: 'center'}}>Process Current Operations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <td className='p-3' style={{border: "1px solid #b9b9b9cb", textAlign: 'center'}}></td>
+              <td style={{border: "1px solid #b9b9b9cb", textAlign: 'center'}}></td>
+              <td style={{border: "1px solid #b9b9b9cb", textAlign: 'center'}}></td>
+              <td style={{border: "1px solid #b9b9b9cb", textAlign: 'center'}}></td>
+              <td style={{border: "1px solid #b9b9b9cb", textAlign: 'center'}}></td>
+            
+            </tbody>
+          </table>
+          <div className='d-flex justify-content-center py-3'>
+            <div className='d-flex gap-3'>
+              <button className='btn btn-success px-5 py-1'>Save</button>
+              <button className='btn  px-5 py-1' style={{border:'1px solid black'}} onClick={props.onHide}>Cancel </button>
+            </div>
+          </div>
+
+        </div>
+        
+      </Modal.Body>
+    </Modal>
+  );
 }
 
 export default CustomTable;
