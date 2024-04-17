@@ -45,7 +45,7 @@ function Batch() {
 
   
   const fetchData = async (selectedIndex) => {
-    console.log("fetchData");
+    console.log("fetchData"); 
     try {
       const response = await axios.get('http://localhost:8000/batch');
       setData(response.data);
@@ -241,6 +241,8 @@ function Batch() {
     );
   }
 
+
+  console.log("Model render")
   return (
     
     <div>

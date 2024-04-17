@@ -28,7 +28,7 @@ const { "S. No": snoList, "Process Name": processNames, "Status": statuses } = d
     }
   }
 
-const CustomTable = ({ data, onDelete, onUpdateData }) => {
+const AssignPrpcessFlow = ({ data, onDelete, onUpdateData }) => {
   const [editableIndex, setEditableIndex] = useState("");
   const [editedData, setEditedData] = useState({});
   const [searchString, setSearchString] = useState('');
@@ -115,9 +115,9 @@ console.log("Hello")
                   <h6 className="process m-0 ">List of Process Flow</h6>
                 </div>
                 <div className="form-group has-search  " style={{ width: "60%" }} >
-                  <span className="fa fa-search form-control-feedback mt-1"></span>
-                  <input type="text" className="form-control m-0 " style={{ height: '100%' }} placeholder="Search" onChange={handleSearchChange} />
-                </div>
+              <span className="fa fa-search form-control-feedback mt-1"></span>
+              <input type="text" className="form-control m-0 " style={{ height: '100%' }} placeholder="Search" onChange={handleSearchChange} />
+            </div>
                 <div>
                   <button className="btn btn-primary ms-3" onClick={handleSubmit}>SUBMIT</button>
                 </div>
@@ -132,8 +132,6 @@ console.log("Hello")
                 <button className='btn btn-secondary'>Inactivate</button>
               </div>
             </div>
-
-            <hr/>
 
             <table className="table table-bordered table-hover">
               <thead className="table-secondary batch-table">
@@ -482,4 +480,4 @@ function MyVerticallyCenteredModalcreate(props) {
   );
 }
 
-export default CustomTable;
+export default AssignPrpcessFlow;

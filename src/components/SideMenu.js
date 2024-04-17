@@ -17,6 +17,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Side from "./Side";
 import dashicon from '../assets/menuicons/dashboard.svg'
 import ProductionLoading from "./Manage Operations/ProductionLoading";
+import AssignPrpcessFlow from "./Manage Operations/AssignProcessFlow";
 
 // const accordionItems = [
 //   {
@@ -504,6 +505,8 @@ console.log("side menu")
                   <Route path="/dashboard" element={<div className="border-1 border-secondary">
                     <Dashboard />
                   </div>} />
+
+                <Route path="/Routing/RoutingConfigView" element={<AssignPrpcessFlow data={tableData} onDelete={handleDelete} onUpdateData={updateTableData}  />} />
 
                   <Route path="/Batch/BatchView" element={<div className="border-1 border-secondary">
                     <Batch />
