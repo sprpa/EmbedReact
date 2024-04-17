@@ -18,9 +18,8 @@ function Batch() {
   const testData = [];
 
 
-  const handleOpenModal = (data, title) => {
+  const handleOpenModal = (data) => {
     setModalData(data);
-    setModalTitle(title);
     setShowModal(true);
   };
 
@@ -57,7 +56,6 @@ function Batch() {
       console.log(response1.data);
       testData.push(response1.data[0]);
       setModalData(testData[0]);
-      setModalTitle('Production 1 Details');
       // Assuming your production numbers are unique
       setProductionNumbers(productionNumbers);
     } catch (error) {
@@ -86,7 +84,7 @@ function Batch() {
     testData.pop(0);
   };
 
-  const MyVerticallyCenteredModal= ({ show, handleClose, title, data }) => {
+  const MyVerticallyCenteredModal= ({ show, handleClose, data }) => {
     const halfDataLength = Math.ceil(Object.keys(data).length / 2);
     const firstHalfData = Object.entries(data).slice(1, halfDataLength);
     const secondHalfData = Object.entries(data).slice(halfDataLength);
@@ -133,78 +131,6 @@ function Batch() {
               </div>
               <div className='col-8'>
                 <h6>Product Details</h6>
-                {/* <div className='row'>
-                  <div className='col-6'>
-                    <table className='table '>
-                      <tbody className='border-1'>
-                        <tr className='border-1'>
-                          <td className='border-1'>Production No</td>
-                          <td className='border-1'>2202223000001</td>
-                        </tr>
-                        <tr className='border-1'>
-                          <td className='border-1'>Dock No</td>
-                          <td className='border-1'>DOC25614</td>
-                        </tr>
-                        <tr className='border-1'>
-                          <td className='border-1'>Product No</td>
-                          <td className='border-1'>11165487</td>
-                        </tr>
-                        <tr className='border-1'>
-                          <td className='border-1'>Customer Name</td>
-                          <td className='border-1'>Silicon Labs</td>
-                        </tr>
-                        <tr>
-                          <td className='border-1'>Product Order Date</td>
-                          <td className='border-1'>00/00/0000</td>
-                        </tr>
-                        <tr>
-                          <td className='border-1'>Product Order Status</td>
-                          <td className='border-1'>Batch Name</td>
-                        </tr>
-                        <tr>
-                          <td className='border-1'>Department</td>
-                          <td className='border-1'>XXXXX</td>
-                        </tr>
-                        
-                      </tbody>
-                    </table>
-                  </div>
-                  <div className='col-6'>
-                    <table className='table table-hover'>
-                      <tbody className='border-1'>
-                        <tr className='border-1'>
-                          <td className='border-1'>Location</td>
-                          <td className='border-1'>Singapore</td>
-                        </tr>
-                        <tr className='border-1'>
-                          <td className='border-1'>Product Item / Category</td>
-                          <td className='border-1'>XXXXXXXX</td>
-                        </tr>
-                        <tr className='border-1'>
-                          <td className='border-1'>Product Description</td>
-                          <td className='border-1'>xxxxxxxxxxx</td>
-                        </tr>
-                        <tr className='border-1'>
-                          <td className='border-1'>Start Date</td>
-                          <td className='border-1'>00/00/0000</td>
-                        </tr>
-                        <tr>
-                          <td className='border-1'>User</td>
-                          <td className='border-1'>xxxxxxxxxxx</td>
-                        </tr>
-                        <tr>
-                          <td className='border-1'>Planned Quantity</td>
-                          <td className='border-1'>30,000</td>
-                        </tr>
-                        <tr>
-                          <td className='border-1'>Remaining Quantity</td>
-                          <td className='border-1'>20,000</td>
-                        </tr>
-                        
-                      </tbody>
-                    </table>
-                  </div>
-                </div> */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                   <table className='table'>
                     <tbody className='border'>
@@ -241,6 +167,8 @@ function Batch() {
     );
   }
 
+
+  console.log('Render')
   return (
     
     <div>
@@ -262,7 +190,7 @@ function Batch() {
 
           </div>
           <div className='d-flex gap-3 justify-content-end' style={{ width: "30%" }}>
-          <button className='btn bg-success border-0 text-white' onClick={() => handleOpenModal(modalData, modalTitle)} disabled={isLoading || !Object.keys(modalData).length}> <i className="fa-solid fa-plus me-3"></i> Create Batch</button>
+          <button className='btn bg-success border-0 text-white' onClick={() => handleOpenModal(modalData)} disabled={isLoading || !Object.keys(modalData).length}> <i className="fa-solid fa-plus me-3"></i> Create Batch</button>
 
             
           </div>

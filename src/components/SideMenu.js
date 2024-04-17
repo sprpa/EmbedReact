@@ -17,6 +17,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Side from "./Side";
 import dashicon from '../assets/menuicons/dashboard.svg'
 import ProductionLoading from "./Manage Operations/ProductionLoading";
+import BOM from "./Manage Operations/BOM";
 
 // const accordionItems = [
 //   {
@@ -501,17 +502,11 @@ console.log("side menu")
             <div className="col-12">
               <div className={`container-fluid p-0 py-3`}>
                 <Routes>
-                  <Route path="/dashboard" element={<div className="border-1 border-secondary">
-                    <Dashboard />
-                  </div>} />
+                  <Route path="/dashboard" element={<div className="border-1 border-secondary"><Dashboard /></div>} />
 
-                  <Route path="/Batch/BatchView" element={<div className="border-1 border-secondary">
-                    <Batch />
-                  </div>} />
-                  <Route path="/Routing/RoutingView" element={
-                    <CustomTable data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />
-                
-                  } />
+                  <Route path="/Batch/BatchView" element={<div className="border-1 border-secondary"> <Batch /></div>} />
+                  <Route path="/Routing/RoutingView" element={<CustomTable data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />} />
+                  <Route path="/BomView/BomView" element={<BOM data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />} />
 
                   <Route path="/Schedule/ScheduleView" element={<ProductionLoading data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />} />
                 </Routes>
