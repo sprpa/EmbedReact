@@ -3,7 +3,7 @@ import React from 'react'
 function BOM() {
   return (
     <div>
-          <div className='d-flex justify-content-between'>
+          {/* <div className='d-flex justify-content-between'>
 
               <div className="d-flex" style={{ width: "100%" }} >
                   <div className="p-2">
@@ -24,7 +24,7 @@ function BOM() {
 
                   <button className='btn btn-secondary'>Inactivate</button>
               </div>
-          </div>
+          </div> */}
       
     </div>
   )

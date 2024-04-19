@@ -39,6 +39,7 @@ const AssignPrpcessFlow = ({ data, onDelete, onUpdateData }) => {
   const [deleteConfirmationShow, setDeleteConfirmationShow] = useState({});
   const [show, setShow] = useState(false);
   const [modalCreateShow, setModalCreateShow] = React.useState(false);
+  const [modalApproveShow, setModalApproveShow] = React.useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -107,7 +108,6 @@ console.log("Hello")
         <div className="col-12">
           <div className="table-responsive">
           
-
             <div className='d-flex justify-content-between mb-4'>
 
               <div className="d-flex  " style={{width:"100%"}} >
@@ -127,89 +127,119 @@ console.log("Hello")
                 <button className='btn btn-success d-flex align-items-center'onClick={() => setModalCreateShow(true)}><i className="fa-solid fa-plus me-1"></i> <span>Create Flow</span> </button>
                 <MyVerticallyCenteredModalcreate
                   show={modalCreateShow}
-                  onHide={() => setModalCreateShow(false)}
-                />
+                  onHide={() => setModalCreateShow(false)}/>
                 <button className='btn btn-secondary'>Inactivate</button>
               </div>
             </div>
 
-            <table className="table table-bordered table-hover">
-              <thead className="table-secondary batch-table">
-                <tr>
-                  <th scope="col" className='text-center col-1'>Sno</th>
-                  <th scope="col" className='text-center col-2'>Process Name</th>
-                  <th scope="col" className='text-center col-2'>Item Code</th>
-                  <th scope="col" className='text-center col-2'>Production No</th>
-                  <th scope="col" className='text-center col-2'>Production Status</th>
-                  <th scope="col" className='text-center col-2'>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredData.map((item, index) => (
-                  <tr key={index}>
-                    <td className='text-center'>{index + 1}</td>
-                    <td className='text-center'>
-                      {editableIndex === index ?
-                        <input type="text" className='m-0' style={{ height: '30px', width: '100%' }} value={editedData.processName || item.processName } onChange={(e) => setEditedData({ ...editedData, processName: e.target.value })} />
-                        : item.processName}
-                    </td>
-                    <td className='text-center'>
-                      {editableIndex === index ?
-                        <input type="text" className='m-0' style={{ height: '30px', width: '100%' }} value={editedData.itemCode || item.itemCode} onChange={(e) => setEditedData({ ...editedData, itemCode: e.target.value })} />
-                        : item.itemCode}
-                    </td>
-                    <td className='text-center'>
-                      {editableIndex === index ?
-                        <input type="text" className='m-0' style={{ height: '30px', width: '100%' }} value={editedData.productionNo || item.productionNo} onChange={(e) => setEditedData({ ...editedData, productionNo: e.target.value })} />
-                        : item.productionNo}
-                    </td>
-                    <td className={`${getStatusColor(item.productionStatus)} fw-bold text-center`}>
-                      {editableIndex === index ?
-                        <input type="text" className='m-0' style={{ height: '30px', width: '100%' }} value={editedData.productionStatus || item.productionStatus} onChange={(e) => setEditedData({ ...editedData, productionStatus: e.target.value })} />
-                        : item.productionStatus}
-                    </td>
-                    <td >
-                      <div className='d-flex justify-content-between'>
+             <hr />
 
-                        <button className="btn border-0 " onClick={() => handleShowModal(item.processName, item.productionNo,item.itemCode)}>
-                          <i className="fa-regular fa-eye"></i>
-                        </button>
-                        <MyVerticallyCenteredModal
-                          show={modalShow}
-                          onHide={() => setModalShow(false)}
-                          processName={modalData.processName}
-                          productionNo={modalData.productionNo}
-                          itemCode={modalData.itemCode}
-                        />
+            <div className="container-fluid">
+                <div className="row p-0 mb-4">
+                    <div className="col-10">
+                        <div className="row">
+                            <div className="col-3 pe-0">
+                                <button className="btn rounded-0  w-100" style={{backgroundColor:'#EAFFE3',border:'1px solid #D9D9D9'}}>Approved Production Order</button>
+                            </div>
+                            
+                            <div className="col-3 p-0">
+                            <button className="btn rounded-0  w-100" style={{backgroundColor:'#EAFFE3',border:'1px solid #D9D9D9'}}>Production Order Waiting for Approval</button>
+                            </div>
+                            <div className="col-3 p-0">
+                            <button className="btn rounded-0  w-100" style={{backgroundColor:'#EAFFE3',border:'1px solid #D9D9D9'}}>Rejected Production Order</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-2">
+                    <button className="btn btn-primary rounded-0 w-100" style={{backgroundColor:'#00923F',border:'1px solid #D9D9D9'}}  onClick={() => setModalApproveShow(true)}>Assign Routing</button>
+                    <MyVerticallyCenteredModalApprove
+                  show={modalApproveShow}
+                  onHide={() => setModalApproveShow(false)}/>
+                    </div>
+                </div>
 
-                        {editableIndex === index ? (
-                          <button className="btn border-0" onClick={() => handleSave(index)}><i className="fa-regular fa-floppy-disk"></i></button>
-                        ) : (
-                          <button className="btn border-0" onClick={() => handleEdit(index, 'processName', item.processName)}><i className="fa-regular fa-pen-to-square"></i></button>
-                        )}
-                        <button className="btn border-0 "><i className="fa-solid fa-file-arrow-up"></i></button>
-                        <button className="btn border-0" onClick={() => handleDelete(index)}><i className="fa-solid fa-trash"></i></button>
-                        
-                        <Modal show={deleteConfirmationShow[index]} onHide={() => setDeleteConfirmationShow({ ...deleteConfirmationShow, [index]: false })} centered>
-                          <Modal.Header closeButton className='border-0 rounded-0' style={{backgroundColor:'#00923F'}}>
-                            <Modal.Title className='text-white viewProcess'>Delete Confirmation</Modal.Title>
-                          </Modal.Header>
-                          <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
-                          <Modal.Footer>
-                            <Button variant="secondary" onClick={() => setDeleteConfirmationShow({ ...deleteConfirmationShow, [index]: false })}>Cancel</Button>
-                            <Button variant="danger" onClick={() => handleDeleteConfirmed()}>Delete</Button>
-                          </Modal.Footer>
-                        </Modal>
+                <table className="table table-bordered table-hover">
+                    <thead className="table-secondary batch-table">
+                        <tr>
+                            <th scope="col" className='text-center col-1'>Sno</th>
+                            <th scope="col" className='text-center col-2'>Process Name</th>
+                            <th scope="col" className='text-center col-2'>Item Code</th>
+                            <th scope="col" className='text-center col-2'>Production No</th>
+                            <th scope="col" className='text-center col-2'>Production Status</th>
+                            <th scope="col" className='text-center col-2'>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {filteredData.map((item, index) => (
+                            <tr key={index}>
+                                <td className='text-center'>{index + 1}</td>
+                                <td className='text-center'>
+                                    {editableIndex === index ?
+                                        <input type="text" className='m-0' style={{ height: '30px', width: '100%' }} value={editedData.processName || item.processName} onChange={(e) => setEditedData({ ...editedData, processName: e.target.value })} />
+                                        : item.processName}
+                                </td>
+                                <td className='text-center'>
+                                    {editableIndex === index ?
+                                        <input type="text" className='m-0' style={{ height: '30px', width: '100%' }} value={editedData.itemCode || item.itemCode} onChange={(e) => setEditedData({ ...editedData, itemCode: e.target.value })} />
+                                        : item.itemCode}
+                                </td>
+                                <td className='text-center'>
+                                    {editableIndex === index ?
+                                        <input type="text" className='m-0' style={{ height: '30px', width: '100%' }} value={editedData.productionNo || item.productionNo} onChange={(e) => setEditedData({ ...editedData, productionNo: e.target.value })} />
+                                        : item.productionNo}
+                                </td>
+                                <td className={`${getStatusColor(item.productionStatus)} fw-bold text-center`}>
+                                    {editableIndex === index ?
+                                        <input type="text" className='m-0' style={{ height: '30px', width: '100%' }} value={editedData.productionStatus || item.productionStatus} onChange={(e) => setEditedData({ ...editedData, productionStatus: e.target.value })} />
+                                        : item.productionStatus}
+                                </td>
+                                <td >
+                                    <div className='d-flex justify-content-between'>
+
+                                        <button className="btn border-0 " onClick={() => handleShowModal(item.processName, item.productionNo, item.itemCode)}>
+                                            <i className="fa-regular fa-eye"></i>
+                                        </button>
+                                        <MyVerticallyCenteredModal
+                                            show={modalShow}
+                                            onHide={() => setModalShow(false)}
+                                            processName={modalData.processName}
+                                            productionNo={modalData.productionNo}
+                                            itemCode={modalData.itemCode}
+                                        />
+
+                                        {editableIndex === index ? (
+                                            <button className="btn border-0" onClick={() => handleSave(index)}><i className="fa-regular fa-floppy-disk"></i></button>
+                                        ) : (
+                                            <button className="btn border-0" onClick={() => handleEdit(index, 'processName', item.processName)}><i className="fa-regular fa-pen-to-square"></i></button>
+                                        )}
+                                        <button className="btn border-0 "><i className="fa-solid fa-file-arrow-up"></i></button>
+                                        <button className="btn border-0" onClick={() => handleDelete(index)}><i className="fa-solid fa-trash"></i></button>
+
+                                        <Modal show={deleteConfirmationShow[index]} onHide={() => setDeleteConfirmationShow({ ...deleteConfirmationShow, [index]: false })} centered>
+                                            <Modal.Header closeButton className='border-0 rounded-0' style={{ backgroundColor: '#00923F' }}>
+                                                <Modal.Title className='text-white viewProcess'>Delete Confirmation</Modal.Title>
+                                            </Modal.Header>
+                                            <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
+                                            <Modal.Footer>
+                                                <Button variant="secondary" onClick={() => setDeleteConfirmationShow({ ...deleteConfirmationShow, [index]: false })}>Cancel</Button>
+                                                <Button variant="danger" onClick={() => handleDeleteConfirmed()}>Delete</Button>
+                                            </Modal.Footer>
+                                        </Modal>
 
 
-                        
 
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+
+
+            </div>
+
+            
           </div>
         </div>
       </div>
@@ -479,5 +509,54 @@ function MyVerticallyCenteredModalcreate(props) {
     </Modal>
   );
 }
+function MyVerticallyCenteredModalApprove(props) {
+    return (
+      <Modal
+        {...props}
+        size="md"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton className='border-0 rounded-0' style={{backgroundColor:'#00923F'}}>
+          <Modal.Title id="contained-modal-title-vcenter" className='text-white fs-6'>
+            Assign Process to Production Order
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className='container'>
+          <div className=''>
+            <div className="w-100 mb-3">
+              <label for="validationCustom1" className="form-label m-1 fw-bold">Production Code</label>
+              <select className="form-select  form-control h-75" id="validationCustom1" placeholder="Select Production Code" required>
+                <option selected disabled value="">Select Production Code.</option>
+                <option>...</option>
+              </select>
+            </div>
+            <div className="w-100 mb-3">
+              <label for="validationCustom2" className="form-label m-1 fw-bold">Item Code</label>
+              <input className="form-control h-75"  placeholder="Enter Item Code" required />
+                
+            </div>
+            <div className="w-100 mb-3">
+              <label for="validationCustom3" className="form-label m-1 fw-bold">Routing Process</label>
+              <select className="form-select m-0 h-75" id="validationCustom3" placeholder="Select Routing Process" required>
+                <option selected disabled value="">Select Routing Process</option>
+                <option>...</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+          <center>
+            <div className='d-flex justify-content-center gap-4'>
+            <button className='btn btn-success rounded-3 my-3 px-5 py-1 '>Save</button>
+            <button className='btn btn-white border-secondary shadow rounded-3 my-3 px-5 py-1 '>Cancel</button>
+            </div>
+          </center>
+        
+        </Modal.Body>
+      </Modal>
+    );
+  }
 
 export default AssignPrpcessFlow;
