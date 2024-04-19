@@ -1,0 +1,15 @@
+.userlist-button{
+    background-color: #EAFFE3;
+    border : 1px solid #D9D9D9;
+    width: 137px
+  }
+  .addnew{
+     background-color: #00923F;
+     border: 1px solid #D9D9D9;
+    width: 137px;
+    color: white !important;
+  }
+  /* .userlist-button:hover{
+    background-color:  #00923F;
+    color: white !important;
+  } */

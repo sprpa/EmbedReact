@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import Tooltip from '@mui/material/Tooltip';
-import IconButton from '@mui/material/IconButton';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+// import Tooltip from '@mui/material/Tooltip';
+
 
 
 
@@ -184,15 +183,15 @@ console.log("Hello")
                     <td >
                       <div className='d-flex justify-content-between'>
 
-                        {/* <button className="btn border-0 " onClick={() => handleShowModal(item.processName, item.productionNo,item.itemCode)}>
+                        <button className="btn border-0 " onClick={() => handleShowModal(item.processName, item.productionNo,item.itemCode)}>
                           <i className="fa-regular fa-eye"></i>
-                        </button> */}
+                        </button>
 
-                        <Tooltip title="View" placement="bottom">
+                        {/* <Tooltip title="View" placement="bottom">
                             <button className="btn border-0 " onClick={() => handleShowModal(item.processName, item.productionNo,item.itemCode)}>
                               <i className="fa-regular fa-eye"></i>
                             </button> 
-                        </Tooltip>
+                        </Tooltip> */}
 
                         <MyVerticallyCenteredModal
                           show={modalShow}

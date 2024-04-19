@@ -19,6 +19,7 @@ import dashicon from '../assets/menuicons/dashboard.svg'
 import ProductionLoading from "./Manage Operations/ProductionLoading";
 import BOM from "./Manage Operations/BOM";
 import AssignPrpcessFlow from "./Manage Operations/AssignProcessFlow";
+import Userlist from "./User Management/Userlist";
 
 
 // const accordionItems = [
@@ -515,6 +516,7 @@ const SideMenu = () => {
                   <Route path="/Routing/RoutingConfigView" element={<AssignPrpcessFlow data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />} />
 
                   <Route path="/Schedule/ScheduleView" element={<ProductionLoading data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />} />
+                  <Route path="/UserManagement/UserManagementAdd" element={<Userlist />} />
                 </Routes>
               </div>
 
