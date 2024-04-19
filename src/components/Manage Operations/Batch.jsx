@@ -231,11 +231,11 @@ function Batch() {
                   <td>
                     <button className='btn border-0 text-center w-100'  ><i className="fa-regular fa-pen-to-square"></i> </button>
 
-                    <MyVerticallyCenteredModal show={showModal} handleClose={handleCloseModal} title={modalTitle} data={modalData} />
+                   
                   </td>
                 </tr>
               ))}
-
+              <MyVerticallyCenteredModal show={showModal} handleClose={handleCloseModal} title={modalTitle} data={modalData} />
             </tbody>
           </table>
         </div>
