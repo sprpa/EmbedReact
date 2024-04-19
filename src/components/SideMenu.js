@@ -478,6 +478,7 @@ const SideMenu = () => {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu className="mt-3">
+                          <Dropdown.Item >Forgot Password</Dropdown.Item>
                           <Dropdown.Item onClick={Logout}>Logout</Dropdown.Item>
 
                         </Dropdown.Menu>

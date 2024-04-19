@@ -75,7 +75,6 @@ const Side = () => {
                     throw new Error('Failed to fetch menu data');
                 }
                 setReportItems(response.data.menu_items);
-                console.log(response.data.menu_items);
             } catch (error) {
                 console.error('Error fetching menu data:', error);
             }
@@ -241,7 +240,7 @@ const Side = () => {
                                 open={openKey === item.key}
                             >
                                 {OperationSubItems.map((subItem, subIndex) => (
-                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px' }} icon={<img src={subicon} alt="" />}>
+                                    <Menu.Item className="h-50" key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px',height:'20px' }} icon={<img src={subicon} alt="" />}>
                                         <Link to={subItem.Sub_url}>{subItem.Sub_Header}</Link>
                                     </Menu.Item>
                                 ))}
@@ -255,7 +254,7 @@ const Side = () => {
                                 open={openKey === item.key}
                             >
                                 {ProductionSubItems.map((subItem, subIndex) => (
-                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px' }} icon={<img src={subicon} alt="" />}>
+                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px' ,height:'20px' }} icon={<img src={subicon} alt="" />}>
                                         <Link to={subItem.Sub_url}>{subItem.Sub_Header}</Link>
                                     </Menu.Item>
                                 ))}
@@ -270,7 +269,7 @@ const Side = () => {
                                 open={openKey === item.key}
                             >
                                 {InventorySubItems.map((subItem, subIndex) => (
-                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px' }} icon={<img src={subicon} alt="" />}>
+                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px',height:'20px' }} icon={<img src={subicon} alt="" />}>
                                         <Link to={subItem.Sub_url}>{subItem.Sub_Header}</Link>
                                     </Menu.Item>
                                 ))}
@@ -285,7 +284,7 @@ const Side = () => {
                                 open={openKey === item.key}
                             >
                                 {PackingSubItems.map((subItem, subIndex) => (
-                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px' }} icon={<img src={subicon} alt="" />}>
+                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px',height:'20px' }} icon={<img src={subicon} alt="" />}>
                                         <Link to={subItem.Sub_url}>{subItem.Sub_Header}</Link>
                                     </Menu.Item>
                                 ))}
@@ -300,7 +299,7 @@ const Side = () => {
                                 open={openKey === item.key}
                             >
                                 {TestingSubItems.map((subItem, subIndex) => (
-                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px' }} icon={<img src={subicon} alt="" />}>
+                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px',height:'20px' }} icon={<img src={subicon} alt="" />}>
                                         <Link to={subItem.Sub_url}>{subItem.Sub_Header}</Link>
                                     </Menu.Item>
                                 ))}
@@ -315,7 +314,7 @@ const Side = () => {
                                 open={openKey === item.key}
                             >
                                 {QualitySubItems.map((subItem, subIndex) => (
-                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px' }} icon={<img src={subicon} alt="" />}>
+                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px',height:'20px' }} icon={<img src={subicon} alt="" />}>
                                         <Link to={subItem.Sub_url}>{subItem.Sub_Header}</Link>
                                     </Menu.Item>
                                 ))}
@@ -339,7 +338,7 @@ const Side = () => {
                                 <img src={manoper} alt="" />
                             }>
                                 {manageOperationsSubItems.map((subItem, subIndex) => (
-                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px' }} icon={<img src={subicon} alt="" />}>
+                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px',height:'20px' }} icon={<img src={subicon} alt="" />}>
                                         <Link to={subItem.Sub_url}>{subItem.Sub_Header}</Link>
                                     </Menu.Item>
                                 ))}
@@ -350,7 +349,7 @@ const Side = () => {
                                 <img src={master} alt="" />
                             }>
                                 {masterSubItems.map((subItem, subIndex) => (
-                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px' }} icon={<img src={subicon} alt="" />}>
+                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px',height:'20px' }} icon={<img src={subicon} alt="" />}>
                                         <Link to={subItem.Sub_url}>{subItem.Sub_Header}</Link>
                                     </Menu.Item>
                                 ))}
@@ -361,7 +360,7 @@ const Side = () => {
                                 <img src={apiicon} alt="" />
                             }>
                                 {apiSubItems.map((subItem, subIndex) => (
-                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px' }} icon={<img src={subicon} alt="" />}>
+                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px',height:'20px' }} icon={<img src={subicon} alt="" />}>
                                         <Link to={subItem.Sub_url}>{subItem.Sub_Header}</Link>
                                     </Menu.Item>
                                 ))}
@@ -373,7 +372,7 @@ const Side = () => {
                                     <img src={userman} alt="" />
                                 }>
                                 {usermanualSubItems.map((subItem, subIndex) => (
-                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px' }} icon={<img src={subicon} alt="" />}>
+                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px',height:'20px' }} icon={<img src={subicon} alt="" />}>
                                         <Link to={subItem.Sub_url}>{subItem.Sub_Header}</Link>
                                     </Menu.Item>
                                 ))}
@@ -385,7 +384,7 @@ const Side = () => {
                                     <img src={master} alt="" />
                                 }>
                                 {OrganizationSubItems.map((subItem, subIndex) => (
-                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px' }} icon={<img src={subicon} alt="" />}>
+                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px',height:'20px' }} icon={<img src={subicon} alt="" />}>
                                         <Link to={subItem.Sub_url}>{subItem.Sub_Header}</Link>
                                     </Menu.Item>
                                 ))}
@@ -410,7 +409,7 @@ const Side = () => {
                                     <img src={prorep} alt="" />
                                 }>
                                 {ProductionReportSubItems.map((subItem, subIndex) => (
-                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px' }} icon={<img src={subicon} alt="" />}>
+                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px',height:'20px' }} icon={<img src={subicon} alt="" />}>
                                         <Link to={subItem.Sub_url}>{subItem.Sub_Header}</Link>
                                     </Menu.Item>
                                 ))}
@@ -422,7 +421,7 @@ const Side = () => {
                                 <img src={tracepre} alt="" />
                             }>
                                 {TraceReportSubItems.map((subItem, subIndex) => (
-                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px' }} icon={<img src={subicon} alt="" />}>
+                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px',height:'20px' }} icon={<img src={subicon} alt="" />}>
                                         <Link to={subItem.Sub_url}>{subItem.Sub_Header}</Link>
                                     </Menu.Item>
                                 ))}
@@ -434,7 +433,7 @@ const Side = () => {
                                     <img src={manrep} alt="" />
                                 }>
                                 {ManagementReportSubItems.map((subItem, subIndex) => (
-                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px' }} icon={<img src={subicon} alt="" />}>
+                                    <Menu.Item key={`${index}-${subIndex}`} style={{ fontSize: '.8rem', paddingLeft: '0px',height:'20px' }} icon={<img src={subicon} alt="" />}>
                                         <Link to={subItem.Sub_url}>{subItem.Sub_Header}</Link>
                                     </Menu.Item>
                                 ))}
