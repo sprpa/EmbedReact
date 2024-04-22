@@ -344,7 +344,7 @@ body{
 .modal-backdrop {
   --bs-backdrop-zindex: 1050;
   --bs-backdrop-bg: #00000044 !important;
-  --bs-backdrop-opacity: 0.5 !important;
+  --bs-backdrop-opacity: 0.9 !important;
   position: fixed;
   top: 0;
   left: 0;
@@ -527,4 +527,44 @@ color: red;
   color: #00923F;
   font-size: 13px;
   font-weight: bold;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: var(--bs-nav-tabs-link-active-color);
+  background-color: var(--bs-nav-tabs-link-active-bg);
+  border-color: var(--bs-nav-tabs-link-active-border-color);
+  background-color: #00923F !important;
+  color: white !important;
+}
+.nav-tabs .nav-link, .nav-tabs .nav-item.show .nav-link {
+  color: var(--bs-nav-tabs-link-active-color);
+  background-color: var(--bs-nav-tabs-link-active-bg);
+  border-color: var(--bs-nav-tabs-link-active-border-color);
+  background-color: #EAFFE3 !important;
+  border-top-left-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+  color: rgb(0, 0, 0) !important;
+  border: .1px solid #D9D9D9 !important;
+}
+.nav-tabs {
+  --bs-nav-tabs-border-width: 0 !important;
+  --bs-nav-tabs-border-color: 0 !important;
+  --bs-nav-tabs-border-radius: var(--bs-border-radius);
+  --bs-nav-tabs-link-hover-border-color: var(--bs-secondary-bg) var(--bs-secondary-bg) var(--bs-border-color);
+  --bs-nav-tabs-link-active-color: var(--bs-emphasis-color);
+  --bs-nav-tabs-link-active-bg: var(--bs-body-bg);
+  --bs-nav-tabs-link-active-border-color: var(--bs-border-color) var(--bs-border-color) var(--bs-body-bg);
+  border-bottom: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color);
+}
+.nav-link {
+  display: block;
+  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+  font-size: var(--bs-nav-link-font-size);
+  font-weight: var(--bs-nav-link-font-weight);
+  color: black !important;
+  width: 137px !important;
+  text-decoration: none;
+  background: none;
+  border: 0;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }

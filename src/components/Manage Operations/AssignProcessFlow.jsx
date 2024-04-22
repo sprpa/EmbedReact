@@ -550,7 +550,7 @@ function MyVerticallyCenteredModalApprove(props) {
           <center>
             <div className='d-flex justify-content-center gap-4'>
             <button className='btn btn-success rounded-3 my-3 px-5 py-1 '>Save</button>
-            <button className='btn btn-white border-secondary shadow rounded-3 my-3 px-5 py-1 '>Cancel</button>
+            <button className='btn btn-white border-secondary shadow rounded-3 my-3 px-5 py-1 '  onClick={props.onHide}>Cancel</button>
             </div>
           </center>
         

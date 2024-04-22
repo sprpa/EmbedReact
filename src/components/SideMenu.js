@@ -20,6 +20,7 @@ import ProductionLoading from "./Manage Operations/ProductionLoading";
 import BOM from "./Manage Operations/BOM";
 import AssignPrpcessFlow from "./Manage Operations/AssignProcessFlow";
 import Userlist from "./User Management/Userlist";
+import CreateUser from "./User Management/CreateUser";
 
 
 // const accordionItems = [
@@ -517,6 +518,8 @@ const SideMenu = () => {
 
                   <Route path="/Schedule/ScheduleView" element={<ProductionLoading data={tableData} onDelete={handleDelete} onUpdateData={updateTableData} />} />
                   <Route path="/UserManagement/UserManagementAdd" element={<Userlist />} />
+
+                  <Route path="/UserManagement/UserManagementAdd/AddUser" element={<CreateUser />}  />
                 </Routes>
               </div>
 
