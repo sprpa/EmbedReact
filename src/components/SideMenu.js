@@ -21,6 +21,9 @@ import BOM from "./Manage Operations/BOM";
 import AssignPrpcessFlow from "./Manage Operations/AssignProcessFlow";
 import Userlist from "./User Management/Userlist";
 import CreateUser from "./User Management/CreateUser";
+import AddRole from "./User Management/AddRole";
+import AddLines from "./User Management/AddLines";
+import AddDepartment from "./User Management/AddDepartment";
 
 
 // const accordionItems = [
@@ -520,6 +523,9 @@ const SideMenu = () => {
                   <Route path="/UserManagement/UserManagementAdd" element={<Userlist />} />
 
                   <Route path="/UserManagement/UserManagementAdd/AddUser" element={<CreateUser />}  />
+                  <Route path="/UserManagement/UserManagementAdd/AddRole" element={<AddRole />}  />
+                  <Route path="/UserManagement/UserManagementAdd/AddLines" element={<AddLines />}  />
+                  <Route path="/UserManagement/UserManagementAdd/AddDepartment" element={<AddDepartment />}  />
                 </Routes>
               </div>
 

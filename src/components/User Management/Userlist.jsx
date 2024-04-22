@@ -12,15 +12,31 @@ function Userlist() {
 
 
 
-    const [activeButton, setActiveButton] = useState('Users');
+   // State variable to store active tab button name
+  const [activeTab, setActiveTab] = useState("Users");
+
+  // Handler for tab selection
+  const handleTabSelect = (selectedTab) => {
+    setActiveTab(selectedTab);
+  };
     const [modalAddShow, setModalAddShow] = React.useState(false);
     const [data, setData] = useState([]);
     const navigate =useNavigate();
-    const handleClick = (buttonName) => {
-      setActiveButton(buttonName);
-    };
+    
     const handleRedirect = () => {
+      if (activeTab === "Users") {
       navigate("/UserManagement/UserManagementAdd/AddUser");
+      }
+      else if (activeTab === "Roles") {
+        navigate("/UserManagement/UserManagementAdd/AddRole");
+      }
+      else if (activeTab === "Lines") {
+        navigate("/UserManagement/UserManagementAdd/AddLines");
+      }
+      else{
+        navigate("/UserManagement/UserManagementAdd/AddDepartment");
+      }
+
     }
 
     const getStatusColor = (status) => {
@@ -33,8 +49,7 @@ function Userlist() {
           return 'text-success';
       }
     };
-    
-
+   
     useEffect(() => {
   
       fetchData();
@@ -50,13 +65,7 @@ function Userlist() {
           console.error('Error fetching data:', error);
         }
       };
-      const handleToggleStations = (index) => {
-        setData((prevItems) => {
-          const updatedItems = [...prevItems];
-          updatedItems[index].Show_Stations = !updatedItems[index].Show_Stations; // Toggle between true and false
-          return updatedItems;
-        });
-      };
+      
 
       
 
@@ -90,14 +99,14 @@ function Userlist() {
       </button>
     </div> */}
     <div className='w-100'>
-       <Tabs
-      defaultActiveKey="Users"
+    <Tabs
+      activeKey={activeTab}
+      onSelect={handleTabSelect}
       transition={false}
       id="noanim-tab-example"
-      className="mb-3  "
+      className="mb-3"
     >
-      <Tab eventKey="Users" title="Users" > 
-      <hr />
+      <Tab eventKey="Users" title="Users">
       <div className='container-fluid'>
         <table className="table table-bordered">
           <thead className="table-secondary batch-table">
@@ -126,15 +135,12 @@ function Userlist() {
                 <td className={` fw-bold text-center text-primary fw-small  my-1`}>{item.User_Email}</td>
                 <td className={`${getStatusColor(item.Role)} fw-bold text-center  my-1`}>{item.Role}</td>
                 <td className='text-center  my-1'>{item.Department}</td>
-                 <td className='text-center my-1'>
-            <Switch
-              checked={item.Show_Stations === 'true'}
-              onChange={() => handleToggleStations(index)}
-            />
-          </td>
-          <td className={`fw-bold text-center my-1 ${item.Show_Stations === 'false' ? 'disabled' : ''}`}>
-            {item.Staions}
-          </td>
+                <td className='text-center my-1'>
+        <Switch defaultChecked={item.Show_Stations === 'true'} />
+      </td>
+      <td className={`fw-bold text-center my-1 ${item.Show_Stations === 'false' ? 'disabled' : ''}`}>
+        {item.Staions}
+      </td>
           <td>
             <button className='btn border-0 text-center w-100'>
               <i className="fa-regular fa-pen-to-square"></i>
@@ -146,28 +152,22 @@ function Userlist() {
           </tbody>
         </table>
       </div>
-        
       </Tab>
       <Tab eventKey="Roles" title="Roles">
-      <div className='container-fluid'>
-        Tab content for Roles
-        </div>
-        
-      </Tab>
-      <Tab eventKey="Lines" title="Lines" >
         <div className='container-fluid'>
-        Tab content for Lines
+          Tab content for Roles
         </div>
-        
       </Tab>
-      <Tab eventKey="Department" title="Department" >
+      <Tab eventKey="Lines" title="Lines">
         <div className='container-fluid'>
-        Tab content for Department
+          Tab content for Lines
         </div>
-        
       </Tab>
-
-      
+      <Tab eventKey="Department" title="Department">
+        <div className='container-fluid'>
+          Tab content for Department
+        </div>
+      </Tab>
     </Tabs>
     </div>
     
@@ -176,7 +176,8 @@ function Userlist() {
 
           <div className='position-absolute' style={{top:'0',right:'0'}}>
           <button className='btn addnew' style={{ backgroundColor: '#00923F', border: '1px solid #D9D9D9', width: '137px' }} onClick={() => handleRedirect()} >+ Add New</button>
-        </div>
+        </div>  
+       
 
 
       </div>
