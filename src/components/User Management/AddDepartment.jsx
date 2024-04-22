@@ -1,6 +1,6 @@
-import React,{useState} from 'react';
+import React from 'react';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 function AddDepartment() {

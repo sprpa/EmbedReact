@@ -44,8 +44,6 @@ const CustomTable = ({ data, onDelete, onUpdateData }) => {
   const [show, setShow] = useState(false);
   const [modalCreateShow, setModalCreateShow] = React.useState(false);
   const [modalActiveShow, setModalActiveShow] = React.useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   const handleDelete = (index) => {
     setDeletingIndex(index);

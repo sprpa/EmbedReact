@@ -1,9 +1,8 @@
 import React,{useEffect, useState} from 'react';
 import axios from 'axios';
 import './user.css'
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import { Link, useNavigate } from 'react-router-dom';
+
+import { useNavigate } from 'react-router-dom';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { Switch } from 'antd';
@@ -19,7 +18,6 @@ function Userlist() {
   const handleTabSelect = (selectedTab) => {
     setActiveTab(selectedTab);
   };
-    const [modalAddShow, setModalAddShow] = React.useState(false);
     const [data, setData] = useState([]);
     const navigate =useNavigate();
     
