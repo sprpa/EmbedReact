@@ -1,14 +1,20 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
+import axios from 'axios';
 import './user.css'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import { Switch } from 'antd';
 
 function Userlist() {
+
+
+
     const [activeButton, setActiveButton] = useState('Users');
     const [modalAddShow, setModalAddShow] = React.useState(false);
+    const [data, setData] = useState([]);
     const navigate =useNavigate();
     const handleClick = (buttonName) => {
       setActiveButton(buttonName);
@@ -16,6 +22,44 @@ function Userlist() {
     const handleRedirect = () => {
       navigate("/UserManagement/UserManagementAdd/AddUser");
     }
+
+    const getStatusColor = (status) => {
+      switch (status) {
+        case 'Admin':
+          return 'text-primary';
+        case 'Pending':
+          return 'text-danger';
+        default:
+          return 'text-success';
+      }
+    };
+    
+
+    useEffect(() => {
+  
+      fetchData();
+      }, []);
+      const fetchData = async () => {
+        console.log("fetchData"); 
+        try {
+          const response = await axios.get('http://localhost:8000/userlist');
+          setData(response.data);
+          console.log(response.data)
+      
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+      const handleToggleStations = (index) => {
+        setData((prevItems) => {
+          const updatedItems = [...prevItems];
+          updatedItems[index].Show_Stations = !updatedItems[index].Show_Stations; // Toggle between true and false
+          return updatedItems;
+        });
+      };
+
+      
+
   return (
       <div className='container-fluid position-relative'>
           <div className=' my-3' >
@@ -47,15 +91,61 @@ function Userlist() {
     </div> */}
     <div className='w-100'>
        <Tabs
-      defaultActiveKey="home"
+      defaultActiveKey="Users"
       transition={false}
       id="noanim-tab-example"
       className="mb-3  "
     >
       <Tab eventKey="Users" title="Users" > 
+      <hr />
       <div className='container-fluid'>
-        Tab content for Users
-        </div>
+        <table className="table table-bordered">
+          <thead className="table-secondary batch-table">
+            <tr>
+              <th scope="col" className='text-center '>Sno</th>
+              <th scope="col" className='text-center col-2'>EMP ID</th>
+              <th scope="col" className='text-center col-1'>User Name</th>
+              <th scope="col" className='text-center col-2'>User Email</th>
+              <th scope="col" className='text-center col-2'>Role</th>
+              <th scope="col" className='text-center col-1'>Department</th>
+              <th scope="col" className='text-center col-2'>Show Stations</th>
+              <th scope="col" className='text-center col-1'>Stations</th>
+              <th scope="col" className='text-center col-1'>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item, index) => (
+              <tr key={index}>
+                <td className=''>
+                  <div className='h-100 text-center  my-1  '>{item.S_No}
+                  </div></td>
+                <td className=''>
+                  <div className='h-100 text-center my-1 '>{item.EMP_ID}
+                  </div></td>
+                <td className='text-center  my-1'>{item.User_Name}</td>
+                <td className={` fw-bold text-center text-primary fw-small  my-1`}>{item.User_Email}</td>
+                <td className={`${getStatusColor(item.Role)} fw-bold text-center  my-1`}>{item.Role}</td>
+                <td className='text-center  my-1'>{item.Department}</td>
+                 <td className='text-center my-1'>
+            <Switch
+              checked={item.Show_Stations === 'true'}
+              onChange={() => handleToggleStations(index)}
+            />
+          </td>
+          <td className={`fw-bold text-center my-1 ${item.Show_Stations === 'false' ? 'disabled' : ''}`}>
+            {item.Staions}
+          </td>
+          <td>
+            <button className='btn border-0 text-center w-100'>
+              <i className="fa-regular fa-pen-to-square"></i>
+            </button>
+          </td>
+              </tr>
+            ))}
+
+          </tbody>
+        </table>
+      </div>
         
       </Tab>
       <Tab eventKey="Roles" title="Roles">

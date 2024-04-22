@@ -568,3 +568,10 @@ color: red;
   border: 0;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
+
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-switch.ant-switch-checked {
+  background: #30D987 !important;
+}
+.disabled {
+  opacity: 0 !important; /* Reduce opacity to visually indicate it's disabled */
+}
