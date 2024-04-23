@@ -173,7 +173,7 @@
       "EMP_ID": "1276",
       "User_Name": "Ibrahim karnik",
       "User_Email": "ibrahimkarnik@gmail.com",
-      "Role": "Admin",
+      "Role": "Admin11",
       "Department": "Management",
       "Show_Stations": "false",
       "Staions": "REFLOW"
@@ -183,7 +183,7 @@
       "EMP_ID": "1276",
       "User_Name": "Ibrahim karnik",
       "User_Email": "ibrahimkarnik@gmail.com",
-      "Role": "Admin",
+      "Role": "Admin2",
       "Department": "Management",
       "Show_Stations": "true",
       "Staions": "REFLOW"
@@ -237,6 +237,53 @@
       "Department": "Management",
       "Show_Stations": "false",
       "Staions": "REFLOW"
+    }
+  ],
+  "userRole": [
+    {
+      "names": "Admin",
+      "Description": "organizing Production operations and procedures",
+      "id": 1
+    },
+    {
+      "names": "Manager",
+      "Description": "Manage Production Operations",
+      "id": 2
+    },
+    {
+      "names": "Operation Manager",
+      "Description": "Monitoring operation",
+      "id": 3
+    },
+    {
+      "names": "Process Engineer",
+      "Description": "Execution production process ",
+      "id": 4
+    },
+    {
+      "names": "Quality Engineer",
+      "Description": "Production QA operations ",
+      "id": 5
+    },
+    {
+      "names": "Quality Technician",
+      "Description": "Monitoring QA Operations and rectify",
+      "id": 6
+    },
+    {
+      "names": "Stores",
+      "Description": "Products store in charge",
+      "id": 7
+    },
+    {
+      "names": "Supervisor",
+      "Description": "Products store supervisor",
+      "id": 8
+    },
+    {
+      "names": "Technician",
+      "Description": "Machine operating Technician",
+      "id": 9
     }
   ]
 }
