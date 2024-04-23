@@ -170,51 +170,88 @@ function Userlist() {
             </div>
       </Tab>
       <Tab eventKey="Roles" title="Roles">
-      <div className='container-fluid'>
+              <div className='container-fluid'>
                 <table className="table table-bordered">
-                    <thead className="table-secondary batch-table">
-                        <tr>
-                            <th scope="col" className='text-center col-1 '>Sno</th>
-                            <th scope="col" className='text-center col-5'>Name</th>
-                            <th scope="col" className='text-center col-5'>Description</th>
-                            <th scope="col" className='text-center col-1'>Actions</th>
+                  <thead className="table-secondary batch-table">
+                    <tr>
+                      <th scope="col" className='text-center col-1 '>Sno</th>
+                      <th scope="col" className='text-center col-5'>Name</th>
+                      <th scope="col" className='text-center col-5'>Description</th>
+                      <th scope="col" className='text-center col-1'>Actions</th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {roleData.map((item, index) => (
-                            <tr key={index}>
-                                <td className=''>
-                                    <div className='h-100 text-center  my-1  '>{item.id}
-                                    </div></td>
-                                <td className=''>
-                                    <div className='h-100 text-start my-1 text-primary fw-bold '>{item.names}
-                                    </div></td>
-                                <td className='text-start  my-1'>{item.Description}</td>
-                                
-                                <td>
-                                    <div className='d-flex justify-content-center gap-3 '>
-                                        <button className='btn border-0 text-center p-0 '>
-                                        <i className="fa-regular fa-pen-to-square"></i>
-                                    </button>
-                                    <button className='btn border-0 text-center p-0 '>
-                                        <i className="fa-solid fa-trash-can"></i>
-                                    </button>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {roleData.map((item, index) => (
+                      <tr key={index}>
+                        <td className=''>
+                          <div className='h-100 text-center  my-1  '>{item.id}
+                          </div></td>
+                        <td className=''>
+                          <div className='h-100 text-start my-1 text-primary fw-bold '>{item.names}
+                          </div></td>
+                        <td className='text-start  my-1'>{item.Description}</td>
 
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                        ))}
+                        <td>
+                          <div className='d-flex justify-content-center gap-3 '>
+                            <button className='btn border-0 text-center p-0 '>
+                              <i className="fa-regular fa-pen-to-square"></i>
+                            </button>
+                            <button className='btn border-0 text-center p-0 '>
+                              <i className="fa-solid fa-trash-can"></i>
+                            </button>
 
-                    </tbody>
+                          </div>
+
+                        </td>
+                      </tr>
+                    ))}
+
+                  </tbody>
                 </table>
-            </div>
+              </div>
       </Tab>
       <Tab eventKey="Lines" title="Lines">
-        <div className='container-fluid'>
-          Tab content for Lines
-        </div>
+              <div className='container-fluid'>
+                <table className="table table-bordered">
+                  <thead className="table-secondary batch-table">
+                    <tr>
+                      <th scope="col" className='text-center col-1 '>Sno</th>
+                      <th scope="col" className='text-center col-5'>Name</th>
+                      <th scope="col" className='text-center col-5'>Description</th>
+                      <th scope="col" className='text-center col-1'>Actions</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {roleData.map((item, index) => (
+                      <tr key={index}>
+                        <td className=''>
+                          <div className='h-100 text-center  my-1  '>{item.id}
+                          </div></td>
+                        <td className=''>
+                          <div className='h-100 text-start my-1 text-primary fw-bold '>{item.names}
+                          </div></td>
+                        <td className='text-start  my-1'>{item.Description}</td>
+
+                        <td>
+                          <div className='d-flex justify-content-center gap-3 '>
+                            <button className='btn border-0 text-center p-0 '>
+                              <i className="fa-regular fa-pen-to-square"></i>
+                            </button>
+                            <button className='btn border-0 text-center p-0 '>
+                              <i className="fa-solid fa-trash-can"></i>
+                            </button>
+
+                          </div>
+
+                        </td>
+                      </tr>
+                    ))}
+
+                  </tbody>
+                </table>
+              </div>
       </Tab>
       <Tab eventKey="Department" title="Department">
         <div className='container-fluid'>
