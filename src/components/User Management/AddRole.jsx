@@ -63,85 +63,182 @@ function AddRole() {
 
               <hr />
 
-              <div className='row'>
 
-                  <div className="col-3 mb-3">
-                      <label for="empid" className="form-label m-1 fw-bold">Employee Id</label>
-                      <input type="text" id='empid' className='form-control h-50' placeholder='Enter Item Code' />
+
+             
+             <div className='row'>
+
+                <div className='col-4'>
+                     <div className="col-12 mb-3">
+                      <label for="role" className="form-label m-1 fw-bold">Role</label>
+                      <input type="text" id='empid' className='form-control h-50' placeholder='Enter Role' />
                   </div>
 
-                  <div className="col-3 mb-3">
-                      <label for="username" className="form-label m-1 fw-bold">Username</label>
-                      <input type="text" id='username' className='form-control h-50' placeholder='Enter Username' />
+                  <div className="col-12 mb-3">
+                      <label for="roledecs" className="form-label m-1 fw-bold">Description</label>
+                      <input type="text" id='username' className='form-control h-50' placeholder='Enter Description ' />
                   </div>
+                </div>
+               
 
-                  <div className="col-3 mb-3">
-                      <label for="emailid" className="form-label m-1 fw-bold">Email ID</label>
-                      <input type="text" id='emailid' className='form-control h-50' placeholder='Enter Email Id' />
-                  </div>
+               
+                <div className="col-8">
+                    <div className='d-flex justify-content-between'>
+                        <h6>User Access Permission Setting </h6>
+                          <div className="form-check form-check-inline ">
+                            <label className="form-check-label order-1" for="inlineCheckbox1">Select All Screens </label>
+                              <input className="form-check-input p-2 order-2 "  type="checkbox" id="inlineCheckbox1" value="option1" />
+                          </div>
+                    </div>
+                      <Accordion className='border-0'>
+                          <Accordion.Item eventKey="0">
+                              <Accordion.Header className='border-0'>General</Accordion.Header>
+                              <Accordion.Body>
+                              <div className='row'>
+                                <div className='col-3'>
+                                    <h6>Dashboard</h6>
+                                    <div className="form-check form-check-inline ">
+                                        <label className="form-check-label order-1" for="dashboard">Dashboard </label>
+                                        <input className="form-check-input p-2 order-2 " type="checkbox" id="dashboard" value="dashboard" />
+                                    </div>
+                                </div>
+                                <div className='col-3'>
+                                <h6>Department</h6>
+                                    <div className="form-check form-check-inline ">
+                                        <label className="form-check-label order-1" for="lists">Lists </label>
+                                        <input className="form-check-input p-2 order-2 " type="checkbox" id="lists" value="lists" />
+                                    </div>
 
-                  <div className="col-3 mb-3">
-                      <label for="roles" className="form-label m-1 fw-bold">Role</label>
-                      <select className="form-select  form-control h-50" id="roles" placeholder="Roles" required>
-                          <option selected disabled value="">Select Production Code.</option>
-                          <option>...</option>
-                      </select>
-                  </div>
+                                </div>
+                                <div className='col-3'>
+                                <h6>Lines</h6>
+                                <div className='d-flex flex-column '>
+                                <div className="form-check form-check-inline  mb-0">
+                                        <label className="form-check-label order-1" for="line2">Line 1</label>
+                                        <input className="form-check-input p-2 order-2 " type="checkbox" id="line2" value="line2" />
+                                    </div>
+                                    <div className="form-check form-check-inline mb-0 ">
+                                        <label className="form-check-label order-1" for="line3">Line 2</label>
+                                        <input className="form-check-input p-2 order-2 " type="checkbox" id="line3" value="line3" />
+                                    </div>
 
-                  <div className="col-3 mb-3">
-                      <label for="password" className="form-label m-1 fw-bold">Password</label>
-                      <input type="text" id='password' className='form-control h-50' placeholder='*************' />
-                  </div>
+                                </div>
+                                   
 
-                  <div className="col-3 mb-3">
-                      <label for="cnfrmpassword" className="form-label m-1 fw-bold">Confirm Password</label>
-                      <input type="text" id='cnfrmpassword' className='form-control h-50' placeholder='*************' />
-                  </div>
+                                </div>
+                                <div className='col-3'>
+                                <h6>Roles</h6>
+                                    <div className="form-check form-check-inline ">
+                                        <label className="form-check-label order-1" for="lists">Lists </label>
+                                        <input className="form-check-input p-2 order-2 " type="checkbox" id="lists" value="lists" />
+                                    </div>
 
-                  <div className="col-3 mb-3">
-                      <label for="lines" className="form-label m-1 fw-bold">Line</label>
-                      <select className="form-select  form-control h-50" id="lines" placeholder="Select SMT Lines" required>
-                          <option value="">Select SMT Lines.</option>
-                          <option>...</option>
-                      </select>
-                  </div>
+                                </div>
 
-                  <div className="col-3 mb-3">
-                      <label for="stations" className="form-label m-1 fw-bold">Stations</label>
-                      <select className="form-select  form-control h-50" id="stations" placeholder="Select Stations" required>
-                          <option value="">Select Stations</option>
-                          <option>...</option>
-                      </select>
-                  </div>
+                              </div>
+                                  
+                              </Accordion.Body>
+                          </Accordion.Item>
+                          <Accordion.Item eventKey="1">
+                              <Accordion.Header>Menu</Accordion.Header>
+                              <Accordion.Body>
+                                <div className='container-fluid'>
+                                    <div className="row">
+                             
+                                          <div className="container" style={{ maxHeight: "300px", overflowY: "scroll" }}>
+                                              {menuData.map(menu => (
+                                                  <div key={menu.Menu_Header}>
+                                                      <h6>{menu.Menu_Header}</h6>
+                                                      <div className="row">
+                                                          {menu.Sub_menus.map(subMenu => (
+                                                              <div key={subMenu.Sub_Header} className="col-md-3">
+                                                                  <div className="form-check">
+                                                                      <input type="checkbox" id={subMenu.Sub_Header} className="form-check-input p-2" />
+                                                                      <label htmlFor={subMenu.Sub_Header} className="form-check-label">{subMenu.Sub_Header}</label>
+                                                                  </div>
+                                                              </div>
+                                                          ))}
+                                                      </div>
+                                                  </div>
+                                              ))}
+                                          </div>
+                            
+                                  </div>
+                                </div>
+                                  
 
-                  <div className="col-3 mb-3">
-                      <label for="phnnumber" className="form-label m-1 fw-bold">Mobile Number</label>
-                      <input type="text" id='phnnumber' className='form-control h-50' placeholder='+91 00000 00000' />
-                  </div>
+                              </Accordion.Body>
+                          </Accordion.Item>
+                          <Accordion.Item eventKey="2">
+                              <Accordion.Header>Configuration</Accordion.Header>
+                              <Accordion.Body>
+                              <div className='container-fluid'>
+                                    <div className="row">
+                             
+                                          <div className="container" style={{ maxHeight: "300px", overflowY: "scroll" }}>
+                                              {configData.map(menu => (
+                                                  <div key={menu.Menu_Header}>
+                                                      <h6>{menu.Menu_Header}</h6>
+                                                      <div className="row">
+                                                          {menu.Sub_menus.map(subMenu => (
+                                                              <div key={subMenu.Sub_Header} className="col-md-3">
+                                                                  <div className="form-check">
+                                                                      <input type="checkbox" id={subMenu.Sub_Header} className="form-check-input p-2" />
+                                                                      <label htmlFor={subMenu.Sub_Header} className="form-check-label">{subMenu.Sub_Header}</label>
+                                                                  </div>
+                                                              </div>
+                                                          ))}
+                                                      </div>
+                                                  </div>
+                                              ))}
+                                          </div>
+                            
+                                  </div>
+                                </div>
+                                 
+                              </Accordion.Body>
+                          </Accordion.Item>
+                          <Accordion.Item eventKey="3">
+                              <Accordion.Header>Reports</Accordion.Header>
+                              <Accordion.Body>
+                              <div className='container-fluid'>
+                                    <div className="row">
+                             
+                                          <div className="container" style={{ maxHeight: "300px", overflowY: "scroll" }}>
+                                              {reportData.map(menu => (
+                                                  <div key={menu.Menu_Header}>
+                                                      <h6>{menu.Menu_Header}</h6>
+                                                      <div className="row">
+                                                          {menu.Sub_menus.map(subMenu => (
+                                                              <div key={subMenu.Sub_Header} className="col-md-3">
+                                                                  <div className="form-check">
+                                                                      <input type="checkbox" id={subMenu.Sub_Header} className="form-check-input p-2" value={subMenu.Sub_Header} />
+                                                                      <label htmlFor={subMenu.Sub_Header} className="form-check-label">{subMenu.Sub_Header}</label>
+                                                                  </div>
+                                                              </div>
+                                                          ))}
+                                                      </div>
+                                                  </div>
+                                              ))}
+                                          </div>
+                            
+                                  </div>
+                                </div>
+                                 
+                              </Accordion.Body>
+                          </Accordion.Item>
+                      </Accordion>
 
-                  <div className="col-3 mb-3">
-                      <label for="emgcontact" className="form-label m-1 fw-bold">Emergency Contact</label>
-                      <input type="text" id='emgcontact' className='form-control h-50' placeholder='+91 00000 00000' />
-                  </div>
+                </div>
 
-                  <div className="col-3 mb-3">
-                      <label for="status" className="form-label m-1 fw-bold">Status</label>
-                      <select className="form-select  form-control h-50" id="status" placeholder="Select Status" required>
-                          <option value="">Select Status</option>
-                          <option>...</option>
-                      </select>
-                  </div>
+                  
 
-                  <div className="col-3 mb-3">
-                      <label for="department" className="form-label m-1 fw-bold">Select Department</label>
-                      <select className="form-select  form-control h-50" id="department" placeholder="Select Process Status" required>
-                          <option value="">Select Process Status</option>
-                          <option>...</option>
-                      </select>
-                  </div>
+                 
+                  
+                  
 
               </div>
-              <hr />
+
           </div>
 
           <center>
