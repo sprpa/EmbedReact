@@ -284,9 +284,8 @@ body{
 .leftBorder{
   border-left: 1px solid #666;
 }
-.accordion-button:not(.collapsed) {
+/* .accordion-button:not(.collapsed) {
   color: rgb(255, 255, 255) !important;
-  background-color: #54ccff !important;
   box-shadow: none !important;
   --bs-accordion-btn-icon: url(/src/assets/showhidewhite.svg) !important;
 }
@@ -319,7 +318,7 @@ body{
 }
 .accordion-header {
   margin-bottom: 0 !important;
-}
+} */
 
 .ant-menu-title-content{
  margin-left: 20px !important;
