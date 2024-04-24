@@ -19,7 +19,7 @@ function AddRole() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:5000/super_menu");
+        const response = await axios.get("http://127.0.0.1:5000/main_menu");
         if (response.status !== 200) {
           throw new Error('Failed to fetch menu data');
         }
@@ -48,95 +48,21 @@ function AddRole() {
   
     fetchData();
   
-  }, []); // Empty dependency array ensures the effect runs only once after the initial render
-
-
-  const handleSelectAll = (event) => {
-    const isChecked = event.target.checked;
-    const updatedMenuData = menuData.map(menu => ({
-      ...menu,
-      Sub_menus: menu.Sub_menus.map(subMenu => ({
-        ...subMenu,
-        isChecked: isChecked // Update isChecked property for each submenu
-      }))
-    }));
-    setMenuData(updatedMenuData);
-  
-    const updatedConfigData = configData.map(menu => ({
-      ...menu,
-      Sub_menus: menu.Sub_menus.map(subMenu => ({
-        ...subMenu,
-        isChecked: isChecked // Update isChecked property for each submenu
-      }))
-    }));
-    setConfigData(updatedConfigData);
-  
-    const updatedReportData = reportData.map(menu => ({
-      ...menu,
-      Sub_menus: menu.Sub_menus.map(subMenu => ({
-        ...subMenu,
-        isChecked: isChecked // Update isChecked property for each submenu
-      }))
-    }));
-    setReportData(updatedReportData);
-  };
-  
-
-  // Function to handle individual submenu checkbox
-  const handleSubMenuChange = (menuIndex, subMenuIndex, dataType) => {
-    // Choose the appropriate data based on dataType
-    let updatedData;
-    switch (dataType) {
-      case "menu":
-        updatedData = [...menuData];
-        break;
-      case "config":
-        updatedData = [...configData];
-        break;
-      case "report":
-        updatedData = [...reportData];
-        break;
-      default:
-        updatedData = [];
+    if (data.length > 0) {
+      const filteredMenuItems = data.filter(category => category.category === "Menu");
+      if (filteredMenuItems.length > 0) {
+        setMenuData(filteredMenuItems[0].menu_items);
+      }
+      const filteredConfigItems = data.filter(category => category.category === "Configuration");
+      if (filteredConfigItems.length > 0) {
+        setConfigData(filteredConfigItems[0].menu_items);
+      }
+      const filteredReportItems = data.filter(category => category.category === "Reports");
+      if (filteredReportItems.length > 0) {
+        setReportData(filteredReportItems[0].menu_items);
+      }
     }
-  
-    // Update the isChecked property of the specified submenu
-    updatedData[menuIndex].Sub_menus[subMenuIndex].isChecked = !updatedData[menuIndex].Sub_menus[subMenuIndex].isChecked;
-  
-    // Set the updated data state based on dataType
-    switch (dataType) {
-      case "menu":
-        setMenuData(updatedData);
-        break;
-      case "config":
-        setConfigData(updatedData);
-        break;
-      case "report":
-        setReportData(updatedData);
-        break;
-      default:
-        break;
-    }
-  
-    // Create a new array to store all checked values
-    const allCheckedValues = [];
-  
-    // Iterate through all data types and collect checked values
-    [menuData, configData, reportData].forEach(data => {
-      data.forEach(menu => {
-        menu.Sub_menus.forEach(subMenu => {
-          if (subMenu.isChecked) {
-            allCheckedValues.push(subMenu.Sub_Header);
-          }
-        });
-      });
-    });
-  
-    // Display all checked values in the console
-    console.log("All checked values:", allCheckedValues);
-  };
-  
-  
+  }, []);
   
   console.log("wgrfywefgugf")
   return (
