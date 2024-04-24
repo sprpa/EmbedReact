@@ -19,11 +19,28 @@ function AddRole() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:5000/main_menu");
+        const response = await axios.get("http://127.0.0.1:5000/super_menu");
         if (response.status !== 200) {
           throw new Error('Failed to fetch menu data');
         }
-        setData(response.data.main_menu);
+        const menuData = response.data.main_menu;
+  
+        // Process the menu data
+        const filteredMenuItems = menuData.find(category => category.category === "Menu");
+        if (filteredMenuItems) {
+          setMenuData(filteredMenuItems.menu_items);
+        }
+  
+        const filteredConfigItems = menuData.find(category => category.category === "Configuration");
+        if (filteredConfigItems) {
+          setConfigData(filteredConfigItems.menu_items);
+        }
+  
+        const filteredReportItems = menuData.find(category => category.category === "Reports");
+        if (filteredReportItems) {
+          setReportData(filteredReportItems.menu_items);
+        }
+  
       } catch (error) {
         console.error('Error fetching menu data:', error);
       }
@@ -31,21 +48,95 @@ function AddRole() {
   
     fetchData();
   
-    if (data.length > 0) {
-      const filteredMenuItems = data.filter(category => category.category === "Menu");
-      if (filteredMenuItems.length > 0) {
-        setMenuData(filteredMenuItems[0].menu_items);
-      }
-      const filteredConfigItems = data.filter(category => category.category === "Configuration");
-      if (filteredConfigItems.length > 0) {
-        setConfigData(filteredConfigItems[0].menu_items);
-      }
-      const filteredReportItems = data.filter(category => category.category === "Reports");
-      if (filteredReportItems.length > 0) {
-        setReportData(filteredReportItems[0].menu_items);
-      }
+  }, []); // Empty dependency array ensures the effect runs only once after the initial render
+
+
+  const handleSelectAll = (event) => {
+    const isChecked = event.target.checked;
+    const updatedMenuData = menuData.map(menu => ({
+      ...menu,
+      Sub_menus: menu.Sub_menus.map(subMenu => ({
+        ...subMenu,
+        isChecked: isChecked // Update isChecked property for each submenu
+      }))
+    }));
+    setMenuData(updatedMenuData);
+  
+    const updatedConfigData = configData.map(menu => ({
+      ...menu,
+      Sub_menus: menu.Sub_menus.map(subMenu => ({
+        ...subMenu,
+        isChecked: isChecked // Update isChecked property for each submenu
+      }))
+    }));
+    setConfigData(updatedConfigData);
+  
+    const updatedReportData = reportData.map(menu => ({
+      ...menu,
+      Sub_menus: menu.Sub_menus.map(subMenu => ({
+        ...subMenu,
+        isChecked: isChecked // Update isChecked property for each submenu
+      }))
+    }));
+    setReportData(updatedReportData);
+  };
+  
+
+  // Function to handle individual submenu checkbox
+  const handleSubMenuChange = (menuIndex, subMenuIndex, dataType) => {
+    // Choose the appropriate data based on dataType
+    let updatedData;
+    switch (dataType) {
+      case "menu":
+        updatedData = [...menuData];
+        break;
+      case "config":
+        updatedData = [...configData];
+        break;
+      case "report":
+        updatedData = [...reportData];
+        break;
+      default:
+        updatedData = [];
     }
-  }, []);
+  
+    // Update the isChecked property of the specified submenu
+    updatedData[menuIndex].Sub_menus[subMenuIndex].isChecked = !updatedData[menuIndex].Sub_menus[subMenuIndex].isChecked;
+  
+    // Set the updated data state based on dataType
+    switch (dataType) {
+      case "menu":
+        setMenuData(updatedData);
+        break;
+      case "config":
+        setConfigData(updatedData);
+        break;
+      case "report":
+        setReportData(updatedData);
+        break;
+      default:
+        break;
+    }
+  
+    // Create a new array to store all checked values
+    const allCheckedValues = [];
+  
+    // Iterate through all data types and collect checked values
+    [menuData, configData, reportData].forEach(data => {
+      data.forEach(menu => {
+        menu.Sub_menus.forEach(subMenu => {
+          if (subMenu.isChecked) {
+            allCheckedValues.push(subMenu.Sub_Header);
+          }
+        });
+      });
+    });
+  
+    // Display all checked values in the console
+    console.log("All checked values:", allCheckedValues);
+  };
+  
+  
   
   console.log("wgrfywefgugf")
   return (
@@ -85,9 +176,14 @@ function AddRole() {
                 <div className="col-8">
                     <div className='d-flex justify-content-between'>
                         <h6>User Access Permission Setting </h6>
-                          <div className="form-check form-check-inline ">
-                            <label className="form-check-label order-1" for="inlineCheckbox1">Select All Screens </label>
-                              <input className="form-check-input p-2 order-2 "  type="checkbox" id="inlineCheckbox1" value="option1" />
+                          <div className="form-check">
+                              <input
+                                  type="checkbox"
+                                  id="selectAllCheckbox"
+                                  className="form-check-input p-2"
+                                  onChange={handleSelectAll}
+                              />
+                              <label htmlFor="selectAllCheckbox" className="form-check-label">Select All</label>
                           </div>
                     </div>
                       <Accordion className='border-0'>
@@ -146,14 +242,20 @@ function AddRole() {
                                     <div className="row">
                              
                                           <div className="container" style={{ maxHeight: "300px", overflowY: "scroll" }}>
-                                              {menuData.map(menu => (
+                                              {menuData.map((menu, menuIndex) => (
                                                   <div key={menu.Menu_Header}>
                                                       <h6>{menu.Menu_Header}</h6>
                                                       <div className="row">
-                                                          {menu.Sub_menus.map(subMenu => (
-                                                              <div key={subMenu.Sub_Header} className="col-md-3">
+                                                          {menu.Sub_menus.map((subMenu, subMenuIndex) => (
+                                                              <div key={subMenu.Sub_Header} className="col-3">
                                                                   <div className="form-check">
-                                                                      <input type="checkbox" id={subMenu.Sub_Header} className="form-check-input p-2" />
+                                                                      <input
+                                                                          type="checkbox"
+                                                                          id={subMenu.Sub_Header}
+                                                                          className="form-check-input p-2"
+                                                                          checked={subMenu.isChecked || false}
+                                                                          onChange={() => handleSubMenuChange(menuIndex, subMenuIndex)}
+                                                                      />
                                                                       <label htmlFor={subMenu.Sub_Header} className="form-check-label">{subMenu.Sub_Header}</label>
                                                                   </div>
                                                               </div>
@@ -176,14 +278,20 @@ function AddRole() {
                                     <div className="row">
                              
                                           <div className="container" style={{ maxHeight: "300px", overflowY: "scroll" }}>
-                                              {configData.map(menu => (
+                                              {configData.map((menu, menuIndex) => (
                                                   <div key={menu.Menu_Header}>
                                                       <h6>{menu.Menu_Header}</h6>
                                                       <div className="row">
-                                                          {menu.Sub_menus.map(subMenu => (
-                                                              <div key={subMenu.Sub_Header} className="col-md-3">
+                                                          {menu.Sub_menus.map((subMenu, subMenuIndex) => (
+                                                              <div key={subMenu.Sub_Header} className="col-3">
                                                                   <div className="form-check">
-                                                                      <input type="checkbox" id={subMenu.Sub_Header} className="form-check-input p-2" />
+                                                                      <input
+                                                                          type="checkbox"
+                                                                          id={subMenu.Sub_Header}
+                                                                          className="form-check-input p-2"
+                                                                          checked={subMenu.isChecked || false}
+                                                                          onChange={() => handleSubMenuChange(menuIndex, subMenuIndex)}
+                                                                      />
                                                                       <label htmlFor={subMenu.Sub_Header} className="form-check-label">{subMenu.Sub_Header}</label>
                                                                   </div>
                                                               </div>
@@ -205,14 +313,20 @@ function AddRole() {
                                     <div className="row">
                              
                                           <div className="container" style={{ maxHeight: "300px", overflowY: "scroll" }}>
-                                              {reportData.map(menu => (
+                                              {reportData.map((menu, menuIndex) => (
                                                   <div key={menu.Menu_Header}>
                                                       <h6>{menu.Menu_Header}</h6>
                                                       <div className="row">
-                                                          {menu.Sub_menus.map(subMenu => (
-                                                              <div key={subMenu.Sub_Header} className="col-md-3">
+                                                          {menu.Sub_menus.map((subMenu, subMenuIndex) => (
+                                                              <div key={subMenu.Sub_Header} className="col-3">
                                                                   <div className="form-check">
-                                                                      <input type="checkbox" id={subMenu.Sub_Header} className="form-check-input p-2" value={subMenu.Sub_Header} />
+                                                                      <input
+                                                                          type="checkbox"
+                                                                          id={subMenu.Sub_Header}
+                                                                          className="form-check-input p-2"
+                                                                          checked={subMenu.isChecked || false}
+                                                                          onChange={() => handleSubMenuChange(menuIndex, subMenuIndex)}
+                                                                      />
                                                                       <label htmlFor={subMenu.Sub_Header} className="form-check-label">{subMenu.Sub_Header}</label>
                                                                   </div>
                                                               </div>
