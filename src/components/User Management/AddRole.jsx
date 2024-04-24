@@ -19,7 +19,7 @@ function AddRole() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:5000/main_menu");
+        const response = await axios.get("http://192.168.5.34:8089/super_menu ");
         if (response.status !== 200) {
           throw new Error('Failed to fetch menu data');
         }
@@ -45,7 +45,7 @@ function AddRole() {
         setReportData(filteredReportItems[0].menu_items);
       }
     }
-  }, []);
+  }, [data]);
   
   console.log("wgrfywefgugf")
   return (

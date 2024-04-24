@@ -57,8 +57,6 @@ function Userlist() {
         try {
             const response = await axios.get('http://localhost:8000/userlist');
             setData(response.data);
-            console.log(response.data)
-
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -68,7 +66,6 @@ function Userlist() {
         try {
             const response = await axios.get('http://localhost:8000/userRole');
             setRoleData(response.data);
-            console.log(response.data)
 
         } catch (error) {
             console.error('Error fetching data:', error);
