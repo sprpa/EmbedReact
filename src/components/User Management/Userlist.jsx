@@ -55,6 +55,9 @@ function Userlist() {
         fetchData();
         fetchDataRole();
     }, []);
+    useEffect(() => {
+        localStorage.setItem('activeTab', activeTab);
+    }, [activeTab]);
     const fetchData = async () => {
         console.log("fetchData");
         try {
@@ -80,32 +83,6 @@ function Userlist() {
     return (
         <div className='container-fluid position-relative'>
             <div className=' my-3' >
-                {/* <div>
-      <button
-        className={`btn userlist-button btn-success text-black  ${activeButton === 'Users' ? 'active text-white' : ''}`}
-        onClick={() => handleClick('Users')}
-      >
-        Users
-      </button>
-      <button
-        className={`btn userlist-button btn-success text-black ${activeButton === 'Lines' ? 'active text-white' : ''}`}
-        onClick={() => handleClick('Lines')}
-      >
-        Lines
-      </button>
-      <button
-        className={`btn userlist-button btn-success text-black ${activeButton === 'Roles' ? 'active text-white' : ''}`}
-        onClick={() => handleClick('Roles')}
-      >
-        Roles
-      </button>
-      <button
-        className={`btn userlist-button btn-success text-black ${activeButton === 'Department' ? 'active text-white' : ''}`}
-        onClick={() => handleClick('Department')}
-      >
-        Department
-      </button>
-    </div> */}
                 <div className='w-100'>
                     <Tabs
                         activeKey={activeTab}
