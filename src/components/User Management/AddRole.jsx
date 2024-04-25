@@ -12,131 +12,30 @@ function AddRole() {
   };
 
   const [data, setData] = useState([]);
-  const [menuData, setMenuData] = useState([]);
-  const [configData, setConfigData] = useState([]);
-  const [reportData, setReportData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("https://eis-website-backend.onrender.com/super_menu");
-        if (response.status !== 200) {
-          throw new Error('Failed to fetch menu data');
-        }
-        const menuData = response.data.main_menu;
-  
-        // Process the menu data
-        const filteredMenuItems = menuData.find(category => category.category === "Menu");
-        if (filteredMenuItems) {
-          setMenuData(filteredMenuItems.menu_items);
-        }
-  
-        const filteredConfigItems = menuData.find(category => category.category === "Configuration");
-        if (filteredConfigItems) {
-          setConfigData(filteredConfigItems.menu_items);
-        }
-  
-        const filteredReportItems = menuData.find(category => category.category === "Reports");
-        if (filteredReportItems) {
-          setReportData(filteredReportItems.menu_items);
-        }
-  
-      } catch (error) {
-        console.error('Error fetching menu data:', error);
+
+
+// useEffect to fetch menu data
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("https://eis-website-backend.onrender.com/super_menu");
+      if (response.status !== 200) {
+        throw new Error('Failed to fetch menu data');
+
       }
-    };
-  
-    fetchData();
-  
-  }, []); // Empty dependency array ensures the effect runs only once after the initial render
-
-
-  const handleSelectAll = (event) => {
-    const isChecked = event.target.checked;
-    const updatedMenuData = menuData.map(menu => ({
-      ...menu,
-      Sub_menus: menu.Sub_menus.map(subMenu => ({
-        ...subMenu,
-        isChecked: isChecked // Update isChecked property for each submenu
-      }))
-    }));
-    setMenuData(updatedMenuData);
-  
-    const updatedConfigData = configData.map(menu => ({
-      ...menu,
-      Sub_menus: menu.Sub_menus.map(subMenu => ({
-        ...subMenu,
-        isChecked: isChecked // Update isChecked property for each submenu
-      }))
-    }));
-    setConfigData(updatedConfigData);
-  
-    const updatedReportData = reportData.map(menu => ({
-      ...menu,
-      Sub_menus: menu.Sub_menus.map(subMenu => ({
-        ...subMenu,
-        isChecked: isChecked // Update isChecked property for each submenu
-      }))
-    }));
-    setReportData(updatedReportData);
+      // Split the fetched data into different categories
+      setData(response.data.main_menu);
+      
+    } catch (error) {
+      console.error('Error fetching menu data:', error);
+    }
   };
-  
 
-  // Function to handle individual submenu checkbox
- const handleSubMenuChange = (menuIndex, subMenuIndex, dataType) => {
-  // Choose the appropriate data based on dataType
-  let updatedData;
-  switch (dataType) {
-    case "menu":
-      updatedData = [...menuData];
-      break;
-    case "config":
-      updatedData = [...configData];
-      break;
-    case "report":
-      updatedData = [...reportData];
-      break;
-    default:
-      updatedData = [];
-  }
+  fetchData();
+}, []);
 
-  // Update the isChecked property of the specified submenu
-  updatedData[menuIndex].Sub_menus[subMenuIndex].isChecked = !updatedData[menuIndex].Sub_menus[subMenuIndex].isChecked;
-
-  // Set the updated data state based on dataType
-  switch (dataType) {
-    case "menu":
-      setMenuData(updatedData);
-      break;
-    case "config":
-      setConfigData(updatedData);
-      break;
-    case "report":
-      setReportData(updatedData);
-      break;
-    default:
-      break;
-  }
-
-  // Create a new array to store all checked values
-  const allCheckedValues = [];
-
-  // Iterate through all data types and collect checked values
-  [menuData, configData, reportData].forEach(data => {
-    data.forEach(menu => {
-      menu.Sub_menus.forEach(subMenu => {
-        if (subMenu.isChecked) {
-          allCheckedValues.push(subMenu.Sub_Header);
-        }
-      });
-    });
-  });
-
-  // Display all checked values in the console
-  console.log("All checked values:", allCheckedValues);
-};
-
-  
+// Function to handle selecting all checkboxes for a specific category
   
   console.log("wgrfywefgugf")
   return (
@@ -179,167 +78,97 @@ function AddRole() {
                                   type="checkbox"
                                   id="selectAllCheckbox"
                                   className="form-check-input p-2"
-                                  onChange={handleSelectAll}
+                                  
                               />
                               <label htmlFor="selectAllCheckbox" className="form-check-label">Select All</label>
                           </div>
                     </div>
+                   
                       <Accordion className='border-0'>
-                          <Accordion.Item eventKey="0">
+                          <Accordion.Item eventKey="4">
                               <Accordion.Header className='border-0'>General</Accordion.Header>
                               <Accordion.Body>
-                              <div className='row'>
-                                <div className='col-3'>
-                                    <h6>Dashboard</h6>
-                                    <div className="form-check form-check-inline ">
-                                        <label className="form-check-label order-1" for="dashboard">Dashboard </label>
-                                        <input className="form-check-input p-2 order-2 " type="checkbox" id="dashboard" value="dashboard" />
-                                    </div>
-                                </div>
-                                <div className='col-3'>
-                                <h6>Department</h6>
-                                    <div className="form-check form-check-inline ">
-                                        <label className="form-check-label order-1" for="lists">Lists </label>
-                                        <input className="form-check-input p-2 order-2 " type="checkbox" id="lists" value="lists" />
-                                    </div>
-
-                                </div>
-                                <div className='col-3'>
-                                <h6>Lines</h6>
-                                <div className='d-flex flex-column '>
-                                <div className="form-check form-check-inline  mb-0">
-                                        <label className="form-check-label order-1" for="line2">Line 1</label>
-                                        <input className="form-check-input p-2 order-2 " type="checkbox" id="line2" value="line2" />
-                                    </div>
-                                    <div className="form-check form-check-inline mb-0 ">
-                                        <label className="form-check-label order-1" for="line3">Line 2</label>
-                                        <input className="form-check-input p-2 order-2 " type="checkbox" id="line3" value="line3" />
-                                    </div>
-
-                                </div>
-                                   
-
-                                </div>
-                                <div className='col-3'>
-                                <h6>Roles</h6>
-                                    <div className="form-check form-check-inline ">
-                                        <label className="form-check-label order-1" for="lists">Lists </label>
-                                        <input className="form-check-input p-2 order-2 " type="checkbox" id="lists" value="lists" />
-                                    </div>
-
-                                </div>
-
-                              </div>
-                                  
-                              </Accordion.Body>
-                          </Accordion.Item>
-                          <Accordion.Item eventKey="1">
-                              <Accordion.Header>Menu</Accordion.Header>
-                              <Accordion.Body>
-                                <div className='container-fluid'>
-                                    <div className="row">
-                             
-                                          <div className="container" style={{ maxHeight: "300px", overflowY: "scroll" }}>
-                                              {menuData.map((menu, menuIndex) => (
-                                                  <div key={menu.Menu_Header}>
-                                                      <h6>{menu.Menu_Header}</h6>
-                                                      <div className="row">
-                                                          {menu.Sub_menus.map((subMenu, subMenuIndex) => (
-                                                              <div key={subMenu.Sub_Header} className="col-3">
-                                                                  <div className="form-check">
-                                                                      <input
-                                                                          type="checkbox"
-                                                                          id={subMenu.Sub_Header}
-                                                                          className="form-check-input p-2"
-                                                                          checked={subMenu.isChecked || false}
-                                                                          onChange={() => handleSubMenuChange(menuIndex, subMenuIndex)}
-                                                                      />
-                                                                      <label htmlFor={subMenu.Sub_Header} className="form-check-label">{subMenu.Sub_Header}</label>
-                                                                  </div>
-                                                              </div>
-                                                          ))}
-                                                      </div>
-                                                  </div>
-                                              ))}
+                                  <div className='row'>
+                                      <div className='col-3'>
+                                          <h6>Dashboard</h6>
+                                          <div className="form-check form-check-inline ">
+                                              <label className="form-check-label order-1" for="dashboard">Dashboard </label>
+                                              <input className="form-check-input p-2 order-2 " type="checkbox" id="dashboard" value="dashboard" />
                                           </div>
-                            
+                                      </div>
+                                      <div className='col-3'>
+                                          <h6>Department</h6>
+                                          <div className="form-check form-check-inline ">
+                                              <label className="form-check-label order-1" for="lists">Lists </label>
+                                              <input className="form-check-input p-2 order-2 " type="checkbox" id="lists" value="lists" />
+                                          </div>
+
+                                      </div>
+                                      <div className='col-3'>
+                                          <h6>Lines</h6>
+                                          <div className='d-flex flex-column '>
+                                              <div className="form-check form-check-inline  mb-0">
+                                                  <label className="form-check-label order-1" for="line2">Line 1</label>
+                                                  <input className="form-check-input p-2 order-2 " type="checkbox" id="line2" value="line2" />
+                                              </div>
+                                              <div className="form-check form-check-inline mb-0 ">
+                                                  <label className="form-check-label order-1" for="line3">Line 2</label>
+                                                  <input className="form-check-input p-2 order-2 " type="checkbox" id="line3" value="line3" />
+                                              </div>
+
+                                          </div>
+
+
+                                      </div>
+                                      <div className='col-3'>
+                                          <h6>Roles</h6>
+                                          <div className="form-check form-check-inline ">
+                                              <label className="form-check-label order-1" for="lists">Lists </label>
+                                              <input className="form-check-input p-2 order-2 " type="checkbox" id="lists" value="lists" />
+                                          </div>
+
+                                      </div>
+
                                   </div>
-                                </div>
-                                  
 
                               </Accordion.Body>
                           </Accordion.Item>
-                          <Accordion.Item eventKey="2">
-                              <Accordion.Header>Configuration</Accordion.Header>
-                              <Accordion.Body>
-                              <div className='container-fluid'>
-                                    <div className="row">
-                             
-                                          <div className="container" style={{ maxHeight: "300px", overflowY: "scroll" }}>
-                                              {configData.map((menu, menuIndex) => (
-                                                  <div key={menu.Menu_Header}>
-                                                      <h6>{menu.Menu_Header}</h6>
-                                                      <div className="row">
-                                                          {menu.Sub_menus.map((subMenu, subMenuIndex) => (
-                                                              <div key={subMenu.Sub_Header} className="col-3">
-                                                                  <div className="form-check">
-                                                                      <input
-                                                                          type="checkbox"
-                                                                          id={subMenu.Sub_Header}
-                                                                          className="form-check-input p-2"
-                                                                          checked={subMenu.isChecked || false}
-                                                                          onChange={() => handleSubMenuChange(menuIndex, subMenuIndex)}
-                                                                      />
-                                                                      <label htmlFor={subMenu.Sub_Header} className="form-check-label">{subMenu.Sub_Header}</label>
+                          {data.map((category, categoryIndex) => (
+                              <Accordion.Item key={categoryIndex} eventKey={categoryIndex.toString()}>
+                                  <Accordion.Header>{category.category}</Accordion.Header>
+                                  <Accordion.Body>
+                                      <div className='container-fluid'>
+                                          <div className="row">
+                                              <div className="container" style={{ maxHeight: "300px", overflowY: "scroll" }}>
+                                                  {category.menu_items.map((menu, menuIndex) => (
+                                                      <div key={menuIndex}>
+                                                          <h6>{menu.Menu_Header}</h6>
+                                                          <div className="row">
+                                                              {menu.Sub_menus.map((subMenu, subMenuIndex) => (
+                                                                  <div key={subMenuIndex} className="col-3">
+                                                                      <div className="form-check">
+                                                                          <input
+                                                                              type="checkbox"
+                                                                              id={subMenu.Sub_Header}
+                                                                              className="form-check-input p-2"
+                                                                              checked={subMenu.isChecked}
+                                                                             
+                                                                          />
+                                                                          <label htmlFor={subMenu.Sub_Header} className="form-check-label">{subMenu.Sub_Header}</label>
+                                                                      </div>
                                                                   </div>
-                                                              </div>
-                                                          ))}
+                                                              ))}
+                                                          </div>
                                                       </div>
-                                                  </div>
-                                              ))}
+                                                  ))}
+                                              </div>
                                           </div>
-                            
-                                  </div>
-                                </div>
-                                 
-                              </Accordion.Body>
-                          </Accordion.Item>
-                          <Accordion.Item eventKey="3">
-                              <Accordion.Header>Reports</Accordion.Header>
-                              <Accordion.Body>
-                              <div className='container-fluid'>
-                                    <div className="row">
-                             
-                                          <div className="container" style={{ maxHeight: "300px", overflowY: "scroll" }}>
-                                              {reportData.map((menu, menuIndex) => (
-                                                  <div key={menu.Menu_Header}>
-                                                      <h6>{menu.Menu_Header}</h6>
-                                                      <div className="row">
-                                                          {menu.Sub_menus.map((subMenu, subMenuIndex) => (
-                                                              <div key={subMenu.Sub_Header} className="col-3">
-                                                                  <div className="form-check">
-                                                                      <input
-                                                                          type="checkbox"
-                                                                          id={subMenu.Sub_Header}
-                                                                          className="form-check-input p-2"
-                                                                          checked={subMenu.isChecked || false}
-                                                                          onChange={() => handleSubMenuChange(menuIndex, subMenuIndex)}
-                                                                      />
-                                                                      <label htmlFor={subMenu.Sub_Header} className="form-check-label">{subMenu.Sub_Header}</label>
-                                                                  </div>
-                                                              </div>
-                                                          ))}
-                                                      </div>
-                                                  </div>
-                                              ))}
-                                          </div>
-                            
-                                  </div>
-                                </div>
-                                 
-                              </Accordion.Body>
-                          </Accordion.Item>
+                                      </div>
+                                  </Accordion.Body>
+                              </Accordion.Item>
+                          ))}
                       </Accordion>
+
 
                 </div>
                 
