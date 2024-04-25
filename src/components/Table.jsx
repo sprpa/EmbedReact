@@ -1,61 +1,82 @@
-import React, { useEffect, useRef } from 'react';
-import DataTable from 'datatables.net';
+import React, { useState, useEffect } from 'react';
+import Accordion from 'react-bootstrap/Accordion';
+import axios from 'axios';
 
-const ExampleTable = () => {
-  const tableRef = useRef(null);
+function AccordionWithCheckbox() {
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const table = DataTable(tableRef.current, {
-      initComplete: function () {
-        this.api().columns().every(function () {
-          let column = this;
-          let title = column.footer().textContent;
+    // useEffect to fetch menu data
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get("https://eis-website-backend.onrender.com/super_menu");
+                if (response.status !== 200) {
+                    throw new Error('Failed to fetch menu data');
+                }
+                // Split the fetched data into different categories
+                setData(response.data.main_menu);
 
-          // Create input element
-          let input = document.createElement('input');
-          input.placeholder = title;
-          column.footer().replaceChildren(input);
-
-          // Event listener for user input
-          input.addEventListener('keyup', () => {
-            if (column.search() !== input.value) {
-              column.search(input.value).draw();
+            } catch (error) {
+                console.error('Error fetching menu data:', error);
             }
-          });
-        });
+        };
+
+        fetchData();
+    }, []);
+
+    const handleHeaderCheckboxChange = (category) => {
+      const categoryIndex = selectedItems.indexOf(category);
+      if (categoryIndex === -1) {
+        setSelectedItems([...selectedItems, category]);
+      } else {
+        const updatedSelectedItems = [...selectedItems];
+        updatedSelectedItems.splice(categoryIndex, 1);
+        setSelectedItems(updatedSelectedItems);
       }
-    });
-
-    return () => {
-      // Clean up DataTable when component unmounts
-      table.destroy();
     };
-  }, []);
-
-  return (
-    <table id="example" className="display" style={{ width: '100%' }} ref={tableRef}>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Position</th>
-          <th>Office</th>
-          <th>Age</th>
-          <th>Start date</th>
-          <th>Salary</th>
-        </tr>
-      </thead>
-      <tfoot>
-        <tr>
-          <th>Name</th>
-          <th>Position</th>
-          <th>Office</th>
-          <th>Age</th>
-          <th>Start date</th>
-          <th>Salary</th>
-        </tr>
-      </tfoot>
-    </table>
-  );
-};
-
-export default ExampleTable;
+  
+    const handleSubItemCheckboxChange = (category, subItem) => {
+      if (selectedItems.includes(category)) {
+        // Category is already selected, so deselect it if no sub-items are selected
+        if (!Array.isArray(data[category]) || !data[category].some(item => item === subItem)) {
+          const updatedSelectedItems = selectedItems.filter(item => item !== category);
+          setSelectedItems(updatedSelectedItems);
+        }
+      } else {
+        // Category is not selected, so select it
+        setSelectedItems([...selectedItems, category]);
+      }
+    };
+  
+    return (
+      <Accordion defaultActiveKey="0">
+        {Object.keys(data).map((category, categoryIndex) => (
+          <Accordion.Item key={categoryIndex} eventKey={categoryIndex.toString()}>
+            <Accordion.Header>
+              <input
+                type="checkbox"
+                checked={selectedItems.includes(category)}
+                onChange={() => handleHeaderCheckboxChange(category)}
+              />
+              {category}
+            </Accordion.Header>
+            <Accordion.Body>
+              {Array.isArray(data[category]) && data[category].map((subItem, subItemIndex) => (
+                <div key={subItemIndex}>
+                  <input
+                    type="checkbox"
+                    checked={selectedItems.includes(subItem)}
+                    onChange={() => handleSubItemCheckboxChange(category, subItem)}
+                  />
+                  {subItem}
+                </div>
+              ))}
+            </Accordion.Body>
+          </Accordion.Item>
+        ))}
+      </Accordion>
+    );
+  }
+  
+  export default AccordionWithCheckbox;
