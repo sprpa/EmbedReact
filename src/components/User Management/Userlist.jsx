@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './user.css'
-
+import { Table, Pagination } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
@@ -87,6 +87,18 @@ function Userlist() {
             console.error('Error fetching data:', error);
         }
     };
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 5; // Number of items per page
+  
+    // Calculate pagination variables
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  
+    // Change page
+    const handlePageChange = (pageNumber) => {
+      setCurrentPage(pageNumber);
+    };
 
 
 
@@ -104,10 +116,10 @@ function Userlist() {
                     >
                         <Tab eventKey="Users" title="Users">
                             <div className='container-fluid'>
-                                <table className="table table-bordered">
+                                <Table className="table table-bordered">
                                     <thead className="table-secondary batch-table">
                                         <tr>
-                                            <th scope="col" className='text-center '>Sno</th>
+                                            <th scope="col" className='text-center'>Sno</th>
                                             <th scope="col" className='text-center col-1'>EMP ID</th>
                                             <th scope="col" className='text-center col-2'>User Name</th>
                                             <th scope="col" className='text-center col-2'>User Email</th>
@@ -119,18 +131,18 @@ function Userlist() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {data.map((item, index) => (
+                                        {currentItems.map((item, index) => (
                                             <tr key={index}>
                                                 <td className=''>
-                                                    <div className='h-100 text-center  my-1  '>{item.S_No}
-                                                    </div></td>
+                                                    <div className='h-100 text-center my-1'>{item.S_No}</div>
+                                                </td>
                                                 <td className=''>
-                                                    <div className='h-100 text-center my-1 '>{item.EMP_ID}
-                                                    </div></td>
-                                                <td className='text-center  my-1'>{item.User_Name}</td>
-                                                <td className={` fw-bold text-center text-primary fw-small  my-1`}>{item.User_Email}</td>
-                                                <td className={`${getStatusColor(item.Role)} fw-bold text-center  my-1`}>{item.Role}</td>
-                                                <td className='text-center  my-1'>{item.Department}</td>
+                                                    <div className='h-100 text-center my-1'>{item.EMP_ID}</div>
+                                                </td>
+                                                <td className='text-center my-1'>{item.User_Name}</td>
+                                                <td className={`fw-bold text-center text-primary fw-small my-1`}>{item.User_Email}</td>
+                                                <td className={`${getStatusColor(item.Role)} fw-bold text-center my-1`}>{item.Role}</td>
+                                                <td className='text-center my-1'>{item.Department}</td>
                                                 <td className='text-center my-1'>
                                                     <Switch defaultChecked={item.Show_Stations === 'true'} />
                                                 </td>
@@ -138,24 +150,44 @@ function Userlist() {
                                                     {item.Staions}
                                                 </td>
                                                 <td>
-                                                    <div className='d-flex justify-content-center gap-3 '>
-                                                        <button className='btn border-0 text-center p-0 '>
+                                                    <div className='d-flex justify-content-center gap-3'>
+                                                        <button className='btn border-0 text-center p-0'>
                                                             <i className="fa-regular fa-pen-to-square"></i>
                                                         </button>
-                                                        <button className='btn border-0 text-center p-0 '>
+                                                        <button className='btn border-0 text-center p-0'>
                                                             <i className="fa-solid fa-trash-can"></i>
                                                         </button>
-
                                                     </div>
-
                                                 </td>
                                             </tr>
                                         ))}
-
                                     </tbody>
-                                </table>
+                                </Table>
+
+                                <div className="d-flex justify-content-end">
+                                    <Pagination>
+                                        <Pagination.Prev
+                                            onClick={() => handlePageChange(currentPage - 1)}
+                                            disabled={currentPage === 1}
+                                        />
+                                        {[...Array(Math.ceil(data.length / itemsPerPage)).keys()].map((number) => (
+                                            <Pagination.Item
+                                                key={number + 1}
+                                                active={number + 1 === currentPage}
+                                                onClick={() => handlePageChange(number + 1)}
+                                            >
+                                                {number + 1}
+                                            </Pagination.Item>
+                                        ))}
+                                        <Pagination.Next
+                                            onClick={() => handlePageChange(currentPage + 1)}
+                                            disabled={currentPage === Math.ceil(data.length / itemsPerPage)}
+                                        />
+                                    </Pagination>
+                                </div>
                             </div>
                         </Tab>
+                        
                         <Tab eventKey="Roles" title="Roles">
                             <div className='container-fluid'>
                                 <table className="table table-bordered">

@@ -35,7 +35,7 @@ const ProductionLoading = () => {
 
   const handleFilter = (column, value) => {
     const filtered = data.filter(item =>
-      item[column].toLowerCase().includes(value.toLowerCase())
+      item[column]?.toLowerCase().includes(value.toLowerCase())
     );
     setFilteredData(filtered);
   };
