@@ -285,5 +285,37 @@
       "Description": "Machine operating Technician",
       "id": 9
     }
+  ],
+  "Department" : [
+    {
+      "names": "Production",
+      "Description": "Production",
+      "id": 1
+    },
+    {
+      "names": "Operation",
+      "Description": "Operations",
+      "id": 2
+    },
+    {
+      "names": "Quality",
+      "Description": "Quality",
+      "id": 3
+    },
+    {
+      "names": "Testing",
+      "Description": "Testing",
+      "id": 4
+    },
+    {
+      "names": "Inventory",
+      "Description": "Inventory",
+      "id": 5
+    },
+    {
+      "names": "Packing",
+      "Description": "Packing",
+      "id": 6
+    }
   ]
 }

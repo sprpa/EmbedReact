@@ -21,6 +21,7 @@ function Userlist() {
     const [data, setData] = useState([]);
     const [roleData, setRoleData] = useState([]);
     const navigate = useNavigate();
+    const [deptData,setDeptData] = useState([]);
 
     const handleRedirect = () => {
         if (activeTab === "Users") {
@@ -54,6 +55,7 @@ function Userlist() {
 
         fetchData();
         fetchDataRole();
+        fetchDataDept();
     }, []);
     const fetchData = async () => {
         console.log("fetchData");
@@ -69,6 +71,15 @@ function Userlist() {
         try {
             const response = await axios.get('http://localhost:8000/userRole');
             setRoleData(response.data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+    const fetchDataDept = async () => {
+        console.log("fetchData");
+        try {
+            const response = await axios.get('http://localhost:8000/Department');
+            setDeptData(response.data);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -253,8 +264,45 @@ function Userlist() {
                             </div>
                         </Tab>
                         <Tab eventKey="Department" title="Department">
-                            <div className='container-fluid'>
-                                Tab content for Department
+                        <div className='container-fluid'>
+                                <table className="table table-bordered">
+                                    <thead className="table-secondary batch-table">
+                                        <tr>
+                                            <th scope="col" className='text-center col-1 '>Sno</th>
+                                            <th scope="col" className='text-center col-5'>Name</th>
+                                            <th scope="col" className='text-center col-5'>Description</th>
+                                            <th scope="col" className='text-center col-1'>Actions</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {deptData.map((item, index) => (
+                                            <tr key={index}>
+                                                <td className=''>
+                                                    <div className='h-100 text-center  my-1  '>{item.id}
+                                                    </div></td>
+                                                <td className=''>
+                                                    <div className='h-100 text-start my-1 text-primary fw-bold '>{item.names}
+                                                    </div></td>
+                                                <td className='text-start  my-1'>{item.Description}</td>
+
+                                                <td>
+                                                    <div className='d-flex justify-content-center gap-3 '>
+                                                        <button className='btn border-0 text-center p-0 '>
+                                                            <i className="fa-regular fa-pen-to-square"></i>
+                                                        </button>
+                                                        <button className='btn border-0 text-center p-0 '>
+                                                            <i className="fa-solid fa-trash-can"></i>
+                                                        </button>
+
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                        ))}
+
+                                    </tbody>
+                                </table>
                             </div>
                         </Tab>
                     </Tabs>

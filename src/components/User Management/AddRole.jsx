@@ -19,7 +19,7 @@ function AddRole() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://192.168.5.34:8089/super_menu");
+        const response = await axios.get("https://eis-website-backend.onrender.com/super_menu");
         if (response.status !== 200) {
           throw new Error('Failed to fetch menu data');
         }
@@ -170,9 +170,7 @@ function AddRole() {
                       <input type="text" id='username' className='form-control h-50' placeholder='Enter Description ' />
                   </div>
                 </div>
-               
-
-               
+        
                 <div className="col-8">
                     <div className='d-flex justify-content-between'>
                         <h6>User Access Permission Setting </h6>
@@ -344,14 +342,8 @@ function AddRole() {
                       </Accordion>
 
                 </div>
-
-                  
-
-                 
-                  
-                  
-
-              </div>
+                
+           </div>
 
           </div>
 
