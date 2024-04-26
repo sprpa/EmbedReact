@@ -286,7 +286,7 @@
       "id": 9
     }
   ],
-  "Department" : [
+  "Department": [
     {
       "names": "Production",
       "Description": "Production",
@@ -317,5 +317,525 @@
       "Description": "Packing",
       "id": 6
     }
+  ],
+  "Roles": [
+    {
+      "Role": "Admin",
+      "Description": "All Modules Are Accessable",
+      "CheckedData": [
+        {
+          "Menu_Header": "Operation",
+          "Submenu_Items": [
+            {
+              "Sub_Header": "Scan PPID"
+            },
+            {
+              "Sub_Header": "Batch Movement"
+            },
+            {
+              "Sub_Header": "Process Approval"
+            },
+            {
+              "Sub_Header": "Feeder"
+            },
+            {
+              "Sub_Header": "FeederScan"
+            },
+            {
+              "Sub_Header": "FQC Inspection"
+            },
+            {
+              "Sub_Header": "Check FQC Status"
+            },
+            {
+              "Sub_Header": "Hold/Release Serial Number"
+            },
+            {
+              "Sub_Header": "Material Con"
+            },
+            {
+              "Sub_Header": "Downtime Request"
+            },
+            {
+              "Sub_Header": "Downtime Resolved"
+            },
+            {
+              "Sub_Header": "Thawing-setup"
+            },
+            {
+              "Sub_Header": "FQC"
+            },
+            {
+              "Sub_Header": "Feeder Upload"
+            },
+            {
+              "Sub_Header": "BUS Review"
+            },
+            {
+              "Sub_Header": "VI"
+            },
+            {
+              "Sub_Header": "Stencil"
+            },
+            {
+              "Sub_Header": "Calibration"
+            },
+            {
+              "Sub_Header": "FVI"
+            },
+            {
+              "Sub_Header": "Dash_Board"
+            }
+          ]
+        },
+        {
+          "Menu_Header": "Production",
+          "Submenu_Items": [
+            {
+              "Sub_Header": "Non_Arena Bomupload"
+            },
+            {
+              "Sub_Header": "Production Order"
+            },
+            {
+              "Sub_Header": "Material Issue"
+            },
+            {
+              "Sub_Header": "PO Summary"
+            },
+            {
+              "Sub_Header": "Arena BOM Upload"
+            },
+            {
+              "Sub_Header": "Arena BOM"
+            },
+            {
+              "Sub_Header": "Upload Existing GRN"
+            },
+            {
+              "Sub_Header": "Upload Existing GRN IQC"
+            },
+            {
+              "Sub_Header": "ECN"
+            },
+            {
+              "Sub_Header": "Test PO Print"
+            },
+            {
+              "Sub_Header": "Test PO Print FT2"
+            },
+            {
+              "Sub_Header": "Test PO Print ILG"
+            },
+            {
+              "Sub_Header": "Baking"
+            },
+            {
+              "Sub_Header": "Laser Specification"
+            },
+            {
+              "Sub_Header": "Travel Card"
+            },
+            {
+              "Sub_Header": "STK1 Data"
+            },
+            {
+              "Sub_Header": "Set Up"
+            },
+            {
+              "Sub_Header": "PO_Upload"
+            }
+          ]
+        },
+        {
+          "Menu_Header": "Inventory",
+          "Submenu_Items": [
+            {
+              "Sub_Header": "IQC"
+            },
+            {
+              "Sub_Header": "IQC-PCB"
+            },
+            {
+              "Sub_Header": "GRN Ex Upload"
+            },
+            {
+              "Sub_Header": "Purchase Master"
+            },
+            {
+              "Sub_Header": "DIRECT GRN"
+            },
+            {
+              "Sub_Header": "Goods Receipt Note"
+            },
+            {
+              "Sub_Header": "GRPO"
+            },
+            {
+              "Sub_Header": "Item Invventory"
+            }
+          ]
+        },
+        {
+          "Menu_Header": "Packing",
+          "Submenu_Items": [
+            {
+              "Sub_Header": "Packing"
+            },
+            {
+              "Sub_Header": "Packing Summary"
+            },
+            {
+              "Sub_Header": "Packing Report"
+            },
+            {
+              "Sub_Header": "Tape and Reel"
+            }
+          ]
+        },
+        {
+          "Menu_Header": "Testing",
+          "Submenu_Items": [
+            {
+              "Sub_Header": "Barcode Verification"
+            }
+          ]
+        },
+        {
+          "Menu_Header": "Quality",
+          "Submenu_Items": [
+            {
+              "Sub_Header": "Start Production"
+            },
+            {
+              "Sub_Header": "BuyOff Master"
+            },
+            {
+              "Sub_Header": "BuyOff Creation"
+            },
+            {
+              "Sub_Header": "Buyoff Report"
+            },
+            {
+              "Sub_Header": "Buyoff Sample"
+            }
+          ]
+        },
+        {
+          "Menu_Header": "Manage Operations",
+          "Submenu_Items": [
+            {
+              "Sub_Header": "Create Process Flow"
+            },
+            {
+              "Sub_Header": "Assign  Process flow"
+            },
+            {
+              "Sub_Header": "Batch Creation"
+            },
+            {
+              "Sub_Header": "Production Loading"
+            },
+            {
+              "Sub_Header": "BOM Verification"
+            },
+            {
+              "Sub_Header": "Batch Approval"
+            },
+            {
+              "Sub_Header": "Serial No Update"
+            },
+            {
+              "Sub_Header": "Bus Setup"
+            }
+          ]
+        },
+        {
+          "Menu_Header": "Masters",
+          "Submenu_Items": [
+            {
+              "Sub_Header": "Role Master"
+            },
+            {
+              "Sub_Header": "Station Master"
+            },
+            {
+              "Sub_Header": "Barcode Master"
+            },
+            {
+              "Sub_Header": "Fault Code Master"
+            },
+            {
+              "Sub_Header": "Repair Reason Master"
+            },
+            {
+              "Sub_Header": "Hold Reason Master"
+            },
+            {
+              "Sub_Header": "Release Reason Master"
+            },
+            {
+              "Sub_Header": "Target Master"
+            },
+            {
+              "Sub_Header": "Hourly Target Master"
+            },
+            {
+              "Sub_Header": "Machine Master"
+            },
+            {
+              "Sub_Header": "FaultCode Machine Master"
+            },
+            {
+              "Sub_Header": "Item Master"
+            },
+            {
+              "Sub_Header": "Item Group"
+            },
+            {
+              "Sub_Header": "UOM"
+            },
+            {
+              "Sub_Header": "HSN"
+            },
+            {
+              "Sub_Header": "Make"
+            },
+            {
+              "Sub_Header": "Category"
+            },
+            {
+              "Sub_Header": "SubCategory"
+            },
+            {
+              "Sub_Header": "Warehouse"
+            },
+            {
+              "Sub_Header": "Business BP Master"
+            },
+            {
+              "Sub_Header": "Stencil Master"
+            }
+          ]
+        },
+        {
+          "Menu_Header": "API Sync",
+          "Submenu_Items": [
+            {
+              "Sub_Header": "Production API"
+            }
+          ]
+        },
+        {
+          "Menu_Header": "User Management",
+          "Submenu_Items": [
+            {
+              "Sub_Header": "User List"
+            }
+          ]
+        },
+        {
+          "Menu_Header": "Production Report",
+          "Submenu_Items": [
+            {
+              "Sub_Header": "Station Report"
+            },
+            {
+              "Sub_Header": "MTBF AND MTTR Report"
+            },
+            {
+              "Sub_Header": "X-Ray Void All"
+            },
+            {
+              "Sub_Header": "X-Ray Void Production"
+            },
+            {
+              "Sub_Header": "Barcode Verification Details"
+            },
+            {
+              "Sub_Header": "Stencil Report"
+            },
+            {
+              "Sub_Header": "Material Transfer"
+            },
+            {
+              "Sub_Header": "Fail Details"
+            },
+            {
+              "Sub_Header": "FVI Summary"
+            },
+            {
+              "Sub_Header": "CPK Report"
+            },
+            {
+              "Sub_Header": "Frs Report"
+            },
+            {
+              "Sub_Header": "Fvireport"
+            }
+          ]
+        },
+        {
+          "Menu_Header": "Traceability Report",
+          "Submenu_Items": [
+            {
+              "Sub_Header": "Laser Barcode Export"
+            },
+            {
+              "Sub_Header": "Production Station Report"
+            },
+            {
+              "Sub_Header": "Module Tracing"
+            },
+            {
+              "Sub_Header": "Tester Data"
+            },
+            {
+              "Sub_Header": "Serial Number Traceability"
+            },
+            {
+              "Sub_Header": "Daily Test one"
+            },
+            {
+              "Sub_Header": "Daily Test two"
+            }
+          ]
+        },
+        {
+          "Menu_Header": "Management Report",
+          "Submenu_Items": [
+            {
+              "Sub_Header": "Stationwise Details"
+            },
+            {
+              "Sub_Header": "Downtime Report"
+            },
+            {
+              "Sub_Header": "Defect Trend Report"
+            },
+            {
+              "Sub_Header": "FPY Report"
+            },
+            {
+              "Sub_Header": "DPPM Report"
+            },
+            {
+              "Sub_Header": "Daily Test Report"
+            },
+            {
+              "Sub_Header": "OEE Report"
+            },
+            {
+              "Sub_Header": "OEE Setup"
+            }
+          ]
+        }
+      ],
+      "id": 1
+    },
+    {
+      "Role": "Manager",
+      "Description": "Manager allows to Report",
+      "CheckedData": [
+        {
+          "Menu_Header": "Production Report",
+          "Submenu_Items": [
+            {
+              "Sub_Header": "Station Report"
+            },
+            {
+              "Sub_Header": "MTBF AND MTTR Report"
+            },
+            {
+              "Sub_Header": "X-Ray Void All"
+            },
+            {
+              "Sub_Header": "X-Ray Void Production"
+            },
+            {
+              "Sub_Header": "Barcode Verification Details"
+            },
+            {
+              "Sub_Header": "Stencil Report"
+            },
+            {
+              "Sub_Header": "Material Transfer"
+            },
+            {
+              "Sub_Header": "Fail Details"
+            },
+            {
+              "Sub_Header": "FVI Summary"
+            },
+            {
+              "Sub_Header": "CPK Report"
+            },
+            {
+              "Sub_Header": "Frs Report"
+            },
+            {
+              "Sub_Header": "Fvireport"
+            }
+          ]
+        },
+        {
+          "Menu_Header": "Traceability Report",
+          "Submenu_Items": [
+            {
+              "Sub_Header": "Laser Barcode Export"
+            },
+            {
+              "Sub_Header": "Production Station Report"
+            },
+            {
+              "Sub_Header": "Module Tracing"
+            },
+            {
+              "Sub_Header": "Tester Data"
+            },
+            {
+              "Sub_Header": "Serial Number Traceability"
+            },
+            {
+              "Sub_Header": "Daily Test one"
+            },
+            {
+              "Sub_Header": "Daily Test two"
+            }
+          ]
+        },
+        {
+          "Menu_Header": "Management Report",
+          "Submenu_Items": [
+            {
+              "Sub_Header": "Stationwise Details"
+            },
+            {
+              "Sub_Header": "Downtime Report"
+            },
+            {
+              "Sub_Header": "Defect Trend Report"
+            },
+            {
+              "Sub_Header": "FPY Report"
+            },
+            {
+              "Sub_Header": "DPPM Report"
+            },
+            {
+              "Sub_Header": "Daily Test Report"
+            },
+            {
+              "Sub_Header": "OEE Report"
+            },
+            {
+              "Sub_Header": "OEE Setup"
+            }
+          ]
+        }
+      ],
+      "id": 2
+    }   
+   
   ]
 }
